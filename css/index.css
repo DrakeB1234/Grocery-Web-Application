@@ -9,6 +9,7 @@ body {
 :root {
     --accent-color: #4682B4;
     --foreground-color: #E5E4E2;
+    --secondary-text-color: white;
 }
 
 /* grid layout (overflow 20% left for sidebar) */
@@ -26,6 +27,21 @@ body {
     height: 100vh;
     display: grid;
     grid-template-rows: 5% 30% 65%;
+    background-color: white;
+}
+
+/* styling for header tags in main content */
+
+.mainGrid h1 {
+    font-size: 2rem;
+}
+
+.mainGrid h2 {
+    font-size: 1.5rem;
+}
+
+.mainGrid h3 {
+    font-size: 1rem;
 }
 
 /* styling for navigation bar */
@@ -44,21 +60,20 @@ body {
 /* styling for information display */
 
 .mainGrid .displayContainer {
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .displayContainer .displayItem {
-    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 60%;
+    border-radius: 15% / 40%;
+    color: var(--secondary-text-color);
     background-color: var(--accent-color);
-}
-
-.mainGrid :nth-child(2n) {
-    background-color: rgb(255, 255, 255);
-}
-
-.mainGrid :nth-child(2n + 1) {
-    background-color: rgb(255, 255, 255);
 }
 
 .sidebarFlex {
