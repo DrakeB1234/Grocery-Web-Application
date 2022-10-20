@@ -2,6 +2,7 @@
 body {
     height: 100vh;
     width: 100vw;
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -12,8 +13,10 @@ a {
 /* root variables */
 :root {
     --accent-color: #40a5ee;
+    --accent-color-dark: #2c76ac;
     --foreground-color: #f3f7fd;
     --header-text-color: white;
+    --sidebar-color: #479ddb;
 }
 
 /* grid layout (overflow 20% left for sidebar) */
@@ -62,6 +65,7 @@ a {
 nav button {
     background: none;
     border: 0;
+    color: inherit;
 }
 
 .mainGrid nav i {
@@ -72,16 +76,57 @@ nav button {
 /* styling for sidebar display */
 
 nav .sidebarContainer {
-    position: fixed;
     height: 100%;
-    width: 90%;
-    left: 100%;
-    top: 0;
-    z-index: 2;
-    background-color: rgb(0, 132, 255);
+    width: 60%;
+    padding-right: 1em;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2em 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--sidebar-color);
+    color: white;
+}
+
+nav .sidebarContainer .sidebarList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+/* styling for sidebar items */
+
+nav .sidebarContainer > .sidebarList:nth-child(n + 2) {
+    padding: 1em 0 1em 0;
+    background-color: var(--accent-color-dark);
+}
+
+nav .sidebarContainer > .sidebarDropDown {
+    padding: 1em 0 1em 0;
+    background-color: var(--accent-color-dark);
+}
+
+/* styling for dropdown containers */
+
+nav .sidebarContainer .sidebarDropDown {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+nav .sidebarContainer .sidebarDropDown :nth-child(n + 2) {
+    margin-left: 0.5em;
 }
 
 /* animation for sidebar display */
+
+nav .sidebarContainer {
+    position: fixed;
+    left: 100%;
+    top: 0;
+    z-index: 2;
+}
 
 nav button:focus-within + .sidebarContainer {
     transform: translateX(-100%);
@@ -91,7 +136,7 @@ nav button:focus-within + .sidebarContainer {
 
 /* animation for losing focus on sidebar */
 
-nav button:not(:focus) + .sidebarContainer {
+nav button:not(:focus-within) + .sidebarContainer {
     transform: translateX(100%);
     transition: all 0.3s;
 

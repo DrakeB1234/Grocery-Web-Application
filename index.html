@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- main layout (overflow for sidebar) -->
@@ -20,18 +21,25 @@
                 <!-- sidebar -->
                 <div class="sidebarContainer">
                     <div class="sidebarList">
+                        <i class="fa-sharp fa-solid fa-qrcode"></i>
                         <h1>Dashboard</h1>
+                        <button>x</button>
                     </div>
                     <div class="sidebarList">
-                        <h2>Grocery List</h2>
-                    </div>
-                    <div class="sidebarList sidebarDropdown">
-                        <h2>Recipes</h2>
-                        <h3>View Saved Recipes</h3>
-                        <h3>Add Recipes</h3>
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <button><h2>Grocery List</h2></button>
                     </div>
                     <div class="sidebarList">
-                        <h2>Meal Planner</h2>
+                        <i class="fa-solid fa-utensils"></i>
+                        <button><h2>Recipes</h2></button>
+                        <div class="sidebarDropDown">
+                            <button><h2>View Saved Recipes</h2></button>
+                            <button><h2>Add Recipes</h2></button>
+                        </div>
+                    </div>
+                    <div class="sidebarList">
+                        <i class="fa-solid fa-calendar-week"></i>
+                        <button><h2>Meal Planner</h2></button>
                     </div>
                 </div>
             </nav>
