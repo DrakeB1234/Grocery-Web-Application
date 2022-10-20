@@ -5,6 +5,11 @@ body {
     overflow: hidden;
 }
 
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+
 /* root variables */
 :root {
     --accent-color: #40a5ee;
@@ -27,7 +32,7 @@ body {
     margin: 0 1em 0 1em;
     height: 100vh;
     display: grid;
-    grid-template-rows: 5% 30% 65%;
+    grid-template-rows: 5% 35% 65%;
     background-color: white;
 }
 
@@ -63,7 +68,7 @@ body {
 .mainGrid .displayContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .displayContainer .displayItem {
@@ -83,6 +88,9 @@ body {
     display: flex;
     align-items: center;
     overflow-x: scroll;
+    margin-top: 2em;
+    background-color: var(--accent-color);
+    border-radius: 5% 5% 0 0 / 5%;
 }
 
 /* general styling for each card */
@@ -92,17 +100,18 @@ body {
     flex-direction: column;
     justify-content: center;
     margin: 1em;
-    padding: 1em 4em 1em 4em;
+    padding: 3em 4em 3em 4em;
     border-radius: 20% / 20%;
-    background-color: var(--accent-color);
+    background-color: white;
 }
 
 /* general styling for each svg on card */
 
 .cardContainer > div img {
     width: 100%;
-    padding: 2em 0 2em 0;
-    background-color: var(--accent-color);
+    margin-bottom: 2em;
+    color: var(--accent-color);
+    filter: invert(63%) sepia(10%) saturate(3190%) hue-rotate(170deg) brightness(92%) contrast(103%);
 }
 
 .sidebarFlex {
