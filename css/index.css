@@ -14,14 +14,14 @@ a {
 :root {
     --accent-color: #40a5ee;
     --foreground-color: #f3f7fd;
-    --secondary-text-color: white;
+    --header-text-color: white;
 }
 
 /* grid layout (overflow 20% left for sidebar) */
 
 .layoutGrid {
     display: grid;
-    grid-template-columns: 100% 70%;
+    grid-template-columns: 100%;
     background-color: var(--foreground-color);
     overflow: hidden;
 }
@@ -58,9 +58,24 @@ a {
     align-items: center;
 }
 
+/* styling for navigation buttons */
+
+nav button {
+    background: none;
+    border: 0;
+}
+
 .mainGrid nav i {
-    padding: 1em;
+    padding: 0.5em;
     font-size: 1.5rem;
+}
+
+/* animation for sidebar display */
+
+nav button:focus {
+    .sidebar {
+        
+    }
 }
 
 /* styling for information display */
@@ -78,7 +93,7 @@ a {
     height: 70%;
     width: 80%;
     border-radius: 15% / 40%;
-    color: var(--secondary-text-color);
+    color: var(--header-text-color);
     background-color: var(--accent-color);
 }
 
@@ -90,7 +105,7 @@ a {
     overflow-x: scroll;
     margin-top: 2em;
     background-color: var(--accent-color);
-    border-radius: 5% 5% 0 0 / 5%;
+    border-radius: 10% 10% 0 0 / 5%;
 }
 
 /* general styling for each card */
