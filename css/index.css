@@ -1,8 +1,7 @@
-/* hide overflow, set height and width to viewport */
+/* set height and width to viewport */
 body {
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
 }
 
 a {
@@ -70,12 +69,32 @@ nav button {
     font-size: 1.5rem;
 }
 
+/* styling for sidebar display */
+
+nav .sidebarContainer {
+    position: fixed;
+    height: 100%;
+    width: 90%;
+    left: 100%;
+    top: 0;
+    z-index: 2;
+    background-color: rgb(0, 132, 255);
+}
+
 /* animation for sidebar display */
 
-nav button:focus {
-    .sidebar {
-        
-    }
+nav button:focus-within + .sidebarContainer {
+    transform: translateX(-100%);
+    transition: all 0.3s;
+
+}
+
+/* animation for losing focus on sidebar */
+
+nav button:not(:focus) + .sidebarContainer {
+    transform: translateX(100%);
+    transition: all 0.3s;
+
 }
 
 /* styling for information display */
@@ -127,9 +146,4 @@ nav button:focus {
     margin-bottom: 2em;
     color: var(--accent-color);
     filter: invert(63%) sepia(10%) saturate(3190%) hue-rotate(170deg) brightness(92%) contrast(103%);
-}
-
-.sidebarFlex {
-    height: 100vh;
-    background-color: rgb(0, 132, 255);
 }
