@@ -2,12 +2,12 @@
 body {
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* root variables */
 :root {
-    --accent-color: #4682B4;
+    --accent-color: #40a5ee;
     --foreground-color: #f3f7fd;
     --secondary-text-color: white;
 }
@@ -16,8 +16,9 @@ body {
 
 .layoutGrid {
     display: grid;
-    grid-template-columns: 100% 20%;
+    grid-template-columns: 100% 70%;
     background-color: var(--foreground-color);
+    overflow: hidden;
 }
 
 /* main content grid */
@@ -84,7 +85,23 @@ body {
     overflow-x: scroll;
 }
 
+/* general styling for each card */
+
 .cardContainer > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+    padding: 1em 4em 1em 4em;
+    border-radius: 20% / 20%;
+    background-color: var(--accent-color);
+}
+
+/* general styling for each svg on card */
+
+.cardContainer > div img {
+    width: 100%;
+    padding: 2em 0 2em 0;
     background-color: var(--accent-color);
 }
 
