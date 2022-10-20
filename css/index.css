@@ -8,7 +8,7 @@ body {
 /* root variables */
 :root {
     --accent-color: #4682B4;
-    --foreground-color: #E5E4E2;
+    --foreground-color: #f3f7fd;
     --secondary-text-color: white;
 }
 
@@ -69,10 +69,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
-    width: 60%;
+    height: 70%;
+    width: 80%;
     border-radius: 15% / 40%;
     color: var(--secondary-text-color);
+    background-color: var(--accent-color);
+}
+
+/* styling for navigation cards */
+
+.cardContainer {
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.cardContainer > div {
     background-color: var(--accent-color);
 }
 
