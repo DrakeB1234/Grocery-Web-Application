@@ -1,0 +1,67 @@
+/* hide overflow, set height and width to viewport */
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* root variables */
+:root {
+    --accent-color: #4682B4;
+    --foreground-color: #E5E4E2;
+}
+
+/* grid layout (overflow 20% left for sidebar) */
+
+.layoutGrid {
+    display: grid;
+    grid-template-columns: 100% 20%;
+    background-color: var(--foreground-color);
+}
+
+/* main content grid */
+
+.mainGrid {
+    margin: 0 1em 0 1em;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 5% 30% 65%;
+}
+
+/* styling for navigation bar */
+
+.mainGrid nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mainGrid nav i {
+    padding: 1em;
+    font-size: 1.5rem;
+}
+
+/* styling for information display */
+
+.mainGrid .displayContainer {
+    display: grid;
+    place-items: center;
+}
+
+.displayContainer .displayItem {
+    width: 40%;
+    background-color: var(--accent-color);
+}
+
+.mainGrid :nth-child(2n) {
+    background-color: rgb(255, 255, 255);
+}
+
+.mainGrid :nth-child(2n + 1) {
+    background-color: rgb(255, 255, 255);
+}
+
+.sidebarFlex {
+    height: 100vh;
+    background-color: rgb(0, 132, 255);
+}
