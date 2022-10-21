@@ -45,7 +45,7 @@ a {
 }
 
 .mainGrid h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .mainGrid h3 {
@@ -70,7 +70,7 @@ nav button {
 
 .mainGrid nav i {
     padding: 0.5em;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* styling for sidebar display */
@@ -97,26 +97,48 @@ nav .sidebarContainer .sidebarList {
 /* styling for sidebar items */
 
 nav .sidebarContainer > .sidebarList:nth-child(n + 2) {
-    padding: 1em 0 1em 0;
+    padding: 0.5em 0 0.5em 0;
     background-color: var(--accent-color-dark);
 }
 
-nav .sidebarContainer > .sidebarDropDown {
-    padding: 1em 0 1em 0;
-    background-color: var(--accent-color-dark);
+/* styling for buttons text */
+
+nav .sidebarList > button h2 {
+    font-size: 1.4rem;
 }
 
 /* styling for dropdown containers */
 
-nav .sidebarContainer .sidebarDropDown {
+nav .sidebarContainer .sidebarDropDownContainer {
     display: flex;
     flex-direction: column;
     margin-left: 1em;
-    margin-top: 1em;
+    margin-right: 0.5em;
 }
 
-nav .sidebarContainer .sidebarDropDown :nth-child(n + 2) {
+nav .sidebarContainer .sidebarDropDownItem {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5em 0 0.5em 0;
     margin-left: 0.5em;
+    margin-top: 0.5em;
+    background-color: var(--accent-color-dark);
+}
+
+nav .sidebarDropDownItem > button h2 {
+    font-size: 1.3rem;
+}
+
+/* if there is a third element (dropdown caret) justify self */
+
+nav .sidebarContainer .sidebarList :nth-child(n + 3) {
+    padding-left: 1em;
+}
+
+/* animation for recipe dropdown */
+
+nav .sidebarList .recipeDropBtn:focus-within {
+    transform: rotate(180deg);
 }
 
 /* animation for sidebar display */
@@ -131,12 +153,11 @@ nav .sidebarContainer {
 nav button:focus-within + .sidebarContainer {
     transform: translateX(-100%);
     transition: all 0.3s;
-
 }
 
 /* animation for losing focus on sidebar */
 
-nav button:not(:focus-within) + .sidebarContainer {
+nav button:not(:focus) + .sidebarContainer {
     transform: translateX(100%);
     transition: all 0.3s;
 
