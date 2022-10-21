@@ -5,16 +5,17 @@
 
 /* root variables */
 :root {
-    --dark-color: #3A9079;
+    --dark-color: #42a087;
     --grey-color: #696D7D;
-    --medium-color: #68B0AB;
+    --medium-color: #74c1bc;
     --accent-color: #C4E5C5;
     --foreground-color: #F0F7F4;
+    --highlight-color: #edb54e;
 }
 
 /* styling for body */
 body {
-    padding: 0.5em;
+    padding: 1em;
     background-color: var(--foreground-color);
     font-family: 'Roboto', 'sans-serif';
 }
@@ -26,6 +27,7 @@ main.main-container-grid {
     padding: 1em;
     border-radius: 5% / 2%;
     background-color: var(--accent-color);
+    overflow: hidden;
 }
 
 /* styling for header grid */
@@ -48,12 +50,31 @@ header.header-grid {
     display: flex;
     padding: 0.8em;
     font-size: 2rem;
+    overflow: scroll;
 }
 
 /* styling for cards in container */
 .header-grid .card {
-    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1em;
+    padding-top: 0;
+    margin: 0 0.5em 0 0.5em;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    border-radius: 10%;
     background-color: var(--medium-color);
+}
+
+/* styling svg in cards */
+.header-grid .card img {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.8em;
+    border-radius: 10%;
+    background-color: white;
 }
 
 /* styling for header text */
@@ -63,15 +84,48 @@ main .header-text {
     height: 10vh;
     margin-bottom: 0.5em;
     font-size: 1.5rem;
-    border-bottom: 1px solid var(--grey-color);
     color: var(--grey-color);
 }
 
 /* styling for information grid */
-article.information-grid {
-    display: grid;
-    grid-template-rows: 50% 50%;
+article.information-card-container {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     border-radius: 5%;
     background-color: var(--medium-color);
+    overflow: hidden;
+}
+
+/* styling for cards in container */
+.information-card-container .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1em;
+    padding: 1.3em;
+    padding-left: 1rem;
+    padding-right: 0;
+    font-size: 1.5rem;
+    border-radius: 5% / 10%;
+    border-left: 0.5em solid var(--highlight-color);
+    background-color: white;
+    overflow-x: scroll;
+}
+
+/* styling for h1, h2, i tags in cards */
+.information-card-container .card h1 {
+    padding-right: 0.5em;
+    border-right: 1px solid var(--grey-color);
+}
+
+.information-card-container .card h2 {
+    padding-left: 0.5em;
+}
+
+.information-card-container .card i {
+    margin-left: auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    color: var(--grey-color);
 }
