@@ -20,6 +20,12 @@ body {
     font-family: 'Roboto', 'sans-serif';
 }
 
+/* get rid of defualt scrollbars */
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 /* styling for main grid */
 main.main-container-grid {
     display: grid;
@@ -128,4 +134,20 @@ article.information-card-container {
     padding-left: 0.5em;
     padding-right: 0.5em;
     color: var(--grey-color);
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        padding: 12em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        padding: 18em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
 }
