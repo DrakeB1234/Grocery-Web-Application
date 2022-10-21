@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* root variables */
+:root {
+    --dark-color: #3A9079;
+    --grey-color: #696D7D;
+    --medium-color: #68B0AB;
+    --accent-color: #C4E5C5;
+    --foreground-color: #F0F7F4;
+}
+
+/* styling for body */
+body {
+    padding: 0.5em;
+    background-color: var(--foreground-color);
+    font-family: 'Roboto', 'sans-serif';
+}
+
+/* styling for main grid */
+main.main-container-grid {
+    display: grid;
+    height: 100%;
+    padding: 1em;
+    border-radius: 5% / 2%;
+    background-color: var(--accent-color);
+}
+
+/* styling for header grid */
+header.header-grid {
+    display: grid;
+    height: 100%;
+    border-radius: 5% / 3%;
+    color: white;
+    background-color: var(--dark-color);
+}
+
+/* targets first child (header text) */
+.header-grid .header-item:first-child {
+    padding: 0.8em;
+    font-size: 2rem;
+}
+
+/* styling for card container */
+.header-grid .header-card-container {
+    display: flex;
+    padding: 0.8em;
+    font-size: 2rem;
+}
+
+/* styling for cards in container */
+.header-grid .card {
+    padding: 0.5em;
+    background-color: var(--medium-color);
+}
+
+/* styling for header text */
+main .header-text {
+    display: flex;
+    align-items: flex-end;
+    height: 10vh;
+    margin-bottom: 0.5em;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--grey-color);
+    color: var(--grey-color);
+}
+
+/* styling for information grid */
+article.information-grid {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    height: 100%;
+    border-radius: 5%;
+    background-color: var(--medium-color);
+}
