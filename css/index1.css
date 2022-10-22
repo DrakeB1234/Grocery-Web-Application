@@ -55,7 +55,7 @@ header.header-grid {
 /* styling for card container */
 .header-grid .header-card-container {
     display: flex;
-    margin: 0.8em;
+    margin: 1em;
     padding: 0.8em;
     font-size: 2rem;
     overflow: scroll;
