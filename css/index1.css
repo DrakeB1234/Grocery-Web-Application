@@ -28,6 +28,41 @@ body {
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
+/* styling for introduction container */
+intro .introduction-container {
+    height: 100%;
+    margin-top: 5em;
+    margin-bottom: 2em;
+    background-color: var(--foreground-color);
+    color: var(--grey-color);
+}
+
+/* styling for introduction text */
+intro h1 {
+    margin-bottom: 0.5em;
+    font-size: 2rem;
+}
+
+intro h2 {
+    margin-bottom: 2em;
+    font-size: 1.5rem;
+}
+
+/* styling for introduction button */
+intro .introduction-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 69vh;
+}
+
+intro button {
+    border: 0;
+    margin-bottom: 1em;
+    font-size: 2rem;
+    background-color: var(--foreground-color);
+}
+
 /* styling for main grid */
 main.main-container-grid {
     display: grid;
