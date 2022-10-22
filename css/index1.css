@@ -40,12 +40,12 @@ intro .introduction-container {
 /* styling for introduction text */
 intro h1 {
     margin-bottom: 0.5em;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 intro h2 {
     margin-bottom: 2em;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 /* styling for introduction button */
