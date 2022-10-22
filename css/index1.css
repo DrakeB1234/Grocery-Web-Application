@@ -5,9 +5,9 @@
 
 /* root variables */
 :root {
-    --dark-color: #42a087;
+    --dark-color: #53b69c;
     --grey-color: #696D7D;
-    --medium-color: #74c1bc;
+    --medium-color: #86d3ce;
     --accent-color: #C4E5C5;
     --foreground-color: #F0F7F4;
     --highlight-color: #edb54e;
@@ -32,6 +32,7 @@ main.main-container-grid {
     height: 100%;
     padding: 1em;
     border-radius: 5% / 2%;
+    box-shadow: 0.3em 0em 0.2em rgba(105, 109, 125, 10%);
     background-color: var(--accent-color);
     overflow: hidden;
 }
@@ -42,7 +43,7 @@ header.header-grid {
     height: 100%;
     border-radius: 5% / 3%;
     color: white;
-    box-shadow: 10px 10px var(--grey-color);
+    box-shadow: 1em 1em 0.7em rgba(105, 109, 125, 10%);
     background-color: var(--dark-color);
 }
 
@@ -55,10 +56,12 @@ header.header-grid {
 /* styling for card container */
 .header-grid .header-card-container {
     display: flex;
-    margin: 1em;
+    margin: 0.5em;
     padding: 0.8em;
     font-size: 2rem;
     overflow: scroll;
+    /* hides scrollbar for firefox */
+    scrollbar-width: none;
 }
 
 /* styling for cards in container */
@@ -73,6 +76,7 @@ header.header-grid {
     font-size: 1.5rem;
     white-space: nowrap;
     border-radius: 10%;
+    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
     background-color: var(--medium-color);
 }
 
@@ -82,6 +86,7 @@ header.header-grid {
     padding: 0.5em;
     margin: 0.8em;
     border-radius: 10%;
+    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
     background-color: white;
 }
 
@@ -101,6 +106,7 @@ article.information-card-container {
     flex-direction: column;
     height: 100%;
     border-radius: 5%;
+    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
     background-color: var(--medium-color);
     overflow: hidden;
 }
@@ -115,10 +121,12 @@ article.information-card-container {
     padding-left: 1rem;
     padding-right: 0;
     font-size: 1.5rem;
+    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
     border-radius: 5% / 10%;
     border-left: 0.5em solid var(--highlight-color);
     background-color: white;
     overflow-x: scroll;
+    scrollbar-width: none;
 }
 
 /* styling for h1, h2, i tags in cards */
