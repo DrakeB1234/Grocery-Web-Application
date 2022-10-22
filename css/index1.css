@@ -61,7 +61,22 @@ intro button {
     margin-bottom: 1em;
     font-size: 2rem;
     background-color: var(--foreground-color);
+    animation: flickerAnimation;
+    animation-iteration-count: infinite;
 }
+
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+
+.animate-flicker {
+    -webkit-animation: flickerAnimation 1s infinite;
+    -moz-animation: flickerAnimation 1s infinite;
+    -o-animation: flickerAnimation 1s infinite;
+     animation: flickerAnimation 1s infinite;
+ }
 
 /* styling for main grid */
 main.main-container-grid {
