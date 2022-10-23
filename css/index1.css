@@ -30,7 +30,6 @@ body {
 
 /* styling for introduction container */
 intro .introduction-container {
-    height: 100%;
     margin-top: 5em;
     margin-bottom: 2em;
     background-color: var(--foreground-color);
@@ -59,12 +58,11 @@ intro .introduction-button-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 69vh;
 }
 
 intro button {
     border: 0;
-    margin-bottom: 2em;
+    margin-top: 8em;
     font-size: 2rem;
     background-color: var(--foreground-color);
     animation: flickerAnimation 1.5s infinite;
@@ -261,6 +259,21 @@ article.information-card-container {
     padding-left: 0.5em;
     padding-right: 0.5em;
     color: var(--grey-color);
+}
+
+/* classes for hiding showing content on viewport condition */
+.hide-main {
+    opacity: 0;
+}
+
+.hide-intro {
+    height: 0;
+    opacity: 0;
+}
+
+.show {
+    transition: opacity 1s;
+    opacity: 1;
 }
 
 /* media queries for additional padding */
