@@ -132,6 +132,7 @@ header list.item-container {
     margin: 0 0.5em 0 0.5em;
     background-color: var(--foreground-color);
     color: var(--grey-color);
+    overflow-wrap: break-word;
 }
 
 /* styling for item amount button */
