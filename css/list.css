@@ -124,7 +124,7 @@ header.header-container {
     color: white;
     box-shadow: 1em 1em 0.7em rgba(105, 109, 125, 10%);
     background-color: var(--dark-color);
-    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 /* styling for item container (hold all grocery list items */
