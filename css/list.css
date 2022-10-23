@@ -156,9 +156,17 @@ header list .item:first-child {
 header list .item:nth-child(n + 2) {
     display: flex;
     align-items: center;
-    margin: 0.5em 0 0.5em 0.5em;
+    margin: 0.5em 0.5em 0.5em 0.5em;
+    overflow: hidden;
     box-shadow: 0.1em 0.1em 0.3em rgba(105, 109, 125, 10%);
     font-size: 1.2rem;
+}
+
+/* targets trashcan icons */
+header list .item .fa-trash-can {
+    margin-left: auto;
+    margin-right: 1em;
+    color: var(--dark-color);
 }
 
 /* media queries */
