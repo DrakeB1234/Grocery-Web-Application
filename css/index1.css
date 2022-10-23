@@ -54,9 +54,6 @@ intro h3 {
     animation: flickerAnimation 4s 1;
 }
 
-/* animation for fading in text onload */
-
-
 /* styling for introduction button */
 intro .introduction-button-container {
     display: flex;
@@ -173,9 +170,11 @@ header.header-grid {
     margin: 0.5em;
     padding: 0.8em;
     font-size: 2rem;
-    overflow: scroll;
+    overflow: auto;
     /* hides scrollbar for firefox */
     scrollbar-width: none;
+    /* scroll snap */
+    scroll-snap-type: x mandatory;
 }
 
 /* styling for cards in container */
@@ -186,12 +185,14 @@ header.header-grid {
     align-items: center;
     padding: 1em;
     padding-top: 0;
-    margin: 0 0.5em 0 0.5em;
+    margin: 0 0.8em 0 0.8em;
     font-size: 1.5rem;
     white-space: nowrap;
-    border-radius: 10%;
+    border-radius: 10% /8%;
     box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
     background-color: var(--medium-color);
+    /* scroll snap */
+    scroll-snap-align: center;
 }
 
 /* styling svg in cards */
@@ -262,6 +263,7 @@ article.information-card-container {
     color: var(--grey-color);
 }
 
+/* media queries for additional padding */
 @media only screen and (min-width: 768px) {
     body {
         padding: 12em;
