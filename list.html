@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery App Landing Page</title>
+    <!-- css links -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/list.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <sidebar>
+        <button><i class="fa-solid fa-bars"></i></button>
+        <div class="sidebar-container">
+            <div class="sidebar-item">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <h1>Dashboard</h1>
+                <i class="fa-solid fa-xmark"></i>            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <h1>Grocery List</h1>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-blender"></i>
+                <h1>Recipes</h1>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-regular fa-calendar-days"></i>
+                <h1>Meal Planner</h1>
+            </div>
+        </div>
+    </sidebar>
+    <main class="main-container-grid">
+        <div class="header-text">
+            Manage Grocery List
+            <i class="fa-solid fa-gear"></i>
+        </div>
+        <header class="header-container">
+            <list class="item-container">
+                <item class="item">
+                    Produce
+                </item>
+                <item class="item">
+                    <button class="item-amount">1</button>
+                    Spinach
+                </item>
+                <item class="item">
+                    <button class="item-amount">1</button>
+                    Spinach
+                </item>
+                <item class="item">
+                    <button class="item-amount">1</button>
+                    Spinach
+                </item>
+            </list>
+            <list class="item-container">
+                <item class="item">
+                    Frozen
+                </item>
+                <item class="item">
+                    <button class="item-amount">1</button>
+                    Pizza
+                </item>
+            </list>
+        </header>
+    </main>
+    
+</body>
+</html>
