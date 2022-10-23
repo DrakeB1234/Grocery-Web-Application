@@ -48,6 +48,11 @@ intro h2 {
     font-size: 2rem;
 }
 
+/* animation for fading in text onload */
+intro h1,h2,h3 {
+    animation: flickerAnimation 1.5s 1;
+}
+
 /* styling for introduction button */
 intro .introduction-button-container {
     display: flex;
@@ -58,25 +63,17 @@ intro .introduction-button-container {
 
 intro button {
     border: 0;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     font-size: 2rem;
     background-color: var(--foreground-color);
-    animation: flickerAnimation;
-    animation-iteration-count: infinite;
+    animation: flickerAnimation 2s infinite;
 }
 
+/* animation for flickering button */
 @keyframes flickerAnimation {
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+    0%   { opacity:0; }
+    100%  { opacity:1; }
 }
-
-.animate-flicker {
-    -webkit-animation: flickerAnimation 1s infinite;
-    -moz-animation: flickerAnimation 1s infinite;
-    -o-animation: flickerAnimation 1s infinite;
-     animation: flickerAnimation 1s infinite;
- }
 
 /* styling for main grid */
 main.main-container-grid {
