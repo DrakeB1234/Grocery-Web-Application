@@ -41,17 +41,21 @@ intro .introduction-container {
 intro h1 {
     margin-bottom: 0.5em;
     font-size: 2.5rem;
+    animation: flickerAnimation 1.5s 1;
 }
 
 intro h2 {
     margin-bottom: 2em;
     font-size: 2rem;
+    animation: flickerAnimation 3s 1;
+}
+
+intro h3 {
+    animation: flickerAnimation 4s 1;
 }
 
 /* animation for fading in text onload */
-intro h1,h2,h3 {
-    animation: flickerAnimation 1.5s 1;
-}
+
 
 /* styling for introduction button */
 intro .introduction-button-container {
@@ -66,7 +70,7 @@ intro button {
     margin-bottom: 2em;
     font-size: 2rem;
     background-color: var(--foreground-color);
-    animation: flickerAnimation 2s infinite;
+    animation: flickerAnimation 1.5s infinite;
 }
 
 /* animation for flickering button */
