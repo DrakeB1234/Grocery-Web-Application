@@ -263,18 +263,15 @@ article.information-card-container {
 
 /* classes for hiding showing content on viewport condition */
 .hide-main {
-    opacity: 0;
+    top: 100vh;
+    position: absolute;
 }
 
 .hide-intro {
     height: 0;
-    opacity: 0;
+    display: none;
 }
 
-.show {
-    transition: opacity 1s;
-    opacity: 1;
-}
 
 /* media queries for additional padding */
 @media only screen and (min-width: 768px) {
