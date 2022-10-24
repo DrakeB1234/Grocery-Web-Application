@@ -48,7 +48,7 @@ sidebar .sidebar-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 70%;
+    width: clamp(20%, 30em, 70%);
     top: 0;
     left: 100%;
     transition: ease-in 0.2s;
@@ -105,7 +105,7 @@ main .header-text {
     display: flex;
     align-items: flex-end;
     height: 10vh;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     font-size: 1.5rem;
     color: var(--grey-color);
     border-bottom: 1px solid var(--grey-color);
@@ -121,6 +121,8 @@ main .header-text i {
 header.header-container {
     display: grid;
     height: 100%;
+    width: clamp(20%, 70em, 100%);
+    margin: 0 auto 0 auto;
     border-radius: 5% / 3%;
     color: white;
     box-shadow: 1em 1em 0.7em rgba(105, 109, 125, 10%);
@@ -175,7 +177,7 @@ header list .item .fa-trash-can {
 /* media queries */
 @media only screen and (min-width: 768px) {
     body {
-        padding: 12em;
+        padding: 2em;
         padding-top: 1em;
         padding-bottom: 1em;
     }

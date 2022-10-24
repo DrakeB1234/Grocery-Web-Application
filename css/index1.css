@@ -105,7 +105,7 @@ sidebar .sidebar-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 70%;
+    width: clamp(20%, 30em, 70%);
     top: 0;
     left: 100%;
     transition: ease-in 0.2s;
@@ -280,7 +280,7 @@ article.information-card-container {
 /* media queries for additional padding */
 @media only screen and (min-width: 768px) {
     body {
-        padding: 12em;
+        padding: 2em;
         padding-top: 1em;
         padding-bottom: 1em;
     }
@@ -288,7 +288,7 @@ article.information-card-container {
 
 @media only screen and (min-width: 992px) {
     body {
-        padding: 18em;
+        padding: 16em;
         padding-top: 1em;
         padding-bottom: 1em;
     }
