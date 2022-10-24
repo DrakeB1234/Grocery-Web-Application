@@ -22,6 +22,13 @@ body {
     overflow-x: hidden;
 }
 
+/* styling to get rid of link styling (a tags) */
+a {
+    font-size: inherit;
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
 /* get rid of defualt scrollbars */
 ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
@@ -167,7 +174,7 @@ header.header-grid {
 /* styling for card container */
 .header-grid .header-card-container {
     display: flex;
-    margin: 0.5em;
+    margin: 1em;
     padding: 0.8em;
     font-size: 2rem;
     overflow: auto;
@@ -183,9 +190,11 @@ header.header-grid {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    height: 100%;
+    width: clamp(20%, 200px, 70%);
     padding: 1em;
     padding-top: 0;
-    margin: 0 0.8em 0 0.8em;
+    margin: 0 1em 0 1em;
     font-size: 1.5rem;
     white-space: nowrap;
     border-radius: 10% /8%;
@@ -197,6 +206,7 @@ header.header-grid {
 
 /* styling svg in cards */
 .header-grid .card img {
+    height: 100%;
     width: 100%;
     padding: 0.5em;
     margin: 0.8em;
