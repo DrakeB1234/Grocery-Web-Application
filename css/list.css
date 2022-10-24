@@ -150,6 +150,12 @@ header list .item {
     overflow: hidden;
 }
 
+/* styling for h1 tags (handle overflow) */
+header list h1 {
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
 /* styling for h2 tags (notes) */
 header list h2 {
     font-size: 1,5rem;
