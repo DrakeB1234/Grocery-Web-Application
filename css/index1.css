@@ -16,7 +16,7 @@
 
 /* styling for body */
 body {
-    padding: 1em;
+    margin: 1em;
     background-color: var(--foreground-color);
     font-family: 'Roboto', 'sans-serif';
     overflow-x: hidden;
@@ -150,6 +150,8 @@ sidebar button:focus + .sidebar-container {
 header.header-grid {
     display: grid;
     height: 100%;
+    width: clamp(20%, 70em, 100%);
+    margin: 0 auto 0 auto;
     border-radius: 5% / 3%;
     color: white;
     box-shadow: 1em 1em 0.7em rgba(105, 109, 125, 10%);
@@ -218,6 +220,8 @@ article.information-card-container {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: clamp(20%, 70em, 100%);
+    margin: 0 auto 0 auto;
     border-radius: 5%;
     box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
     background-color: var(--medium-color);
@@ -231,7 +235,7 @@ article.information-card-container {
     align-items: center;
     height: 100%;
     margin: 1em;
-    padding: 1.5em;
+    padding: 1.2em;
     padding-left: 1rem;
     padding-right: 0;
     font-size: 1.5rem;

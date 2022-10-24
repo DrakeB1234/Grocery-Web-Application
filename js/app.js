@@ -6,7 +6,7 @@ window.onload = () => {
 }
 
 // detects scroll from user
-function introductionHide() {
+const introductionHide = () => {
     // get classes of respected elements
     const introElement = document.querySelector('.introduction-container');
     const mainElement = document.querySelector('.main-container-grid');
@@ -17,6 +17,3 @@ function introductionHide() {
     // this removes the event listener from window
     window.document.removeEventListener('scroll', introductionHide);
 }
-
-
-
