@@ -24,7 +24,6 @@ body {
 
 /* styling to get rid of link styling (a tags) */
 a {
-    font-size: inherit;
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
 }
@@ -64,7 +63,7 @@ sidebar .sidebar-container {
 }
 
 /* styling for first sidebar items (ignoring all other items) */
-sidebar .sidebar-container .sidebar-item:first-child {
+sidebar .sidebar-container > div.sidebar-item {
     display: flex;
     padding-left: 0.5em;
     padding-bottom: 0.8em;
@@ -75,11 +74,11 @@ sidebar .sidebar-container .sidebar-item:first-child {
 }
 
 /* styling for sidebar items (ignoring first item) */
-sidebar .sidebar-container .sidebar-item:nth-child(n + 2) {
+sidebar .sidebar-container .sidebar-item {
     display: flex;
     padding-bottom: 0.8em;
-    padding-top: 0.8em;
-    font-size: 1.2rem;
+    padding-top: 1em;
+    font-size: 1.3rem;
     border-bottom: 1px solid var(--grey-color);
     background-color: var(--dark-color);
 }
@@ -162,6 +161,11 @@ header list h2 {
     margin-left: 1em;
     margin-bottom: 1em;
     color: var(--dark-color);
+}
+
+/* styling for notes (icons) */
+header list > h2 i {
+    margin-right: 0.5em;
 }
 
 /* styling for item amount button */

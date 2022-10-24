@@ -1,5 +1,5 @@
 // constants for element ids
-// const dataGet = document.getElementById('data-get');
+const dataGet = document.getElementById('data-get');
 let html = "";
 
 // arrays
@@ -15,7 +15,14 @@ const groceryList = (category, item, amount, note) => {
 itemArr.push(groceryList("Produce", "Spinach", 2, "Need two bags"));
 itemArr.push(groceryList("Produce", "Apples", 5));
 itemArr.push(groceryList("Produce", "Brocolli", 3));
+itemArr.push(groceryList("Produce", "Spinach", 2, "Need two bags"));
+itemArr.push(groceryList("Produce", "Apples", 5));
+itemArr.push(groceryList("Produce", "Brocolli", 3));
 itemArr.push(groceryList("Frozen", "Pizza", 3));
+itemArr.push(groceryList("Frozen", "Mangos", 3, "For a friend :)"));
+itemArr.push(groceryList("Canned", "Chickpeas", 2, "Need big cans"));
+itemArr.push(groceryList("Canned", "Beans", 2));
+itemArr.push(groceryList("House", "Paper Plates", 2, "For moms house"));
 
 // get all categories
 const getCategories = () => {
@@ -23,10 +30,6 @@ const getCategories = () => {
         // if current category is not in array, then push to array
         if (!(categoryArr.includes(e.category))) {
             categoryArr.push(e.category);
-            console.log(e.category);
-        }
-        else {
-            console.log("item is already in array");
         }
     });
 }
@@ -38,15 +41,13 @@ const cycleEachItem = () => {
         if (differentCategory == e.category){
             postListData(e.category, e.amount, e.item, e.note, false);
         }
-        else {
+        else if (differentCategory != e.category) {
             postListData(e.category, e.amount, e.item, e.note, true);
             differentCategory = e.category;
             // adds ending list tag
-            html += "</list>";
         }
     });
-
-    console.log(html);
+    dataGet.innerHTML = html;
 }
 
 const postListData = (cat, amnt, item, note, dif) => {
@@ -58,12 +59,19 @@ const postListData = (cat, amnt, item, note, dif) => {
             <h1>" + cat + "</h1>\
         </item>";
     }
+
+    // adds data into html packet
     html += "\
         <item class='item'>\
             <button class='item-amount'>" + amnt + "</button>\
             <h1>" + item + "</h1>\
             <i onclick='removeItem();' class='fa-solid fa-trash-can'></i>\
         </item>";
+
+    // if there is a note, then add to end of item
+    if (note != undefined){
+        html += "<h2><i class='fa-solid fa-caret-up'></i>Note: " + note + "</h2>";
+    }
 }
 
 getCategories();

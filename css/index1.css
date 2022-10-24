@@ -121,7 +121,7 @@ sidebar .sidebar-container {
 }
 
 /* styling for first sidebar items (ignoring all other items) */
-sidebar .sidebar-container .sidebar-item:first-child {
+sidebar .sidebar-container > div.sidebar-item {
     display: flex;
     padding-left: 0.5em;
     padding-bottom: 0.8em;
@@ -132,11 +132,11 @@ sidebar .sidebar-container .sidebar-item:first-child {
 }
 
 /* styling for sidebar items (ignoring first item) */
-sidebar .sidebar-container .sidebar-item:nth-child(n + 2) {
+sidebar .sidebar-container .sidebar-item {
     display: flex;
     padding-bottom: 0.8em;
-    padding-top: 0.8em;
-    font-size: 1.2rem;
+    padding-top: 1em;
+    font-size: 1.3rem;
     border-bottom: 1px solid var(--grey-color);
     background-color: var(--dark-color);
 }
