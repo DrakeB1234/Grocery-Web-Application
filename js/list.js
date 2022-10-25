@@ -72,6 +72,26 @@ const postListData = (cat, amnt, item, note, dif) => {
     }
 }
 
+// catches form submit for add form
+document.getElementById('add-form').addEventListener('submit', (e) =>{
+    e.preventDefault();
+
+    const inputCat = document.getElementById('category-add').value;
+    const inputItem = document.getElementById('item-add').value;
+    const inputNote = document.getElementById('note-add').value;
+    const inputAmount = document.getElementById('amount-add').value;
+
+    itemArr.push(groceryList(inputCat, inputItem, inputAmount, inputNote));
+    console.log(inputCat + inputItem + inputAmount + inputNote);
+
+    // resets values
+    document.getElementById('category-add').value = "";
+    document.getElementById('item-add').value = "";
+    document.getElementById('note-add').value = "";
+    document.getElementById('amount-add').value = "";
+    cycleEachItem();
+});
+
 getCategories();
 cycleEachItem();
 

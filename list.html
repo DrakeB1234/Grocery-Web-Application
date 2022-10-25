@@ -88,18 +88,18 @@
         <div class="add-input-container" id="show-add">
             <form id="add-form">
                 <h1>Category:</h1>
-                <select id="category" required>
+                <select id="category-add" required>
                     <option selected hidden>Select:</option>
-                    <option value="saab">Produce</option>
-                    <option value="mercedes">Frozen</option>
-                    <option value="audi">Meats</option>
+                    <option value="Produce">Produce</option>
+                    <option value="Frozen">Frozen</option>
+                    <option value="Meats">Meats</option>
                 </select>
                 <h1>Item:</h1>
-                <input type="text" pattern='[a-zA-Z]+' title="Please only use letters" required placeholder="required:" />
+                <input id="item-add" type="text" pattern='[a-zA-Z]+' title="Please only use letters" required placeholder="required:" />
                 <h1>Note:</h1>
-                <input type="text" pattern='[a-zA-Z]+' title="Please only use letters" placeholder="optional:"/>
+                <input id="note-add" type="text" pattern='[a-zA-Z]+' title="Please only use letters" placeholder="optional:"/>
                 <h1>Amount:</h1>
-                <input type="number" value="1" pattern="^[0-9]{2}$"  title="Please only use 2 digits" />
+                <input id="amount-add" type="number" value="1" pattern="^[0-9]{2}$"  title="Please only use 2 digits" />
                 <button type="submit">Submit</button>
             </form>
             <i class="fa-solid fa-circle-xmark" onclick="hideAdder()"></i>
