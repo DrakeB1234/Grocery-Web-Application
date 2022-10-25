@@ -205,26 +205,59 @@ header list .item .fa-trash-can {
     color: var(--dark-color);
 }
 
-/* styling for add-container */
-.add-container {
+/* styling for add-button */
+.add-button {
     position: fixed;
-    padding: 0.7em;
+    padding: 0.4em;
     right: 15%;
     bottom: 0.5em;
+    font-size: 2rem;
     border-radius: 50%;
-    background-color: var(--darkest-color);
-}
-
-/* styling for add-button */
-.add-container .add-button {
+    background-color: var(--medium-color);
     color: var(--foreground-color);
-    font-size: 3rem;
 }
 
 /* styling add input container */
-.add-container .add-button .add-input-container {
+.add-input-container {
+    position: fixed;
+    right: 0.2em;
+    left: 0.2em;
+    bottom: 0;
+    font-size: 2rem;
+    background-color: var(--darkest-color);
     color: var(--foreground-color);
-    font-size: 3rem;
+}
+
+/* styling for input adder */
+.add-input-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    font-size: 1.5rem;
+}
+
+/* styling for input adder */
+.add-input-container form > input {
+    margin: 0.2em;
+    padding: 0.2em;
+    font-size: 1.5rem;
+}
+
+/* styling for each input */
+.add-input-container form > input {
+    width: clamp(20%, 30em, 60%);
+    margin: 0.2em;
+    padding: 0.2em;
+    font-size: 1.2rem;
+}
+
+/* styling for submit button */
+.add-input-container form > button {
+    width: clamp(20%, 20em, 30%);
+    padding: 0.2em;
+    margin-top: 1em;
+    font-size: 1.5rem;
 }
 
 
@@ -239,8 +272,26 @@ header list .item .fa-trash-can {
 
 @media only screen and (min-width: 992px) {
     body {
+        padding: 10em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .add-input-container {
+        right: 2em;
+        left: 2em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    body {
         padding: 16em;
         padding-top: 1em;
         padding-bottom: 1em;
+    }
+
+    .add-input-container {
+        right: 10em;
+        left: 10em;
     }
 }
