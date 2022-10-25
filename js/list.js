@@ -34,6 +34,7 @@ const getCategories = () => {
 
 // call function for each item in list
 const cycleEachItem = () => {
+    dataGet.innerHTML = "":
     let differentCategory = "";
     itemArr.forEach((e) => {
         if (differentCategory == e.category){
