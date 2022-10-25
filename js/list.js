@@ -16,11 +16,11 @@ itemArr.push(groceryList("Produce", "Spinach", 2, "Need two bags"));
 itemArr.push(groceryList("Produce", "Apples", 5));
 itemArr.push(groceryList("Produce", "Brocolli", 3));
 itemArr.push(groceryList("Produce", "Spinach", 2, "Need two bags"));
-itemArr.push(groceryList("Frozen", "Pizza", 3));
-itemArr.push(groceryList("Frozen", "Mangos", 3, "For a friend :)"));
-itemArr.push(groceryList("Canned", "Chickpeas", 2, "Need big cans"));
-itemArr.push(groceryList("Canned", "Beans", 2));
-itemArr.push(groceryList("House", "Paper Plates", 2, "For moms house"));
+// itemArr.push(groceryList("Frozen", "Pizza", 3));
+// itemArr.push(groceryList("Frozen", "Mangos", 3, "For a friend :)"));
+// itemArr.push(groceryList("Canned", "Chickpeas", 2, "Need big cans"));
+// itemArr.push(groceryList("Canned", "Beans", 2));
+// itemArr.push(groceryList("House", "Paper Plates", 2, "For moms house"));
 
 // get all categories
 const getCategories = () => {
@@ -74,3 +74,17 @@ const postListData = (cat, amnt, item, note, dif) => {
 
 getCategories();
 cycleEachItem();
+
+// function for hiding adder div
+const hideAdder = () => {
+    const adderDiv = document.getElementById('show-add');
+
+    if (adderDiv.style.opacity == 0){
+        adderDiv.style.display = 'block';
+        adderDiv.style.opacity = 1;
+    }
+    else {
+        adderDiv.style.opacity = 0;
+        adderDiv.style.display = 'none';
+    }
+}

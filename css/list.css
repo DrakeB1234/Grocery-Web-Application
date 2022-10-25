@@ -58,6 +58,7 @@ sidebar .sidebar-container {
     width: clamp(20%, 30em, 70%);
     top: 0;
     left: 100%;
+    z-index: 99;
     transition: ease-in 0.2s;
     background-color: var(--darkest-color);
     color:var(--foreground-color);
@@ -219,6 +220,8 @@ header list .item .fa-trash-can {
 
 /* styling add input container */
 .add-input-container {
+    opacity: 0;
+    display: none;
     position: fixed;
     right: 0.2em;
     left: 0.2em;
@@ -226,6 +229,7 @@ header list .item .fa-trash-can {
     font-size: 2rem;
     background-color: var(--darkest-color);
     color: var(--foreground-color);
+    transition: all 0.5s;
 }
 
 /* styling for input adder */
@@ -244,20 +248,63 @@ header list .item .fa-trash-can {
     font-size: 1.5rem;
 }
 
-/* styling for each input */
-.add-input-container form > input {
-    width: clamp(20%, 30em, 60%);
-    margin: 0.2em;
+/* styling for select/option input */
+.add-input-container form > select {
+    width: clamp(20%, 20em, 80%);
+    margin: 0.5em;
     padding: 0.2em;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    border: 0;
+    background-color: var(--dark-color);
+    color: var(--foreground-color);
+}
+
+.add-input-container form select > option {
+    width: clamp(20%, 20em, 80%);
+    padding: 0.2em;
+    font-size: 0.8rem;
+    background-color: var(--dark-color);
+    color: var(--foreground-color);
+}
+
+/* styling for item input */
+.add-input-container form > input {
+    width: clamp(20%, 20em, 80%);
+    margin: 0.5em;
+    padding: 0.2em;
+    font-size: 1.4rem;
+}
+
+/* styling for number input */
+.add-input-container form > input[type="number"] {
+    width: clamp(20%, 10em, 30%);
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.2em;
+    font-size: 1.4rem;
+    -moz-appearance: textfield;
 }
 
 /* styling for submit button */
 .add-input-container form > button {
     width: clamp(20%, 20em, 30%);
-    padding: 0.2em;
-    margin-top: 1em;
-    font-size: 1.5rem;
+    padding: 0.5em;
+    margin-top: 1.5em;
+    font-size: 1.2rem;
+    background-color: var(--dark-color);
+    color: var(--foreground-color);
+    border: 0;
+}
+
+/* styling for exit button */
+.add-button .fa-circle-xmark {
+    position: absolute;
+    padding: 0.4em;
+    right: 2%;
+    bottom: 0.1em;
+    font-size: 3rem;
+    border-radius: 50%;
+    color: var(--foreground-color);
 }
 
 

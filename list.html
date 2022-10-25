@@ -84,17 +84,23 @@
         </header>
     </main>
     <div class="add-button">
-        <i class="fa-solid fa-plus"></i>
-        <div class="add-input-container">
+        <i class="fa-solid fa-plus" onclick="hideAdder()"></i>
+        <div class="add-input-container" id="show-add">
             <form id="add-form">
                 <h1>Category</h1>
-                <input type="text" />
+                <select id="category" required>
+                    <option selected hidden></option>
+                    <option value="saab">Produce</option>
+                    <option value="mercedes">Frozen</option>
+                    <option value="audi">Meats</option>
+                </select>
                 <h1>Item</h1>
-                <input type="text" />
+                <input type="text" pattern='[a-zA-Z]' title="Please only use letters" required/>
                 <h1>Amount</h1>
-                <input type="number" />
+                <input type="number" value="1" />
                 <button type="submit">Submit</button>
             </form>
+            <i class="fa-solid fa-circle-xmark" onclick="hideAdder()"></i>
         </div>
     </div>
 </body>
