@@ -16,8 +16,6 @@ itemArr.push(groceryList("Produce", "Spinach", 2, "Need two bags"));
 itemArr.push(groceryList("Produce", "Apples", 5));
 itemArr.push(groceryList("Produce", "Brocolli", 3));
 itemArr.push(groceryList("Produce", "Spinach", 2, "Need two bags"));
-itemArr.push(groceryList("Produce", "Apples", 5));
-itemArr.push(groceryList("Produce", "Brocolli", 3));
 itemArr.push(groceryList("Frozen", "Pizza", 3));
 itemArr.push(groceryList("Frozen", "Mangos", 3, "For a friend :)"));
 itemArr.push(groceryList("Canned", "Chickpeas", 2, "Need big cans"));
@@ -30,7 +28,7 @@ const getCategories = () => {
         // if current category is not in array, then push to array
         if (!(categoryArr.includes(e.category))) {
             categoryArr.push(e.category);
-        }
+        };
     });
 }
 

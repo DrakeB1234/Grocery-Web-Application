@@ -17,6 +17,7 @@
 /* styling for body */
 body {
     padding: 1em;
+    margin-bottom: 2em;
     background-color: var(--foreground-color);
     font-family: 'Roboto', 'sans-serif';
     overflow-x: hidden;
@@ -109,7 +110,8 @@ main.main-container-grid {
 main .header-text {
     display: flex;
     align-items: flex-end;
-    height: 10vh;
+    height: 6vh;
+    padding-bottom: 0.5em;
     margin-bottom: 1em;
     font-size: 1.5rem;
     color: var(--grey-color);
@@ -203,6 +205,29 @@ header list .item .fa-trash-can {
     color: var(--dark-color);
 }
 
+/* styling for add-container */
+.add-container {
+    position: fixed;
+    padding: 0.7em;
+    right: 15%;
+    bottom: 0.5em;
+    border-radius: 50%;
+    background-color: var(--darkest-color);
+}
+
+/* styling for add-button */
+.add-container .add-button {
+    color: var(--foreground-color);
+    font-size: 3rem;
+}
+
+/* styling add input container */
+.add-container .add-button .add-input-container {
+    color: var(--foreground-color);
+    font-size: 3rem;
+}
+
+
 /* media queries */
 @media only screen and (min-width: 768px) {
     body {
@@ -214,7 +239,7 @@ header list .item .fa-trash-can {
 
 @media only screen and (min-width: 992px) {
     body {
-        padding: 18em;
+        padding: 16em;
         padding-top: 1em;
         padding-bottom: 1em;
     }
