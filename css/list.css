@@ -139,6 +139,7 @@ main .manage-container {
     padding: 0.5em;
     background-color: var(--dark-color);
     box-shadow: 1em 1em 0.7em rgba(105, 109, 125, 10%);
+    overflow: hidden;
 }
     /* manage container text */
     main .manage-container h1 {
