@@ -154,6 +154,7 @@ main .manage-container {
         justify-content: center;
         align-items: center;
         margin: 1em 0 1em 0;
+        overflow: hidden;
     }
 
     main .input-container input {
