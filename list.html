@@ -51,9 +51,26 @@
     <main class="main-container-grid">
         <div class="header-text">
             Manage Grocery List
-            <i class="fa-solid fa-gear"></i>
+            <i id="manage-button" class="fa-solid fa-gear"></i>
         </div>
-        <header class="header-container" id="data-get">
+        <article id="manage-container" class="manage-container">
+            <h1>Categories</h1>
+            <div class="settings-container">
+                <button>View</button>
+                <button id="add-category-button">Add</button>
+            </div>
+            <form id="form-add-category" class="input-container">
+                <input type="text" placeholder="Insert category..." required />
+                <button type="submit"><i class="fa-solid fa-plus"></i></button>
+            </form>
+            <div id="data-get-categories" class="info-container">
+                <div class="item">
+                    <h2>Produce</h2>
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+            </div>
+        </article>
+        <header class="header-container" id="data-get-list">
             <list class="item-container">
                 <item class="item">
                     Produce
@@ -61,12 +78,12 @@
                 <item class="item">
                     <button class="item-amount">1</button>
                     <h1>Spinach</h1>
-                    <i onclick="removeItem();" class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can"></i>
                 </item>
                 <item class="item">
                     <button class="item-amount">1</button>
                     <h1>Tomatoes</h1>
-                    <i onclick="removeItem();" class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can"></i>
                 </item>
             </list>
             <list class="item-container">
@@ -76,7 +93,7 @@
                 <item class="item">
                     <button class="item-amount">1</button>
                     <h1>Mangos</h1>
-                    <i onclick="removeItem();" class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can"></i>
                 </item>
                 <h2><i class="fa-solid fa-caret-up"></i> Note: 2 bags of 12oz for smoothies</h2>
             </list>
@@ -108,11 +125,11 @@
                 <option value="Canned Goods">Canned Goods</option>
             </select>
             <h1>Item</h1>
-            <input type="text" required>
+            <input type="text" required />
             <h1>Note</h1>
-            <input type="text" required>
+            <input type="text" required />
             <h1>Amount</h1>
-            <input type="number" required>
+            <input type="number" required />
             <button type="submit">Submit</button>
         </form>
         <button id="add-button"><i class="fa-solid fa-circle-plus"></i></button>
