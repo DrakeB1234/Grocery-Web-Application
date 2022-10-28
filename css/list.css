@@ -242,6 +242,7 @@ header list .item .fa-trash-can {
 /* add container */
 .add-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     position: fixed;
     width: 100%;
@@ -249,11 +250,74 @@ header list .item .fa-trash-can {
     left: 0;
 }
     /* add button */
-    .add-container button {
+    .add-container > button {
         background: none;
         border: 0;
         color: var(--dark-color);
         font-size: 3.5rem;
+        rotate: 0deg;
+        transition: rotate 1s;
+    }
+
+    .add-container > .rotate {
+        rotate: 135deg;
+        transition: rotate 1s;
+    }
+
+    /* add input container */
+    .add-container .input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 1em 0 1em;
+        padding: 2em 0 2em 0;
+        border-radius: 10%;
+        background-color: var(--darkest-color);
+    }
+
+    /* text */
+    .add-container .input-container h1 {
+        margin: 0.4em;
+        font-size: 1.5rem;
+        color: var(--foreground-color);
+    }
+
+    /* select */
+    .add-container .input-container select {
+        width: 60%;
+        padding: 0.2em;
+        border: 0;
+        background-color: var(--dark-color);
+        color: var(--foreground-color);
+        font-size: 1.5rem;
+    }
+
+        /* options */
+        .add-container .input-container option {
+            font-size: 1rem;
+        }
+
+        /* number style (rid of arrow firefox) */
+        input[type=number] {
+            -moz-appearance: textfield;
+          }
+
+    /* input */
+    .add-container .input-container input {
+        width: 60%;
+        padding: 0.2em;
+        font-size: 1.5rem;
+    }
+
+    /* submit btn */
+    .add-container .input-container button {
+        margin-top: 1em;
+        padding: 0.5em;
+        border-radius: 15% / 25%;
+        border: 0;
+        background-color: var(--foreground-color);
+        font-size: 1.5rem;
+        color: var(--darkest-color);
     }
 
 
@@ -276,6 +340,10 @@ header list .item .fa-trash-can {
         padding-top: 1em;
         padding-bottom: 1em;
     }
+
+    .add-container .input-container {
+        margin: 0 8em 0 8em;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -291,5 +359,9 @@ header list .item .fa-trash-can {
         padding: 16em;
         padding-top: 1em;
         padding-bottom: 1em;
+    }
+
+    .add-container .input-container {
+        margin: 0 30em 0 30em;
     }
 }

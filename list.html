@@ -100,7 +100,23 @@
         </nav>
     </main>
     <div class="add-container">
-        <button><i class="fa-solid fa-circle-plus"></i></button>
+        <form class="input-container" id="input-container">
+            <h1>Category</h1>
+            <select required>
+                <option selected hidden></option>
+                <option value="Produce">Produce</option>
+                <option value="Frozen">Frozen</option>
+                <option value="Canned Goods">Canned Goods</option>
+            </select>
+            <h1>Item</h1>
+            <input type="text" required>
+            <h1>Note</h1>
+            <input type="text" required>
+            <h1>Amount</h1>
+            <input type="number" required>
+            <button type="submit">Submit</button>
+        </form>
+        <button id="add-button"><i class="fa-solid fa-circle-plus"></i></button>
     </div>
 </body>
 </html>
