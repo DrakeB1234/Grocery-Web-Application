@@ -206,110 +206,70 @@ header list .item .fa-trash-can {
     color: var(--dark-color);
 }
 
-/* styling for add-button */
-.add-button {
+/* navbar mobile */
+.navbar-mobile {
     position: fixed;
-    padding: 0.4em;
-    right: 15%;
-    bottom: 0.5em;
-    font-size: 2rem;
-    border-radius: 50%;
-    background-color: var(--medium-color);
-    color: var(--foreground-color);
-}
-
-/* styling add input container */
-.add-input-container {
-    opacity: 0;
-    display: none;
-    position: fixed;
-    right: 0.5em;
+    bottom: 0.2em;
     left: 0.5em;
-    bottom: 1em;
-    border-radius: 8%;
-    font-size: 2rem;
-    background-color: var(--darkest-color);
-    color: var(--foreground-color);
-    transition: all 0.5s;
+    right: 0.5em;
 }
 
-/* styling for input adder */
-.add-input-container form {
+    /* navbar container */
+    .navbar-mobile-container {
+        display: flex;
+        justify-content: space-around;
+        border-radius: 3% / 20%;
+        background-color: var(--grey-color);
+    }
+
+    /* navbar icons */
+    .navbar-mobile-container i {
+        font-size: 1.5rem;
+        padding: 0.8em;
+        color: var(--foreground-color);
+    }
+
+    /* navbar current link */
+    .navbar-mobile-container .current-link {
+        background-color: var(--dark-color);
+    }
+
+    /* navbar hover link */
+    .navbar-mobile-container a:hover {
+        background-color: var(--dark-color);
+    }
+
+/* add container */
+.add-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1em;
-    font-size: 1.5rem;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 4.5em;
+    left: 0;
 }
-
-/* styling for input adder */
-.add-input-container form > input {
-    margin: 0.2em;
-    padding: 0.2em;
-    font-size: 1.5rem;
-}
-
-/* styling for select/option input */
-.add-input-container form > select {
-    width: clamp(20%, 20em, 80%);
-    margin: 0.5em;
-    padding: 0.2em;
-    font-size: 1.4rem;
-    border: 0;
-    background-color: var(--dark-color);
-    color: var(--foreground-color);
-}
-
-.add-input-container form select > option {
-    width: clamp(20%, 20em, 80%);
-    padding: 0.2em;
-    font-size: 0.8rem;
-    background-color: var(--dark-color);
-    color: var(--foreground-color);
-}
-
-/* styling for item input */
-.add-input-container form > input {
-    width: clamp(20%, 20em, 80%);
-    margin: 0.5em;
-    padding: 0.2em;
-    font-size: 1.4rem;
-}
-
-/* styling for number input */
-.add-input-container form > input[type="number"] {
-    width: clamp(20%, 10em, 30%);
-    text-align: center;
-    margin: 0.5em;
-    padding: 0.2em;
-    font-size: 1.4rem;
-    -moz-appearance: textfield;
-}
-
-/* styling for submit button */
-.add-input-container form > button {
-    width: clamp(20%, 20em, 30%);
-    padding: 0.5em;
-    margin-top: 1.5em;
-    font-size: 1.2rem;
-    background-color: var(--dark-color);
-    color: var(--foreground-color);
-    border: 0;
-}
-
-/* styling for exit button */
-.add-button .fa-circle-xmark {
-    position: absolute;
-    padding: 0.4em;
-    right: 2%;
-    bottom: 0.1em;
-    font-size: 3rem;
-    border-radius: 50%;
-    color: var(--foreground-color);
-}
+    /* add button */
+    .add-container button {
+        background: none;
+        border: 0;
+        color: var(--dark-color);
+        font-size: 3.5rem;
+    }
 
 
 /* media queries */
+@media only screen and (max-width: 450px) {
+    sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .navbar-mobile {
+        display: none;
+    }
+}
+
 @media only screen and (min-width: 768px) {
     body {
         padding: 2em;
@@ -324,11 +284,6 @@ header list .item .fa-trash-can {
         padding-top: 1em;
         padding-bottom: 1em;
     }
-
-    .add-input-container {
-        right: 2em;
-        left: 2em;
-    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -336,10 +291,5 @@ header list .item .fa-trash-can {
         padding: 16em;
         padding-top: 1em;
         padding-bottom: 1em;
-    }
-
-    .add-input-container {
-        right: 10em;
-        left: 10em;
     }
 }

@@ -17,6 +17,7 @@
 /* styling for body */
 body {
     margin: 1em;
+    margin-bottom: 3em;
     background-color: var(--foreground-color);
     font-family: 'Roboto', 'sans-serif';
     overflow-x: hidden;
@@ -106,52 +107,52 @@ sidebar button:first-child {
     color: var(--grey-color);
 }
 
-/* styling for dashboard sidebar */
-sidebar .sidebar-container {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: clamp(20%, 30em, 70%);
-    top: 0;
-    left: 100%;
-    transition: ease-in 0.2s;
-    background-color: var(--darkest-color);
-    color:var(--foreground-color);
-}
+    /* styling for dashboard sidebar */
+    sidebar .sidebar-container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: clamp(20%, 30em, 70%);
+        top: 0;
+        left: 100%;
+        transition: ease-in 0.2s;
+        background-color: var(--darkest-color);
+        color:var(--foreground-color);
+    }
 
-/* styling for first sidebar items (ignoring all other items) */
-sidebar .sidebar-container > div.sidebar-item {
-    display: flex;
-    padding-left: 0.5em;
-    padding-bottom: 0.8em;
-    padding-top: 0.8em;
-    margin-bottom: 0.5em;
-    font-size: 1.6rem;
-    background-color: var(--dark-color);
-}
+    /* styling for first sidebar items (ignoring all other items) */
+    sidebar .sidebar-container > div.sidebar-item {
+        display: flex;
+        padding-left: 0.5em;
+        padding-bottom: 0.8em;
+        padding-top: 0.8em;
+        margin-bottom: 0.5em;
+        font-size: 1.6rem;
+        background-color: var(--dark-color);
+    }
 
-/* styling for sidebar items (ignoring first item) */
-sidebar .sidebar-container .sidebar-item {
-    display: flex;
-    padding-bottom: 0.8em;
-    padding-top: 1em;
-    font-size: 1.3rem;
-    border-bottom: 1px solid var(--grey-color);
-    background-color: var(--dark-color);
-}
+    /* styling for sidebar items (ignoring first item) */
+    sidebar .sidebar-container .sidebar-item {
+        display: flex;
+        padding-bottom: 0.8em;
+        padding-top: 1em;
+        font-size: 1.3rem;
+        border-bottom: 1px solid var(--grey-color);
+        background-color: var(--dark-color);
+    }
 
-/* styling for sidebar icons */
-sidebar .sidebar-container .sidebar-item i {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
+    /* styling for sidebar icons */
+    sidebar .sidebar-container .sidebar-item i {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
 
-/* animation for sidebar */
-sidebar button:focus + .sidebar-container {
-    transform: translateX(-100%);
-    transition: ease-in 0.2s;
-}
+    /* animation for sidebar */
+    sidebar button:focus + .sidebar-container {
+        transform: translateX(-100%);
+        transition: ease-in 0.2s;
+    }
 
 /* styling for header grid */
 header.header-grid {
@@ -165,55 +166,55 @@ header.header-grid {
     background-color: var(--dark-color);
 }
 
-/* targets first child (header text) */
-.header-grid .header-item:first-child {
-    padding: 0.8em;
-    font-size: 2rem;
-}
+    /* targets first child (header text) */
+    .header-grid .header-item:first-child {
+        padding: 0.8em;
+        font-size: 2rem;
+    }
 
-/* styling for card container */
-.header-grid .header-card-container {
-    display: flex;
-    margin: 1em;
-    padding: 0.8em;
-    font-size: 2rem;
-    overflow: auto;
-    /* hides scrollbar for firefox */
-    scrollbar-width: none;
-    /* scroll snap */
-    scroll-snap-type: x mandatory;
-}
+    /* styling for card container */
+    .header-grid .header-card-container {
+        display: flex;
+        margin: 1em;
+        padding: 0.8em;
+        font-size: 2rem;
+        overflow: auto;
+        /* hides scrollbar for firefox */
+        scrollbar-width: none;
+        /* scroll snap */
+        scroll-snap-type: x mandatory;
+    }
 
-/* styling for cards in container */
-.header-grid .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
-    width: clamp(20%, 200px, 70%);
-    padding: 1em;
-    padding-top: 0;
-    margin: 0 1em 0 1em;
-    font-size: 1.5rem;
-    white-space: nowrap;
-    border-radius: 10% /8%;
-    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
-    background-color: var(--medium-color);
-    /* scroll snap */
-    scroll-snap-align: center;
-}
+    /* styling for cards in container */
+    .header-grid .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        width: clamp(20%, 200px, 70%);
+        padding: 1em;
+        padding-top: 0;
+        margin: 0 1em 0 1em;
+        font-size: 1.5rem;
+        white-space: nowrap;
+        border-radius: 10% /8%;
+        box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
+        background-color: var(--medium-color);
+        /* scroll snap */
+        scroll-snap-align: center;
+    }
 
-/* styling svg in cards */
-.header-grid .card img {
-    height: 100%;
-    width: 100%;
-    padding: 0.5em;
-    margin: 0.8em;
-    border-radius: 10%;
-    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
-    background-color: white;
-}
+    /* styling svg in cards */
+    .header-grid .card img {
+        height: 100%;
+        width: 100%;
+        padding: 0.5em;
+        margin: 0.8em;
+        border-radius: 10%;
+        box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
+        background-color: white;
+    }
 
 /* styling for header text */
 main .header-text {
@@ -238,42 +239,75 @@ article.information-card-container {
     overflow: hidden;
 }
 
-/* styling for cards in container */
-.information-card-container .card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    margin: 1em;
-    padding: 1.2em;
-    padding-left: 1rem;
-    padding-right: 0;
-    font-size: 1.5rem;
-    box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
-    border-radius: 5% / 10%;
-    border-left: 0.5em solid var(--highlight-color);
-    background-color: white;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-width: none;
+    /* styling for cards in container */
+    .information-card-container .card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        margin: 1em;
+        padding: 1.2em;
+        padding-left: 1rem;
+        padding-right: 0;
+        font-size: 1.5rem;
+        box-shadow: 0.5em 0.5em 0.4em rgba(105, 109, 125, 10%);
+        border-radius: 5% / 10%;
+        border-left: 0.5em solid var(--highlight-color);
+        background-color: white;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scrollbar-width: none;
+    }
+
+    /* styling for h1, h2, i tags in cards */
+    .information-card-container .card h1 {
+        padding-right: 0.5em;
+        border-right: 1px solid var(--grey-color);
+    }
+
+    .information-card-container .card h2 {
+        padding-left: 0.5em;
+    }
+
+    .information-card-container .card i {
+        margin-left: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        color: var(--grey-color);
+    }
+
+/* navbar mobile */
+.navbar-mobile {
+    position: fixed;
+    bottom: 0.2em;
+    left: 0.5em;
+    right: 0.5em;
 }
 
-/* styling for h1, h2, i tags in cards */
-.information-card-container .card h1 {
-    padding-right: 0.5em;
-    border-right: 1px solid var(--grey-color);
-}
+    /* navbar container */
+    .navbar-mobile-container {
+        display: flex;
+        justify-content: space-around;
+        border-radius: 3% / 20%;
+        background-color: var(--grey-color);
+    }
 
-.information-card-container .card h2 {
-    padding-left: 0.5em;
-}
+    /* navbar icons */
+    .navbar-mobile-container i {
+        font-size: 1.5rem;
+        padding: 0.8em;
+        color: var(--foreground-color);
+    }
 
-.information-card-container .card i {
-    margin-left: auto;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    color: var(--grey-color);
-}
+    /* navbar current link */
+    .navbar-mobile-container .current-link {
+        background-color: var(--dark-color);
+    }
+
+    /* navbar hover link */
+    .navbar-mobile-container a:hover {
+        background-color: var(--dark-color);
+    }
 
 /* classes for hiding showing content on viewport condition */
 .hide-main {
@@ -288,6 +322,19 @@ article.information-card-container {
 
 
 /* media queries for additional padding */
+
+@media only screen and (max-width: 450px) {
+    sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .navbar-mobile {
+        display: none;
+    }
+}
+
 @media only screen and (min-width: 768px) {
     body {
         padding: 2em;
