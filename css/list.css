@@ -266,7 +266,7 @@ header list .item .fa-trash-can {
 
     /* add input container */
     .add-container .input-container {
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         margin: 0 1em 0 1em;
