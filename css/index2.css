@@ -1,0 +1,32 @@
+/* global variables */
+
+/* root variables */
+:root {
+    --darkest-color: #429d85;
+    --dark-color: #53b69c;
+    --grey-color: #696D7D;
+    --medium-color: #86d3ce;
+    --accent-color: #C4E5C5;
+    --foreground-color: #F0F7F4;
+    --highlight-color: #edb54e;
+}
+
+/* main container */
+.main-container {
+    display: grid;
+}
+
+/* desktop/tablet navbar */
+.nav-container-desktop {
+    display: flex;
+}
+
+    /* text */
+    .nav-container-desktop h1 {
+        font-size: 2rem;
+    }
+
+    .nav-container-desktop h2 {
+        font-size: 1.5rem;
+    }
+
