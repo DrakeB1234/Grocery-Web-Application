@@ -223,9 +223,10 @@ header list .item .fa-trash-can {
     opacity: 0;
     display: none;
     position: fixed;
-    right: 0.2em;
-    left: 0.2em;
-    bottom: 0;
+    right: 0.5em;
+    left: 0.5em;
+    bottom: 1em;
+    border-radius: 8%;
     font-size: 2rem;
     background-color: var(--darkest-color);
     color: var(--foreground-color);
