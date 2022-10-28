@@ -277,7 +277,7 @@ header list .item .fa-trash-can {
 
     /* text */
     .add-container .input-container h1 {
-        margin: 0.4em;
+        margin: 0.2em;
         font-size: 1.5rem;
         color: var(--foreground-color);
     }
@@ -289,7 +289,7 @@ header list .item .fa-trash-can {
         border: 0;
         background-color: var(--dark-color);
         color: var(--foreground-color);
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
         /* options */
@@ -306,7 +306,7 @@ header list .item .fa-trash-can {
     .add-container .input-container input {
         width: 60%;
         padding: 0.2em;
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     /* submit btn */
