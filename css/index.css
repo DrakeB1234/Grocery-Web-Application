@@ -1,0 +1,118 @@
+/* body */
+body {
+    font-family: 'Roboto', 'sans-serif';
+    background-color: var(--foreground-color);
+}
+
+/* root variables */
+:root {
+    --navbar-color: rgba(0, 0, 0, 0.6);
+    --darkest-color: #386641;
+    --dark-color: #6a994e;
+    --medium-color: #77a95a;
+    --light-color: #b9e25b;
+    --foreground-color: #fbefe8;
+
+}
+
+/* main grid */
+main.main-grid {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+/* desktop nav */
+nav.desktop-navbar {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: clamp(50%, 20em, 30em);
+    background-color: var(--navbar-color);
+    border-radius: 3% / 30%;
+    color: var(--foreground-color);
+}
+
+    /* first child */
+    nav.desktop-navbar :first-child {
+        margin-left: 0.5em;
+        font-size: 1.4rem;
+    }
+
+    /* child icons */
+    nav.desktop-navbar :nth-child(n + 2) {
+        padding: 0.5em;
+        font-size: 1.8rem;
+    }
+
+/* mobile nav */
+nav.mobile-navbar {
+    position: absolute;
+    z-index: 99;
+    bottom: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: clamp(50%, 20em, 30em);
+    background-color: var(--navbar-color);
+    border-radius: 5% / 30%;
+    color: var(--foreground-color);
+}
+
+    /* child icons */
+    nav.mobile-navbar i {
+        padding: 0.5em;
+        font-size: 1.8rem;
+    }
+
+/* global nav */
+    /* nav selected tab */
+    nav i.select{
+        background-color: var(--light-color);
+    }
+
+    nav i:hover{
+        cursor: pointer;
+        color: var(--light-color);
+    }
+
+/* display container */
+.main-display-container {
+    width: 100%;
+}
+
+    /* display text */
+    .main-display-container h1 {
+        position: absolute;
+        z-index: 2;
+        margin-top: 1em;
+        margin-left: 0.5em;
+        font-size: 3rem;
+        color: var(--foreground-color);
+    }
+
+    /* display svg */
+    .main-display-container img {
+        height: 40vh;
+        width: 100%;
+        rotate: 180deg;
+    }
+
+
+@media only screen and (min-width: 650px) {
+    /* desktop nav */
+    nav.desktop-navbar {
+        display: flex;
+    }
+
+    /* mobile nav */
+    nav.mobile-navbar {
+        display: none;
+    }
+    
+}
