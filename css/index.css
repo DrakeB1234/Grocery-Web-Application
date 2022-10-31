@@ -20,13 +20,14 @@ body {
 main.main-grid {
     display: grid;
     place-items: center;
+    margin-bottom: 5em;
     overflow: hidden;
 }
 
 /* desktop nav */
 nav.desktop-navbar {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 0.2em;
     z-index: 99;
     display: none;
     flex-direction: row;
@@ -52,7 +53,7 @@ nav.desktop-navbar {
 
 /* mobile nav */
 nav.mobile-navbar {
-    position: absolute;
+    position: fixed;
     z-index: 99;
     bottom: 0.5em;
     display: flex;
@@ -85,7 +86,7 @@ nav.mobile-navbar {
 /* header text */
 .header-text {
     width: 100%;
-    margin: 0.5em 0 1em 0.5em;
+    margin: 0.5em 0 1em 1em;
     font-size: 1.5rem;
     color: var(--grey-color);
 }
@@ -114,14 +115,34 @@ nav.mobile-navbar {
 
 /* stat display */
 .stat-display-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, clamp(40%, 20em, 60%));
+    place-content: center;
+    gap: 0.5em 3.5em;
     width: 100%;
 }
+
     /* card */
     .stat-display-container .card {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         background-color: #6a994e;
+        color: var(--foreground-color);
+    }
+
+    .stat-display-container .card h1:first-child {
+        width: 100%;
+        padding: 1em;
+        font-size: 1.5rem;
+        background-color: var(--dark-color);
+    }
+
+    .stat-display-container .card h1:nth-child(n + 2) {
+        width: 100%;
+        padding: 1em;
+        font-size: 1.5rem;
+        background-color: var(--medium-color);
     }
 
 
