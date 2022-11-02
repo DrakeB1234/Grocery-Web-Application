@@ -126,7 +126,7 @@ nav.mobile-navbar {
 
     /* item */
     .list-container .item-header {
-        padding: 0.5em;
+        padding: 0.7em;
         background-color: white;
         border-bottom: 1px solid var(--grey-color);
         font-size: 1.3rem;
@@ -138,12 +138,12 @@ nav.mobile-navbar {
         align-items: center;
         background-color: white;
         color: var(--grey-color);
-        border-bottom: 1px solid var(--grey-color);
+        box-shadow: 0 1em 1.2em var(--navbar-color);
         font-size: 1.3rem;
     }
 
     .list-container .item h1 {
-        padding: 0.5em;
+        padding: 0.6em;
         color: var(--foreground-color);
         background-color: var(--medium-color);
     }
