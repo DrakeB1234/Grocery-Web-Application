@@ -33,7 +33,7 @@ main.main-grid {
 nav.desktop-navbar {
     position: fixed;
     top: 0.2em;
-    z-index: 99;
+    z-index: 9;
     display: none;
     flex-direction: row;
     justify-content: space-around;
@@ -59,7 +59,7 @@ nav.desktop-navbar {
 /* mobile nav */
 nav.mobile-navbar {
     position: fixed;
-    z-index: 99;
+    z-index: 9;
     bottom: 0.5em;
     display: flex;
     flex-direction: row;
@@ -130,6 +130,7 @@ nav.mobile-navbar {
         background-color: white;
         border-bottom: 1px solid var(--grey-color);
         font-size: 1.3rem;
+        overflow-wrap: break-word;
     }
 
     /* item */
@@ -159,6 +160,37 @@ nav.mobile-navbar {
         margin-left: 1em;
         margin-right: 1em;
         color: var(--medium-color);
+    }
+
+/* add container */
+.add-container {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .add-container > i {
+        position: fixed;
+        bottom: 1.5em;
+        z-index: 11;
+        font-size: 3.5rem;
+        color: var(--darkest-color);
+    }
+
+    .add-input-container {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        z-index: 10;
+        height: 0;
+        background-color: var(--dark-color);
+        transition: height 1s;
+    }
+
+    .add-input-container.show {
+        height: 100%;
+        transition: height 1s;
     }
 
 
