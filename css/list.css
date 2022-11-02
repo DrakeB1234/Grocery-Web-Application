@@ -176,21 +176,85 @@ nav.mobile-navbar {
         z-index: 11;
         font-size: 3.5rem;
         color: var(--darkest-color);
+        rotate: 0deg;
+        transition: rotate 1s, bottom 0.5s;
     }
 
-    .add-input-container {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        z-index: 10;
-        height: 0;
-        background-color: var(--dark-color);
-        transition: height 1s;
+    .add-container > i.rotate {
+        rotate: 45deg;
+        bottom: 1em;
+        color: var(--light-color);
+        transition: rotate 1s, bottom 0.5s;
     }
 
-    .add-input-container.show {
-        height: 100%;
-        transition: height 1s;
+
+/* input */
+.form-add-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: clamp(5em, 100%, 90em);
+    bottom: 0;
+    z-index: 10;
+    height: 0;
+    background-color: var(--dark-color);
+    transition: height 0.7s;
+}
+
+.form-add-container.show {
+    height: 100%;
+    transition: height 0.7s;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: clamp(5em, 95%, 60em);
+    margin-top: 1em;
+    padding: 1em 0 1em 0;
+    border-radius: 5% / 20%;
+    background-color: var(--light-color);
+    box-shadow: 0.5em 0 2em var(--navbar-color);
+}
+
+    /* select input */
+    .form-add-container .input-select {
+        height: 2em;
+        width: clamp(5em, 70%, 60em);
+        font-size: 1.5rem;
+        border: 0;
+        background-color: var(--light-color);
+    }
+
+    .form-add-container .input-select option {
+        font-size: 0.8rem;
+    }
+
+    /* first input */
+    .form-add-container .input-container:first-child {
+        margin-top: 3em;
+    }
+
+    /* input */
+    .form-add-container .input-container input {
+        width: clamp(5em, 85%, 60em);
+        padding: 0.5em;
+        font-size: 1.8rem;
+        border: 0;
+        background-color: var(--light-color);
+    }
+
+    /* input btn */
+    .form-add-container > button {
+        width: clamp(5em, 30%, 20em);
+        margin-top: 3em;
+        padding: 0.5em;
+        font-size: 1.5rem;
+        border: 0;
+        border-radius: 10%;
+        background-color: var(--light-color);
     }
 
 

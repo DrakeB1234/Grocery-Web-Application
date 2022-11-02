@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/list.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <!-- JS links -->
+    <script src="js/list.js" defer></script>
 </head>
 <body>
     <main class="main-grid">
@@ -69,10 +71,22 @@
     </main>
 
     <div class="add-container">
-        <i class="fa-solid fa-circle-plus"></i>
-        <div class="add-input-container">
-            1
-        </div>
+        <i id="show-add-btn" class="fa-solid fa-circle-plus"></i>
+        <form id="form-add" class="form-add-container">
+            <div class="input-container">
+                <select class="input-select" required>
+                    <option value="" selected hidden>Category</option>
+                    <option value="Produce">Produce</option>
+                    <option value="Frozen">Frozen</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Item" pattern="^[a-zA-Z][a-zA-Z\s]*$" required />
+                <input type="text" placeholder="Note (optional)" pattern="^[a-zA-Z][a-zA-Z\s]*$" />
+                <input type="number" />
+            </div>
+            <button type="submit">Add</button>
+        </form>
     </div>
 </body>
 </html>
