@@ -12,7 +12,7 @@ a {
 /* root variables */
 :root {
     --navbar-color: rgba(0, 0, 0, 0.6);
-    --grey-color: #728a77;
+    --grey-color: #819185;
     --darkest-color: #386641;
     --dark-color: #6a994e;
     --medium-color: #77a95a;
@@ -111,22 +111,54 @@ nav.mobile-navbar {
         color: var(--darkest-color);
     }
 
-    /* display icon */
-    .main-display-container i {
-        position: absolute;
-        z-index: 2;
-        top: 2.5em;
-        right: 15%;
-        margin-top: 1em;
-        font-size: 2.7rem;
-        color: var(--foreground-color);
-    }
-
     /* display svg */
     .main-display-container img {
         height: 30vh;
         width: 100%;
         rotate: 180deg;
+    }
+
+/* list container */
+.list-container {
+    width: clamp(10em, 98%, 50em);
+    overflow: hidden;
+}
+
+    /* item */
+    .list-container .item-header {
+        padding: 0.5em;
+        background-color: white;
+        border-bottom: 1px solid var(--grey-color);
+        font-size: 1.3rem;
+    }
+
+    /* item */
+    .list-container .item {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        color: var(--grey-color);
+        border-bottom: 1px solid var(--grey-color);
+        font-size: 1.3rem;
+    }
+
+    .list-container .item h1 {
+        padding: 0.5em;
+        color: var(--foreground-color);
+        background-color: var(--medium-color);
+    }
+
+    .list-container .item h2 {
+        flex: 2;
+        margin-left: 0.5em;
+        overflow: hidden;
+        overflow-wrap: break-word;
+    }
+
+    .list-container .item i {
+        margin-left: 1em;
+        margin-right: 1em;
+        color: var(--medium-color);
     }
 
 
