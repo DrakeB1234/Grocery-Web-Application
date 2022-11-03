@@ -140,11 +140,11 @@ nav.mobile-navbar {
         background-color: white;
         color: var(--grey-color);
         box-shadow: 0 1em 1.2em var(--navbar-color);
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .list-container .item h1 {
-        padding: 1.4em;
+        padding: 3em;
         color: var(--foreground-color);
         background-color: var(--medium-color);
     }
