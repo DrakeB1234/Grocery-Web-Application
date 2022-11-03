@@ -142,6 +142,11 @@ nav.mobile-navbar {
         box-shadow: 0 1em 1.2em var(--navbar-color);
         font-size: 1.4rem;
     }
+    
+    .list-container:lastchild {
+        display: flex;
+        justify-content: center;
+    }
 
     .list-container .item h1 {
         padding: 3em;
