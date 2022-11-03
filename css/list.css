@@ -149,7 +149,7 @@ nav.mobile-navbar {
     }
 
     .list-container .item h1 {
-        padding: 3em;
+        padding: 1em;
         color: var(--foreground-color);
         background-color: var(--medium-color);
     }
