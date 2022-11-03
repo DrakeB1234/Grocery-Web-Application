@@ -9,9 +9,16 @@ a {
     text-decoration: none;
 }
 
+/* hide arrows input */
+
+input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
 /* root variables */
 :root {
-    --navbar-color: rgba(0, 0, 0, 0.6);
+    --navbar-color: rgba(0, 0, 0, 0.7);
     --grey-color: #819185;
     --darkest-color: #386641;
     --dark-color: #6a994e;
@@ -120,15 +127,16 @@ nav.mobile-navbar {
 
 /* list container */
 .list-container {
-    width: clamp(10em, 98%, 50em);
+    width: clamp(10em, 100%, 50em);
     overflow: hidden;
 }
 
     /* item */
     .list-container .item-header {
-        padding: 0.7em;
+        padding: 1em;
         background-color: white;
         border-bottom: 1px solid var(--grey-color);
+        box-shadow: 0 0.5em 0.6em var(--navbar-color);
         font-size: 1.6rem;
         overflow-wrap: break-word;
     }
@@ -139,7 +147,7 @@ nav.mobile-navbar {
         align-items: center;
         background-color: white;
         color: var(--grey-color);
-        box-shadow: 0 1em 1.2em var(--navbar-color);
+        box-shadow: 0 0.1em 0.2em var(--grey-color);
         font-size: 1.4rem;
     }
     
@@ -149,16 +157,28 @@ nav.mobile-navbar {
     }
 
     .list-container .item h1 {
-        padding: 1em;
+        padding: 0.6em;
         color: var(--foreground-color);
         background-color: var(--medium-color);
+        border-bottom: 1px solid var(--dark-color);
     }
 
     .list-container .item h2 {
         flex: 2;
-        margin-left: 0.5em;
+        padding: 0.6em;
         overflow: hidden;
         overflow-wrap: break-word;
+    }
+
+    .list-container h3 {
+        margin: 0.5em;
+        color: var(--medium-color);
+        background-color: var(--white-color);
+        overflow-wrap: break-word;
+    }
+
+    .list-container h3 i {
+        margin-right: 0.5em;
     }
 
     .list-container .item i {
@@ -187,7 +207,7 @@ nav.mobile-navbar {
 
     .add-container > i.rotate {
         rotate: 45deg;
-        bottom: 1em;
+        bottom: 0.5em;
         color: var(--light-color);
         transition: rotate 1s, bottom 0.5s;
     }
@@ -216,9 +236,9 @@ nav.mobile-navbar {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: clamp(5em, 95%, 60em);
-    margin-top: 1em;
+    width: clamp(5em, 100%, 60em);
     padding: 1em 0 1em 0;
+    margin-top: 1em;
     border-radius: 5% / 20%;
     background-color: var(--light-color);
     box-shadow: 0.5em 0 2em var(--navbar-color);
@@ -242,13 +262,30 @@ nav.mobile-navbar {
         margin-top: 3em;
     }
 
+    /* amnt input */
+    .form-add-container > .input-container.amnt {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .form-add-container > .input-container.amnt input[type="number"] {
+        width: clamp(2em, 10%, 20em);
+        text-align: center;
+    }
+
     /* input */
     .form-add-container .input-container input {
-        width: clamp(5em, 85%, 60em);
+        width: clamp(5em, 80%, 45em);
         padding: 0.5em;
         font-size: 1.8rem;
         border: 0;
         background-color: var(--light-color);
+    }
+
+    .form-add-container .input-container i {
+        font-size: 2rem;
+        color: var(--darkest-color);
     }
 
     /* input btn */
