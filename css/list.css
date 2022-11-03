@@ -144,7 +144,7 @@ nav.mobile-navbar {
     }
 
     .list-container .item h1 {
-        padding: 0.9em;
+        padding: 1.4em;
         color: var(--foreground-color);
         background-color: var(--medium-color);
     }
