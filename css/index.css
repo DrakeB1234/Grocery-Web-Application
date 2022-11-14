@@ -26,11 +26,31 @@ nav.container:nth-child(n + 2) {
     /* icon container */
     nav.container:nth-child(n + 2) .items {
         position: fixed;
-        right: 0;
+        right: 1em;
         top: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 1em;
         height: 100vh;
+    }
+
+    nav.container:nth-child(n + 2) .items a {
+        display: flex;
+        justify-content: center;
+        height: 6.5vh;
+        padding: 0.5em;
+        border-radius: 50%;
+        background-color: white;
+    }
+
+    /* active icon */
+    nav.container:nth-child(n + 2) .items a.active {
+        background: linear-gradient(120deg, rgba(53,227,139,1) 40%, rgba(0,212,255,1) 100%);
+    }
+
+    /* image tags */
+    nav.container:nth-child(n + 2) .items img {
+        width: 60%;
     }

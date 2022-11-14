@@ -1,0 +1,11 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-house" clip-path="url(#clip0_1_2)">
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M5 23C4.44772 23 4 23.4477 4 24V48C4 48.5523 4.44772 49 5 49H17V33C17 32.4477 17.4477 32 18 32H33C33.5523 32 34 32.4477 34 33V49H45C45.5523 49 46 48.5523 46 48V24C46 23.4477 45.5523 23 45 23H5Z" fill="#433E3E"/>
+<path id="roof" d="M13.625 12L24.3208 1.6568C24.702 1.28818 25.3046 1.28119 25.6943 1.64085L36.9167 12L49.1206 23.2652C49.7895 23.8826 49.3527 25 48.4424 25H1.6302C0.710681 25 0.27858 23.8635 0.965836 23.2526L13.625 12Z" fill="#433E3E"/>
+</g>
+<defs>
+<clipPath id="clip0_1_2">
+<rect width="50" height="50" fill="white"/>
+</clipPath>
+</defs>
+</svg>
