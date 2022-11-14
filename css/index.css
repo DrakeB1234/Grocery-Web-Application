@@ -24,7 +24,7 @@ nav.container:nth-child(n + 2) {
     position: absolute;
     bottom: 0;
     justify-content: space-around;
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
@@ -34,10 +34,9 @@ nav.container:nth-child(n + 2) {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        height: 10vh;
+        height: 8vh;
     }
 
     nav.container:nth-child(n + 2) .items object{
-        height: 50%;
-        padding: 0.5em;
+        width: 70%;
     }

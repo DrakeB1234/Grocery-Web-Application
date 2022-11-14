@@ -1,8 +1,8 @@
 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="icon-dashboard">
-<rect id="shape-bottomright" x="26" y="24" width="23" height="25" rx="2" fill="#5f6769"/>
-<rect id="shape-bottomleft" x="1" y="38" width="23" height="11" rx="2" fill="#5f6769"/>
-<rect id="shape-topright" x="26" y="1" width="23" height="21" rx="2" fill="#5f6769"/>
-<rect id="shape-topleft" x="1" y="1" width="23" height="35" rx="2" fill="#5f6769"/>
+<path id="shape-bottomright" fill-rule="evenodd" clip-rule="evenodd" d="M28 24C26.8954 24 26 24.8954 26 26V47C26 48.1046 26.8954 49 28 49H47C48.1046 49 49 48.1046 49 47V26C49 24.8954 48.1046 24 47 24H28ZM30 26C28.8954 26 28 26.8954 28 28V45C28 46.1046 28.8954 47 30 47H45C46.1046 47 47 46.1046 47 45V28C47 26.8954 46.1046 26 45 26H30Z" fill="#5F6769"/>
+<rect id="shape-bottomleft" x="1" y="38" width="23" height="11" rx="2" fill="#5F6769"/>
+<rect id="shape-topright" x="26" y="1" width="23" height="21" rx="2" fill="#5F6769"/>
+<path id="shape-topleft" fill-rule="evenodd" clip-rule="evenodd" d="M3 1C1.89543 1 1 1.89543 1 3V34C1 35.1046 1.89543 36 3 36H22C23.1046 36 24 35.1046 24 34V3C24 1.89543 23.1046 1 22 1H3ZM5 3C3.89543 3 3 3.89543 3 5V32C3 33.1046 3.89543 34 5 34H20C21.1046 34 22 33.1046 22 32V5C22 3.89543 21.1046 3 20 3H5Z" fill="#5F6769"/>
 </g>
 </svg>
