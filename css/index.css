@@ -1,0 +1,43 @@
+/* body */
+body {
+}
+
+/* root variables */
+
+/* main */
+main.container {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 90vh;
+    font-size: 10rem;
+    background-color: rgb(211, 114, 114);
+    border-radius: 0 0 30px 30px;
+}
+
+/* desktop nav */
+nav.container:first-child {
+    background-color: rgb(92, 136, 230);
+}
+
+/* mobile nav */
+nav.container:nth-child(n + 2) {
+    position: absolute;
+    bottom: 0;
+    justify-content: space-around;
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+    /* icon container */
+    nav.container:nth-child(n + 2) .items {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 10vh;
+    }
+
+    nav.container:nth-child(n + 2) .items object{
+        height: 50%;
+        padding: 0.5em;
+    }
