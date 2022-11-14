@@ -1,0 +1,23 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-list">
+<g id="board">
+<path id="back" d="M1 4C1 2.34315 2.34315 1 4 1H39L44 6L49 11V46C49 47.6569 47.6569 49 46 49H4C2.34315 49 1 47.6569 1 46V4Z" fill="#5F6769"/>
+<path id="corner" d="M39 1L44 6L49 11H41C39.8954 11 39 10.1046 39 9V1Z" fill="#B6B6B6"/>
+</g>
+<g id="section3">
+<rect id="Rectangle 8" x="19" y="41" width="22" height="1" rx="0.5" fill="#B6B6B6"/>
+<rect id="Rectangle 11" x="19" y="39" width="16" height="1" rx="0.5" fill="#B6B6B6"/>
+<rect id="Rectangle 5" x="5.5" y="34.5" width="8" height="8" rx="0.5" fill="#5F6769" stroke="#B6B6B6"/>
+</g>
+<g id="section2">
+<rect id="Rectangle 7" x="19" y="27" width="22" height="1" rx="0.5" fill="#B6B6B6"/>
+<rect id="Rectangle 10" x="19" y="25" width="16" height="1" rx="0.5" fill="#B6B6B6"/>
+<rect id="Rectangle 4" x="5.5" y="20.5" width="8" height="8" rx="0.5" fill="#5F6769" stroke="#B6B6B6"/>
+</g>
+<g id="section1">
+<rect id="Rectangle 6" x="19" y="13" width="22" height="1" rx="0.5" fill="#B6B6B6"/>
+<rect id="line" x="19" y="11" width="16" height="1" rx="0.5" fill="#B6B6B6"/>
+<rect id="Rectangle 3" x="5.5" y="6.5" width="8" height="8" rx="0.5" fill="#5F6769" stroke="#B6B6B6"/>
+</g>
+</g>
+</svg>

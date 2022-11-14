@@ -1,0 +1,8 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-dashboard">
+<rect id="shape-bottomright" x="26" y="24" width="23" height="25" rx="2" fill="#5f6769"/>
+<rect id="shape-bottomleft" x="1" y="38" width="23" height="11" rx="2" fill="#5f6769"/>
+<rect id="shape-topright" x="26" y="1" width="23" height="21" rx="2" fill="#5f6769"/>
+<rect id="shape-topleft" x="1" y="1" width="23" height="35" rx="2" fill="#5f6769"/>
+</g>
+</svg>
