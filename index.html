@@ -10,21 +10,40 @@
     <link rel="stylesheet" href="css/index.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <!-- <nav class="container">
-        <h1>Desktop nav</h1>
-    </nav> -->
     <main class="container">
         <h1>main</h1>
     </main>
     <nav class="container">
-        <div class="items">
-            <a href="index.html" class="active"><img src="images/icons/icon-house.svg"></a>
-            <a href=""><img src="images/icons/icon-list.svg"></a>
-            <a href=""><img src="images/icons/icon-book.svg"></a>
-            <a href=""><img src="images/icons/icon-calendar.svg"></a>
+        <div class="item-container">
             <button id="nav-button"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="active">
+                <div class="item">
+                    <img src="images/icons/icon-house.svg">
+                    <h1>Home</h1>
+                </div>
+            </a>
+            <a href="index.html" class="">
+                <div class="item">
+                    <img src="images/icons/icon-list.svg">
+                    <h1>Grocery List</h1>
+                </div>
+            </a>
+            <a href="index.html" class="">
+                <div class="item">
+                    <img src="images/icons/icon-book.svg">
+                    <h1>Recipes</h1>
+                </div>
+            </a>
+            <a href="index.html" class="">
+                <div class="item">
+                    <img src="images/icons/icon-calendar.svg">
+                    <h1>Meal Planner</h1>
+                </div>
+            </a>
         </div>
     </nav>
 </body>
