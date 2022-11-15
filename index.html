@@ -17,9 +17,9 @@
     <main class="container">
         <h1>main</h1>
     </main>
-    <nav class="container">
+    <nav class="container" id="nav-container">
         <div class="item-container">
-            <button id="nav-button"><i class="fa-solid fa-bars"></i></button>
+            <button id="nav-btn"><i class="fa-solid fa-bars"></i></button>
             <a href="index.html" class="active">
                 <div class="item">
                     <img src="images/icons/icon-house.svg">
@@ -45,6 +45,16 @@
                 </div>
             </a>
         </div>
+        <script>
+            const nav = document.getElementById('nav-container');
+            document.getElementById('nav-btn').addEventListener('click', e => {
+                if (nav.style.right == '0vh'){
+                    nav.style.right = '-30vh';
+                    return
+                };
+                nav.style.right = '0vh';
+            });
+        </script>
     </nav>
 </body>
 </html>
