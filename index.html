@@ -14,47 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <main class="container">
+    <intro class="container">
         <h1>main</h1>
-    </main>
-    <nav class="container" id="nav-container">
-        <div class="item-container">
-            <button id="nav-btn"><i class="fa-solid fa-bars"></i></button>
-            <a href="index.html" class="active">
-                <div class="item">
-                    <img src="images/icons/icon-house.svg">
-                    <h1>Home</h1>
-                </div>
-            </a>
-            <a href="index.html" class="">
-                <div class="item">
-                    <img src="images/icons/icon-list.svg">
-                    <h1>Grocery List</h1>
-                </div>
-            </a>
-            <a href="index.html" class="">
-                <div class="item">
-                    <img src="images/icons/icon-book.svg">
-                    <h1>Recipes</h1>
-                </div>
-            </a>
-            <a href="index.html" class="">
-                <div class="item">
-                    <img src="images/icons/icon-calendar.svg">
-                    <h1>Meal Planner</h1>
-                </div>
-            </a>
-        </div>
-        <script>
-            const nav = document.getElementById('nav-container');
-            document.getElementById('nav-btn').addEventListener('click', e => {
-                if (nav.style.right == '0vh'){
-                    nav.style.right = '-30vh';
-                    return
-                };
-                nav.style.right = '0vh';
-            });
-        </script>
-    </nav>
+    </intro>
 </body>
 </html>

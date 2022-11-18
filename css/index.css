@@ -3,93 +3,21 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    scroll-snap-type: y mandatory;
+}
+
 /* root variables */
 
 /* main */
-main.container {
-    overflow-y: scroll;
+intro.container {
     height: 100vh;
-    font-size: 5rem;
     background-color: rgb(211, 114, 114);
 }
 
-/* desktop nav */
-nav.container:first-child {
-    background-color: rgb(92, 136, 230);
-}
-
-/* nav */
-nav.container:nth-child(n + 2) {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: -30vh;
-    height: 100vh;
-    width: 30vh;
-    font-family: 'Roboto', sans-serif;
-}
-
-nav.container:nth-child(n + 2) {
-    right: -30vh;
-    transition: all 0.3s linear;
-}
-
-/* button toggle */
-nav.container:nth-child(n + 2) .item-container > button {
-    position: absolute;
-    top: 0;
-    right: 30vh;
-    font-size: 2rem;
-    padding: 0.3em;
-    border-radius: 10px 0 0 10px;
-    background-color: rgb(245, 255, 255);
-    border: 0;
-}
-
-
-    /* icon container */
-    nav.container:nth-child(n + 2) .item-container {
-        display: flex;
-        flex-direction: column;
-        padding-top: 2em;
-        gap: 4em;
-        height: 100%;
-        overflow-y: scroll;
-        background-color: rgb(245, 255, 255);
-        border-left: 3px solid #959b9d;
+/* media queries */
+@media only screen and (min-width: 1400px) {
+    body {
+        margin: 0 5em 0 5em;
     }
-
-        /* item */
-        nav.container:nth-child(n + 2) .item-container .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* item text */
-        nav.container:nth-child(n + 2) .item-container .item h1 {
-            margin-top: 1em;
-            font-size: 1.4rem;
-        }
-
-        /* active icon */
-        nav.container:nth-child(n + 2) .item-container a.active {
-            padding: 1em;
-            margin: 0 1em 0 1em;
-            border-radius: 20px;
-            background: linear-gradient(120deg, rgba(53,227,139,1) 40%, rgba(0,212,255,1) 100%);
-        }
-
-            /* hover icon */
-            nav.container:nth-child(n + 2) .item-container a:hover {
-                padding: 0.5em;
-                margin: 0 1.5em 0 1.5em;
-                border-radius: 20px;
-                background: linear-gradient(120deg, rgba(53,227,139,0.4) 40%, rgba(0,212,255,0.4) 100%);
-            }
-
-        /* image tags */
-        nav.container:nth-child(n + 2) .item-container img {
-            width: 25%;
-        }
+}
