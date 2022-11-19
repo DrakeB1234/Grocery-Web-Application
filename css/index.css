@@ -1,23 +1,52 @@
 /* globals */
-* {
+
+body {
+    height: 100%;
+    background-color: var(--white-med);
+    scroll-snap-type: y mandatory;
     font-family: 'Roboto', sans-serif;
 }
 
-body {
-    scroll-snap-type: y mandatory;
-}
-
 /* root variables */
-
-/* main */
-intro.container {
-    height: 100vh;
-    background-color: rgb(211, 114, 114);
+:root {
+    /* main */
+    --main-med: #5acb78;
+    /* white */
+    --white-dark: #91968f;
+    --white-med: #f4fff1;
+    --white-light: #f8fcff;
 }
 
-/* media queries */
-@media only screen and (min-width: 1400px) {
-    body {
-        margin: 0 5em 0 5em;
+/* header */
+header.container {
+    height: 60vh;
+    padding: 1%;
+    background-color: var(--main-med);
+}
+    /* text */
+    header.container h1 {
+        margin-top: 3%;
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--white-light);
+    }
+
+/* section container */
+section.container {
+    height: 100vh;
+    margin-top: 10%;
+    background-color: var(--white-med);
+    scroll-snap-align: start;
+}
+    /* text */
+    section.container h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        color: var(--white-dark);
+    }
+
+@media only screen and (min-width: 1000px){
+    section.container {
+        margin: 3% 5% 0 5%;
     }
 }
