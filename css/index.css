@@ -3,7 +3,6 @@
 body {
     height: 100%;
     background-color: var(--white-med);
-    scroll-snap-type: y mandatory;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -46,7 +45,6 @@ section.container {
     height: 100vh;
     margin-top: 10%;
     background-color: var(--white-med);
-    scroll-snap-align: start;
 }
     /* text */
     section.container h1 {
