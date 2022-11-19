@@ -1,4 +1,26 @@
 <svg width="215" height="215" viewBox="0 0 215 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+    #box, #bread, #lettuce, #grapes, #tomato, #handle, #basket {
+        animation: bounceBasket 5s infinite;
+    }
+
+    @keyframes bounceBasket {
+        0% { transform:translateY(0) }
+        10% { transform:translateY(-15%) translateX(15%) rotate(10deg) }
+        25% { transform:translateY(0%) translateX(0%) rotate(0deg) }
+    }
+
+    #handle {
+        animation: bounceHandle 5s infinite;
+    }
+
+    @keyframes bounceHandle {
+        0% { transform:translateY(0) }
+        10% { transform:translateY(-15%) translateX(15%) rotate(10deg) }
+        25% { transform:translateY(0%) translateX(0%) rotate(0deg) }
+    }
+
+</style>
 <g id="graphic-basket">
 <path id="cloud" fill-rule="evenodd" clip-rule="evenodd" d="M139.752 15.0512C143.06 14.3622 146.488 14 150 14C177.614 14 200 36.3858 200 64C200 71.44 198.375 78.5005 195.461 84.8458C205.616 93.9974 212 107.253 212 122C212 136.657 205.693 149.841 195.645 158.987C192.687 183.779 171.588 203 146 203C140.459 203 135.128 202.099 130.147 200.435C121.324 208.253 109.716 213 97 213C81.0622 213 66.8661 205.543 57.7103 193.928C56.8129 193.976 55.9093 194 55 194C27.3858 194 5 171.614 5 144C5 137.118 6.3904 130.561 8.90561 124.594C5.13725 117.566 3 109.532 3 101C3 87.923 8.02018 76.0186 16.2385 67.1088C15.4279 63.536 15 59.818 15 56C15 28.3858 37.3858 6 65 6C69.9802 6 74.7904 6.72813 79.3299 8.08374C86.8336 3.58576 95.6148 1 105 1C118.503 1 130.755 6.35237 139.752 15.0512Z" fill="white" fill-opacity="0.8"/>
 <g id="box">
