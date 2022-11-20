@@ -41,7 +41,7 @@ nav.container {
 }
     /* nav transition */
     nav.container {
-        right: -100%;
+        right: -130%;
         transition: all 0.3s ease-in;
     }
     /* link container */
