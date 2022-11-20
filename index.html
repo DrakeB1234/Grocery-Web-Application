@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" /> 
 </head>
 <body>
-    <i class="fa-solid fa-bars"></i>
-    <nav class="container">
+    <i id="navToggleOn" class="fa-solid fa-bars"></i>
+    <nav id ="navContainer" class="container">
         <div>
             <h1>Navigation</h1>
-            <i class="fa-solid fa-xmark"></i>
+            <i id="navToggleOff" class="fa-solid fa-xmark"></i>
         </div>
         <a href="index.html" class="active">
             <img src="images/icons/icon-house.svg" />
@@ -39,6 +39,14 @@
         <blank>
             &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
         </blank>
+        <script>
+            document.getElementById("navToggleOn").addEventListener("click", () => {
+                document.getElementById("navContainer").style.right = "0";
+            });
+            document.getElementById("navToggleOff").addEventListener("click", () => {
+                document.getElementById("navContainer").style.right = "-100%";
+            });
+        </script>
     </nav>
     <header class="container">
         <h1>Welcome to the Grocery App</h1>

@@ -31,20 +31,19 @@ i:first-child {
     background-color: var(--main-med);
 }
 
-i:first-child:focus-within + nav.container {
-    right: 0;
-    transition: all 2s;
-}
-
 /* nav container fixed */
 nav.container {
     position: fixed;
     top: 0;
     bottom: 0;
-    right: -1000vw;
     background-color: var(--grey-med);
     overflow-y: scroll;
 }
+    /* nav transition */
+    nav.container {
+        right: -100%;
+        transition: all 0.3s ease-in;
+    }
     /* link container */
     nav.container a {
         display: flex;
@@ -64,7 +63,7 @@ nav.container {
                 justify-content: space-around;
                 background-color: var(--white-med);
             }
-            nav.container a:first-child i{
+            nav.container div i{
                 cursor: pointer;
             }
         /* link text */
