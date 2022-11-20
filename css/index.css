@@ -10,6 +10,7 @@ body {
 :root {
     /* main */
     --main-med: #5acb78;
+    --main-light: #69e289;
     /* white */
     --white-dark: #91968f;
     --white-med: #f4fff1;
@@ -18,12 +19,29 @@ body {
     --grey-med: #405c83;
 }
 
+/* nav toggle btn */
+i:first-child {
+    position: fixed;
+    top: 0.1em;
+    right: 0.1em;
+    font-size: 2rem;
+    padding: 0.3em;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--main-med);
+}
+
+i:first-child:focus-within + nav.container {
+    right: 0;
+    transition: all 2s;
+}
+
 /* nav container fixed */
 nav.container {
     position: fixed;
     top: 0;
     bottom: 0;
-    right: 0;
+    right: -1000vw;
     background-color: var(--grey-med);
     overflow-y: scroll;
 }
@@ -33,17 +51,18 @@ nav.container {
         flex-direction: row;
         align-items: center;
         padding: 1em 3em 1em 1em;
-        margin: 1em;
+        margin: 1em 2em 1em 2em;
         border-radius: 10px;
         background-color: var(--white-med);
     }
             /* first link */
-            nav.container a:first-child {
-                margin: 0;
+            nav.container div {
+                display: flex;
+                flex-direction: row;
                 padding: 1em;
                 font-size: 1.5rem;
-                border-radius: 0;
                 justify-content: space-around;
+                background-color: var(--white-med);
             }
             nav.container a:first-child i{
                 cursor: pointer;
@@ -52,6 +71,16 @@ nav.container {
         nav.container a h1 {
             margin-left: 1em;
             font-size: 1.3rem;
+        }
+        /* active link */
+        nav.container a.active {
+            background-color: var(--main-light);
+        }
+        /* hover link */
+        nav.container a:hover {
+            transition: all 0.6s;
+            margin: 1em 1em 1em 1em;
+            background-color: var(--main-light);
         }
 
 /* header */
@@ -95,9 +124,21 @@ section.container {
     header.container div.svg object {
         width: 30%;
     }
+    header.container div.svg {
+        padding-bottom: 5%;
+    }
 }
 
 @media only screen and (min-width: 1000px){
+    header.container h1 {
+        font-size: 3rem;
+    }
+    header.container div.svg {
+        padding-bottom: 2%;
+    }
+    header.container div.svg object {
+        width: 20%;
+    }
     section.container {
         margin: 3% 5% 0 5%;
     }
