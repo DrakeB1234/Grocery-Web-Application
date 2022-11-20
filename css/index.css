@@ -14,7 +14,45 @@ body {
     --white-dark: #91968f;
     --white-med: #f4fff1;
     --white-light: #f8fcff;
+    /* grey */
+    --grey-med: #405c83;
 }
+
+/* nav container fixed */
+nav.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--grey-med);
+    overflow-y: scroll;
+}
+    /* link container */
+    nav.container a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1em 3em 1em 1em;
+        margin: 1em;
+        border-radius: 10px;
+        background-color: var(--white-med);
+    }
+            /* first link */
+            nav.container a:first-child {
+                margin: 0;
+                padding: 1em;
+                font-size: 1.5rem;
+                border-radius: 0;
+                justify-content: space-around;
+            }
+            nav.container a:first-child i{
+                cursor: pointer;
+            }
+        /* link text */
+        nav.container a h1 {
+            margin-left: 1em;
+            font-size: 1.3rem;
+        }
 
 /* header */
 header.container {
