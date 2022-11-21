@@ -42,9 +42,10 @@
         <script>
             document.getElementById("navToggleOn").addEventListener("click", () => {
                 document.getElementById("navContainer").style.right = "0";
+                console.log(document.getElementById("navContainer"));
             });
             document.getElementById("navToggleOff").addEventListener("click", () => {
-                document.getElementById("navContainer").style.right = "-125%";
+                document.getElementById("navContainer").style.right = "-155%";
             });
         </script>
     </nav>
@@ -53,8 +54,8 @@
     </header>
 
     <div class="add-container">
-        <i class="fa-solid fa-plus"></i>
-        <div class="input-container">
+        <i id="addFormShow" class="fa-solid fa-plus"></i>
+        <div id="input-container" class="input-container">
             <h1>Add Item</h1>
             <form>
                 <select>
@@ -94,6 +95,18 @@
                 </div>
                 <button type="submit" value="1">Add Item</button>
             </form>
+            <!-- js for hiding container -->
+            <script>
+                document.getElementById("input-container").style.display = "none";
+                document.getElementById("addFormShow").addEventListener("click", () => {
+                    let ele = document.getElementById("input-container").style;
+                    if (ele.display == "none"){
+                        ele.display = "block";
+                        return
+                    }
+                    ele.display = "none";
+                });
+            </script>
         </div>
     </div>
     <section class="container">
