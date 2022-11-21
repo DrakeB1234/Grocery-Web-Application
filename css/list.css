@@ -1,0 +1,119 @@
+/* globals */
+
+body {
+    height: 100%;
+    background-color: var(--white-med);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* root variables */
+:root {
+    /* main */
+    --main-dark: #3d9555;
+    --main-med: #5acb78;
+    --main-light: #69e289;
+    /* white */
+    --white-dark: #91968f;
+    --white-med: #f4fff1;
+    --white-light: #f8fcff;
+    /* grey */
+    --grey-med: #405c83;
+    --grey-light: #a0b7d4;
+}
+
+/* nav toggle btn */
+i:first-child {
+    position: fixed;
+    top: 0.1em;
+    right: 0.1em;
+    font-size: 2rem;
+    padding: 0.3em;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--main-med);
+}
+
+/* nav container fixed */
+nav.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: var(--grey-med);
+    overflow-y: scroll;
+}
+    /* nav transition */
+    nav.container {
+        right: -125%;
+        transition: all 0.3s ease-in-out;
+    }
+    /* link container */
+    nav.container a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1em 3em 1em 1em;
+        margin: 1em 2em 1em 2em;
+        border-radius: 10px;
+        background-color: var(--white-med);
+    }
+            /* first link */
+            nav.container div {
+                display: flex;
+                flex-direction: row;
+                padding: 1em;
+                font-size: 1.5rem;
+                justify-content: space-around;
+                background-color: var(--white-med);
+            }
+            nav.container div i{
+                cursor: pointer;
+            }
+        /* link text */
+        nav.container a h1 {
+            margin-left: 1em;
+            font-size: 1.3rem;
+        }
+        /* active link */
+        nav.container a.active {
+            background-color: var(--main-light);
+        }
+        /* hover link */
+        nav.container a:hover {
+            transition: all 0.6s;
+            margin: 1em 1em 1em 1em;
+            background-color: var(--main-light);
+        }
+
+/* header */
+header.container {
+    padding: 1%;
+    background-color: var(--main-med);
+}
+    /* text */
+    header.container h1 {
+        margin-top: 1em;
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--white-light);
+    }
+
+@media only screen and (min-width: 700px){
+    header.container div.svg object {
+        width: 30%;
+    }
+    header.container h1 {
+        font-size: 3rem;
+    }
+    header.container div.svg object {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1000px){
+    header.container h1 {
+        font-size: 3rem;
+    }
+    header.container div.svg object {
+        width: 20%;
+    }
+}
