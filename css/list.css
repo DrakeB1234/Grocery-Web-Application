@@ -26,7 +26,7 @@ body > i:first-child {
     position: fixed;
     top: 0.1em;
     right: 0.1em;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 0.3em;
     cursor: pointer;
     border-radius: 10px;
@@ -57,7 +57,7 @@ nav.container {
         border-radius: 10px;
         background-color: var(--white-med);
     }
-            /* first link */
+            /* first element */
             nav.container div {
                 display: flex;
                 flex-direction: row;
@@ -65,6 +65,7 @@ nav.container {
                 font-size: 1.5rem;
                 justify-content: space-around;
                 background-color: var(--white-med);
+                text-shadow: 2px 2px rgba(50, 49, 49, 0.2);
             }
             nav.container div i{
                 padding: 1em;
@@ -74,6 +75,7 @@ nav.container {
         nav.container a h1 {
             margin-left: 1em;
             font-size: 1.3rem;
+            text-shadow: 2px 2px rgba(50, 49, 49, 0.2);
         }
         /* active link */
         nav.container a.active {
@@ -108,10 +110,14 @@ div.add-container > i {
     padding: 0.4em;
     font-size: 2.5rem;
     border-radius: 50%;
-    background-color: var(--main-med);
-    color: var(--grey-med);
     cursor: pointer;
 }
+    div.add-container > i {
+        background-color: var(--main-med);
+        color: var(--grey-med);
+        transform: rotate(0deg);
+        transition: all 0.5s;
+    }
     div.add-container > i.active {
         background-color: var(--grey-med);
         color: var(--white-light);
@@ -131,6 +137,7 @@ div.add-container > i {
             margin-bottom: 1em;
             font-size: 3rem;
             text-align: center;
+            text-shadow: 3px 3px rgb(0, 0, 0,0.2);
             color: var(--white-med);
         }
     /* add form */
@@ -205,6 +212,7 @@ div.list-container {
         font-size: 1.8rem;
         border-radius: 10px 10px 0 0;
         background-color: var(--grey-med);
+        text-shadow: 3px 3px rgb(0, 0, 0,0.2);
         color: var(--white-med);
     }
         /* every other title */
@@ -215,6 +223,7 @@ div.list-container {
             padding: 0.7em;
             font-size: 1.8rem;
             background-color: var(--grey-med);
+            text-shadow: 3px 3px rgb(0, 0, 0,0.2);
             color: var(--white-med);
         }
         /* every other title pencil */

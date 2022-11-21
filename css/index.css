@@ -26,7 +26,7 @@ i:first-child {
     position: fixed;
     top: 0.1em;
     right: 0.1em;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 0.3em;
     cursor: pointer;
     border-radius: 10px;
@@ -56,7 +56,7 @@ nav.container {
         border-radius: 10px;
         background-color: var(--white-med);
     }
-            /* first link */
+            /* first element */
             nav.container div {
                 display: flex;
                 flex-direction: row;
@@ -64,6 +64,7 @@ nav.container {
                 font-size: 1.5rem;
                 justify-content: space-around;
                 background-color: var(--white-med);
+                text-shadow: 2px 2px rgba(50, 49, 49, 0.2);
             }
             nav.container div i{
                 padding: 1em;
@@ -73,6 +74,7 @@ nav.container {
         nav.container a h1 {
             margin-left: 1em;
             font-size: 1.3rem;
+            text-shadow: 2px 2px rgba(50, 49, 49, 0.2);
         }
         /* active link */
         nav.container a.active {
