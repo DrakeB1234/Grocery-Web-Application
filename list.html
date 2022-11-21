@@ -60,13 +60,37 @@
                 <select>
                     <option hidden selected>Category</option>
                     <option>Produce</option>
+                    <option>Frozen</option>
+                    <option>Canned Goods</option>
                 </select>
                 <input type="text" placeholder="Item">
                 <input type="text" placeholder="Note">
                 <div class="number-container">
-                    <button type="submit" value="1">-</button>
-                    <input type="number" value="1">
-                    <button type="submit" value="1">+</button>
+                    <i id="addFormMinus"class="fa-solid fa-minus"></i>
+                    <input id="addFormNum" type="number" value="1" min="1" max="99">
+                    <i id="addFormPlus" class="fa-solid fa-plus"></i>
+                    <script>
+                        // js to for add minus btns
+                        document.getElementById("addFormMinus").addEventListener("click", () => {
+                            changeNum(-1);
+                            return
+                        });
+                        document.getElementById("addFormPlus").addEventListener("click", () => {
+                            changeNum(1);
+                            return
+                        });
+                        const changeNum = (x) => {
+                            const num = document.getElementById("addFormNum");
+                            if (x == -1 && num.value == "1"){
+                                return
+                            }
+                            if (x == 1 && num.value == "99"){
+                                return
+                            }
+                            num.value = (parseInt(num.value) + x);
+                            return
+                        };
+                    </script>
                 </div>
                 <button type="submit" value="1">Add Item</button>
             </form>

@@ -99,7 +99,7 @@ header.container {
         color: var(--white-light);
     }
 /* add btn container */
-div.add-container i {
+div.add-container > i {
     position: fixed;
     bottom: 4%;
     right: 4%;
@@ -127,7 +127,6 @@ div.add-container i {
     }
         /* select */
         .input-container form select {
-            width: 60%;
             padding: 0.5em;
             font-size: 1.5rem;
             border: 0;
@@ -142,21 +141,40 @@ div.add-container i {
             border-radius: 10px;
             border: 1px solid var(--grey-med);
         }
-        /* type number */
+        /* type number container */
         .input-container .number-container {
             display: flex;
             justify-content: center;
+            align-items: center;
         }
-        /* type number */
-        .number-container input[type="number"] {
-            width: 15%;
-            padding: 0.3em;
-            font-size: 1.2rem;
-            text-align: center;
-            border-radius: 10px;
+            /* type number */
+            .number-container input[type="number"] {
+                width: 15%;
+                padding: 0.6em;
+                font-size: 1.2rem;
+                text-align: center;
+                border-radius: 10px;
+                border: 1px solid var(--grey-med);
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+            }
+            /* type number buttons */
+            .number-container i {
+                margin: 0 0.8em 0 0.8em;
+                padding: 0.3em;
+                font-size: 1.5rem;
+                border: 1px solid var(--grey-med);
+                border-radius: 10px;
+                background-color: var(--grey-light);
+            }
+        /* type submit */
+        .input-container form button[type="submit"] {
+            margin-top: 2em;
+            padding: 0.5em 1em 0.5em 1em;
+            font-size: 1.5rem;
             border: 1px solid var(--grey-med);
-            -webkit-appearance: none;
-            -moz-appearance: textfield;
+            border-radius: 10px;
+            background-color: var(--grey-light);
         }
 /* list container */
 div.list-container {
