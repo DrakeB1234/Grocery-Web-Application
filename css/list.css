@@ -96,6 +96,7 @@ header.container {
         margin-bottom: 1.5em;
         text-align: center;
         font-size: 2.5rem;
+        text-shadow: 3px 3px rgb(0, 0, 0,0.2);
         color: var(--white-light);
     }
 /* add btn container */
@@ -124,6 +125,14 @@ div.add-container > i {
         inset: 0;
         background-color: var(--main-med);
     }
+        /* input container header*/
+        div.add-container .input-container > h1 {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--white-med);
+        }
     /* add form */
     .input-container form {
         display: flex;
@@ -272,7 +281,7 @@ div.list-container {
         width: 30%;
     }
     header.container h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     header.container div.svg object {
         width: 40%;
