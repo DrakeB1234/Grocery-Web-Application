@@ -139,7 +139,7 @@ section.container {
         /* header text */
         div.card-container div.card h1 {
             padding: 0.5em;
-            border-radius: 10px 10px 0 0;
+            border-radius: 20px 20px 0 0;
             background-color: var(--grey-med);
             color: var(--white-light);
         }
@@ -160,9 +160,15 @@ section.container {
             }
         /* last h2 ele */
         div.card-container div.card > h2:last-child {
+            display: flex;
+            justify-content: center;
             padding: 1.5em;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 20px 20px;
             background-color: var(--grey-light);
+        }
+        /* svg */
+        div.card-container div.card > h2:last-child object {
+            width: 100%;
         }
 
 @media only screen and (min-width: 700px){
@@ -187,6 +193,9 @@ section.container {
     div.card-container div.card h1 {
         font-size: 3rem;
     }
+    div.card-container div.card > h2:last-child object {
+        width: 80%;
+    }
 }
 
 @media only screen and (min-width: 1000px){
@@ -197,6 +206,9 @@ section.container {
         width: 20%;
     }
     section.container {
-        margin: 3% 10% 0 10%;
+        margin: 3% 20% 0 20%;
+    }
+    div.card-container div.card > h2:last-child object {
+        width: 70%;
     }
 }

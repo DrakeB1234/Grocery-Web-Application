@@ -85,19 +85,6 @@ nav.container {
             margin: 1em 1em 1em 1em;
             background-color: var(--main-light);
         }
-/* add btn container */
-div.add-container i {
-    position: fixed;
-    bottom: 4%;
-    right: 4%;
-    z-index: 49;
-    padding: 0.5em;
-    font-size: 2.5rem;
-    border-radius: 40px;
-    background-color: var(--main-med);
-    color: var(--grey-med);
-    cursor: pointer;
-}
 /* header */
 header.container {
     padding: 1%;
@@ -111,6 +98,19 @@ header.container {
         font-size: 2.5rem;
         color: var(--white-light);
     }
+/* add btn container */
+div.add-container i {
+    position: fixed;
+    bottom: 4%;
+    right: 4%;
+    z-index: 49;
+    padding: 0.5em;
+    font-size: 2.5rem;
+    border-radius: 40px;
+    background-color: var(--main-med);
+    color: var(--grey-med);
+    cursor: pointer;
+}
 
 @media only screen and (min-width: 700px){
     header.container div.svg object {
