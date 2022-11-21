@@ -60,12 +60,13 @@ nav.container {
             nav.container div {
                 display: flex;
                 flex-direction: row;
-                padding: 1em;
+                align-items: center;
                 font-size: 1.5rem;
                 justify-content: space-around;
                 background-color: var(--white-med);
             }
             nav.container div i{
+                padding: 1em;
                 cursor: pointer;
             }
         /* link text */
@@ -178,13 +179,13 @@ section.container {
         margin: 3% 10% 0 10%;
     }
     section.container h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     div.card-container div.card div.card-item {
         font-size: 2rem;
     }
     div.card-container div.card h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
 

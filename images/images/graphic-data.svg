@@ -1,0 +1,36 @@
+<svg width="300" height="50" viewBox="0 0 300 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+    #fillbar1 #barfill {
+        animation: fillbar 2s infinite;
+    }
+
+    @keyframes fillbar {
+        0% { transform: scaleY();} 
+        50% { } 
+        100% { } 
+    }
+</style>
+<g id="graphic-data">
+<rect id="base" x="2" y="2" width="296" height="46" rx="5" fill="#605D82"/>
+<g id="bars">
+<rect id="base_2" x="242" y="45" width="3.80952" height="38" transform="rotate(-90 242 45)" fill="#B6F477"/>
+<g id="bar-group">
+<rect id="Rectangle 4" x="250" y="39.127" width="5" height="34.127" transform="rotate(-180 250 39.127)" fill="#B6F477"/>
+<rect id="Rectangle 5" x="259" y="39.127" width="5" height="24.5014" transform="rotate(-180 259 39.127)" fill="#B6F477"/>
+<rect id="Rectangle 6" x="268" y="39.127" width="5" height="28.0016" transform="rotate(-180 268 39.127)" fill="#B6F477"/>
+<rect id="Rectangle 7" x="277" y="39.127" width="5" height="16.626" transform="rotate(-180 277 39.127)" fill="#B6F477"/>
+</g>
+</g>
+<path id="dial3" fill-rule="evenodd" clip-rule="evenodd" d="M214 25C214 36.0457 205.43 45 194.858 45C186.399 45 179.221 39.2665 176.69 31.3158H183.237C185.421 35.6945 189.805 38.6842 194.858 38.6842C202.091 38.6842 207.955 32.5576 207.955 25C207.955 17.4424 202.091 11.3158 194.858 11.3158C189.41 11.3158 184.739 14.7917 182.765 19.7368H176.386C178.597 11.2445 186.03 5 194.858 5C205.43 5 214 13.9543 214 25Z" fill="#64C4ED"/>
+<path id="dial2" fill-rule="evenodd" clip-rule="evenodd" d="M152.545 12.8573C156.736 15.1395 159.597 19.7206 159.597 25C159.597 32.5576 153.733 38.6842 146.5 38.6842C139.267 38.6842 133.403 32.5576 133.403 25C133.403 19.3075 136.73 14.4268 141.463 12.3645V5.69974C133.335 8.01013 127.358 15.7758 127.358 25C127.358 36.0457 135.928 45 146.5 45C157.072 45 165.642 36.0457 165.642 25C165.642 16.1613 160.154 8.66176 152.545 6.0177V12.8573Z" fill="#ED6262"/>
+<path id="dial1" fill-rule="evenodd" clip-rule="evenodd" d="M116.31 31.3158C113.779 39.2665 106.601 45 98.1418 45C87.5701 45 79 36.0457 79 25C79 13.9543 87.5701 5 98.1418 5C106.97 5 114.403 11.2445 116.614 19.7368H110.235C108.261 14.7917 103.59 11.3158 98.1418 11.3158C90.9085 11.3158 85.0448 17.4424 85.0448 25C85.0448 32.5576 90.9085 38.6842 98.1418 38.6842C103.195 38.6842 107.579 35.6945 109.763 31.3158H116.31Z" fill="#D295EF"/>
+<g id="fillbar">
+<rect id="barback" x="40" y="5" width="12" height="40" fill="white"/>
+<rect id="barfill" x="40" y="5" width="12" height="40" fill="#F8A82F"/>
+</g>
+<g id="fillbar">
+<rect id="barback" x="17" y="5" width="12" height="40" fill="white"/>
+<rect id="barfill" x="17" y="5" width="12" height="40" fill="#F8A82F"/>
+</g>
+</g>
+</svg>
