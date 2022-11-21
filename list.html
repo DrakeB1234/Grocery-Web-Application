@@ -98,12 +98,16 @@
             <!-- js for hiding container -->
             <script>
                 document.getElementById("input-container").style.display = "none";
-                document.getElementById("addFormShow").addEventListener("click", () => {
+                document.getElementById("addFormShow").addEventListener("click", (e) => {
                     let ele = document.getElementById("input-container").style;
+                    let btn = document.getElementById("addFormShow");
                     if (ele.display == "none"){
                         ele.display = "block";
+                        btn.classList.add("active");
+                        console.log(btn.classList);
                         return
                     }
+                    btn.classList.remove("active");
                     ele.display = "none";
                 });
             </script>
