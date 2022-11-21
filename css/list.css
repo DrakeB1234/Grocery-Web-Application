@@ -111,6 +111,53 @@ div.add-container i {
     color: var(--grey-med);
     cursor: pointer;
 }
+    /* input container */
+    div.add-container .input-container {
+        position: fixed;
+        inset: 0;
+        background-color: var(--main-med);
+    }
+    /* add form */
+    .input-container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+        margin-top: 2em;
+    }
+        /* select */
+        .input-container form select {
+            width: 60%;
+            padding: 0.5em;
+            font-size: 1.5rem;
+            border: 0;
+            border-radius: 10px;
+            background-color: var(--grey-med);
+            color: var(--white-med);
+        }
+        /* type text */
+        .input-container form input[type="text"] {
+            padding: 0.5em;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--grey-med);
+        }
+        /* type number */
+        .input-container .number-container {
+            display: flex;
+            justify-content: center;
+        }
+        /* type number */
+        .number-container input[type="number"] {
+            width: 15%;
+            padding: 0.3em;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid var(--grey-med);
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
 /* list container */
 div.list-container {
     display: flex;
@@ -120,7 +167,7 @@ div.list-container {
     /* first title */
     div.list-container div.title:first-child {
         display: flex;
-        padding: 0.5em;
+        padding: 0.7em;
         font-size: 1.8rem;
         border-radius: 10px 10px 0 0;
         background-color: var(--grey-med);
@@ -129,11 +176,22 @@ div.list-container {
         /* every other title */
         div.list-container div.title {
             display: flex;
-            padding: 0.5em;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7em;
             font-size: 1.8rem;
             background-color: var(--grey-med);
             color: var(--white-med);
         }
+        /* every other title pencil */
+        div.list-container div.title > i {
+            padding: 0.3em;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+            div.list-container div.title > i:hover {
+                color: var(--main-med);
+            }
         /* last title */
         div.list-container div.title:last-child {
             display: flex;
@@ -145,9 +203,12 @@ div.list-container {
     /* list item */
     div.list-container div.item {
         display: flex;
+        align-items: center;
         padding: 0.4em;
         font-size: 1.4rem;
         border-bottom: 1px solid var(--grey-light);
+        border-left: 1px solid var(--grey-med);
+        border-right: 1px solid var(--grey-med);
         background-color: var(--white-light);
         overflow: hidden;
     }
@@ -172,10 +233,13 @@ div.list-container {
             }
         /* list trash */
         div.list-container div.item .fa-trash {
-            margin-top: 0.2em;
+            padding: 0.3em;
             color: rgb(225, 129, 129);
             cursor: pointer;
         }
+            div.list-container div.item .fa-trash:hover {
+                color: rgb(199, 75, 75);
+            }
 
 
 @media only screen and (min-width: 700px){
