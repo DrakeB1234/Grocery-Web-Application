@@ -1,0 +1,10 @@
+/* file for root color scheme */
+
+:root {
+    /* main scheme */
+    --main-light: #a6ed98;
+
+    /* grey */
+    --grey-dark: #757678;
+    --grey-med: #969697;
+}

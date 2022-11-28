@@ -1,0 +1,26 @@
+/* globals */
+body {
+    background-color: var(--main-light);
+}
+
+/* nav Container Desktop */
+nav.desktop-container {
+    display: flex; 
+    align-items: center;
+    padding: 1em;
+    background-color: var(--main-light);
+    color: var(--grey-med);
+}
+    /* first child */
+    nav.desktop-container h1:first-child {
+        flex: 2;
+        font-size: 1.5rem;
+    }
+    /* other children */
+    nav.desktop-container h1 {
+        flex: 1;
+    }
+    /* last child */
+    nav.desktop-container h1:last-child {
+        flex: 0;
+    }

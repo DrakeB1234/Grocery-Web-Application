@@ -1,6 +1,4 @@
-from flask import Flask
-from functools import wraps, update_wrapper
-from datetime import datetime
+from flask import Flask, redirect, request, render_template
 
 app = Flask(__name__)
 
@@ -11,7 +9,18 @@ app = Flask(__name__)
 
 """
 
+# login page
 @app.route("/login")
-@login_required
 def login():
-    return "Hello World!"
+    # user posted form
+    if request.method == "POST":
+        return render_template("login.html")
+
+    # user made GET request for page
+    else:
+        return render_template("layout.html")
+
+# home page
+@app.route("/")
+def home():
+    return redirect("/login")
