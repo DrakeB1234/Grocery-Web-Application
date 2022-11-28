@@ -1,26 +1,39 @@
 /* globals */
 body {
-    background-color: var(--main-light);
+    background-color: white;
 }
 
-/* nav Container Desktop */
+/* nav container desktop */
 nav.desktop-container {
-    display: flex; 
-    align-items: center;
     padding: 1em;
     background-color: var(--main-light);
     color: var(--grey-med);
+    font-size: 1.4rem;
 }
-    /* first child */
-    nav.desktop-container h1:first-child {
-        flex: 2;
-        font-size: 1.5rem;
+    /* nav separate container */
+    nav.desktop-container nav.container {
+        display: flex;
+        justify-content: space-around;
     }
-    /* other children */
-    nav.desktop-container h1 {
-        flex: 1;
-    }
-    /* last child */
-    nav.desktop-container h1:last-child {
-        flex: 0;
-    }
+        /* first container first link (title) */
+        nav.desktop-container nav.container:first-child a:first-child {
+            flex: 2;
+            font-size: 1.8rem;
+        }
+            /* first container last link (logout) */
+            nav.desktop-container nav.container:first-child a:last-child {
+                padding: 0.4em 1em 0.4em 1em;
+                border-radius: 20px;
+                background-color: white;
+            }
+
+        /* second container */
+        nav.desktop-container nav.container:last-child {
+            padding-top: 0.5em;
+        }
+            /* second container links */
+            nav.desktop-container nav.container:last-child a {
+                padding: 0.4em 1em 0.4em 1em;
+                border-radius: 20px;
+                background-color: white;
+            }
