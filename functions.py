@@ -1,9 +1,16 @@
-def login_required():
+from flask import Flask, redirect, request, render_template, flash, session
+from functools import wraps
+
+def login_required(f):
     """
-        Ensure that route is only accessible to those
-        that are logged into an account
+    Decorate routes to require login.
+
+    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
     """
-    if session["user_id"] == None:
-        return render_template("login.html")
-    else:
-        return redirect("/")
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            flash("Access Denied")
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function

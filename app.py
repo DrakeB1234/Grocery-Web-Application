@@ -1,7 +1,10 @@
 from flask import Flask, redirect, request, render_template, flash, session
-from flask_mysqldb import MySQL
-from functions import login_required
+from functools import wraps
 import re
+from functions import login_required
+
+from flask_mysqldb import MySQL
+
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -26,7 +29,6 @@ mysql = MySQL(app)
 
 # login page
 @app.route("/login", methods=["POST", "GET"])
-@login_required
 def login():
     # establish database connection
     db = mysql.connection.cursor()
@@ -61,7 +63,6 @@ def login():
                 # if match, redirect to homepage and set session variable 
                 flash("Logged In")
                 session["user_id"] = i["user_id"]
-                flash(session["user_id"])
                 return redirect("/")
         flash("Invalid username/password")
         return render_template("login.html")
@@ -70,7 +71,15 @@ def login():
     else:
         return render_template("login.html")
 
+# logout
+@app.route("/logout", methods=["GET"])
+def logout():
+    session["user_id"] = None
+    flash("Logged Out")
+    return redirect("/")
+
 # home page
 @app.route("/")
+@login_required
 def home():
-    return render_template("layout.html")
+    return render_template("home.html")
