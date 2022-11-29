@@ -18,9 +18,9 @@ def login():
 
     # user made GET request for page
     else:
-        return render_template("layout.html")
+        return render_template("login.html")
 
 # home page
 @app.route("/")
 def home():
-    return redirect("/login")
+    return render_template("layout.html")
