@@ -5,6 +5,36 @@ body, html {
     overflow-x: hidden;
 }
 
+/* message flashing */
+div.flash-container {
+    position: absolute;
+    top: 6em;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    visibility: hidden;
+    animation: hideFlash 5s;
+}
+    /* message text */
+    div.flash-container h1 {
+        width: 100%;
+        margin: 0 6% 0 6%;
+        padding: 1em;
+        font-size: 1.5rem;
+        border-radius: 20px;
+        background-color: var(--transparent);
+        color: var(--white-light);
+        overflow-wrap: break-word;
+    }
+    /* animation for hiding message */
+    @keyframes hideFlash {
+        0% { visibility: visible; }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
 /* nav container desktop */
 nav.desktop-container {
     display: none;

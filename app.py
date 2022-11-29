@@ -1,6 +1,9 @@
-from flask import Flask, redirect, request, render_template
+from flask import Flask, redirect, request, render_template, flash
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///college.db', echo = True)
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 """
     ~~~TODO~~~
@@ -10,10 +13,11 @@ app = Flask(__name__)
 """
 
 # login page
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
     # user posted form
     if request.method == "POST":
+        flash("Successful Login")
         return render_template("login.html")
 
     # user made GET request for page
