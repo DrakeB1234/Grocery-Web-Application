@@ -8,20 +8,20 @@ body, html {
 /* message flashing */
 div.flash-container {
     position: absolute;
-    top: 6em;
+    top: 3em;
     left: 0;
     right: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
     overflow: hidden;
     visibility: hidden;
     animation: hideFlash 5s;
 }
     /* message text */
-    div.flash-container h1 {
-        width: 100%;
-        margin: 0 6% 0 6%;
+    div.flash-container h1.message {
         padding: 1em;
+        margin: 0 6% 0 6%;
         font-size: 1.5rem;
         border-radius: 20px;
         background-color: var(--transparent);

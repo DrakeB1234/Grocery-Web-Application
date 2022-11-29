@@ -9,8 +9,8 @@ main.container {
         display: flex;
         justify-content: center;
         padding: 1em;
-        padding-top: 3em;
-        font-size: 2.2rem;
+        padding-top: 2em;
+        font-size: 3rem;
         color: var(--white-light);
         text-shadow: 2px 2px var(--grey-med);
     }
@@ -19,15 +19,15 @@ main.container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: clamp(2em, 90%, 60em);
+        width: clamp(2em, 90%, 50em);
         margin: 2% auto 0 auto;
-        padding: 3em 1em 3em 1em;
+        padding: 4em 1em 3em 1em;
         border-radius: 20px;
         background-color: var(--white-light);
     }
         /* text */
-        main.container form input[type="text"]{
-            width: clamp(2em, 90%, 30em);
+        main.container form input[type="text"], input[type="password"]{
+            width: clamp(2em, 90%, 15em);
             margin-bottom: 1em;
             padding: 0.2em;
             font-size: 1.5rem;

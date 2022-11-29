@@ -15,7 +15,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def login():
     # user posted form
     if request.method == "POST":
-        flash("Successful Login")
+        flash(request.form.get("userName"))
         return render_template("login.html")
 
     # user made GET request for page
