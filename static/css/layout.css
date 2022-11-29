@@ -1,6 +1,8 @@
 /* globals */
-body {
+body, html {
+    height: calc(100%);
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 /* nav container desktop */
@@ -8,7 +10,7 @@ nav.desktop-container {
     display: none;
     align-items: center;
     padding: 0 5% 0 5%;
-    background-color: var(--main-med);
+    background-color: var(--main-dark);
 }
     /* all links */
     nav.desktop-container a {
@@ -20,10 +22,12 @@ nav.desktop-container {
         nav.desktop-container a:first-child {
             flex: 2;
             font-size: 1.5rem;
+            text-shadow: 2px 2px var(--grey-med);
         }
         /* last link */
         nav.desktop-container a:last-child {
             margin: 0.5em;
+            margin-left: 1%;
             padding: 0.5em 1.5em 0.5em 1.5em;
             border-radius: 20px;
             background-color: var(--white-light);
@@ -42,21 +46,18 @@ nav.mobile-container {
     nav.mobile-container > a:first-child {
         flex: 2;
         padding: 0.5em;
-        font-size: 1.8rem;
+        font-size: 1.4rem;
+        text-shadow: 1px 1px var(--grey-med);
     }
-    /* first icon (menu button) */
-    nav.mobile-container > i {
-        padding: 0.5em;
+    /* toggle button */
+    nav.mobile-container > button {
+        border: 0;
+        background: none;
+        padding: 0.8em;
         font-size: 1.5rem;
         cursor: pointer;
+        color: var(--white-light);
     }
-        /* toggle button */
-        nav.mobile-container > button {
-            border: 0;
-            background: none;
-            font-size: 1.2rem;
-            color: var(--white-light);
-        }
         /* toggle menu */
         nav.mobile-container > button:focus + nav.container {
             right: 0;

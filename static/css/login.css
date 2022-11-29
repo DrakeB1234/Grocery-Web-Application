@@ -1,0 +1,46 @@
+/* main container */
+main.container {
+    height: 100%;
+    padding: 0 2% 0 2%;
+    background-color: var(--main-light);
+}
+    /* header text */
+    main.container h1 {
+        display: flex;
+        justify-content: center;
+        padding: 1em;
+        padding-top: 4em;
+        font-size: 2.2rem;
+        color: var(--white-light);
+        text-shadow: 2px 2px var(--grey-med);
+    }
+    /* form */
+    main.container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: clamp(2em, 90%, 60em);
+        margin: 2% auto 0 auto;
+        padding: 3em 1em 3em 1em;
+        border-radius: 20px;
+        background-color: var(--white-light);
+    }
+        /* text */
+        main.container form input[type="text"]{
+            width: clamp(2em, 90%, 30em);
+            margin-bottom: 1em;
+            padding: 0.2em;
+            font-size: 1.3rem;
+            border: 0;
+            border-bottom: 1px solid var(--white-med);
+        }
+        /* button */
+        main.container form button[type="submit"]{
+            margin-top: 25%;
+            padding: 0.2em 2em 0.2em 2em;
+            font-size: 1.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--white-med);
+            background-color: var(--main-med);
+            color: var(--white-light);
+        }
