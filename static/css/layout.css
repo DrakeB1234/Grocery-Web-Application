@@ -1,39 +1,130 @@
 /* globals */
 body {
-    background-color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* nav container desktop */
 nav.desktop-container {
-    padding: 1em;
-    background-color: var(--main-light);
-    color: var(--grey-med);
-    font-size: 1.4rem;
+    display: none;
+    align-items: center;
+    padding: 0 5% 0 5%;
+    background-color: var(--main-med);
 }
-    /* nav separate container */
-    nav.desktop-container nav.container {
-        display: flex;
-        justify-content: space-around;
+    /* all links */
+    nav.desktop-container a {
+        padding: 1em;
+        font-size: 1.1rem;
+        color: var(--white-light);
     }
-        /* first container first link (title) */
-        nav.desktop-container nav.container:first-child a:first-child {
+        /* first link */
+        nav.desktop-container a:first-child {
             flex: 2;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
-            /* first container last link (logout) */
-            nav.desktop-container nav.container:first-child a:last-child {
-                padding: 0.4em 1em 0.4em 1em;
-                border-radius: 20px;
-                background-color: white;
+        /* last link */
+        nav.desktop-container a:last-child {
+            margin: 0.5em;
+            padding: 0.5em 1.5em 0.5em 1.5em;
+            border-radius: 20px;
+            background-color: var(--white-light);
+            color: var(--main-med);
+        }
+
+/* mobile nav container */
+nav.mobile-container {
+    display: none;
+    align-items: center;
+    padding: 0 2% 0 2%;
+    background-color: var(--main-med);
+    color: var(--white-light);
+}
+    /* first link */
+    nav.mobile-container > a:first-child {
+        flex: 2;
+        padding: 0.5em;
+        font-size: 1.8rem;
+    }
+    /* first icon (menu button) */
+    nav.mobile-container > i {
+        padding: 0.5em;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+        /* toggle button */
+        nav.mobile-container > button {
+            border: 0;
+            background: none;
+            font-size: 1.2rem;
+            color: var(--white-light);
+        }
+        /* toggle menu */
+        nav.mobile-container > button:focus + nav.container {
+            display: flex;
+        }
+    /* link container */
+    nav.mobile-container .container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        background-color: var(--white-light);
+        overflow-y: scroll;
+    }
+        /* each link */
+        nav.mobile-container .container a {
+            display: flex;
+            align-items: center;
+            padding: 1em;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--white-med);
+            color: var(--grey-dark);
+        }
+            /* first link */
+            nav.mobile-container .container a:first-child {
+                display: flex;
+                align-items: center;
+                font-size: 1.5rem;
+                justify-content: center;
+                background-color: var(--grey-dark);
+                color: var(--white-light);
+            }
+                /* first link icon (x) */
+                nav.mobile-container .container a:first-child > i {
+                    margin-left: auto;
+                }
+            /* image */
+            nav.mobile-container .container a img {
+                width: 10%;
+            }          
+            /* text */
+            nav.mobile-container .container a:nth-child(n + 2) > h1 {
+                margin-left: 2.5em;
+            }
+            /* last link (logout button) */
+            nav.mobile-container .container a:last-child {
+                display: flex;
+                justify-content: center;
+                margin: 10% 10% 0 10%;
+                font-size: 1.5rem;
+                border-radius: 30px;
+                background-color: var(--grey-med);
+                color: var(--white-light);
             }
 
-        /* second container */
-        nav.desktop-container nav.container:last-child {
-            padding-top: 0.5em;
-        }
-            /* second container links */
-            nav.desktop-container nav.container:last-child a {
-                padding: 0.4em 1em 0.4em 1em;
-                border-radius: 20px;
-                background-color: white;
-            }
+/* media queries */
+
+/* mobile */
+@media only screen and (max-width:750px) {
+    nav.mobile-container {
+        display: flex;
+    }
+}
+/* tablet to desktop */
+@media only screen and (min-width:750px) {
+    nav.desktop-container {
+        display: flex;
+    }
+}

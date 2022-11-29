@@ -2,9 +2,16 @@
 
 :root {
     /* main scheme */
-    --main-light: #a6ed98;
+    --main-dark: #4b7a42;
+    --main-med: #42b62e;
+    --main-light: #99db8c;
 
     /* grey */
-    --grey-dark: #757678;
-    --grey-med: #969697;
+    --grey-dark: #3c475f;
+    --grey-med: #6c7996;
+    --grey-light: #8792ab;
+
+    /* whites */
+    --white-med: #d3d8df;
+    --white-light: #ffffff;
 }
