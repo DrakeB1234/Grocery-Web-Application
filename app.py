@@ -16,6 +16,7 @@ def login():
     # user posted form
     if request.method == "POST":
         flash(request.form.get("userName"))
+        flash(request.form.get("userPass"))
         return render_template("login.html")
 
     # user made GET request for page
