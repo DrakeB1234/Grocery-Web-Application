@@ -1,6 +1,4 @@
 from flask import Flask, redirect, request, render_template, flash
-from sqlalchemy import create_engine
-engine = create_engine('sqlite:///college.db', echo = True)
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
