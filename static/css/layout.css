@@ -59,18 +59,20 @@ nav.mobile-container {
         }
         /* toggle menu */
         nav.mobile-container > button:focus + nav.container {
-            display: flex;
+            right: 0;
+            transition: all 0.4s ease-in;
         }
     /* link container */
     nav.mobile-container .container {
         position: fixed;
         top: 0;
         bottom: 0;
-        left: 0;
-        right: 0;
-        display: none;
+        right: -100%;
+        width: 100%;
+        display: flex;
         flex-direction: column;
         background-color: var(--white-light);
+        transition: right 0.4s ease-in;
         overflow-y: scroll;
     }
         /* each link */
