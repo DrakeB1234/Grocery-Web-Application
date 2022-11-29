@@ -30,13 +30,13 @@ main.container {
             width: clamp(2em, 90%, 30em);
             margin-bottom: 1em;
             padding: 0.2em;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             border: 0;
             border-bottom: 1px solid var(--white-med);
         }
         /* button */
         main.container form button[type="submit"]{
-            margin-top: 25%;
+            margin-top: 5em;
             padding: 0.2em 2em 0.2em 2em;
             font-size: 1.8rem;
             border-radius: 20px;
