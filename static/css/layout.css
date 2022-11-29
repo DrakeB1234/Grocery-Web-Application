@@ -142,7 +142,7 @@ nav.mobile-container {
             nav.mobile-container .container a:last-child {
                 display: flex;
                 justify-content: center;
-                margin: 10% 10% 0 10%;
+                margin: 10% 20% 0 20%;
                 font-size: 1.5rem;
                 border-radius: 30px;
                 background-color: var(--grey-med);

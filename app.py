@@ -63,7 +63,6 @@ def login():
                 # if match, redirect to homepage and set session variable 
                 flash("Logged In")
                 session["user_id"] = i["user_id"]
-                flash(session["user_id"])
                 return redirect("/")
         flash("Invalid username/password")
         return render_template("login.html")
