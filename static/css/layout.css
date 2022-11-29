@@ -54,7 +54,7 @@ nav.desktop-container {
         nav.desktop-container a:first-child {
             flex: 2;
             font-size: 1.5rem;
-            text-shadow: 2px 2px var(--grey-med);
+            text-shadow: 3px 3px var(--grey-light);
         }
         /* last link */
         nav.desktop-container a:last-child {

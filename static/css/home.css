@@ -1,0 +1,80 @@
+/* main container */
+main.container {
+
+}
+    /* first container */
+    main.container > div.container:first-child {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+        place-items: center;
+        padding: 8% 2% 8% 2%;
+        background-color: var(--main-light);
+    }
+        /* header text */
+        main.container > div.container:first-child > h1{
+            margin-bottom: 1em;
+            font-size: 2.5rem;
+            color: var(--white-light);
+            text-shadow: 3px 3px var(--grey-light);
+        }
+    /* second container */
+    main.container > div.container:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3em 0 3em 0;
+    }
+        /* h1 text */
+        main.container > div.container:last-child > h1 {
+            font-size: 1.4rem;
+            color: var(--main-dark);
+        }
+        /* h2 text */
+        main.container > div.container:last-child > h2 {
+            width: 70%;
+            text-align: center;
+            font-size: 2rem;
+            border-bottom: 1px solid var(--white-med);
+            color: var(--grey-dark);
+        }
+        /* h3 text */
+        main.container > div.container:last-child > h3 {
+            padding-top: 1em;
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--grey-dark);
+        }
+        /* card container */
+        div.card-container {
+            display: grid;
+            flex-direction: column;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr) );
+            gap: 0.5em 0.5em;
+            width: 90%;
+            padding: 1em;
+            margin: 2em 0 2em 0;
+        }
+            /* cards */
+            div.card-container div.card {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                border-radius: 10px;
+                background-color: var(--white-med);
+                color: var(--grey-med);
+            }
+                /* h2 text */
+                div.card-container div.card > h2 {
+                    padding: 0.5em;
+                    padding-top: 1em;
+                    padding-bottom: 1em;
+                    font-size: 1.4rem;
+                }
+                /* h3 text */
+                div.card-container div.card > h3 {
+                    margin-top: 1em;
+                    padding-bottom: 1em;
+                    font-size: 3rem;
+                    overflow-x: scroll;
+                }

@@ -63,6 +63,7 @@ def login():
                 # if match, redirect to homepage and set session variable 
                 flash("Logged In")
                 session["user_id"] = i["user_id"]
+                flash(session["user_id"])
                 return redirect("/")
         flash("Invalid username/password")
         return render_template("login.html")
@@ -85,7 +86,7 @@ def home():
     # establish database connection
     db = mysql.connection.cursor()
     # get user data
-    db.execute('''SELECT * FROM users''')
+    id = session["user_id"]
+    db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
     user = db.fetchall()
-
     return render_template("home.html", user=user[0])

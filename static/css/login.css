@@ -12,7 +12,7 @@ main.container {
         padding-top: 2em;
         font-size: 3rem;
         color: var(--white-light);
-        text-shadow: 2px 2px var(--grey-med);
+        text-shadow: 3px 3px var(--grey-light);
     }
     /* form */
     main.container form {
@@ -29,7 +29,7 @@ main.container {
         main.container form input[type="text"], input[type="password"]{
             width: clamp(2em, 90%, 15em);
             margin-bottom: 1em;
-            padding: 0.2em;
+            padding: 0.3em;
             font-size: 1.5rem;
             border: 0;
             border-bottom: 1px solid var(--white-med);
