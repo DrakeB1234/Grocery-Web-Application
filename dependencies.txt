@@ -1,0 +1,6 @@
+## database connection ##
+mysql-client
+flask-mysqldb
+
+# if errors on metadata, ensure machine has prerequesites
+https://bobbyhadz.com/blog/python-error-metadata-generation-failed-mysqlclient
