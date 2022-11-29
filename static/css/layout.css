@@ -23,6 +23,7 @@ div.flash-container {
     div.flash-container h1.message {
         padding: 1em;
         margin: 0 6% 0 6%;
+        text-align: center;
         font-size: 1.5rem;
         border-radius: 20px;
         background-color: var(--transparent);
@@ -41,7 +42,7 @@ nav.desktop-container {
     display: none;
     align-items: center;
     padding: 0 5% 0 5%;
-    background-color: var(--main-dark);
+    background-color: var(--main-med);
 }
     /* all links */
     nav.desktop-container a {

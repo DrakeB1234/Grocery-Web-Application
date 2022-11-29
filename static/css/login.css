@@ -1,5 +1,6 @@
 /* main container */
 main.container {
+    height: 100%;
     padding: 0 2% 0 2%;
     background-color: var(--main-light);
 }

@@ -27,29 +27,40 @@
             </div>
         {% endif %}
     {% endwith %}
-    <nav class="mobile-container">
-        <a>Grocery Web App</a>
-        <button><i class="fa-solid fa-bars"></i></button>
-        <nav class="container">
-            <a><h1>Hello, Username!</h1><i class="fa-solid fa-xmark"></i></a>
-            <a href="/"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
-            <a href=""><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
-            <a href=""><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
-            <a href=""><img src="../static/images/icons/icon-calendar.svg"><h1>Calendar</h1></a>
-            <a></a>
-            <a href="">Account Settings</a>
+    {% if not session["user_id"] %}
+        <nav class="mobile-container">
+            <a>Grocery Web App</a>
+        </nav>
+        <nav class="desktop-container">
+            <a>Grocery Web App</a>
+            <a>X</a>
+        </nav>
+    {% else %}
+        <nav class="mobile-container">
+            <a>Grocery Web App</a>
+            <button><i class="fa-solid fa-bars"></i></button>
+            <nav class="container">
+                <a><h1>Hello, {% block username %}{% endblock %}!</h1><i class="fa-solid fa-xmark"></i></a>
+                <a href="/"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
+                <a href=""><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
+                <a href=""><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
+                <a href=""><img src="../static/images/icons/icon-calendar.svg"><h1>Calendar</h1></a>
+                <a></a>
+                <a href="">Account Settings</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </nav>
+        <nav class="desktop-container">
+            <a>Grocery Web App</a>
+            <a href="/">Home</a>
+            <a href="">List</a>
+            <a href="">Recipes</a>
+            <a href="">Calendar</a>
+            <a href="">Settings</a>
             <a href="/logout">Logout</a>
         </nav>
-    </nav>
-    <nav class="desktop-container">
-        <a>Grocery Web App</a>
-        <a href="/">Home</a>
-        <a href="">List</a>
-        <a href="">Recipes</a>
-        <a href="">Calendar</a>
-        <a href="">Settings</a>
-        <a href="/logout">Logout</a>
-    </nav>
+    {% endif %}
+
     {% block main %}{% endblock %}
 </body>
 </html>

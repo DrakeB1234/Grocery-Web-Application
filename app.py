@@ -39,10 +39,10 @@ def login():
 
         # check for valid inputs
         if not inputName:
-            flash("Insert A Name")
+            flash("Missing Username")
             return redirect("/login")
         if not inputPass:
-            flash("Insert A Password")
+            flash("Missing Password")
             return redirect("/login")
         if not inputName.isalnum():
             flash("Use Only Letters and Numbers")
@@ -82,4 +82,10 @@ def logout():
 @app.route("/")
 @login_required
 def home():
-    return render_template("home.html")
+    # establish database connection
+    db = mysql.connection.cursor()
+    # get user data
+    db.execute('''SELECT * FROM users''')
+    user = db.fetchall()
+
+    return render_template("home.html", user=user[0])
