@@ -89,3 +89,18 @@ def home():
     db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
     user = db.fetchall()
     return render_template("home.html", user=user[0])
+
+# list page
+@app.route("/list")
+@login_required
+def list():
+    # establish database connection
+    db = mysql.connection.cursor()
+    if request.method == "POST":
+        return render_template("list.html", user=user[0])
+    else:
+        # get user data
+        id = session["user_id"]
+        db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
+        user = db.fetchall()
+        return render_template("list.html", user=user[0])
