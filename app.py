@@ -103,10 +103,12 @@ def list():
             if not title:
                 flash("Provide a List to View")
                 return redirect("/list")
-                
+
             flash(title)
 
-        return redirect("/list")
+            return redirect("/list")
+
+    # method is get, page requested by user
     else:
         # get user data
         id = session["user_id"]
