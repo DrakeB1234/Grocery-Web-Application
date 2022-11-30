@@ -103,4 +103,7 @@ def list():
         id = session["user_id"]
         db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
         user = db.fetchall()
-        return render_template("list.html", user=user[0])
+        # get list data
+        db.execute(f'''SELECT * FROM listTitles WHERE user_id = {id}''')
+        list = db.fetchall()
+        return render_template("list.html", user=user[0], list=list)

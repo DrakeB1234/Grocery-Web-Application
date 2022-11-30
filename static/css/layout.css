@@ -112,7 +112,7 @@ nav.mobile-container {
         nav.mobile-container .container a {
             display: flex;
             align-items: center;
-            padding: 1em;
+            padding: 0.5em;
             font-size: 1.2rem;
             border-bottom: 1px solid var(--white-med);
             color: var(--grey-dark);
@@ -121,6 +121,7 @@ nav.mobile-container {
             nav.mobile-container .container a:first-child {
                 display: flex;
                 align-items: center;
+                padding: 1em 1em 2em 1em;
                 font-size: 1.5rem;
                 justify-content: center;
                 background-color: var(--grey-dark);
@@ -132,11 +133,12 @@ nav.mobile-container {
                 }
             /* image */
             nav.mobile-container .container a img {
-                width: 10%;
+                width: 8%;
+                margin-left: 1em;
             }          
             /* text */
             nav.mobile-container .container a:nth-child(n + 2) > h1 {
-                margin-left: 2.5em;
+                margin-left: 1.5em;
             }
             /* last link (logout button) */
             nav.mobile-container .container a:last-child {
