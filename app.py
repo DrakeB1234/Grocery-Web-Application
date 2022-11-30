@@ -91,13 +91,22 @@ def home():
     return render_template("home.html", user=user[0])
 
 # list page
-@app.route("/list")
+@app.route("/list", methods=["GET", "POST"])
 @login_required
 def list():
     # establish database connection
     db = mysql.connection.cursor()
     if request.method == "POST":
-        return render_template("list.html", user=user[0])
+        # Post from selecting list
+        if "nameTitle" in request.form:
+            title = request.form.get("nameTitle")
+            if not title:
+                flash("Provide a List to View")
+                return redirect("/list")
+                
+            flash(title)
+
+        return redirect("/list")
     else:
         # get user data
         id = session["user_id"]

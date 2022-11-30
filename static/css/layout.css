@@ -24,7 +24,7 @@ div.flash-container {
         padding: 1em;
         margin: 0 6% 0 6%;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         border-radius: 20px;
         background-color: var(--transparent);
         color: var(--white-light);
@@ -117,6 +117,14 @@ nav.mobile-container {
             border-bottom: 1px solid var(--white-med);
             color: var(--grey-dark);
         }
+            /* hover link */
+            nav.mobile-container .container a:hover {
+                background-color: var(--white-med);
+            }
+            /* active link */
+            nav.mobile-container .container a.active {
+                background-color: var(--main-light);
+            }
             /* first link */
             nav.mobile-container .container a:first-child {
                 display: flex;

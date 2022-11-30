@@ -1,6 +1,6 @@
 /* globals */
 body {
-    background-color: var(--white-medli);
+    background-color: var(--white-light);
 }
 
 /* main container */
@@ -19,5 +19,23 @@ body {
             color: var(--white-light);
             text-shadow: 3px 3px var(--grey-light);
         }
-
-
+    /* first container */
+    main.container > div.container:last-child form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        height: 100%;
+        width: clamp(10em, 100%, 50em);
+        margin: 0 auto 0 auto;
+    }
+        /* button */
+        div.container:last-child form button[type="submit"] {
+            width: 100%;
+            padding: 1em;
+            font-size: 1.5rem;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid var(--grey-light);
+            cursor: pointer;
+        }

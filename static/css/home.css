@@ -28,8 +28,9 @@ main.container {
         flex-direction: column;
         width: clamp(10em, 90%, 60em);
         padding: 1em 1em 3em 1em;
-        margin: 0 auto 0 auto;
-        border-radius: 20px 20px 0 0;
+        margin: 1em auto 1em auto;
+        border: 1px solid var(--grey-light);
+        border-radius: 20px;
     }
         /* h1 text */
         div.container:last-child > h1 {
