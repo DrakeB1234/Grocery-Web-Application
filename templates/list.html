@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}List Database{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/list.css" />{% endblock %}
-{% block js %}<script src="../static/js/list.js" defer></script>{% endblock %}
+{% block js %}{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -12,60 +12,37 @@
 {% block main %}
 
     <main class="container">
-        {% if list %}
-        <div class="container">
-            <h1>List Database</h1>
+        <div class="container-header">
+            <h1>Stored Lists</h1>
         </div>
-        {% else %}
-        <div class="container" style="padding: 0;">
-        </div>
-        {% endif %}
         {% if list %}
-            <div class="container-listTitle">
+            <div class="container-list">
             <h1>Your Lists</h1>
             {% for i in list %}
-                <form id="title" method="post" action="/list">
-                    <button name="nameTitle" type="submit" value="{{ i['title'] }}" >{{ i['title'] }}</button>
-                </form>
+                <a id="viewBtn" href="/listview/{{ i['title'] }}" >{{ i['title'] }}</a>
             {% endfor %}
-                <i id="toggleAddTitle">+</i>
-                <form id="formAddTitle" method="post" action="/list">
-                    <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" autofocus />
-                    <button type="submit" autofocus>Add</button>
+            <div class="add-container">
+                <i id="add-toggle" class="fa-solid fa-plus"></i>
+                <form id="add-form" method="POST" action="/list">
+                    <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus />
+                    <button type="submit">Add List</button>
                 </form>
             </div>
+            <!-- temp script for toggle -->
             <script>
-                // temp JS to toggle adding container for titles
-                document.getElementById("formAddTitle").style.display = "none"
-                document.getElementById("toggleAddTitle").addEventListener("click", e => {
-                    container = document.getElementById("formAddTitle")
-                    button = document.getElementById("toggleAddTitle")
-                    if (container.style.display === "none"){
-                        container.style.display = "flex"
-                        button.innerHTML = "x"
+                document.getElementById("add-toggle").addEventListener("click", (e) => {
+                    const form = document.getElementById("add-form");
+                    e = e.explicitOriginalTarget;
+                    if (form.style.display === "flex") {
+                        form.style.display = "none";
+                        e.classList = "fa-solid fa-plus";
                         return
                     }
-                    container.style.display = "none"
-                    button.innerHTML = "+"
+                    form.style.display = "flex";
+                    e.classList = "fa-solid fa-xmark";
                     return
-                });
+                })
             </script>
-        {% endif %}
-        {% if listdata %}
-        <a href="/list">Go back</a>
-           <div id="container-list"></div>
-            <!-- send list data -->
-            <script type="text/javascript">
-                var listdata = {{ listdata|tojson }}
-            </script>
-            </div>
-        {% elif listdata == None %}
-            <div class="container">
-                <a href="/list">Go back</a>
-                <div id="container-list">
-                    <h1>EMPTY LIST</h1>
-                </div>
-            </div>
         {% endif %}
     </main>
 

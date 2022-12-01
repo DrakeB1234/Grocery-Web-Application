@@ -1,145 +1,73 @@
-/* globals */
-body {
-    background-color: var(--white-light);
+/* header container */
+div.container-header {
+    display: flex;
+    justify-content: center;
+    padding: 3em 0 3em 0;
+    background-color: var(--main-light);
 }
-
-/* main container */
-    /* first container */
-    main.container > div.container:first-child {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-        place-items: center;
-        padding: 4em 0 4em 0;
-        background-color: var(--main-light);
+    /* header text */
+    div.container-header > h1 {
+        font-size: 2.5rem;
+        color: var(--white-light);
+        text-shadow: 3px 3px var(--grey-light);
     }
-        /* header text */
-        main.container > div.container:first-child  > h1{
-            font-size: 2.5rem;
-            color: var(--white-light);
-            text-shadow: 3px 3px var(--grey-light);
-        }
-    /* second container */
-    main.container > div.container-listTitle {
-        width: clamp(10em, 100%, 60em);
-        margin: 2em auto 4em auto;
-        padding: 2em 0 2em 0;
-        border: 1px solid var(--white-med);
-        border-radius: 20px;
-        overflow: hidden;
+/* list container */
+div.container-list {
+    display: flex;
+    flex-direction: column;
+    width: clamp(10em, 99%, 60em);
+    margin: 1em auto 1em auto;
+    padding: 1em 0 2em 0;
+    border: 1px solid var(--grey-light);
+    border-radius: 20px;
+}
+    /* list contaner text */
+    div.container-list h1 {
+        font-size: 1.5rem;
+        padding: 0.5em;
+        color: var(--main-med);
     }
-    /* forms */
-    main.container > div.container-listTitle form#title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1em;
-        height: 100%;
-    }   
-        /* header text */
-        main.container > div.container-listTitle > h1 {
-            margin: 0 0 1em 1em;
-            font-size: 1.5rem;
-            color: var(--main-med);
-        }
-        /* button */
-        div.container-listTitle > form#title > button[type="submit"] {
-            width: 100%;
-            padding: 1em;
-            font-size: 1.5rem;
-            background: none;
-            border: 0;
-            border-bottom: 1px solid var(--grey-light);
-            color: var(--grey-dark);
-            cursor: pointer;
-        }
-    /* add button */
-    div.container-listTitle > i#toggleAddTitle {
-        display: flex;
-        justify-content: center;
-        margin-top: 0.5em;
-        font-size: 4rem;
+    /* list container links a tags */
+    div.container-list a {
+        font-size: 1.3rem;
+        padding: 1em;
+        color: var(--grey-dark);
+        border-bottom: 1px solid var(--white-med);
+    }
+/* add container */
+div.add-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    /* add icon */
+    div.add-container > i.fa-solid {
+        width: 100%;
+        padding: 0.5em;
+        text-align: center;
+        font-size: 2rem;
         color: var(--main-med);
         cursor: pointer;
     }
-
-        /* add form */
-        form#formAddTitle {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2em;
-            margin-top: 2em;
-        }
-            /* input text */
-            form#formAddTitle > input[type="text"] {
-                width: 60%;
-                padding: 0.4em;
-                font-size: 1.2rem;
-            }
-            /* input submit */
-            form#formAddTitle > button[type="submit"] {
-                padding: 0.5em 2em 0.5em 2em;
-                font-size: 1.2rem;
-                border-radius: 20px;
-                border: 0;
-                background-color: var(--main-med);
-                color: var(--white-light);
-            }
-/* list data */
-div#container-list {
-    width: clamp(10em, 100%, 60em);
-    margin: 2em auto 4em auto;
-    padding: 2em 0 2em 0;
-    border: 1px solid var(--white-med);
-    border-radius: 20px;
-    overflow: hidden;
-}
-    /* list title */
-    div#container-list div.list-item > h1 {
-        margin-top: 1em;
-        padding: 0 0 0.2em 0.5em;
-        font-size: 2rem;
-        border-bottom: 1px solid var(--grey-light);
-        color: var(--main-med);
-    }
-        /* first title */
-        div#container-list div.list-item:first-child > h1 {
-            margin-top: 0;
-        }
-    /* list items */
-    div#container-list div.list-item div.item {
-        display: flex;
+    /* form */
+    div.add-container > form {
+        display: none;
+        flex-direction: column;
         align-items: center;
-        font-size: 1.2rem;
-        background-color: var(--white-medli);
-        border-bottom: 1px solid var(--white-med);
+        gap: 2em;
     }
-        /* amount */
-        div#container-list div.list-item div.item > h2{
-            flex: 0;
-            margin-left: 0.5em;
-            margin-right: 0.5em;
-            color: var(--main-med);
+        /* input text */
+        div.add-container > form > input[type="text"] {
+            width: 60%;
+            font-size: 1.3rem;
+            padding: 0.4em;
         }
-        /* item */
-        div#container-list div.list-item div.item > h3{
-            flex: 2;
-            padding: 0.5em;
-            overflow: hidden;
-            overflow-wrap: break-word;
-        }
-        /* trash icon */
-        div#container-list div.list-item div.item > i.fa-trash-can {
-            margin: 0;
-            padding: 0.5em;
-            font-size: 1.4rem;
+        /* button */
+        div.add-container > form > button[type="submit"] {
+            font-size: 1.3rem;
+            padding: 0.5em 1em 0.5em 1em;
+            background: none;
+            border: 1px solid var(--white-med);
+            border-radius: 10px;
             color: var(--main-med);
-        }
-        /* note */
-        div#container-list div.list-item > h4{
-            margin: 0.4em 1em 0.4em 1em;
-            padding: 0.5em;
-            color: var(--main-med);
-            overflow: hidden;
-            overflow-wrap: break-word;
         }

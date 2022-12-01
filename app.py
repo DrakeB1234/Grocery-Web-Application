@@ -118,33 +118,7 @@ def list():
 
             return redirect("/list")
 
-        # form for selecting list
-        if "nameTitle" in request.form:
-            title = request.form.get("nameTitle")
-            if not title:
-                flash("Provide a List to View")
-                return redirect("/list")
-            
-            if not re.match("^[A-Za-z ]*$",title):
-                flash("Only use letters for list title")
-                return redirect("/list")
-
-            # get all list items from selected list
-            listdata = db.execute(f"""
-                SELECT ld.id, title, category, item, note, amount
-                FROM listData as ld
-                JOIN listTitles as lt ON ld.title_id = lt.id
-                JOIN listCategories as lc ON ld.category_id = lc.id 
-                WHERE lt.user_id = {id} AND 
-                lt.title = '{title}'
-                ORDER BY category;
-            """)
-            listdata = db.fetchall()
-            # check if any results
-            if not listdata:
-                listdata = None
-
-        return render_template("list.html", user=user[0], listdata=listdata)
+        return redirect("/list")
 
     # method is get, page requested by user
     else:
@@ -152,3 +126,30 @@ def list():
         list = db.execute(f'SELECT title FROM listTitles WHERE user_id = {id}')
         list = db.fetchall()
         return render_template("list.html", user=user[0], list=list)
+
+# view list
+@app.route("/listview/<listTitle>", methods=["GET"])
+@login_required
+def list_view(listTitle):
+    # establish database connection
+    db = mysql.connection.cursor()
+    # get user data
+    id = session["user_id"]
+    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
+    user = db.fetchall()
+    # get all list items from selected list
+    listdata = db.execute(f"""
+        SELECT ld.id, title, category, item, note, amount
+        FROM listData as ld
+        JOIN listTitles as lt ON ld.title_id = lt.id
+        JOIN listCategories as lc ON ld.category_id = lc.id 
+        WHERE lt.user_id = {id} AND 
+        lt.title = '{listTitle}'
+        ORDER BY category DESC;
+    """)
+    listdata = db.fetchall()
+    # check if any results
+    if not listdata:
+        listdata = None
+        
+    return render_template("listdata.html", user=user[0], listdata=listdata)

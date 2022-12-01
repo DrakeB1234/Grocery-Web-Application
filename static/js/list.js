@@ -3,6 +3,7 @@
     let html = "";
     // get first category in list
     let pastCat = "";
+    console.log(listdata)
     listdata.forEach(e => {
         let curCat = e["category"];
         // if cur cat is different than past
@@ -12,10 +13,10 @@
         }
 
         // print each item in format
-        html += `<div class='item'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3><i class="fa-solid fa-trash-can"></i>`;
+        html += `<div class='item'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3><a href="/list/delete/${e["id"]}"<i class="fa-solid fa-trash-can"></i></a>`;
         // if there is a note, print h4 tag with it
         if (e["note"] != "") {
-            html += `</div><h4>Note: ${e["note"]}</h4>`;
+            html += `</div><h4>^ Note: ${e["note"]}</h4>`;
         }
         else {
             html += `</div>`;
