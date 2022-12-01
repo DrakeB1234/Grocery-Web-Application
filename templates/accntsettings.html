@@ -32,6 +32,14 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
+        <div class="section-col">
+            <h1>Change Password</h1>
+            <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
+                <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
 
     </main>

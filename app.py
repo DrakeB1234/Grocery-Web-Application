@@ -2,6 +2,7 @@ import os
 from flask import Flask, redirect, request, render_template, flash, session
 from functools import wraps
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from functions import login_required, allowed_file
 
@@ -65,9 +66,9 @@ def login():
         # fetch all users
         db.execute('''SELECT * FROM users''')
         rows = db.fetchall()
-        # check to see if name and pass match
+        # Check to see if name and hashed password match
         for i in rows:
-            if i["username"] == inputName and i["hash"] == inputPass:
+            if i["username"] == inputName and check_password_hash(i["hash"], inputPass):
                 # if match, redirect to homepage and set session variable 
                 flash("Logged In")
                 session["user_id"] = i["user_id"]
@@ -163,6 +164,33 @@ def accntsettings():
 
             # flash success message
             flash("Successfully changed username")
+
+        # information posted is for changing password
+        if "userPass" in request.form:
+            userPass = request.form.get("userPass")
+            userPassConfirm = request.form.get("userPassConfirm")
+
+            # Check for valid input
+            if not userPass:
+                flash("Provide a password")
+                return redirect("/accntsettings")
+            if not userPass:
+                flash("Provide a password")
+                return redirect("/accntsettings")
+            if not re.match("^[A-Za-z0-9$%#@!]*$", userPass):
+                flash("Only use Letters, Numbers and ($, %, #, @, !)")
+                return redirect("/accntsettings")
+            if userPass != userPassConfirm:
+                flash("Must have matching passwords")
+                return redirect("/accntsettings")
+
+            # Hash password
+            userPass = generate_password_hash(userPass)
+            # Commit change in database
+            db.execute(f"UPDATE users SET hash = '{userPass}' WHERE user_id = {id}")
+            mysql.connection.commit()
+
+            return redirect("/accntsettings")
 
         return redirect("/accntsettings")
     

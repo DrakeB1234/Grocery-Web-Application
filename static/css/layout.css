@@ -161,6 +161,7 @@ nav.mobile-container {
                 display: flex;
                 justify-content: center;
                 margin: 10% 20% 0 20%;
+                padding: 0.5em 2em 0.5em 2em;
                 font-size: 1.5rem;
                 border-radius: 30px;
                 background-color: var(--grey-med);

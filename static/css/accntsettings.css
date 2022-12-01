@@ -13,6 +13,7 @@ main.container {
         display: flex;
         flex-direction: column;
         gap: 0.5em;
+        margin-top: 1em;
         border-top: 1px solid var(--white-med);
         border-bottom: 1px solid var(--white-med);
     }
@@ -69,6 +70,11 @@ main.container {
         }
         /* text type */
         div.section-col > form > input[type="text"] {
+            font-size: 1.3rem;
+            padding: 0.4em;
+        }
+        /* password type */
+        div.section-col > form > input[type="password"] {
             font-size: 1.3rem;
             padding: 0.4em;
         }
