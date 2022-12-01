@@ -112,7 +112,8 @@ def list():
                 flash("Only use letters and spaces")
                 return redirect("/list")
             
-            db.execute(f'INSERT INTO listTitles (user_id, title) VALUES ({id}, "{title}")')
+            db.execute(f'INSERT INTO listTitles (user_id, title) VALUES ({id}, "{title}");')
+            mysql.connection.commit()
             flash(f"Added '{title}' to lists!")
 
             return redirect("/list")
@@ -138,6 +139,9 @@ def list():
                 lt.title = '{title}';
             """)
             listdata = db.fetchall()
+            # check if any results
+            if not listdata:
+                listdata = None
 
         return render_template("list.html", user=user[0], listdata=listdata)
 
