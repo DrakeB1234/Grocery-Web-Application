@@ -12,11 +12,25 @@
 {% block main %}
 
     <main class="container">
+        {% if list %}
         <div class="container">
             <h1>List Database</h1>
         </div>
+        {% else %}
+        <div class="container" style="padding: 0;">
+        </div>
+        {% endif %}
         {% if list %}
+            <div class="container-controls">
+                <i class="fa-solid fa-plus"></i>
+                <form method="post" action="/list">
+                    <h1>Add a new List</h1>
+                    <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z]*$" title="Only use letters" autocomplete="off" autofocus />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
             <div class="container">
+            <h1>Your Lists</h1>
             {% for i in list %}
                 <form method="post" action="/list">
                     <button name="nameTitle" type="submit" value="{{ i['title'] }}" >{{ i['title'] }}</button>

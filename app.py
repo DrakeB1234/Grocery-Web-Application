@@ -101,6 +101,10 @@ def list():
     db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
     user = db.fetchall()
     if request.method == "POST":
+        # Post from adding list
+        if "listTitle" in request.form:
+            flash(request.form.get("listTitle"))
+            return redirect("/list")
         # Post from selecting list
         if "nameTitle" in request.form:
             title = request.form.get("nameTitle")
@@ -122,7 +126,6 @@ def list():
                 lt.title = '{title}';
             """)
             listdata = db.fetchall()
-            flash(listdata)
 
         return render_template("list.html", user=user[0], listdata=listdata)
 
