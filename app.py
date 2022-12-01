@@ -96,6 +96,10 @@ def home():
 def list():
     # establish database connection
     db = mysql.connection.cursor()
+    # get user data
+    id = session["user_id"]
+    db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
+    user = db.fetchall()
     if request.method == "POST":
         # Post from selecting list
         if "nameTitle" in request.form:
@@ -103,18 +107,28 @@ def list():
             if not title:
                 flash("Provide a List to View")
                 return redirect("/list")
+            
+            if not re.match("^[A-Za-z ]*$",title):
+                flash("Only use letters for list title")
+                return redirect("/list")
 
-            flash(title)
+            # get all list items from selected list
+            listdata = db.execute(f"""
+                SELECT ld.id, title, category, item, note, amount
+                FROM listData as ld
+                JOIN listTitles as lt ON ld.title_id = lt.id
+                JOIN listCategories as lc ON ld.category_id = lc.id 
+                WHERE lt.user_id = {id} AND 
+                lt.title = '{title}';
+            """)
+            listdata = db.fetchall()
+            flash(listdata)
 
-            return redirect("/list")
+        return render_template("list.html", user=user[0], listdata=listdata)
 
     # method is get, page requested by user
     else:
-        # get user data
-        id = session["user_id"]
-        db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
-        user = db.fetchall()
         # get list data
-        db.execute(f'''SELECT * FROM listTitles WHERE user_id = {id}''')
+        list = db.execute(f"SELECT title FROM listTitles WHERE user_id = {id}")
         list = db.fetchall()
         return render_template("list.html", user=user[0], list=list)

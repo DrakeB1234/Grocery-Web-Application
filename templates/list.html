@@ -15,13 +15,27 @@
         <div class="container">
             <h1>List Database</h1>
         </div>
+        {% if list %}
+            <div class="container">
+            {% for i in list %}
+                <form method="post" action="/list">
+                    <button name="nameTitle" type="submit" value="{{ i['title'] }}" >{{ i['title'] }}</button>
+                </form>
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% if listdata %}
         <div class="container">
-        {% for i in list %}
-            <form method="post" action="/list">
-                <button name="nameTitle" type="submit" value="{{ i['name'] }}" autofocus >{{ i['name'] }}</button>
-            </form>
-        {% endfor %}
-        </div>
+            {% for i in listdata %}
+            <hr>
+                <h1>Category: {{ i["category"] }}</h1>
+                <h1>Item: {{ i["item"] }}</h1>
+                <h1>Note: {{ i["note"] }}</h1>
+                <h1>Amount: {{ i["amount"] }}</h1>
+            <hr>
+            {% endfor %}
+            </div>
+        {% endif %}
     </main>
 
 {% endblock %}
