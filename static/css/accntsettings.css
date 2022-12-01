@@ -67,3 +67,8 @@ main.container {
             font-size: 1.3rem;
             margin: 0 auto 0 auto;
         }
+        /* text type */
+        div.section-col > form > input[type="text"] {
+            font-size: 1.3rem;
+            padding: 0.4em;
+        }

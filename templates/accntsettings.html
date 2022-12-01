@@ -19,16 +19,20 @@
             <h2>Password:  ************* </h2>
         </div>
         <div class="section-col">
-            <h1>Change Username</h1>
-            <h2>Username: {{ user["username"] }}</h2>
-        </div>
-        <div class="section-col">
             <h1>Change Avatar</h1>
             <form action="/accntsettings" method="post" enctype="multipart/form-data">
                 <input type="file" name="avatarFile">
                 <button type="submit">Submit</button>
             </form>
         </div>
+        <div class="section-col">
+            <h1>Change Username</h1>
+            <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                <input name="userName" type="text" placeholder="New Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
 
     </main>
 

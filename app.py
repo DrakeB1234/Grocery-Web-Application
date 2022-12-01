@@ -139,7 +139,30 @@ def accntsettings():
 
         # information posted is for changing username
         if "userName" in request.form:
-            flash("Changing Username")
+            inputName = request.form.get("userName")
+
+            # check for valid inputs
+            if not inputName:
+                flash("Missing Username")
+                return redirect("/accntsettings")
+            if not inputName.isalnum():
+                flash("Use Only Letters and Numbers")
+                return redirect("/accntsettings")
+
+            # Ensure input username is unique
+            db.execute(f'SELECT username FROM users')
+            usernames = db.fetchall()
+            for i in usernames:
+                if (i["username"] == inputName):
+                    flash("Username Taken")
+                    return redirect("/accntsettings")
+
+            # Commit change in database
+            db.execute(f"UPDATE users SET username = '{inputName}' WHERE user_id = {id}")
+            mysql.connection.commit()
+
+            # flash success message
+            flash("Successfully changed username")
 
         return redirect("/accntsettings")
     
