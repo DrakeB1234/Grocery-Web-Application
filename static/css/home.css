@@ -26,7 +26,7 @@ main.container {
     main.container > div.container:last-child {
         display: flex;
         flex-direction: column;
-        width: clamp(10em, 90%, 60em);
+        width: clamp(10em, 90%, 50em);
         padding: 1em 1em 3em 1em;
         margin: 1em auto 1em auto;
         border: 1px solid var(--grey-light);

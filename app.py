@@ -1,9 +1,14 @@
 from flask import Flask, redirect, request, render_template, flash, session
 from functools import wraps
+from werkzeug.utils import secure_filename
 import re
 from functions import login_required
 
 from flask_mysqldb import MySQL
+
+# UPLOAD path for profile pics
+UPLOAD_FOLDER = '/static/images/avatars'
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 
 app = Flask(__name__)
@@ -89,6 +94,18 @@ def home():
     user = db.fetchall()
     return render_template("home.html", user=user[0])
 
+# account settings page
+@app.route("/accntsettings")
+@login_required
+def accntsettings():
+    # establish database connection
+    db = mysql.connection.cursor()
+    # get user data
+    id = session["user_id"]
+    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
+    user = db.fetchall()
+    return render_template("accntsettings.html", user=user[0])
+
 # list page
 @app.route("/list", methods=["GET", "POST"])
 @login_required
@@ -123,9 +140,38 @@ def list():
     # method is get, page requested by user
     else:
         # get list data
-        list = db.execute(f'SELECT title FROM listTitles WHERE user_id = {id}')
+        list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id}')
         list = db.fetchall()
         return render_template("list.html", user=user[0], list=list)
+
+# list page
+@app.route("/list/<listID>/<listTitle>", methods=["GET"])
+@login_required
+def list_delete(listID, listTitle):
+    # establish database connection
+    db = mysql.connection.cursor()
+    # get user data
+    id = session["user_id"]
+
+    if not listID or not listTitle:
+        flash("Provide a Title")
+        return redirect("/list")
+    
+    if not re.match("^[A-Za-z ]*$",listTitle):
+        flash("Only use letters and spaces")
+        return redirect("/list")
+    
+    if not listID.isnumeric():
+        flash("Only use numbers")
+        return redirect("/list")
+
+    # Executing sql query
+    db.execute(f'DELETE FROM listTitles WHERE id = {listID} AND user_id = {id} AND title = "{listTitle}";')
+    mysql.connection.commit()
+
+    # flash message of success
+    flash(f"Deleted '{listTitle}' List")
+    return redirect("/list")
 
 # view list
 @app.route("/listview/<listTitle>", methods=["GET"])
