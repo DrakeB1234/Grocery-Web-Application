@@ -1,0 +1,39 @@
+/* main container */
+main.container {
+    display: flex;
+    flex-direction: column;
+    width: clamp(10em, 99%, 50em);
+    margin: 1em auto 1em auto;
+    padding: 1em 0 2em 0;
+    border: 1px solid var(--grey-light);
+    border-radius: 20px;
+}
+    /* section col */
+    main.container > div.section-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        border-top: 1px solid var(--white-med);
+        border-bottom: 1px solid var(--white-med);
+    }
+        /* first section h1 header tags */
+        main.container > div.section-col:first-child > h1 {
+            padding: 1em;
+            text-align: center;
+            font-size: 1.7rem;
+            background-color: var(--main-light);
+            color: var(--grey-dark);
+        }
+                /* rest of section h1 header tags */
+                main.container > div.section-col > h1 {
+                    padding: 0.7em;
+                    text-align: center;
+                    font-size: 1.6rem;
+                    background-color: var(--main-light);
+                    color: var(--grey-dark);
+                }
+        /* section h2 tags */
+        main.container > div.section-col > h2 {
+            padding: 1em;
+            font-size: 1.3rem;
+        }
