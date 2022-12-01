@@ -65,5 +65,5 @@ main.container {
         /* file type */
         div.section-col > form > input[type="file"] {
             font-size: 1.3rem;
-            text-align: center;
+            margin: 0 auto 0 auto;
         }
