@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}List Database{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/list.css" />{% endblock %}
-{% block js %}{% endblock %}
+{% block js %}<script src="../static/js/list.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -52,22 +52,18 @@
             </script>
         {% endif %}
         {% if listdata %}
-            <div class="container">
-            <a href="/list">Go back</a>
-            {% for i in listdata %}
-            <hr>
-                <h1>Category: {{ i["category"] }}</h1>
-                <h1>Item: {{ i["item"] }}</h1>
-                <h1>Note: {{ i["note"] }}</h1>
-                <h1>Amount: {{ i["amount"] }}</h1>
-            <hr>
-            {% endfor %}
+        <a href="/list">Go back</a>
+           <div id="list-data"></div>
+            <!-- send list data -->
+            <script type="text/javascript">
+                var listdata = {{ listdata|tojson }}
+            </script>
             </div>
         {% elif listdata == None %}
-        <div class="container">
-            <a href="/list">Go back</a>
-            <h1>EMPTY LIST</h1>
-        </div>
+            <div class="container">
+                <a href="/list">Go back</a>
+                <h1>EMPTY LIST</h1>
+            </div>
         {% endif %}
     </main>
 

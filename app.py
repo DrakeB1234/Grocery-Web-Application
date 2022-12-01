@@ -136,7 +136,8 @@ def list():
                 JOIN listTitles as lt ON ld.title_id = lt.id
                 JOIN listCategories as lc ON ld.category_id = lc.id 
                 WHERE lt.user_id = {id} AND 
-                lt.title = '{title}';
+                lt.title = '{title}'
+                ORDER BY category;
             """)
             listdata = db.fetchall()
             # check if any results
