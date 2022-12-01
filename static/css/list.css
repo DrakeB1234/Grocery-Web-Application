@@ -86,7 +86,7 @@ body {
                 color: var(--white-light);
             }
 /* list data */
-div.container-list {
+div#container-list {
     width: clamp(10em, 100%, 60em);
     margin: 2em auto 4em auto;
     padding: 2em 0 2em 0;
@@ -95,13 +95,13 @@ div.container-list {
     overflow: hidden;
 }
     /* list title */
-    div.container-list div.list-item > h1 {
+    div#container-list div.list-item > h1 {
         padding: 0 0 0.2em 1em;
         font-size: 2rem;
         border-bottom: 1px solid var(--grey-light);
     }
     /* list items */
-    div.container-list div.list-item div.item {
+    div#container-list div.list-item div.item {
         display: flex;
         justify-content: space-around;
         margin-top: 1em;
