@@ -151,5 +151,5 @@ def list_view(listTitle):
     # check if any results
     if not listdata:
         listdata = None
-        
+
     return render_template("listdata.html", user=user[0], listdata=listdata)

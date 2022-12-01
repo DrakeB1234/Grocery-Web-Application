@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}List Database{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/listview.css" />{% endblock %}
-{% block js %}<script src="../static/js/listview.js" defer></script>{% endblock %}
+{% block js %}<script src="../static/js/list.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -21,11 +21,9 @@
             </script>
             </div>
         {% elif listdata == None %}
-            <div class="container">
-                <a href="/list">Go back</a>
-                <div id="container-list">
-                    <h1>EMPTY LIST</h1>
-                </div>
+            <a href="/list"><i class="fa-solid fa-chevron-left"></i></a>
+            <div id="container-list">
+                <h1 style="text-align: center;font-size: 2rem;">EMPTY LIST</h1>
             </div>
         {% endif %}
     </main>

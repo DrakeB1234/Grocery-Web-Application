@@ -13,7 +13,7 @@
         }
 
         // print each item in format
-        html += `<div class='item'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3><a href="/list/delete/${e["id"]}"<i class="fa-solid fa-trash-can"></i></a>`;
+        html += `<div class='item'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3><a href="/list/delete/${e["id"]}"><i class="fa-solid fa-trash-can"></i></a>`;
         // if there is a note, print h4 tag with it
         if (e["note"] != "") {
             html += `</div><h4>^ Note: ${e["note"]}</h4>`;

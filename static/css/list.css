@@ -29,8 +29,9 @@ div.container-list {
     }
     /* list container links a tags */
     div.container-list a {
-        font-size: 1.3rem;
         padding: 1em;
+        font-size: 1.3rem;
+        text-align: center;
         color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
     }
