@@ -24,16 +24,38 @@ main.container {
             background-color: var(--main-light);
             color: var(--grey-dark);
         }
-                /* rest of section h1 header tags */
-                main.container > div.section-col > h1 {
-                    padding: 0.7em;
-                    text-align: center;
-                    font-size: 1.6rem;
-                    background-color: var(--main-light);
-                    color: var(--grey-dark);
-                }
+            /* rest of section h1 header tags */
+            main.container > div.section-col > h1 {
+                padding: 0.7em;
+                text-align: center;
+                font-size: 1.6rem;
+                background-color: var(--main-light);
+                color: var(--grey-dark);
+            }
         /* section h2 tags */
         main.container > div.section-col > h2 {
             padding: 1em;
             font-size: 1.3rem;
+        }
+    /* form */
+    div.section-col > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1em;
+    }
+        /* submit button */
+        div.section-col > form > button[type="submit"] {
+            margin: 2em 0 1em 0;
+            padding: 0.2em 2em 0.2em 2em;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--white-med);
+            background-color: var(--main-light);
+            color: var(--grey-dark);
+        }
+        /* file type */
+        div.section-col > form > input[type="file"] {
+            font-size: 1.3rem;
+            text-align: center;
         }

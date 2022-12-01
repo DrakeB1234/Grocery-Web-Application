@@ -1,18 +1,22 @@
+import os
 from flask import Flask, redirect, request, render_template, flash, session
 from functools import wraps
 from werkzeug.utils import secure_filename
 import re
-from functions import login_required
+from functions import login_required, allowed_file
 
 from flask_mysqldb import MySQL
 
 # UPLOAD path for profile pics
-UPLOAD_FOLDER = '/static/images/avatars'
+UPLOAD_FOLDER = 'static/images/avatars'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+# upload file path
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # database conn
 app.config['MYSQL_USER'] = 'root'
@@ -95,7 +99,7 @@ def home():
     return render_template("home.html", user=user[0])
 
 # account settings page
-@app.route("/accntsettings")
+@app.route("/accntsettings", methods=["GET", "POST"])
 @login_required
 def accntsettings():
     # establish database connection
@@ -104,7 +108,37 @@ def accntsettings():
     id = session["user_id"]
     db.execute(f'SELECT * FROM users WHERE user_id = {id}')
     user = db.fetchall()
-    return render_template("accntsettings.html", user=user[0])
+
+    if request.method == "POST":
+        # information posted is for changing avatar pic
+        if 'avatarFile' in request.files:
+            file = request.files['avatarFile']
+            username = user[0]["username"]
+            file.filename = f"{username}Avatar.jpg"
+
+            # if user does not select file, browser also
+            # submit a empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                return redirect("/accntsettings")
+            # allowed file checks for allowed extensions
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            # if file is successful, flash message then redirect
+            flash("Avatar Uploaded")
+            return redirect("/accntsettings")
+
+        # information posted is for changing username
+        if "userName" in request.form:
+            flash("Changing Username")
+
+        return redirect("/accntsettings")
+    
+    # page is being requested
+    else:
+        return render_template("accntsettings.html", user=user[0])
 
 # list page
 @app.route("/list", methods=["GET", "POST"])

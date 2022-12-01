@@ -1,5 +1,8 @@
 from flask import Flask, redirect, request, render_template, flash, session
 from functools import wraps
+from werkzeug.utils import secure_filename
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 def login_required(f):
     """
@@ -13,3 +16,7 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

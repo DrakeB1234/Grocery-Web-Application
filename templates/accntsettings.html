@@ -23,7 +23,10 @@
         </div>
         <div class="section-col">
             <h1>Change Avatar</h1>
-            <h2>Username: {{ user["username"] }}</h2>
+            <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                <input type="file" name="avatarFile">
+                <button type="submit">Submit</button>
+            </form>
         </div>
 
     </main>
