@@ -21,25 +21,35 @@
         </div>
         {% endif %}
         {% if list %}
-            <div class="container-controls">
-                <i class="fa-solid fa-plus"></i>
-                <form method="post" action="/list">
-                    <h1>Add a new List</h1>
-                    <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z]*$" title="Only use letters" autocomplete="off" autofocus />
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-            <div class="container">
+            <div class="container-listTitle">
             <h1>Your Lists</h1>
             {% for i in list %}
-                <form method="post" action="/list">
+                <form id="title" method="post" action="/list">
                     <button name="nameTitle" type="submit" value="{{ i['title'] }}" >{{ i['title'] }}</button>
                 </form>
             {% endfor %}
+                <i id="toggleAddTitle" class="fa-solid fa-plus"></i>
+                <form id="formAddTitle" method="post" action="/list">
+                    <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" autofocus />
+                    <button type="submit" autofocus>Add</button>
+                </form>
             </div>
+            <script>
+                // temp JS to toggle adding container for titles
+                document.getElementById("formAddTitle").style.display = "none"
+                document.getElementById("toggleAddTitle").addEventListener("click", e => {
+                    container = document.getElementById("formAddTitle")
+                    if (container.style.display === "none"){
+                        container.style.display = "flex"
+                        return
+                    }
+                    container.style.display = "none"
+                    return
+                });
+            </script>
         {% endif %}
         {% if listdata %}
-        <div class="container">
+            <div class="container">
             <a href="/list">Go back</a>
             {% for i in listdata %}
             <hr>
