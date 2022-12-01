@@ -9,7 +9,7 @@ from flask_mysqldb import MySQL
 
 # UPLOAD path for profile pics
 UPLOAD_FOLDER = 'static/images/avatars'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'svg'])
 
 
 app = Flask(__name__)
@@ -114,19 +114,26 @@ def accntsettings():
         if 'avatarFile' in request.files:
             file = request.files['avatarFile']
             username = user[0]["username"]
-            file.filename = f"{username}Avatar.jpg"
 
             # if user does not select file, browser also
             # submit a empty part without filename
             if file.filename == '':
                 flash('No selected file')
                 return redirect("/accntsettings")
+
+            # format naming of filename
+            file.filename = f"{username}Avatar.jpg"
+            
             # allowed file checks for allowed extensions
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-            # if file is successful, flash message then redirect
+            pathVar = UPLOAD_FOLDER + "/" + file.filename
+            # if file is successful, change file path in user
+            db.execute(f"UPDATE users SET avatar_path = '{pathVar}' WHERE user_id = {id}")
+            mysql.connection.commit()
+            # flash message then redirect
             flash("Avatar Uploaded")
             return redirect("/accntsettings")
 

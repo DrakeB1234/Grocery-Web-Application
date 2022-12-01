@@ -40,7 +40,10 @@
             <a href="/">Grocery Web App</a>
             <button><i class="fa-solid fa-bars"></i></button>
             <nav class="container">
-                <a><h1>Hello, {% block username %}{% endblock %}!</h1><i class="fa-solid fa-xmark"></i></a>
+                <a>
+                    <img src="{{ user['avatar_path'] }}">
+                    <h1>Hello, {% block username %}{% endblock %}!</h1><i class="fa-solid fa-xmark"></i>
+                </a>
                 <a></a>
                 <a href="/"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
                 <a href="/list"><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>

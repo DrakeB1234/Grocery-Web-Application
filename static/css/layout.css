@@ -77,10 +77,19 @@ nav.mobile-container {
     /* first link */
     nav.mobile-container > a:first-child {
         flex: 2;
+        display: flex;
+        justify-content: start;
         padding: 0.5em;
         font-size: 1.4rem;
         text-shadow: 1px 1px var(--grey-med);
     }
+        /* first link image (avatar) */
+        nav.mobile-container > a:first-child > img {
+            height: 100px;
+            width: 100px;
+            border: 1px solid var(--grey-dark);
+            border-radius: 50%;
+        }
     /* toggle button */
     nav.mobile-container > button {
         border: 0;

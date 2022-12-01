@@ -24,6 +24,14 @@ main.container {
             background-color: var(--main-light);
             color: var(--grey-dark);
         }
+            /* avatar image styling */
+            main.container > div.section-col:first-child > img {
+                height: 200px;
+                width: 200px;
+                margin: 1em auto 1em auto;
+                border: 1px solid var(--grey-dark);
+                border-radius: 50%;
+            }
             /* rest of section h1 header tags */
             main.container > div.section-col > h1 {
                 padding: 0.7em;
