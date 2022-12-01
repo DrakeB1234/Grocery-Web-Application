@@ -53,14 +53,15 @@ body {
             cursor: pointer;
         }
     /* add button */
-    div.container-listTitle > i.fa-plus {
+    div.container-listTitle > i#toggleAddTitle {
         display: flex;
         justify-content: center;
-        margin-top: 1em;
-        font-size: 2rem;
+        margin-top: 0.5em;
+        font-size: 4rem;
         color: var(--main-med);
         cursor: pointer;
     }
+
         /* add form */
         form#formAddTitle {
             display: flex;

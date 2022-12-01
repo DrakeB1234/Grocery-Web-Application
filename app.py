@@ -23,7 +23,6 @@ mysql = MySQL(app)
 """
     ~~~TODO~~~
     disable cache
-    connect AWS database
 
 """
 
@@ -86,7 +85,7 @@ def home():
     db = mysql.connection.cursor()
     # get user data
     id = session["user_id"]
-    db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
+    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
     user = db.fetchall()
     return render_template("home.html", user=user[0])
 
@@ -98,14 +97,27 @@ def list():
     db = mysql.connection.cursor()
     # get user data
     id = session["user_id"]
-    db.execute(f'''SELECT * FROM users WHERE user_id = {id}''')
+    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
     user = db.fetchall()
+
     if request.method == "POST":
-        # Post from adding list
+        # form for adding list
         if "listTitle" in request.form:
-            flash(request.form.get("listTitle"))
+            title = request.form.get("listTitle")
+            if not title:
+                flash("Provide a Title")
+                return redirect("/list")
+            
+            if not re.match("^[A-Za-z ]*$",title):
+                flash("Only use letters and spaces")
+                return redirect("/list")
+            
+            db.execute(f'INSERT INTO listTitles (user_id, title) VALUES ({id}, "{title}")')
+            flash(f"Added '{title}' to lists!")
+
             return redirect("/list")
-        # Post from selecting list
+
+        # form for selecting list
         if "nameTitle" in request.form:
             title = request.form.get("nameTitle")
             if not title:
@@ -132,6 +144,6 @@ def list():
     # method is get, page requested by user
     else:
         # get list data
-        list = db.execute(f"SELECT title FROM listTitles WHERE user_id = {id}")
+        list = db.execute(f'SELECT title FROM listTitles WHERE user_id = {id}')
         list = db.fetchall()
         return render_template("list.html", user=user[0], list=list)

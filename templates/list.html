@@ -28,7 +28,7 @@
                     <button name="nameTitle" type="submit" value="{{ i['title'] }}" >{{ i['title'] }}</button>
                 </form>
             {% endfor %}
-                <i id="toggleAddTitle" class="fa-solid fa-plus"></i>
+                <i id="toggleAddTitle">+</i>
                 <form id="formAddTitle" method="post" action="/list">
                     <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" autofocus />
                     <button type="submit" autofocus>Add</button>
@@ -39,11 +39,14 @@
                 document.getElementById("formAddTitle").style.display = "none"
                 document.getElementById("toggleAddTitle").addEventListener("click", e => {
                     container = document.getElementById("formAddTitle")
+                    button = document.getElementById("toggleAddTitle")
                     if (container.style.display === "none"){
                         container.style.display = "flex"
+                        button.innerHTML = "x"
                         return
                     }
                     container.style.display = "none"
+                    button.innerHTML = "+"
                     return
                 });
             </script>
