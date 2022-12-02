@@ -1,3 +1,8 @@
+/* body */
+body {
+    background-color: var(--white-medli);
+}
+
 /* return button */
 main.container > a[href="/list"] {
     display: flex;
@@ -11,10 +16,11 @@ div#container-list {
     display: flex;
     flex-direction: column;
     width: clamp(10em, 99%, 50em);
-    margin: 1em auto 1em auto;
-    padding: 1em 0 2em 0;
+    margin: 1em auto 3em auto;
+    padding: 1em 0 3em 0;
     border: 1px solid var(--grey-light);
     border-radius: 20px;
+    background-color: var(--white-light);
 }
     /* list container */
     div.list-item {
@@ -23,16 +29,21 @@ div#container-list {
     }
         /* text in item */
         div.list-item h1 {
-            margin-top: 0.5em;
             padding: 0.8em;
             font-size: 1.5rem;
             color: var(--main-med);
+            border-top: 1px solid var(--grey-med);
             border-bottom: 1px solid var(--grey-med);
         }
+            /* text in first item */
+            div.list-item:first-child > h1 {
+                border-top: 0;
+            }
         /* list item */
         div.item {
             display: flex;
             align-items: center;
+            margin: 0 0.2em 0 0.2em;
             background-color: var(--white-medli);
             border-bottom: 1px solid var(--white-med);
             font-size: 1.3rem;
@@ -56,9 +67,10 @@ div#container-list {
             }
             /* note */
             div.list-item h4 {
+                margin: 0 0.3em 0.5em 0.3em;
                 padding: 0.4em;
                 border-bottom: 1px solid var(--white-med);
-                background-color: var(--white-med);
+                background-color: var(--white-medli);
                 color: var(--main-med);
                 overflow: hidden;
                 overflow-wrap: break-word;
