@@ -17,6 +17,11 @@ main.container {
         border-top: 1px solid var(--white-med);
         border-bottom: 1px solid var(--white-med);
     }
+        /* h2 tags centered */
+        main.container > div.section-col > h2 {
+            align-self: center;
+            font-size: 1.2rem;
+        }
         /* first section h1 header tags */
         main.container > div.section-col:first-child > h1 {
             padding: 1em;

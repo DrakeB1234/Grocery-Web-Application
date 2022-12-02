@@ -27,5 +27,16 @@
             </div>
         {% endif %}
     </main>
+    <div class="container-adder">
+        <i id="addToggle" class="fa-solid fa-circle-plus"></i>
+            <form id="addForm" action="/listview/add" method="post">
+                <h1>Add Item</h1>
+                <input name="dataItem" type="text" placeholder="Item" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus />
+                <input name="dataNote" type="text" placeholder="Note" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus />
+                <input name="dataAmount" type="text" placeholder="Amount" pattern="^[0-9]*$" title="Only use numbers" autocomplete="off" autofocus />
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}

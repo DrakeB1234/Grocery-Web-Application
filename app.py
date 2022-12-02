@@ -290,4 +290,4 @@ def list_view(listTitle):
     if not listdata:
         listdata = None
 
-    return render_template("listdata.html", user=user[0], listdata=listdata)
+    return render_template("listview.html", user=user[0], listdata=listdata)

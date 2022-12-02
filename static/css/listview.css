@@ -75,3 +75,50 @@ div#container-list {
                 overflow: hidden;
                 overflow-wrap: break-word;
             }
+    /* adder container */
+    div.container-adder {
+        display: flex;
+        justify-content: center;
+    }
+    div.container-adder > i {
+        position: fixed;
+        bottom: 0.5em;
+        padding: 0.5em;
+        font-size: 3rem;
+        color: var(--main-med);
+        cursor: pointer;
+    }
+        /* hover icon */
+        div.container-adder > i:hover {
+            color: var(--main-light);
+        }
+    /* form container */
+    div.container-adder > form#addForm {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+        background-color: var(--grey-med);
+        overflow-y: scroll;
+    }
+        /* form h1 tags */
+        div.container-adder > form#addForm > h1 {
+            font-size: 2rem;
+            color: var(--white-light);
+        }
+        /* form input text */
+        div.container-adder > form#addForm > input[type="text"] {
+            font-size: 1.2rem;
+            padding: 0.4em;
+        }
+        /* form button submit */
+        div.container-adder > form#addForm > button[type="submit"] {
+            font-size: 1.2rem;
+            margin-top: 2em;
+            padding: 0.7em;
+            background: var(--main-light);
+            border: 0;
+            border-radius: 10px;
+        }
