@@ -32,12 +32,18 @@
         <div id="container-add-form">
             <form id="addForm" action="/listview/add" method="post">
                 <h1>Add New Item</h1>
+                <select name="dataCategory" required>
+                    <option hidden selected value="">Select Category</option>
+                    {% for i in listcat %}
+                        <option value="{{ i['category'] }}">{{ i["category"] }}</option>
+                    {% endfor %}
+                </select>
                 <h2>Item Name</h2>
-                <input name="dataItem" type="text" placeholder="Item" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus />
+                <input name="dataItem" type="text" placeholder="Item" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus required />
                 <h2>Item Note (optional)</h2>
                 <input name="dataNote" type="text" placeholder="Note" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus />
                 <h2>Item Amount</h2>
-                <input name="dataAmount" type="text" placeholder="Amount" pattern="^[0-9]*$" title="Only use numbers" autocomplete="off" autofocus />
+                <input name="dataAmount" type="number" placeholder="Amount" value="1" pattern="^[0-9]*$" title="Only use numbers" autocomplete="off" autofocus required />
                 <button type="submit">Add</button>
             </form>
         </div>

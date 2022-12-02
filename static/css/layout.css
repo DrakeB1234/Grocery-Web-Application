@@ -137,8 +137,8 @@ nav.mobile-container {
             }
                 /* first link image (avatar) */
                 nav.mobile-container > nav.container > a > img#avatar {
-                    height: 80px;
-                    width: 80px;
+                    height: 50px;
+                    width: 50px;
                     margin-right: 0.5em;
                     border: 1px solid var(--grey-dark);
                     border-radius: 50%;

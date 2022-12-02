@@ -286,8 +286,11 @@ def list_view(listTitle):
         ORDER BY category DESC;
     """)
     listdata = db.fetchall()
+    # get all categories
+    listcat = db.execute(f'SELECT category FROM listCategories WHERE user_id = {id}')
+    listcat = db.fetchall()
     # check if any results
     if not listdata:
         listdata = None
 
-    return render_template("listview.html", user=user[0], listdata=listdata)
+    return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat)
