@@ -84,41 +84,72 @@ div#container-list {
         position: fixed;
         bottom: 0.5em;
         padding: 0.5em;
+        z-index: 2;
         font-size: 3rem;
         color: var(--main-med);
         cursor: pointer;
+        rotate: 0;
+        transition: rotate 0.5s;
     }
         /* hover icon */
         div.container-adder > i:hover {
             color: var(--main-light);
         }
+        /* icon active */
+        div.container-adder > i.active {
+            rotate: 45deg;
+            color: var(--main-light);
+            transition: all 0.5s;
+        }
     /* form container */
-    div.container-adder > form#addForm {
+    div.container-adder > div#container-add-form {
+        display: none;
         position: fixed;
         inset: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        padding: 1em;
         background-color: var(--grey-med);
         overflow-y: scroll;
     }
+    /* form */
+    div#container-add-form > form#addForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        width: clamp(10em, 90%, 50em);
+        margin: 1em auto 1em auto;
+    }
         /* form h1 tags */
-        div.container-adder > form#addForm > h1 {
+        div#container-add-form > form#addForm > h1 {
+            text-align: center;
+            margin-bottom: 1em;
             font-size: 2rem;
+            color: var(--white-light);
+            text-shadow: 2px 2px var(--grey-light);
+        }
+        /* form h2 tags */
+        div#container-add-form > form#addForm > h2 {
+            align-self: start;
+            font-size: 1rem;
             color: var(--white-light);
         }
         /* form input text */
-        div.container-adder > form#addForm > input[type="text"] {
+        div#container-add-form > form#addForm > input[type="text"] {
+            width: 90%;
+            padding: 0.5em;
             font-size: 1.2rem;
-            padding: 0.4em;
+            border-radius: 10px;
+            border: 0;
+            background-color: var(--grey-light);
+            color: var(--white-light);
         }
         /* form button submit */
-        div.container-adder > form#addForm > button[type="submit"] {
-            font-size: 1.2rem;
+        div#container-add-form > form#addForm > button[type="submit"] {
+            width: 100%;
             margin-top: 2em;
-            padding: 0.7em;
+            padding: 0.5em;
+            font-size: 1.5rem;
             background: var(--main-light);
+            color: var(--grey-dark);
             border: 0;
             border-radius: 10px;
         }

@@ -27,3 +27,17 @@
     // post data to document
     document.getElementById("container-list").innerHTML = html;
 })();
+
+// event listener for adder cotainer toggle
+document.getElementById("addToggle").addEventListener("click", (e) => {
+    const contain = document.getElementById("container-add-form");
+    const toggle = document.getElementById("addToggle");
+    if (contain.style.display === "block"){
+        contain.style.display = "none";
+        toggle.classList.remove("active");
+        return;
+    };
+    contain.style.display = "block";
+    toggle.classList.add("active")
+    return;
+});
