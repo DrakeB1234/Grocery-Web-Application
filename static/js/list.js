@@ -3,7 +3,6 @@
     let html = "";
     // get first category in list
     let pastCat = "";
-    console.log(listdata)
     listdata.forEach(e => {
         let curCat = e["category"];
         // if cur cat is different than past
