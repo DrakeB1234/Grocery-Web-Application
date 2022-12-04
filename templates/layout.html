@@ -27,15 +27,7 @@
             </div>
         {% endif %}
     {% endwith %}
-    {% if not session["user_id"] %}
-        <nav class="mobile-container">
-            <a>Grocery Web App</a>
-        </nav>
-        <nav class="desktop-container">
-            <a>Grocery Web App</a>
-            <a>X</a>
-        </nav>
-    {% else %}
+    {% if session["user_id"] %}
         <nav class="mobile-container">
             <a href="/">Grocery Web App</a>
             <button><i class="fa-solid fa-bars"></i></button>

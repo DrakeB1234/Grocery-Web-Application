@@ -1,46 +1,53 @@
 /* main container */
 main.container {
-    height: 100%;
-    padding: 0 2% 0 2%;
     background-color: var(--main-light);
 }
-    /* header text */
-    main.container h1 {
-        display: flex;
-        justify-content: center;
-        padding: 1em;
-        padding-top: 2em;
-        font-size: 3rem;
-        color: var(--white-light);
-        text-shadow: 3px 3px var(--grey-light);
-    }
-    /* form */
-    main.container form {
+    /* login container */
+    div.container-login {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: clamp(2em, 90%, 50em);
-        margin: 2% auto 0 auto;
-        padding: 4em 1em 3em 1em;
-        border-radius: 20px;
+        min-height: 100vh;
+        width: clamp(2em, 100%, 60em);
+        margin: 0 0 0 auto;
         background-color: var(--white-light);
     }
-        /* text */
-        main.container form input[type="text"], input[type="password"]{
-            width: clamp(2em, 90%, 15em);
-            margin-bottom: 1em;
-            padding: 0.3em;
-            font-size: 1.5rem;
-            border: 0;
-            border-bottom: 1px solid var(--white-med);
+        /* header text */
+        div.container-login h1 {
+            margin-top: 1em;
+            font-size: 2.5rem;
+            color: var(--grey-med);
         }
-        /* button */
-        main.container form button[type="submit"]{
-            margin-top: 5em;
-            padding: 0.2em 2em 0.2em 2em;
-            font-size: 1.8rem;
-            border-radius: 20px;
-            border: 1px solid var(--white-med);
-            background-color: var(--main-med);
-            color: var(--white-light);
+            div.container-login h2 {
+                margin-top: 2em;
+                font-size: 1.5rem;
+                color: var(--grey-light);
+            }
+        /* form */
+        main.container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2em;
+            margin-top: 3em;
         }
+            /* text */
+            main.container form input[type="text"], input[type="password"]{
+                padding: 0.8em;
+                font-size: 1.3rem;
+                border-radius: 10px;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-medli);
+            }
+            /* button */
+            main.container form button[type="submit"]{
+                width: 100%;
+                margin-top: 1em;
+                padding: 0.5em 0 0.5em 0;
+                border: 0;
+                border-radius: 10px;
+                font-size: 1.5rem;
+                background-color: var(--main-med);
+                color: var(--white-light);
+                cursor: pointer;
+            }
