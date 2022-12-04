@@ -17,5 +17,5 @@
     --white-light: #ffffff;
 
     /* transparent */
-    --transparent: rgba(0, 0, 0, 0.5);
+    --flash-msg: rgba(235, 201, 50, 0.9);
 }

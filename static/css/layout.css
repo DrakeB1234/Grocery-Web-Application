@@ -8,26 +8,26 @@ body, html {
 /* message flashing */
 div.flash-container {
     position: absolute;
-    top: 3em;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 99;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1em;
     overflow: hidden;
     visibility: hidden;
-    animation: hideFlash 5s;
+    animation: hideFlash 4s;
 }
     /* message text */
     div.flash-container h1.message {
+        width: clamp(2em, 100%, 60em);
+        margin-left: 0.5em;
         padding: 1em;
-        margin: 0 6% 0 6%;
-        text-align: center;
         font-size: 1.2rem;
-        border-radius: 20px;
-        background-color: var(--transparent);
-        color: var(--white-light);
+        background-color: var(--flash-msg);
+        color: var(--grey-dark);
         overflow-wrap: break-word;
     }
     /* animation for hiding message */
