@@ -28,7 +28,14 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
-
+# function for getting user data
+def user_info(id):
+    # establish database connection
+    db = mysql.connection.cursor()
+    # get user data
+    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
+    session["user"] = db.fetchall()
+    session["user_id"] = id
 
 """
     ~~~TODO~~~
@@ -36,11 +43,13 @@ mysql = MySQL(app)
 
 """
 
+
 # login page
 @app.route("/login", methods=["POST", "GET"])
 def login():
     # establish database connection
     db = mysql.connection.cursor()
+
     # user posted form
     if request.method == "POST":
         inputName = request.form.get("userName")
@@ -64,14 +73,14 @@ def login():
             return redirect("/login")
         
         # fetch all users
-        db.execute('''SELECT * FROM users''')
+        db.execute('SELECT * FROM users')
         rows = db.fetchall()
         # Check to see if name and hashed password match
         for i in rows:
             if i["username"] == inputName and check_password_hash(i["hash"], inputPass):
                 # if match, redirect to homepage and set session variable 
                 flash("Logged In", "Success")
-                session["user_id"] = i["user_id"]
+                user_info(i["user_id"])
                 return redirect("/")
         flash("Invalid username/password", "User-Error")
         return render_template("login.html")
@@ -91,12 +100,8 @@ def logout():
 @app.route("/")
 @login_required
 def home():
-    # establish database connection
-    db = mysql.connection.cursor()
-    # get user data
-    id = session["user_id"]
-    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
-    user = db.fetchall()
+    # get user details
+    user = session.get("user")
     return render_template("home.html", user=user[0])
 
 # account settings page
@@ -105,10 +110,9 @@ def home():
 def accntsettings():
     # establish database connection
     db = mysql.connection.cursor()
-    # get user data
-    id = session["user_id"]
-    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
-    user = db.fetchall()
+    # get user details
+    user = session.get("user")
+    id = session.get("user_id")
 
     if request.method == "POST":
         # information posted is for changing avatar pic
@@ -204,10 +208,9 @@ def accntsettings():
 def list():
     # establish database connection
     db = mysql.connection.cursor()
-    # get user data
+    # get user details
+    user = session.get("user")
     id = session["user_id"]
-    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
-    user = db.fetchall()
 
     if request.method == "POST":
         # form for adding list
@@ -242,7 +245,6 @@ def list():
 def list_delete(listID, listTitle):
     # establish database connection
     db = mysql.connection.cursor()
-    # get user data
     id = session["user_id"]
 
     if not listID or not listTitle:
@@ -271,10 +273,10 @@ def list_delete(listID, listTitle):
 def list_view(listTitle):
     # establish database connection
     db = mysql.connection.cursor()
-    # get user data
+    # get user details
+    user = session.get("user")
     id = session["user_id"]
-    db.execute(f'SELECT * FROM users WHERE user_id = {id}')
-    user = db.fetchall()
+
     # get all list items from selected list
     listdata = db.execute(f"""
         SELECT ld.id, title, category, item, note, amount
