@@ -1,6 +1,6 @@
 /* globals */
 body {
-    background-color: var(--white-light);
+    background-color: var(--white-medli);
 }
 
     /* first container */
@@ -28,7 +28,7 @@ body {
         flex-direction: column;
         gap: 1em;
         min-height: 65vh;
-        width: clamp(10em, 94%, 55em);
+        width: clamp(10em, 94%, 75em);
         margin: 0 auto 0 auto;
         padding: 3%;
         background-color: var(--white-medli);
@@ -39,75 +39,50 @@ body {
             font-size: 1.5rem;
             color: var(--grey-dark);
         }
-            /* container meal */
-            div.container-stats div.container-meal {
-                display: flex;
-                border-radius: 10px;
-                background-color: var(--white-light);
+        /* container data */
+        div.container-stats div.container-data {
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            border-radius: 10px;
+            box-shadow: 0 0 1em var(--white-med);
+            background-color: var(--white-light);
+        }
+            /* header text */
+            div.container-stats div.container-data > h1 {
+                margin-bottom: 1em;
+                font-size: 1.2rem;
+                color: var(--grey-dark);
             }
-                /* each container */
-                div.container-stats div.container-meal > div {
+            /* container data card */
+            div.container-stats div.container-data div.container-data-card {
+                display: flex;
+                margin-bottom: 2em;
+                border-bottom: 1px solid var(--white-med);
+            }
+                /* each card */
+                div.container-stats div.container-data div.container-data-card > div {
+                    flex: 1;
                     display: flex;
                     flex-direction: column;
+                    gap: 2em;
                     align-items: center;
-                    gap: 0.5em;
-                    flex: 1;
-                    padding: 2em;
+                    padding: 2em 0 2em 0;
                 }
-                /* each text */
-                div.container-stats div.container-meal div h1 {
-                    font-size: 1.2rem;
-                    color: var(--grey-dark);
-                    overflow: hidden;
-                    overflow-wrap: break-word;
-                }
-                    /* date container */
-                    div.container-stats div.container-meal div:first-child {
-                        border-right: 1px solid var(--white-medli);
+                    /* first card */
+                    div.container-stats div.container-data div.container-data-card > div:first-child {
+                        border-right: 1px solid var(--white-med);
                     }
-            /* container data */
-            div.container-stats div.container-data {
-                display: flex;
-                flex-direction: column;
-                padding: 1em;
-                border-radius: 10px;
-                background-color: var(--white-light);
-            }
-                /* header text */
-                div.container-stats div.container-data > h1 {
-                    margin-bottom: 1em;
-                    font-size: 1.2rem;
-                    color: var(--grey-dark);
-                }
-                /* container data card */
-                div.container-stats div.container-data div.container-data-card {
-                    display: flex;
-                    margin-bottom: 2em;
-                    border-bottom: 1px solid var(--white-medli);
-                }
-                    /* each card */
-                    div.container-stats div.container-data div.container-data-card > div {
-                        flex: 1;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 2em;
-                        align-items: center;
-                        padding: 2em 0 2em 0;
+                    /* card h1 text */
+                    div.container-stats div.container-data div.container-data-card > div > h1 {
+                        font-size: 1.2rem;
+                        color: var(--grey-light);
                     }
-                        /* first card */
-                        div.container-stats div.container-data div.container-data-card > div:first-child {
-                            border-right: 1px solid var(--white-medli);
+                        /* card h2 text */
+                        div.container-stats div.container-data div.container-data-card > div > h2 {
+                            font-size: 1.5rem;
+                            color: var(--grey-dark);
                         }
-                        /* card h1 text */
-                        div.container-stats div.container-data div.container-data-card > div > h1 {
-                            font-size: 1.2rem;
-                            color: var(--grey-light);
-                        }
-                            /* card h2 text */
-                            div.container-stats div.container-data div.container-data-card > div > h2 {
-                                font-size: 1.5rem;
-                                color: var(--grey-dark);
-                            }
 /* media queries */
 
 /* mobile */
