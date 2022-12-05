@@ -104,6 +104,11 @@ nav.mobile-container {
             right: 0;
             transition: all 0.3s ease-in-out;
         }
+        /* safari toggle */
+        nav.mobile-container > button:active + nav.container {
+            right: 0;
+            transition: all 0.3s ease-in-out;
+        }
     /* link container */
     nav.mobile-container .container {
         position: fixed;

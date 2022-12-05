@@ -92,6 +92,10 @@ main.container > button.section > div.section-dropdown {
     main.container > button.section:focus-within > div.section-dropdown {
         display: flex;
     }
+        /* dropdown toggle safari */
+        main.container > button.section:active > div.section-dropdown {
+            display: flex;
+        }
     /* back button */
     div.section-dropdown > a {
         display: flex;

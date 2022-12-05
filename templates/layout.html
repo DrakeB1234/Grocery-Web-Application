@@ -30,7 +30,7 @@
     {% if session["user_id"] %}
         <nav class="mobile-container">
             <a href="/"></a>
-            <button><i class="fa-solid fa-bars"></i></button>
+            <button tabindex="-1"><i class="fa-solid fa-bars"></i></button>
             <nav class="container">
                 <a>
                     <img id="avatar" src="../{{ user['avatar_path'] }}">
