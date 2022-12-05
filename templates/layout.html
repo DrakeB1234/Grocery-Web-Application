@@ -36,13 +36,11 @@
                     <img id="avatar" src="../{{ user['avatar_path'] }}">
                     <h1>Hello, {% block username %}{% endblock %}!</h1><i class="fa-solid fa-xmark"></i>
                 </a>
-                <a></a>
                 <a href="/"><img id="icon" src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
                 <a href="/list"><img id="icon" src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
                 <a href=""><img id="icon" src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
                 <a href=""><img id="icon" src="../static/images/icons/icon-calendar.svg"><h1>Calendar</h1></a>
-                <a></a>
-                <a href="/accntsettings">Account Settings</a>
+                <a href="/accntsettings" class="mobile-link-settings">Account Settings</a>
                 <a href="/logout">Logout</a>
             </nav>
         </nav>

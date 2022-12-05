@@ -3,10 +3,6 @@ body {
     background-color: var(--white-medli);
 }
 
-/* main container */
-main.container {
-
-}
     /* first container */
     main.container > div.container:first-child {
         display: grid;
@@ -22,70 +18,3 @@ main.container {
             color: var(--white-light);
             text-shadow: 3px 3px var(--grey-light);
         }
-    /* second container */
-    main.container > div.container:last-child {
-        display: flex;
-        flex-direction: column;
-        width: clamp(10em, 90%, 50em);
-        padding: 1em 1em 3em 1em;
-        margin: 1em auto 1em auto;
-        border: 1px solid var(--grey-light);
-        border-radius: 20px;
-    }
-        /* h1 text */
-        div.container:last-child > h1 {
-            margin-top: 1em;
-            font-size: 1.5rem;
-            color: var(--main-med);
-        }
-        /* card */
-        div.card-container {
-            display: flex;
-            align-items: center;
-            margin: 1em 0 1em 0;
-            border-radius: 20px;
-            background-color: var(--white-light);
-            overflow: hidden;
-        }
-            /* vertical */
-            div.card-container div.card-vertical {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 1.2em;
-                border-radius: 20px 0 0 20px;
-                color: var(--white-light);
-                background-color: var(--grey-light);
-            }
-            /* h3 */
-            div.card-container h3 {
-                margin-left: 0.5em;
-                overflow: hidden;
-                overflow-wrap: break-word;
-            }
-        /* second cards (statistics */
-        div.card-stats {
-            display: flex;
-            flex-direction: column;
-            padding: 1em;
-            margin: 1em 0 1em 0;
-            border-radius: 20px;
-            font-size: 1.2rem;
-            color: var(--grey-dark);
-            background-color: var(--white-light);
-        }
-            /* card */
-            div.card-stats .card {
-                display: flex;
-                justify-content: space-between;
-                padding-top: 1em;
-            }
-            /* h1 */
-            div.card-stats h1 {
-                font-size: 1.5rem;
-                color: var(--grey-med);
-                border-bottom: 1px solid var(--white-med);
-                text-align: center;
-            }
-
-
