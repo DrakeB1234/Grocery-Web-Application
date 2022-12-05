@@ -71,13 +71,13 @@ nav.mobile-container {
     display: none;
     align-items: center;
     padding: 0 2% 0 2%;
-    background-color: var(--main-med);
+    background-color: var(--main-light);
     color: var(--white-light);
 }
     /* first link */
     nav.mobile-container > a:first-child {
         flex: 2;
-        padding: 0.5em;
+        padding: 0.2em;
         font-size: 1.4rem;
         text-shadow: 1px 1px var(--grey-med);
     }
@@ -85,7 +85,7 @@ nav.mobile-container {
     nav.mobile-container > button {
         border: 0;
         background: none;
-        padding: 0.8em;
+        padding: 0.5em;
         font-size: 1.5rem;
         cursor: pointer;
         color: var(--white-light);
@@ -129,7 +129,7 @@ nav.mobile-container {
             nav.mobile-container .container a:first-child {
                 display: flex;
                 align-items: center;
-                padding: 1em 1em 1em 1em;
+                padding: 0.7em;
                 font-size: 1.5rem;
                 justify-content: center;
                 background-color: var(--grey-dark);
@@ -137,8 +137,8 @@ nav.mobile-container {
             }
                 /* first link image (avatar) */
                 nav.mobile-container > nav.container > a > img#avatar {
-                    height: 50px;
-                    width: 50px;
+                    height: 80px;
+                    width: 80px;
                     margin-right: 0.5em;
                     border: 1px solid var(--grey-dark);
                     border-radius: 50%;

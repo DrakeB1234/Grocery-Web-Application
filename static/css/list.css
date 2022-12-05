@@ -2,7 +2,7 @@
 div.container-header {
     display: flex;
     justify-content: center;
-    padding: 3em 0 3em 0;
+    padding: 2em 0 3em 0;
     background-color: var(--main-light);
 }
     /* header text */

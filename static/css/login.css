@@ -11,7 +11,6 @@ main.container {
         width: clamp(2em, 100%, 55em);
         margin: 0 0 0 auto;
         background-color: var(--white-light);
-        z-index: 2;
     }
         /* header text */
         div.container-login h1 {
@@ -32,7 +31,6 @@ main.container {
             gap: 2em;
             width: clamp(5em, 80%, 25em);
             margin: 4em auto 0 auto;
-            z-index: 2;
         }
             /* text */
             main.container form input[type="text"], input[type="password"]{
