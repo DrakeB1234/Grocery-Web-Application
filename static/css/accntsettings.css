@@ -1,85 +1,71 @@
+/* globals */
+body {
+    background-color: var(--white-medli);
+}
+
 /* main container */
 main.container {
     display: flex;
     flex-direction: column;
-    width: clamp(10em, 99%, 50em);
+    width: clamp(10em, 94%, 50em);
     margin: 1em auto 1em auto;
     padding: 1em 0 2em 0;
-    border: 1px solid var(--grey-light);
     border-radius: 20px;
+    box-shadow: 0 0 1em var(--white-med);
+    background-color: var(--white-light);
 }
-    /* section col */
-    main.container > div.section-col {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
-        margin-top: 1em;
-        border-top: 1px solid var(--white-med);
-        border-bottom: 1px solid var(--white-med);
+    /* back arrow */
+    main.container > a {
+        padding: 0.5em 0 0.5em 1em;
+        font-size: 1.4rem;
+        color: var(--grey-dark);
     }
-        /* h2 tags centered */
-        main.container > div.section-col > h2 {
-            align-self: center;
-            font-size: 1.2rem;
-        }
-        /* first section h1 header tags */
-        main.container > div.section-col:first-child > h1 {
-            padding: 1em;
-            text-align: center;
-            font-size: 1.7rem;
-            background-color: var(--main-light);
-            color: var(--grey-dark);
-        }
-            /* avatar image styling */
-            main.container > div.section-col:first-child > img {
-                height: 200px;
-                width: 200px;
-                margin: 1em auto 1em auto;
-                border: 1px solid var(--grey-dark);
-                border-radius: 50%;
-            }
-            /* rest of section h1 header tags */
-            main.container > div.section-col > h1 {
-                padding: 0.7em;
-                text-align: center;
-                font-size: 1.6rem;
-                background-color: var(--main-light);
-                color: var(--grey-dark);
-            }
-        /* section h2 tags */
-        main.container > div.section-col > h2 {
-            padding: 1em;
-            font-size: 1.3rem;
-        }
-    /* form */
-    div.section-col > form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1em;
+/* header */
+main.container > div.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2em;
+    border-bottom: 1px solid var(--white-med);
+}
+    /* img avatar */
+    main.container > div.header > img {
+        height: 150px;
+        width: 150px;
+        margin: 1em 0 1em 0;
+        border-radius: 50%;
+        border: 1px solid var(--white-med);
     }
-        /* submit button */
-        div.section-col > form > button[type="submit"] {
-            margin: 2em 0 1em 0;
-            padding: 0.2em 2em 0.2em 2em;
-            font-size: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--white-med);
-            background-color: var(--main-light);
-            color: var(--grey-dark);
-        }
-        /* file type */
-        div.section-col > form > input[type="file"] {
-            font-size: 1.3rem;
-            margin: 0 auto 0 auto;
-        }
-        /* text type */
-        div.section-col > form > input[type="text"] {
-            font-size: 1.3rem;
-            padding: 0.4em;
-        }
-        /* password type */
-        div.section-col > form > input[type="password"] {
-            font-size: 1.3rem;
-            padding: 0.4em;
-        }
+    /* h1 text */
+    main.container > div.header > h1 {
+        font-size: 1.2rem;
+        color: var(--grey-dark);
+    }
+/* section */
+main.container > div.section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5em 0 1.5em 0;
+    border-bottom: 1px solid var(--white-med);
+    color: var(--grey-med);
+    cursor: pointer;
+}
+    /* hover div */
+    main.container > div.section:hover {
+        background-color: var(--white-medli);
+    }
+    /* first icon */
+    main.container > div.section > i:first-child {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+    /* h1 text */
+    main.container > div.section > h1 {
+        flex: 2;
+        font-size: 1.2rem;
+    }
+    /* last icon */
+    main.container > div.section > i:last-child {
+        margin-right: 2em;
+    }

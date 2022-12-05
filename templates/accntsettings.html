@@ -12,7 +12,22 @@
 {% block main %}
 
     <main class="container">
-        <div class="section-col">
+        <a href="/"><i class="fa-solid fa-chevron-left"></i></a>
+        <div class="header">
+            <img src="{{ user['avatar_path'] }}"></img>
+            <h1>Username: {{ user["username"] }}</h1>
+        </div>
+        <div class="section">
+            <i class="fa-solid fa-user"></i>
+            <h1>Account</h1>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="section">
+            <i class="fa-solid fa-lock"></i>
+            <h1>Privacy</h1>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <!-- <div class="section-col">
             <h1>Account settings</h1>
             <img src="{{ user['avatar_path'] }}">
             <h2>Username: {{ user["username"] }}</h2>
@@ -39,7 +54,7 @@
                 <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
                 <button type="submit">Submit</button>
             </form>
-        </div>
+        </div> -->
 
 
     </main>

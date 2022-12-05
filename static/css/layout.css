@@ -176,6 +176,10 @@ nav.mobile-container {
                 nav.mobile-container .container a:first-child > i {
                     margin-left: auto;
                 }
+                /* active link */
+                nav.mobile-container > nav.container > a.active {
+                    background: linear-gradient(-45deg, rgba(132,222,152,1) 0%, rgba(112,242,162,1) 31%); 
+                }
             /* image */
             nav.mobile-container > .container > a > img#icon {
                 width: 10%;
@@ -193,7 +197,7 @@ nav.mobile-container {
     /* footer graphic container */
     div.container-graphic {
         width: clamp(10em, 95%, 75em);
-        margin: 2em auto 2em auto;
+        margin: 20% auto 2em auto;
     }
 
 /* media queries */
