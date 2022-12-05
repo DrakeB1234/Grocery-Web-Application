@@ -12,51 +12,43 @@
 {% block main %}
 
     <main class="container">
-        <a href="/"><i class="fa-solid fa-chevron-left"></i></a>
+        <a href="/"><h1>Settings</h1><i class="fa-solid fa-chevron-left"></i></a>
         <div class="header">
             <img src="{{ user['avatar_path'] }}"></img>
             <h1>Username: {{ user["username"] }}</h1>
         </div>
-        <div class="section">
+        <button class="section">
             <i class="fa-solid fa-user"></i>
             <h1>Account</h1>
             <i class="fa-solid fa-chevron-right"></i>
-        </div>
-        <div class="section">
+            <div class="section-dropdown">
+                <a href=""><h1>Account Settings</h1><i class="fa-solid fa-chevron-left"></i></a>
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Avatar</h1>
+                    <input type="file" name="avatarFile">
+                    <input type="submit" value="Submit"></input>
+                </form>
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Username</h1>
+                    <input name="userName" type="text" placeholder="New Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus />
+                    <input type="submit" value="Submit"></input>
+                </form>
+            </div>
+        </button>
+        <button class="section">
             <i class="fa-solid fa-lock"></i>
             <h1>Privacy</h1>
             <i class="fa-solid fa-chevron-right"></i>
-        </div>
-        <!-- <div class="section-col">
-            <h1>Account settings</h1>
-            <img src="{{ user['avatar_path'] }}">
-            <h2>Username: {{ user["username"] }}</h2>
-            <h2>Password:  ************* </h2>
-        </div>
-        <div class="section-col">
-            <h1>Change Avatar</h1>
-            <form action="/accntsettings" method="post" enctype="multipart/form-data">
-                <input type="file" name="avatarFile">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <div class="section-col">
-            <h1>Change Username</h1>
-            <form action="/accntsettings" method="post" enctype="multipart/form-data">
-                <input name="userName" type="text" placeholder="New Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <div class="section-col">
-            <h1>Change Password</h1>
-            <form action="/accntsettings" method="post" enctype="multipart/form-data">
-                <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
-                <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
-                <button type="submit">Submit</button>
-            </form>
-        </div> -->
-
-
+            <div class="section-dropdown">
+                <a href=""><h1>Privacy Settings</h1><i class="fa-solid fa-chevron-left"></i></a>
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Password</h1>
+                    <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
+                    <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
+                    <input type="submit" value="Submit"></input>
+                </form>
+            </div>
+        </button>
     </main>
 
 {% endblock %}

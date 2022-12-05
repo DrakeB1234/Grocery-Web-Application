@@ -14,12 +14,20 @@ main.container {
     box-shadow: 0 0 1em var(--white-med);
     background-color: var(--white-light);
 }
-    /* back arrow */
+    /* top container*/
     main.container > a {
-        padding: 0.5em 0 0.5em 1em;
         font-size: 1.4rem;
         color: var(--grey-dark);
     }
+        /* h1 text */
+        main.container > a > h1 {
+            font-size: 1.7rem;
+            text-align: center;
+        }
+        /* back arrow icon */
+        main.container > a > i {
+            padding-left: 1em;
+        }
 /* header */
 main.container > div.header {
     display: flex;
@@ -42,30 +50,102 @@ main.container > div.header {
         color: var(--grey-dark);
     }
 /* section */
-main.container > div.section {
+main.container > button.section {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 1.5em 0 1.5em 0;
+    border: 0;
     border-bottom: 1px solid var(--white-med);
+    background: none;
     color: var(--grey-med);
     cursor: pointer;
+    font-size: 1.2rem;
 }
     /* hover div */
-    main.container > div.section:hover {
+    main.container > button.section:hover {
         background-color: var(--white-medli);
     }
     /* first icon */
-    main.container > div.section > i:first-child {
+    main.container > button.section > i:first-child {
         margin-left: 1em;
         margin-right: 1em;
     }
-    /* h1 text */
-    main.container > div.section > h1 {
-        flex: 2;
-        font-size: 1.2rem;
-    }
     /* last icon */
-    main.container > div.section > i:last-child {
-        margin-right: 2em;
+    main.container > button.section > i.fa-chevron-right {
+        margin: 0 2em 0 auto;
     }
+/* section dropdown */
+main.container > button.section > div.section-dropdown {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    inset: 0;
+    width: clamp(10em, 100%, 80em);
+    margin: 0 auto 0 auto;
+    border-bottom: 1px solid var(--white-med);
+    background-color: var(--white-medli);
+    color: var(--grey-med);
+    cursor: default;
+}
+    /* dropdown toggle */
+    main.container > button.section:focus-within > div.section-dropdown {
+        display: flex;
+    }
+    /* back button */
+    div.section-dropdown > a {
+        display: flex;
+        flex-direction: column;
+        width: clamp(10em, 100%, 54em);
+        margin: 0 auto 0 auto;
+        padding: 1em 0 1em 0;
+        text-align: left;
+        background-color: var(--white-light);
+    }
+        /* header text */
+        div.section-dropdown > a > h1 {
+            align-self: center;
+            font-size: 1.5rem;
+        }
+        /* header icon */
+        div.section-dropdown > a > i {
+            margin-left: 1em;
+        }
+    /* form */
+    div.section-dropdown > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        width: clamp(10em, 100%, 50em);
+        margin: 0 auto 0 auto;
+        padding: 1em 0 1em 0;
+        border-bottom: 1px solid var(--white-med);
+        background-color: var(--white-light);
+        font-size: 1.3rem;
+    }
+        /* header text */
+        div.section-dropdown > form > h1 {
+            margin: 1em 0 1em 0;
+            font-size: 1.3rem;
+        }
+        /* form text */
+        div.section-dropdown > form input[type="text"], input[type="password"]{
+            padding: 0.8em;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--white-med);
+            background-color: var(--white-medli);
+        }
+        /* button */
+        div.section-dropdown > form input[type="submit"]{
+            width: 90%;
+            margin-top: 2em;
+            padding: 0.3em 0 0.3em 0;
+            border: 0;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            background-color: var(--main-med);
+            color: var(--white-light);
+            cursor: pointer;
+        }
