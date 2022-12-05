@@ -48,19 +48,19 @@ def login():
 
         # check for valid inputs
         if not inputName:
-            flash("Missing Username")
+            flash("Missing Username", "User-Error")
             return redirect("/login")
         if not inputPass:
-            flash("Missing Password")
+            flash("Missing Password", "User-Error")
             return redirect("/login")
         if not inputName.isalnum():
-            flash("Use Only Letters and Numbers")
+            flash("Use Only Letters and Numbers", "User-Error")
             return redirect("/login")
         if not inputName.isalnum():
-            flash("Use Only Letters and Numbers")
+            flash("Use Only Letters and Numbers", "User-Error")
             return redirect("/login")
         if not re.match("^[A-Za-z0-9$%#@!]*$",inputPass):
-            flash("Only use Letters, Numbers and ($, %, #, @, !)")
+            flash("Only use Letters, Numbers and ($, %, #, @, !)", "User-Error")
             return redirect("/login")
         
         # fetch all users
@@ -70,10 +70,10 @@ def login():
         for i in rows:
             if i["username"] == inputName and check_password_hash(i["hash"], inputPass):
                 # if match, redirect to homepage and set session variable 
-                flash("Logged In")
+                flash("Logged In", "Success")
                 session["user_id"] = i["user_id"]
                 return redirect("/")
-        flash("Invalid username/password")
+        flash("Invalid username/password", "User-Error")
         return render_template("login.html")
 
     # user made GET request for page
@@ -84,7 +84,7 @@ def login():
 @app.route("/logout", methods=["GET"])
 def logout():
     session["user_id"] = None
-    flash("Logged Out")
+    flash("Logged Out", "Success")
     return redirect("/")
 
 # home page
@@ -119,7 +119,7 @@ def accntsettings():
             # if user does not select file, browser also
             # submit a empty part without filename
             if file.filename == '':
-                flash('No selected file')
+                flash('No selected file', "User-Error")
                 return redirect("/accntsettings")
 
             # format naming of filename
@@ -135,7 +135,7 @@ def accntsettings():
             db.execute(f"UPDATE users SET avatar_path = '{pathVar}' WHERE user_id = {id}")
             mysql.connection.commit()
             # flash message then redirect
-            flash("Avatar Uploaded")
+            flash("Avatar Uploaded", "success")
             return redirect("/accntsettings")
 
         # information posted is for changing username
@@ -144,10 +144,10 @@ def accntsettings():
 
             # check for valid inputs
             if not inputName:
-                flash("Missing Username")
+                flash("Missing Username", "User-Error")
                 return redirect("/accntsettings")
             if not inputName.isalnum():
-                flash("Use Only Letters and Numbers")
+                flash("Use Only Letters and Numbers", "User-Error")
                 return redirect("/accntsettings")
 
             # Ensure input username is unique
@@ -155,7 +155,7 @@ def accntsettings():
             usernames = db.fetchall()
             for i in usernames:
                 if (i["username"] == inputName):
-                    flash("Username Taken")
+                    flash("Username Taken", "User-Error")
                     return redirect("/accntsettings")
 
             # Commit change in database
@@ -163,7 +163,7 @@ def accntsettings():
             mysql.connection.commit()
 
             # flash success message
-            flash("Successfully changed username")
+            flash("Successfully changed username", "Success")
 
         # information posted is for changing password
         if "userPass" in request.form:
@@ -172,16 +172,16 @@ def accntsettings():
 
             # Check for valid input
             if not userPass:
-                flash("Provide a password")
+                flash("Provide a password", "User-Error")
                 return redirect("/accntsettings")
-            if not userPass:
-                flash("Provide a password")
-                return redirect("/accntsettings")
+            if len(userPass) < 7:
+                flash("Need at least 7 characters", "User-Error")
+                return redirect("/login")
             if not re.match("^[A-Za-z0-9$%#@!]*$", userPass):
-                flash("Only use Letters, Numbers and ($, %, #, @, !)")
+                flash("Only use Letters, Numbers and ($, %, #, @, !)", "User-Error")
                 return redirect("/accntsettings")
             if userPass != userPassConfirm:
-                flash("Must have matching passwords")
+                flash("Must have matching passwords", "User-Error")
                 return redirect("/accntsettings")
 
             # Hash password
@@ -214,16 +214,16 @@ def list():
         if "listTitle" in request.form:
             title = request.form.get("listTitle")
             if not title:
-                flash("Provide a Title")
+                flash("Provide a Title", "User-Error")
                 return redirect("/list")
             
             if not re.match("^[A-Za-z ]*$",title):
-                flash("Only use letters and spaces")
+                flash("Only use letters and spaces", "User-Error")
                 return redirect("/list")
             
             db.execute(f'INSERT INTO listTitles (user_id, title) VALUES ({id}, "{title}");')
             mysql.connection.commit()
-            flash(f"Added '{title}' to lists!")
+            flash(f"Added '{title}' to lists!", "success")
 
             return redirect("/list")
 
@@ -246,15 +246,15 @@ def list_delete(listID, listTitle):
     id = session["user_id"]
 
     if not listID or not listTitle:
-        flash("Provide a Title")
+        flash("Provide a Title", "User-Error")
         return redirect("/list")
     
     if not re.match("^[A-Za-z ]*$",listTitle):
-        flash("Only use letters and spaces")
+        flash("Only use letters and spaces", "User-Error")
         return redirect("/list")
     
     if not listID.isnumeric():
-        flash("Only use numbers")
+        flash("Only use numbers", "User-Error")
         return redirect("/list")
 
     # Executing sql query
@@ -262,7 +262,7 @@ def list_delete(listID, listTitle):
     mysql.connection.commit()
 
     # flash message of success
-    flash(f"Deleted '{listTitle}' List")
+    flash(f"Deleted '{listTitle}' List", "success")
     return redirect("/list")
 
 # view list

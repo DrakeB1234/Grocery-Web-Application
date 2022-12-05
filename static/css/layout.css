@@ -30,6 +30,14 @@ div.flash-container {
         color: var(--white-light);
         overflow-wrap: break-word;
     }
+        /* user error */
+        div.flash-container h1.User-Error {
+            background-color: rgba(233, 158, 17, 0.9);
+        }
+        /* success */
+        div.flash-container h1.Success {
+            background-color: rgba(59, 143, 232, 0.9);
+        }
     /* animation for hiding message */
     @keyframes hideFlash {
         0% { visibility: visible; }
