@@ -1,20 +1,124 @@
 /* globals */
 body {
-    background-color: var(--white-medli);
+    background-color: var(--white-light);
 }
 
     /* first container */
-    main.container > div.container:first-child {
+    main.container > div.container-header {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
         place-items: center;
-        padding: 4% 2% 4% 2%;
+        padding: 2% 2% 6% 2%;
         background-color: var(--main-light);
     }
         /* header text */
-        main.container > div.container:first-child > h1{
+        main.container > div.container-header > h1{
             margin-bottom: 1em;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--white-light);
             text-shadow: 3px 3px var(--grey-light);
         }
+        /* svg */
+        main.container > div.container-header object {
+            width: 40%;
+        }
+    /* stats container */
+    div.container-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        min-height: 65vh;
+        width: clamp(10em, 94%, 55em);
+        margin: 0 auto 0 auto;
+        padding: 3%;
+        background-color: var(--white-medli);
+    }
+        /* header text */
+        div.container-stats > h1 {
+            padding-top: 1em;
+            font-size: 1.5rem;
+            color: var(--grey-dark);
+        }
+            /* container meal */
+            div.container-stats div.container-meal {
+                display: flex;
+                border-radius: 10px;
+                background-color: var(--white-light);
+            }
+                /* each container */
+                div.container-stats div.container-meal > div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5em;
+                    flex: 1;
+                    padding: 2em;
+                }
+                /* each text */
+                div.container-stats div.container-meal div h1 {
+                    font-size: 1.2rem;
+                    color: var(--grey-dark);
+                    overflow: hidden;
+                    overflow-wrap: break-word;
+                }
+                    /* date container */
+                    div.container-stats div.container-meal div:first-child {
+                        border-right: 1px solid var(--white-medli);
+                    }
+            /* container data */
+            div.container-stats div.container-data {
+                display: flex;
+                flex-direction: column;
+                padding: 1em;
+                border-radius: 10px;
+                background-color: var(--white-light);
+            }
+                /* header text */
+                div.container-stats div.container-data > h1 {
+                    margin-bottom: 1em;
+                    font-size: 1.2rem;
+                    color: var(--grey-dark);
+                }
+                /* container data card */
+                div.container-stats div.container-data div.container-data-card {
+                    display: flex;
+                    margin-bottom: 2em;
+                    border-bottom: 1px solid var(--white-medli);
+                }
+                    /* each card */
+                    div.container-stats div.container-data div.container-data-card > div {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2em;
+                        align-items: center;
+                        padding: 2em 0 2em 0;
+                    }
+                        /* first card */
+                        div.container-stats div.container-data div.container-data-card > div:first-child {
+                            border-right: 1px solid var(--white-medli);
+                        }
+                        /* card h1 text */
+                        div.container-stats div.container-data div.container-data-card > div > h1 {
+                            font-size: 1.2rem;
+                            color: var(--grey-light);
+                        }
+                            /* card h2 text */
+                            div.container-stats div.container-data div.container-data-card > div > h2 {
+                                font-size: 1.5rem;
+                                color: var(--grey-dark);
+                            }
+/* media queries */
+
+/* mobile */
+@media only screen and (max-width:750px) {
+    main.container > div.container-header object {
+        width: 40%;
+    }
+}
+/* desktop */
+@media only screen and (min-width:1200px) {
+    main.container > div.container-header object {
+        width: 30%;
+    }
+}

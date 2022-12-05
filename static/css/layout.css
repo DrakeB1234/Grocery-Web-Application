@@ -89,6 +89,7 @@ nav.mobile-container {
         font-size: 1.5rem;
         cursor: pointer;
         color: var(--white-light);
+        text-shadow: 2px 2px var(--grey-light);
     }
         /* toggle menu */
         nav.mobile-container > button:focus + nav.container {
