@@ -185,6 +185,10 @@ nav.mobile-container {
             nav.mobile-container .container a:nth-child(n + 2) > h1 {
                 margin-left: 1.5em;
             }
+                /* font awesome */
+                nav.mobile-container .container a:nth-child(n + 2) > i {
+                    margin-right: 1em;
+                }
 
     /* footer graphic container */
     div.container-graphic {

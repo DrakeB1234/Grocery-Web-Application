@@ -83,6 +83,18 @@ body {
                             font-size: 1.5rem;
                             color: var(--grey-dark);
                         }
+                    /* link card */
+                    div.container-stats div.container-data div.container-data-card > div > a {
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        font-size: 1.2rem;
+                        color: var(--grey-dark);
+                    }
+                        /* icon */
+                        div.container-stats div.container-data div.container-data-card > div > a > i {
+                            margin-right: 1em;
+                        }
 /* media queries */
 
 /* mobile */
