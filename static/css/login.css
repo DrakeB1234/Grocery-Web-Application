@@ -1,6 +1,6 @@
 /* main container */
 main.container {
-    background-color: var(--main-light);
+    background: linear-gradient(180deg, rgba(142,204,130,1) 0%, rgba(95,171,82,1) 92%, rgba(86,138,77,1) 100%);
 }
     /* login container */
     div.container-login {
@@ -8,14 +8,15 @@ main.container {
         flex-direction: column;
         align-items: center;
         min-height: 100vh;
-        width: clamp(2em, 100%, 60em);
+        width: clamp(2em, 100%, 55em);
         margin: 0 0 0 auto;
         background-color: var(--white-light);
+        z-index: 2;
     }
         /* header text */
         div.container-login h1 {
-            margin-top: 1em;
-            font-size: 2.5rem;
+            margin-top: 2em;
+            font-size: 2rem;
             color: var(--grey-dark);
         }
             div.container-login h2 {
@@ -29,13 +30,16 @@ main.container {
             flex-direction: column;
             align-items: center;
             gap: 2em;
-            margin-top: 3em;
+            width: clamp(5em, 80%, 25em);
+            margin: 4em auto 0 auto;
+            z-index: 2;
         }
             /* text */
             main.container form input[type="text"], input[type="password"]{
+                width: 100%;
                 padding: 0.8em;
-                font-size: 1.3rem;
-                border-radius: 10px;
+                font-size: 1rem;
+                border-radius: 8px;
                 border: 1px solid var(--white-med);
                 background-color: var(--white-medli);
             }
@@ -45,8 +49,8 @@ main.container {
                 margin-top: 2em;
                 padding: 0.5em 0 0.5em 0;
                 border: 0;
-                border-radius: 10px;
-                font-size: 1.5rem;
+                border-radius: 8px;
+                font-size: 1.3rem;
                 background-color: var(--main-med);
                 color: var(--white-light);
                 cursor: pointer;

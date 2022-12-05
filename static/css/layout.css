@@ -23,11 +23,11 @@ div.flash-container {
     /* message text */
     div.flash-container h1.message {
         width: clamp(2em, 100%, 60em);
-        margin-left: 0.5em;
+        margin-left: 1em;
         padding: 1em;
         font-size: 1.2rem;
         background-color: var(--flash-msg);
-        color: var(--grey-dark);
+        color: var(--white-light);
         overflow-wrap: break-word;
     }
     /* animation for hiding message */
