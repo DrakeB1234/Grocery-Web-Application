@@ -186,6 +186,12 @@ nav.mobile-container {
                 margin-left: 1.5em;
             }
 
+    /* footer graphic container */
+    div.container-graphic {
+        width: clamp(10em, 95%, 75em);
+        margin: 2em auto 2em auto;
+    }
+
 /* media queries */
 
 /* mobile */

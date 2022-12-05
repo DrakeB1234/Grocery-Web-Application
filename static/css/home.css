@@ -19,14 +19,9 @@ body {
             text-shadow: 3px 3px var(--grey-light);
         }
         /* svg */
-        main.container > div.container-header object {
+        main.container > div.container-header > object {
             width: 40%;
         }
-    /* graphic container */
-    div.container-graphic {
-        width: clamp(10em, 100%, 75em);
-        margin: 0 auto 0 auto;
-    }
     /* stats container */
     div.container-stats {
         display: flex;
