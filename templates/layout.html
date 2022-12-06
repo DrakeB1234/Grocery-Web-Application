@@ -30,11 +30,31 @@
     {% if session["user_id"] %}
         <nav class="mobile-container">
             <a href="/"></a>
-            <button tabindex="-1"><i class="fa-solid fa-bars"></i></button>
-            <nav class="container">
+            {% if "iPhone" in agent %}
+                <button ><i id="safariMenu" class="fa-solid fa-bars"></i></button>
+                <script>
+                    window.onload = () => {
+                        buttons = document.querySelectorAll("#safariMenu");
+                        buttons.forEach((e) => {
+                            e.addEventListener("click", () => {
+                                const ele = document.getElementById("container");
+                                if (ele.style.right === "0px") {
+                                    ele.style.right = "-100%";
+                                    return;
+                                }
+                                ele.style.right = "0";
+                            });
+                        });
+                    }
+
+                </script>
+            {% else %}
+                <button><i class="fa-solid fa-bars"></i></button>
+            {% endif %}
+            <nav id="container" class="container">
                 <a>
                     <img id="avatar" src="../{{ user['avatar_path'] }}">
-                    <h1>Hello, {% block username %}{% endblock %}!</h1><i class="fa-solid fa-xmark"></i>
+                    <h1>Hello, {% block username %}{% endblock %}!</h1><i id="safariMenu" class="fa-solid fa-xmark"></i>
                 </a>
                 <a href="/" class="active"><img id="icon" src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
                 <a href="/list"><img id="icon" src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>

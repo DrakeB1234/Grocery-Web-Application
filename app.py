@@ -37,6 +37,7 @@ def user_info(id):
     session["user"] = db.fetchall()
     session["user_id"] = id
 
+
 """
     ~~~TODO~~~
     disable cache
@@ -102,7 +103,9 @@ def logout():
 def home():
     # get user details
     user = session.get("user")
-    return render_template("home.html", user=user[0])
+    # get details about user browser
+    agent = request.headers.get("User-Agent")
+    return render_template("home.html", user=user[0], agent=agent)
 
 # account settings page
 @app.route("/accntsettings", methods=["GET", "POST"])
