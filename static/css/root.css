@@ -1,11 +1,6 @@
 /* file for root color scheme */
 
 :root {
-    /* main scheme */
-    --main-dark: #4b7a42;
-    --main-med: #5fab52;
-    --main-light: #a1e294;
-
     /* grey */
     --grey-dark: #3d4861;
     --grey-med: #6c7996;

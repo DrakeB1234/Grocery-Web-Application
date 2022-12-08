@@ -8,8 +8,8 @@ body {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
         place-items: center;
-        padding: 2% 2% 6% 2%;
-        background-color: var(--main-light);
+        padding: 4em 0 4em 0;
+        background: linear-gradient(120deg, rgb(129, 222, 213) 0%, rgba(112,242,162,1) 36%);
     }
         /* header text */
         main.container > div.container-header > h1{
@@ -28,7 +28,7 @@ body {
         flex-direction: column;
         gap: 1em;
         min-height: 65vh;
-        width: clamp(10em, 94%, 75em);
+        width: clamp(10em, 94%, 65em);
         margin: 0 auto 0 auto;
         padding: 3%;
         background-color: var(--white-medli);

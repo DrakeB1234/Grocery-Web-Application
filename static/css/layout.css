@@ -50,7 +50,7 @@ nav.desktop-container {
     display: none;
     align-items: center;
     padding: 0 5% 0 5%;
-    background-color: var(--main-med);
+    background-color: var(--grey-med);
 }
     /* all links */
     nav.desktop-container a {
@@ -74,131 +74,79 @@ nav.desktop-container {
             color: var(--main-med);
         }
 
-/* mobile nav container */
+/* toggle button */
+nav.mobile-container > i#toggle-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.4em;
+    font-size: 2rem;
+    color: var(--white-light);
+    border-radius: 50% 0 0 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/* mobile container */
 nav.mobile-container {
     display: none;
-    align-items: center;
-    padding: 0 2% 0 2%;
-    background-color: var(--main-light);
-    color: var(--white-light);
 }
-    /* first link */
-    nav.mobile-container > a:first-child {
-        flex: 2;
-        padding: 0.2em;
-        font-size: 1.4rem;
-        text-shadow: 1px 1px var(--grey-med);
-    }
-    /* toggle button */
-    nav.mobile-container > button {
-        border: 0;
-        background: none;
-        padding: 0.5em;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: var(--white-light);
-        text-shadow: 2px 2px var(--grey-light);
-    }
-        /* toggle menu */
-        nav.mobile-container > button:focus + nav.container {
-            right: 0;
-            transition: all 0.3s ease-in-out;
-        }
-    /* link container */
-    nav.mobile-container .container {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: -100%;
-        width: 100%;
+    /* nav container */
+    nav.mobile-container > div.nav-container {
+        position: absolute;
         display: flex;
         flex-direction: column;
+        inset: 0;
         background-color: var(--white-light);
-        transition: right 0.4s ease-in;
-        overflow-y: scroll;
     }
-        /* account settings link */
-        nav.mobile-container .container a.mobile-link-settings {
-            display: flex;
-            justify-content: center;
-            margin-top: 2em;
-            padding: 1em;
-            border-top: 1px solid var(--white-med);
-            background-color: var(--white-medli);
-        }
-        /* last link (logout button) */
-        nav.mobile-container .container a:last-child {
-            display: flex;
-            justify-content: center;
-            margin: 10% 20% 0 20%;
-            padding: 0.5em 2em 0.5em 2em;
-            font-size: 1.5rem;
-            border-radius: 30px;
-            background-color: var(--grey-med);
-            color: var(--white-light);
-        }
-        /* each link */
-        nav.mobile-container .container a {
+        /* first link container */
+        nav.mobile-container > div.nav-container > a:first-child {
             display: flex;
             align-items: center;
-            padding: 0.5em;
-            font-size: 1.2rem;
-            border-bottom: 1px solid var(--white-med);
-            color: var(--grey-dark);
+            justify-content: start;
+            gap: 1em;
+            padding: 1em;
+            background-color: var(--grey-light);
         }
-            /* hover link */
-            nav.mobile-container .container a:hover {
-                background-color: var(--white-med);
+            /* image (avatar) */
+            nav.mobile-container > div.nav-container > a:first-child > img {
+                height: 70px;
+                width: 70px;
+                border-radius: 50%;
             }
-            /* active link */
-            nav.mobile-container .container a.active {
-                background-color: var(--main-light);
-            }
-            /* first link */
-            nav.mobile-container .container a:first-child {
+            /* text */
+            nav.mobile-container > div.nav-container > a:first-child > h1 {
                 display: flex;
-                align-items: center;
-                padding: 0.7em;
-                font-size: 1.5rem;
-                justify-content: center;
-                background-color: var(--grey-dark);
+                flex-direction: column;
+                gap: 0.1em;
+                font-size: 1.3rem;
                 color: var(--white-light);
             }
-                /* first link image (avatar) */
-                nav.mobile-container > nav.container > a > img#avatar {
-                    height: 80px;
-                    width: 80px;
-                    margin-right: 0.5em;
-                    border: 1px solid var(--grey-dark);
-                    border-radius: 50%;
-                }
-                /* first link icon (x) */
-                nav.mobile-container .container a:first-child > i {
-                    margin-left: auto;
-                }
-                /* active link */
-                nav.mobile-container > nav.container > a.active {
-                    background: linear-gradient(-45deg, rgba(132,222,152,1) 0%, rgba(112,242,162,1) 31%); 
-                }
-            /* image */
-            nav.mobile-container > .container > a > img#icon {
-                width: 10%;
-                margin-left: 1em;
-            }          
-            /* text */
-            nav.mobile-container .container a:nth-child(n + 2) > h1 {
-                margin-left: 1.5em;
+        /* other link containers */
+        nav.mobile-container > div.nav-container > a {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            padding: 1em 15% 1em 15%;
+            border-bottom: 1px solid var(--white-medli);
+            cursor: pointer;
+        }
+            /* icons */
+            nav.mobile-container > div.nav-container > a > img {
+                height: 30px;
+                width: 30px;
             }
-                /* font awesome */
-                nav.mobile-container .container a:nth-child(n + 2) > i {
-                    margin-left: 1em;
-                }
+            /* text */
+            nav.mobile-container > div.nav-container > a > h1 {
+                font-size: 1.3rem;
+                color: var(--grey-dark);
+            }
 
-    /* footer graphic container */
-    div.container-graphic {
-        width: clamp(10em, 95%, 75em);
-        margin: 20% auto 2em auto;
-    }
+/* footer graphic container */
+div.container-graphic {
+    width: clamp(10em, 95%, 75em);
+    margin: 20% auto 2em auto;
+}
 
 /* media queries */
 

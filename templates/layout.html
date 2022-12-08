@@ -29,40 +29,18 @@
     {% endwith %}
     {% if session["user_id"] %}
         <nav class="mobile-container">
-            <a href="/"></a>
-            {% if "iPhone" in agent %}
-                <button ><i id="safariMenu" class="fa-solid fa-bars"></i></button>
-                <script>
-                    window.onload = () => {
-                        buttons = document.querySelectorAll("#safariMenu");
-                        buttons.forEach((e) => {
-                            e.addEventListener("click", () => {
-                                const ele = document.getElementById("container");
-                                if (ele.style.right === "0px") {
-                                    ele.style.right = "-100%";
-                                    return;
-                                }
-                                ele.style.right = "0";
-                            });
-                        });
-                    }
-
-                </script>
-            {% else %}
-                <button><i class="fa-solid fa-bars"></i></button>
-            {% endif %}
-            <nav id="container" class="container">
+            <i id="toggle-nav" class="fa-solid fa-bars"></i>
+            <div class="nav-container">
                 <a>
-                    <img id="avatar" src="../{{ user['avatar_path'] }}">
-                    <h1>Hello, {% block username %}{% endblock %}!</h1><i id="safariMenu" class="fa-solid fa-xmark"></i>
+                    <img src="{{ user['avatar_path'] }}">
+                    <h1>Hello,<span>{{ user["username"] }}</span></h1>
                 </a>
-                <a href="/" class="active"><img id="icon" src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
-                <a href="/list"><img id="icon" src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
-                <a href=""><img id="icon" src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
-                <a href=""><img id="icon" src="../static/images/icons/icon-calendar.svg"><h1>Calendar</h1></a>
-                <a href="/accntsettings" class="mobile-link-settings">Settings<i class="fa-solid fa-gear"></i></a>
-                <a href="/logout">Logout</a>
-            </nav>
+                <a><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
+                <a><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
+                <a><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
+                <a><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
+                <a><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
+            </div>
         </nav>
         <nav class="desktop-container">
             <a>Grocery Web App</a>
