@@ -19,144 +19,44 @@ main.container {
     box-shadow: 0 0 1em var(--white-med);
     background-color: var(--white-light);
 }
-    /* top container*/
-    main.container > a {
-        font-size: 1.4rem;
-        color: var(--grey-dark);
-    }
-        /* h1 text */
-        main.container > a > h1 {
-            margin-top: 1em;
-            font-size: 1.7rem;
-            text-align: center;
-        }
-        /* back arrow icon */
-        main.container > a > i {
-            padding-left: 1em;
-        }
-/* header */
-main.container > div.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 2em;
-    border-bottom: 1px solid var(--white-med);
-}
-    /* img avatar */
-    main.container > div.header > img {
-        height: 150px;
-        width: 150px;
-        margin: 1em 0 1em 0;
-        border-radius: 50%;
-        border: 2px solid var(--grey-dark);
-    }
-    /* h1 text */
-    main.container > div.header > h1 {
-        font-size: 1.2rem;
-        color: var(--grey-dark);
-    }
-/* section */
-main.container > button.section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 1.5em 0 1.5em 0;
-    border: 0;
-    border-bottom: 1px solid var(--white-med);
-    background: none;
-    color: var(--grey-med);
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-    /* hover div */
-    main.container > button.section:hover {
-        background-color: var(--white-medli);
-    }
-    /* first icon */
-    main.container > button.section > i:first-child {
-        margin-left: 1em;
-        margin-right: 1em;
-    }
-    /* last icon */
-    main.container > button.section > i.fa-chevron-right {
-        margin: 0 2em 0 auto;
-    }
-/* section dropdown */
-main.container > button.section > div.section-dropdown {
-    position: fixed;
-    display: none;
-    flex-direction: column;
-    inset: 0;
-    width: clamp(10em, 100%, 80em);
-    margin: 0 auto 0 auto;
-    border-bottom: 1px solid var(--white-med);
-    background-color: var(--white-medli);
-    color: var(--grey-med);
-    cursor: default;
-}
-    /* dropdown toggle */
-    main.container > button.section:focus-within > div.section-dropdown {
+    /* first container (back button) */
+    main.container > a:first-child {
         display: flex;
-    }
-        /* dropdown toggle safari */
-        main.container > button.section:active > div.section-dropdown {
-            display: flex;
-        }
-    /* back button */
-    div.section-dropdown > a {
-        display: flex;
-        flex-direction: column;
-        width: clamp(10em, 100%, 54em);
-        margin: 0 auto 0 auto;
-        padding: 1em 0 1em 0;
-        text-align: left;
-        background-color: var(--white-light);
+        align-items: center;
+        justify-content: center;
+        padding: 1em;
+        color: var(--grey-dark);
     }
         /* header text */
-        div.section-dropdown > a > h1 {
-            align-self: center;
-            font-size: 1.5rem;
+        main.container > a:first-child > h1 {
+            position: relative;
+            z-index: 1;
+            left: -0.3em;
+            font-size: 1.6rem;
+            margin: 0 auto 0 auto;
         }
-        /* header icon */
-        div.section-dropdown > a > i {
-            margin-left: 1em;
+        /* back arrow icon */
+        main.container > a:first-child > i {
+            font-size: 1.4rem;
         }
-    /* form */
-    div.section-dropdown > form {
+    /* header */
+    main.container > div.header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1em;
-        width: clamp(10em, 100%, 50em);
-        margin: 0 auto 0 auto;
-        padding: 1em 0 1em 0;
+        padding-bottom: 2em;
         border-bottom: 1px solid var(--white-med);
-        background-color: var(--white-light);
-        font-size: 1.3rem;
     }
-        /* header text */
-        div.section-dropdown > form > h1 {
+        /* img avatar */
+        main.container > div.header > img {
+            height: 150px;
+            width: 150px;
             margin: 1em 0 1em 0;
-            font-size: 1.3rem;
+            border-radius: 50%;
+            border: 2px solid var(--grey-dark);
         }
-        /* form text */
-        div.section-dropdown > form input[type="text"], input[type="password"]{
-            width: 80%;
-            padding: 0.8em;
-            font-size: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--white-med);
-            background-color: var(--white-medli);
-        }
-        /* button */
-        div.section-dropdown > form input[type="submit"]{
-            width: 90%;
-            margin-top: 2em;
-            padding: 0.3em 0 0.3em 0;
-            border: 0;
-            border-radius: 8px;
+        /* h1 text */
+        main.container > div.header > h1 {
             font-size: 1.2rem;
-            background-color: var(--main-med);
-            color: var(--white-light);
-            cursor: pointer;
+            color: var(--grey-dark);
         }

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../static/css/layout.css" />
     {% block css %}{% endblock %}
     <!-- JS -->
-    <script href="../static/js/layout.js"></script>
+    <script src="../static/js/layout.js" defer></script>
     {% block js %}{% endblock %}
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
@@ -30,13 +30,14 @@
     {% endwith %}
     {% if session["user_id"] %}
         <nav class="mobile-container">
-            <i id="toggle-nav" class="fa-solid fa-bars"></i>
-            <div class="nav-container">
+            <i id="toggle-mobile-nav" class="fa-solid fa-bars"></i>
+            <div id="mobile-nav-container" class="nav-container">
                 <a>
                     <img src="{{ user['avatar_path'] }}">
                     <h1>Hello,<span>{{ user["username"] }}</span></h1>
+                    <i id="toggle-mobile-nav" class="fa-solid fa-xmark"></i>
                 </a>
-                <a href="/"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
+                <a href="/" class="a-space"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
                 <a href="/list"><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
                 <a href="/"><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
                 <a href="/"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>

@@ -75,18 +75,30 @@ nav.desktop-container {
         }
 
 /* toggle button */
-nav.mobile-container > i#toggle-nav {
+nav.mobile-container > i#toggle-mobile-nav {
     position: fixed;
     top: 0;
     right: 0;
     padding: 0.4em;
     font-size: 2rem;
     color: var(--white-light);
-    border-radius: 50% 0 0 50%;
+    border-radius: 0 0 0 50%;
     background-color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
+    /* exit button */
+    nav.mobile-container > div.nav-container i#toggle-mobile-nav {
+        margin: 0 0 0 auto;
+        padding: 0.5em 1em 0.5em 1em;
+        font-size: 2rem;
+        color: var(--white-light);
+        cursor: pointer;
+    }
+        /* hover exit button */
+        nav.mobile-container > div.nav-container i#toggle-mobile-nav:hover {
 
+            background-color: rgba(0, 0, 0, 0.3);
+        }
 /* mobile container */
 nav.mobile-container {
     display: none;
@@ -97,9 +109,9 @@ nav.mobile-container {
         display: none;
         flex-direction: column;
         inset: 0;
+        z-index: 10;
         background-color: var(--white-light);
     }
-        /* nav container animations */
         /* first link container */
         nav.mobile-container > div.nav-container > a:first-child {
             display: flex;
@@ -107,7 +119,7 @@ nav.mobile-container {
             justify-content: start;
             gap: 1.5em;
             padding: 1em;
-            background-color: var(--grey-light);
+            background-color: var(--grey-med);
             cursor: default;
         }
             /* image (avatar) */
@@ -121,12 +133,12 @@ nav.mobile-container {
                 display: flex;
                 flex-direction: column;
                 gap: 0.2em;
-                font-size: 1.0rem;
+                font-size: 1.2rem;
                 color: var(--white-medli);
             }
                 /* span text */
                 nav.mobile-container > div.nav-container > a:first-child > h1 > span {
-                    font-size: 1.4rem;
+                    font-size: 1.6rem;
                     color: var(--white-light);
                 }
             /* hover first link container */
