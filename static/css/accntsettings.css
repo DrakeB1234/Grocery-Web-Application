@@ -20,7 +20,7 @@ main.container {
     background-color: var(--white-light);
 }
     /* first container (back button) */
-    main.container > a:first-child {
+    main.container a[href="/"] {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,7 +28,7 @@ main.container {
         color: var(--grey-dark);
     }
         /* header text */
-        main.container > a:first-child > h1 {
+        main.container a[href="/"]  > h1 {
             position: relative;
             z-index: 1;
             left: -0.3em;
@@ -36,7 +36,7 @@ main.container {
             margin: 0 auto 0 auto;
         }
         /* back arrow icon */
-        main.container > a:first-child > i {
+        main.container a[href="/"] > i {
             font-size: 1.4rem;
         }
     /* header */
@@ -60,3 +60,48 @@ main.container {
             font-size: 1.2rem;
             color: var(--grey-dark);
         }
+    /* button */
+    main.container > button.settings-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5em;
+        padding: 1.5em;
+        border: 0;
+        background-color: var(--white-light);
+        color: var(--grey-dark);
+        border-bottom: 1px solid var(--white-med);
+        cursor: pointer;
+    }
+        /* images */
+        main.container > button.settings-item > img {
+            height: 30px;
+            width: 30px;
+        }
+        /* text */
+        main.container > button.settings-item > h1 {
+            font-size: 1.2rem;
+        }
+        /* back arrow (icon) */
+        main.container > button.settings-item > i {
+            font-size: 1.2rem;
+            margin: 0 1em 0 auto;
+        }
+/* settings container */
+main.container div.settings-container-parent {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background-color: var(--white-medli);
+}
+    /* settings container child */
+    main.container div.settings-container-child {
+        display: flex;
+        flex-direction: column;
+        width: clamp(10em, 94%, 50em);
+        margin: 1em auto 1em auto;
+        padding: 1em 0 2em 0;
+        border-radius: 20px;
+        box-shadow: 0 0 1em var(--white-med);
+        background-color: var(--white-light);
+    }

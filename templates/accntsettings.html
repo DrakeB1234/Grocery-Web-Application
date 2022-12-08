@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}Account Settings{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/accntsettings.css" />{% endblock %}
-{% block js %}{% endblock %}
+{% block js %}<script src="../static/js/settings.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -20,6 +20,49 @@
             <img src="{{ user['avatar_path'] }}"></img>
             <h1>Username: {{ user["username"] }}</h1>
         </div>
+        <button id="set-btn" class="settings-item"><img src="../static/images/icons/icon-user.svg"><h1>Account</h1><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="settings-container-parent">
+            <div class="settings-container-child">
+                <a href="/accntsettings">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <h1>Account Settings</h1>
+                </a>
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Avatar</h1>
+                    <input type="file" name="avatarFile">
+                    <input type="submit" value="Submit"></input>
+                </form>
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Username</h1>
+                    <input name="userName" type="text" placeholder="New Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" />
+                    <input type="submit" value="Submit"></input>
+                </form>
+            </div>
+        </div>
+        <button id="set-btn" class="settings-item"><img src="../static/images/icons/icon-lock.svg"><h1>Privacy</h1><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="settings-container-parent">
+            <div class="settings-container-child">
+                <a href="/accntsettings">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <h1>Privacy Settings</h1>
+                </a>
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Password</h1>
+                    <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
+                    <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
+                    <input type="submit" value="Submit"></input>
+                </form> 
+            </div>
+        </div>
     </main>
+
+    <!--
+                <form action="/accntsettings" method="post" enctype="multipart/form-data">
+                    <h1>Change Password</h1>
+                    <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
+                    <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
+                    <input type="submit" value="Submit"></input>
+                </form> 
+    -->
 
 {% endblock %}
