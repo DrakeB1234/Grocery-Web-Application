@@ -1,6 +1,8 @@
 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="icon-book">
+<g id="icon">
 <rect id="connect" x="44" y="36" width="2" height="10" fill="#433E3E"/>
 <path id="book" fill-rule="evenodd" clip-rule="evenodd" d="M2 7C2 3.68629 4.68629 1 8 1H46C47.1046 1 48 1.89543 48 3V36H9C6.79086 36 5 37.7909 5 40V42C5 44.2091 6.79086 46 9 46H48V47C48 48.1046 47.1046 49 46 49H8C4.68629 49 2 46.3137 2 43V7ZM42 8H14V11H42V8ZM42 14H14V17H42V14ZM14 20H42V23H14V20Z" fill="#433E3E"/>
+</g>
 </g>
 </svg>

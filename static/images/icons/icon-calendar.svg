@@ -1,5 +1,6 @@
 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="icon-calendar">
+<g id="icon">
 <g id="Rectangle 5">
 <mask id="path-1-inside-1_1_2" fill="white">
 <path d="M7 5C7 2.79086 8.79086 1 11 1H12C14.2091 1 16 2.79086 16 5V13H7V5Z"/>
@@ -33,5 +34,6 @@
 <rect id="Rectangle 10" x="18" y="21" width="6" height="4" rx="1" fill="#B0AEAE"/>
 <rect id="Rectangle 11" x="27" y="21" width="6" height="4" rx="1" fill="#B0AEAE"/>
 <rect id="Rectangle 12" x="36" y="21" width="6" height="4" rx="1" fill="#B0AEAE"/>
+</g>
 </g>
 </svg>

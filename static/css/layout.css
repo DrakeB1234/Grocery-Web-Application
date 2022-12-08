@@ -94,19 +94,21 @@ nav.mobile-container {
     /* nav container */
     nav.mobile-container > div.nav-container {
         position: absolute;
-        display: flex;
+        display: none;
         flex-direction: column;
         inset: 0;
         background-color: var(--white-light);
     }
+        /* nav container animations */
         /* first link container */
         nav.mobile-container > div.nav-container > a:first-child {
             display: flex;
             align-items: center;
             justify-content: start;
-            gap: 1em;
+            gap: 1.5em;
             padding: 1em;
             background-color: var(--grey-light);
+            cursor: default;
         }
             /* image (avatar) */
             nav.mobile-container > div.nav-container > a:first-child > img {
@@ -118,9 +120,18 @@ nav.mobile-container {
             nav.mobile-container > div.nav-container > a:first-child > h1 {
                 display: flex;
                 flex-direction: column;
-                gap: 0.1em;
-                font-size: 1.3rem;
-                color: var(--white-light);
+                gap: 0.2em;
+                font-size: 1.0rem;
+                color: var(--white-medli);
+            }
+                /* span text */
+                nav.mobile-container > div.nav-container > a:first-child > h1 > span {
+                    font-size: 1.4rem;
+                    color: var(--white-light);
+                }
+            /* hover first link container */
+            nav.mobile-container > div.nav-container > a:first-child:hover {
+                background-color: var(--grey-med);
             }
         /* other link containers */
         nav.mobile-container > div.nav-container > a {
@@ -138,9 +149,18 @@ nav.mobile-container {
             }
             /* text */
             nav.mobile-container > div.nav-container > a > h1 {
-                font-size: 1.3rem;
+                font-size: 1rem;
                 color: var(--grey-dark);
             }
+        /* spaced link container */
+        nav.mobile-container > div.nav-container > a.a-space {
+            margin-top: 2em;
+            border-top: 1px solid var(--white-medli);
+        }
+        /* hover link container */
+        nav.mobile-container > div.nav-container > a:hover {
+            background-color: var(--white-medli);
+        }
 
 /* footer graphic container */
 div.container-graphic {

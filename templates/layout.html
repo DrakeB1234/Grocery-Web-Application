@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../static/css/layout.css" />
     {% block css %}{% endblock %}
     <!-- JS -->
+    <script href="../static/js/layout.js"></script>
     {% block js %}{% endblock %}
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
@@ -35,11 +36,12 @@
                     <img src="{{ user['avatar_path'] }}">
                     <h1>Hello,<span>{{ user["username"] }}</span></h1>
                 </a>
-                <a><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
-                <a><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
-                <a><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
-                <a><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
-                <a><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
+                <a href="/"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
+                <a href="/list"><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
+                <a href="/"><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
+                <a href="/"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
+                <a href="/accntsettings" class="a-space"><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
+                <a href="/logout" class="a-space" style="justify-content:center;" ><h1>Logout</h1></a>
             </div>
         </nav>
         <nav class="desktop-container">
