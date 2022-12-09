@@ -11,3 +11,12 @@ window.onload = () => {
         });
     });
 };
+
+// callable function allows for user validation for actions
+const userConfirmAct = (e) => {
+    const res = confirm("Are you sure you want to Continue?");
+    if (res == true) {
+        return true;
+    }
+    e.preventDefault()
+}

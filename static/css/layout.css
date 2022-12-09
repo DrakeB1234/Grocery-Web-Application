@@ -18,7 +18,7 @@ div.flash-container {
     gap: 1em;
     overflow: hidden;
     visibility: hidden;
-    animation: hideFlash 4s;
+    animation: hideFlash 2.5s;
 }
     /* message text */
     div.flash-container h1.message {
@@ -41,7 +41,7 @@ div.flash-container {
     /* animation for hiding message */
     @keyframes hideFlash {
         0% { visibility: visible; }
-        80% { opacity: 1; }
+        70% { opacity: 1; }
         100% { opacity: 0; }
     }
 

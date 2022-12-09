@@ -71,7 +71,6 @@ main.container {
         background-color: var(--white-light);
         color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
-        cursor: pointer;
     }
         /* images */
         main.container > div.settings-item > img {
@@ -86,7 +85,8 @@ main.container {
         main.container > div.settings-item > i {
             font-size: 1.2rem;
             margin: 0 1em 0 auto;
-            padding: 1.5em;
+            padding: 1.5em 0 1.5em 40%;
+            cursor: pointer;
         }
 /* settings container */
 main.container div.settings-container-parent {
