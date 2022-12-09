@@ -50,8 +50,8 @@ div.container-lists {
             }
             /* list image */
             div.container-lists > div.list > img {
-                height: 35px;
-                width: 35px;
+                height: 30px;
+                width: 30px;
                 padding: 1em;
             }
                 /* hover list image */

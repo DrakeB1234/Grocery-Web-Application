@@ -303,14 +303,20 @@ def list_mod():
 
 
 # view list
-@app.route("/listview/<listTitle>", methods=["GET"])
+@app.route("/listview/<listTitle><listID>", methods=["GET"])
 @login_required
-def list_view(listTitle):
+def list_view(listTitle, listID):
     # establish database connection
     db = mysql.connection.cursor()
+
     # get user details
     user = session.get("user")
     id = session["user_id"]
+
+    flash(listID)
+    if not listID:
+        flash("Need to provide more Info", "User-Error")
+        return(redirect("/list"))
 
     # get all list items from selected list
     listdata = db.execute(f"""
@@ -319,15 +325,24 @@ def list_view(listTitle):
         JOIN listTitles as lt ON ld.title_id = lt.id
         JOIN listCategories as lc ON ld.category_id = lc.id 
         WHERE lt.user_id = {id} AND 
-        lt.title = '{listTitle}'
+        lt.title = '{listTitle}' AND
+        lt.id = {listID}
         ORDER BY category DESC;
     """)
+
     listdata = db.fetchall()
+
     # get all categories
     listcat = db.execute(f'SELECT category FROM listCategories WHERE user_id = {id}')
     listcat = db.fetchall()
+
     # check if any results
     if not listdata:
-        listdata = None
+        listdata = ["Empty"]
 
     return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    flash("Error Finding Page", "User-Error")
+    return redirect('/')
