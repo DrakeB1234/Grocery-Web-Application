@@ -13,8 +13,8 @@ window.onload = () => {
 };
 
 // callable function allows for user validation for actions
-const userConfirmAct = (e) => {
-    const res = confirm("Are you sure you want to Continue?");
+const userConfirmAct = (e, msg) => {
+    const res = confirm(`Are you sure you want to ${msg} this?`);
     if (res == true) {
         return true;
     }

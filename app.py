@@ -243,37 +243,64 @@ def list():
     # method is get, page requested by user
     else:
         # get list data
-        list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id}')
+        list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id} ORDER BY title')
         list = db.fetchall()
         return render_template("list.html", user=user[0], list=list, url=request.path)
 
-# list page
-@app.route("/list/<listID>/<listTitle>", methods=["GET"])
+# list modifcation route
+@app.route("/listmod", methods=["GET", "POST"])
 @login_required
-def list_delete(listID, listTitle):
+def list_mod():
     # establish database connection
     db = mysql.connection.cursor()
     id = session["user_id"]
 
-    if not listID or not listTitle:
-        flash("Provide a Title", "User-Error")
+    # setting input to var
+    listID = request.form.get("listID")
+
+    # checking for valid ID
+    if not listID:
+        flash("Provide a ID", "User-Error")
         return redirect("/list")
-    
-    if not re.match("^[A-Za-z ]*$",listTitle):
-        flash("Only use letters and spaces", "User-Error")
-        return redirect("/list")
-    
+
     if not listID.isnumeric():
         flash("Only use numbers", "User-Error")
         return redirect("/list")
 
-    # Executing sql query
-    db.execute(f'DELETE FROM listTitles WHERE id = {listID} AND user_id = {id} AND title = "{listTitle}";')
-    mysql.connection.commit()
+    # if request is to delete form
+    if "listDel" in request.form:
 
-    # flash message of success
-    flash(f"Deleted '{listTitle}' List", "Success")
+        # Executing sql query
+        db.execute(f'DELETE FROM listTitles WHERE id = {listID} AND user_id = {id}')
+        mysql.connection.commit()
+        # flash message of success
+        flash("Deleted List", "Success")
+        return redirect("/list")
+
+    # if request is to delete form
+    if "listEdit" in request.form:
+
+        # get new title name from input
+        titleName = request.form.get("listEdit")
+
+        # checking for valid title
+        if not titleName:
+            flash("Provide a ID", "User-Error")
+            return redirect("/list")
+
+        if not re.match("^[a-zA-Z0-9][a-zA-Z0-9 ]*$",titleName):
+            flash("Only use numbers, letters, and spaces", "User-Error")
+            return redirect("/list")
+
+        # Executing sql query
+        db.execute(f"UPDATE listTitles SET title = '{titleName}' WHERE id = {listID} AND user_id = {id}")
+        mysql.connection.commit()
+        # flash message of success
+        flash("Edited List", "Success")
+        return redirect("/list")
+
     return redirect("/list")
+
 
 # view list
 @app.route("/listview/<listTitle>", methods=["GET"])

@@ -34,7 +34,7 @@
                     <input id="file" name="avatarFile" style="visibility:hidden;" type="file">
                     <button type="submit">Submit</button>
                 </form>
-                <form action="/accntsettings" method="post" enctype="multipart/form-data" onsubmit="userConfirmAct(event)">
+                <form action="/accntsettings" method="post" enctype="multipart/form-data" onsubmit="userConfirmAct(event, 'change')">
                     <h1>Change Username</h1>
                     <input name="userName" type="text" placeholder="New Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" />
                     <button type="submit">Submit</button>
@@ -49,7 +49,7 @@
                     <i class="fa-solid fa-chevron-left"></i>
                     <h1>Privacy Settings</h1>
                 </a>
-                <form action="/accntsettings" method="post" enctype="multipart/form-data" onsubmit="userConfirmAct(event)">
+                <form action="/accntsettings" method="post" enctype="multipart/form-data" onsubmit="userConfirmAct(event, 'change')">
                     <h1>Change Password</h1>
                     <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
                     <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />

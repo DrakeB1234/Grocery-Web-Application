@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}List Database{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/list.css" />{% endblock %}
-{% block js %}{% endblock %}
+{% block js %}<script src="../static/js/list.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -16,12 +16,31 @@
             <h1>Stored Lists</h1>
         </div>
         <div class="container-lists">
-            <div class="list">
-                <a>List one</a>
-                <img src="../static/images/icons/icon-trash.svg">
-                <img src="../static/images/icons/icon-edit.svg">
-            </div>
+            {% if not list %}
+                <div class="list">
+                    <a>No Lists Found</a>
+                </div>
+            {% else %}
+                {% for i in list %}
+                    <div class="list">
+                        <a>{{ i["title"] }}</a>
+                        <img id="set-btn" src="../static/images/icons/icon-edit.svg">
+                    </div>
+                    <div class="sub-list">
+                        <form action="/listmod" method="post" onsubmit="userConfirmAct(event, 'change')">
+                            <input name="listID" value="{{ i['id'] }}" hidden>
+                            <input name="listEdit" type="text" placeholder="New Title" pattern="^[a-zA-Z0-9][a-zA-Z0-9 ]*$" title="Only use letters, numbers, and spaces" autocomplete="off" />
+                            <button type="submit">Change</button>
+                        </form>
+                        <form action="/listmod" method="post" onsubmit="userConfirmAct(event, 'delete')">
+                            <input name="listID" value="{{ i['id'] }}" hidden>
+                            <button name="listDel" id="del-list" type="submit" >Delete List</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
+
     </main>
 
 {% endblock %}

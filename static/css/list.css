@@ -30,7 +30,8 @@ div.container-lists {
     /* list */
     div.container-lists > div.list {
         display: flex;
-        font-size: 1.2rem;
+        align-items: center;
+        font-size: 1.3rem;
         background-color: var(--white-light);
         color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
@@ -39,5 +40,60 @@ div.container-lists {
         /* list item */
         div.container-lists > div.list > a {
             width: 100%;
-            padding: 2em 1em 2em 1em;
+            padding: 1.3em;
+            overflow: hidden;
+            overflow-wrap: break-word;
+        }
+            /* hover list text */
+            div.container-lists > div.list > a:hover {
+                background-color: var(--white-medli);
+            }
+            /* list image */
+            div.container-lists > div.list > img {
+                height: 35px;
+                width: 35px;
+                padding: 1em;
+            }
+                /* hover list image */
+                div.container-lists > div.list > img:hover {
+                    background-color: var(--white-medli);
+                }
+    /* form container */
+    div.container-lists > div.sub-list {
+        display: none;
+        flex-direction: column;
+        padding: 2em 0 2em 0;
+        font-size: 1.2rem;
+        background-color: var(--white-light);
+        color: var(--grey-dark);
+        border-bottom: 1px solid var(--white-med);
+    }
+        /* form */
+        div.sub-list > form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            /* text */
+            div.sub-list > form > input[type="text"] {
+                padding: 0.8em;
+                font-size: 1rem;
+                border-radius: 8px;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-medli);
+            }
+            /* submit btn */
+            div.sub-list > form > button[type="submit"] {
+                margin-top: 2em;
+                padding: 0.7em 3em 0.7em 3em;
+                border: 0;
+                font-size: 0.9rem;
+                border-radius: 8px;
+                background-color: var(--main-med);
+                color: var(--white-light);
+                cursor: pointer;
+            }
+            /* delete btn */
+            div.sub-list > form > button[type="submit"]#del-list {
+            background-color: rgb(209, 67, 67);
         }
