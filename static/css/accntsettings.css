@@ -104,4 +104,68 @@ main.container div.settings-container-parent {
         border-radius: 20px;
         box-shadow: 0 0 1em var(--white-med);
         background-color: var(--white-light);
+        overflow-y: scroll;
     }
+        /* back button*/
+        main.container div.settings-container-child > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1em;
+            color: var(--grey-dark);
+            border-bottom: 1px solid var(--white-med);
+        }
+            /* header text */
+            main.container div.settings-container-child > a > h1 {
+                position: relative;
+                z-index: 1;
+                left: -0.3em;
+                font-size: 1.6rem;
+                margin: 0 auto 0 auto;
+            }
+            /* back arrow icon */
+            main.container div.settings-container-child > a > i {
+                font-size: 1.4rem;
+            }
+        /* forms */
+        main.container div.settings-container-child > form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1em;
+            padding: 1em 0 2em 0;
+            border-bottom: 1px solid var(--white-med);
+        }
+            /* header text */
+            main.container div.settings-container-child > form > h1 {
+                font-size: 1.3rem;
+                color: var(--grey-med);
+            }
+            /* text */
+            main.container div.settings-container-child > form input[type="text"], input[type="password"]{
+                padding: 0.8em;
+                font-size: 1rem;
+                border-radius: 8px;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-medli);
+            }
+            /* submit button */
+            main.container div.settings-container-child > form > button[type="submit"]{
+                margin-top: 2em;
+                padding: 0.7em 3em 0.7em 3em;
+                border: 0;
+                font-size: 0.9rem;
+                border-radius: 8px;
+                background-color: var(--main-med);
+                color: var(--white-light);
+                cursor: pointer;
+            }
+            /* file button */
+            main.container div.settings-container-child > form > label[for="file"]{
+                margin-top: 0.5em;
+                padding: 0.7em 2em 0.7em 2em;
+                border: 1px solid var(--white-med);
+                border-radius: 8px;
+                color: var(--grey-dark);
+                background-color: var(--white-medli);
+            }

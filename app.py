@@ -103,9 +103,8 @@ def logout():
 def home():
     # get user details
     user = session.get("user")
-    # get details about user browser
-    agent = request.headers.get("User-Agent")
-    return render_template("home.html", user=user[0], agent=agent)
+
+    return render_template("home.html", user=user[0], url=request.path)
 
 # account settings page
 @app.route("/accntsettings", methods=["GET", "POST"])
@@ -142,7 +141,7 @@ def accntsettings():
             db.execute(f"UPDATE users SET avatar_path = '{pathVar}' WHERE user_id = {id}")
             mysql.connection.commit()
             # flash message then redirect
-            flash("Avatar Uploaded", "success")
+            flash("Avatar Uploaded", "Success")
             return redirect("/accntsettings")
 
         # information posted is for changing username
@@ -171,6 +170,8 @@ def accntsettings():
 
             # flash success message
             flash("Successfully changed username", "Success")
+            # get new user info
+            user_info(id)
 
         # information posted is for changing password
         if "userPass" in request.form:
@@ -196,6 +197,10 @@ def accntsettings():
             # Commit change in database
             db.execute(f"UPDATE users SET hash = '{userPass}' WHERE user_id = {id}")
             mysql.connection.commit()
+            # flash success message
+            flash("Successfully changed password", "Success")
+            # get new user info
+            user_info(id)
 
             return redirect("/accntsettings")
 
@@ -203,7 +208,7 @@ def accntsettings():
     
     # page is being requested
     else:
-        return render_template("accntsettings.html", user=user[0])
+        return render_template("accntsettings.html", user=user[0], url=request.path)
 
 # list page
 @app.route("/list", methods=["GET", "POST"])
@@ -229,7 +234,7 @@ def list():
             
             db.execute(f'INSERT INTO listTitles (user_id, title) VALUES ({id}, "{title}");')
             mysql.connection.commit()
-            flash(f"Added '{title}' to lists!", "success")
+            flash(f"Added '{title}' to lists!", "Success")
 
             return redirect("/list")
 
@@ -240,7 +245,7 @@ def list():
         # get list data
         list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id}')
         list = db.fetchall()
-        return render_template("list.html", user=user[0], list=list)
+        return render_template("list.html", user=user[0], list=list, url=request.path)
 
 # list page
 @app.route("/list/<listID>/<listTitle>", methods=["GET"])
@@ -267,7 +272,7 @@ def list_delete(listID, listTitle):
     mysql.connection.commit()
 
     # flash message of success
-    flash(f"Deleted '{listTitle}' List", "success")
+    flash(f"Deleted '{listTitle}' List", "Success")
     return redirect("/list")
 
 # view list
@@ -298,4 +303,4 @@ def list_view(listTitle):
     if not listdata:
         listdata = None
 
-    return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat)
+    return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path)

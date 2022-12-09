@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="../static/css/layout.css" />
     {% block css %}{% endblock %}
     <!-- JS -->
-    <script src="../static/js/layout.js" defer></script>
     {% block js %}{% endblock %}
+    <script src="../static/js/layout.js" defer></script>
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
     <!-- FONTAWESOME -->
@@ -39,11 +39,31 @@
                     <h1>Hello,<span>{{ user["username"] }}</span></h1>
                     <i id="toggle-mobile-nav" class="fa-solid fa-xmark"></i>
                 </a>
-                <a href="/" class="a-space"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
-                <a href="/list"><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
-                <a href="/"><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
-                <a href="/"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
-                <a href="/accntsettings" class="a-space"><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
+                {% if url == "/" %}
+                    <a href="/" class="a-space active"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
+                {% else %}
+                    <a href="/" class="a-space"><img src="../static/images/icons/icon-house.svg"><h1>Home</h1></a>
+                {% endif %}
+                {% if url == "/list" %}
+                    <a href="/list" class="active"><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
+                {% else %}
+                    <a href="/list"><img src="../static/images/icons/icon-list.svg"><h1>Lists</h1></a>
+                {% endif %}
+                {% if url == "/recipes" %}
+                    <a href="/" class="active"><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
+                {% else %}
+                    <a href="/"><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
+                {% endif %}
+                {% if url == "/recipes" %}
+                    <a href="/" class="active"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
+                {% else %}
+                    <a href="/"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
+                {% endif %}
+                {% if url == "/accntsettings" %}
+                    <a href="/accntsettings" class="a-space active"><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
+                {% else %}
+                    <a href="/accntsettings" class="a-space"><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
+                {% endif %}
                 <a href="/logout" class="a-space" style="justify-content:center;" ><h1>Logout</h1></a>
             </div>
         </nav>

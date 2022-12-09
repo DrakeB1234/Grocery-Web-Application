@@ -96,7 +96,6 @@ nav.mobile-container > i#toggle-mobile-nav {
     }
         /* hover exit button */
         nav.mobile-container > div.nav-container i#toggle-mobile-nav:hover {
-
             background-color: rgba(0, 0, 0, 0.3);
         }
 /* mobile container */
@@ -135,11 +134,15 @@ nav.mobile-container {
                 gap: 0.2em;
                 font-size: 1.2rem;
                 color: var(--white-medli);
+                overflow: hidden;
+                overflow-wrap: break-word;
             }
                 /* span text */
                 nav.mobile-container > div.nav-container > a:first-child > h1 > span {
                     font-size: 1.6rem;
                     color: var(--white-light);
+                    overflow: hidden;
+                    overflow-wrap: break-word;
                 }
             /* hover first link container */
             nav.mobile-container > div.nav-container > a:first-child:hover {
@@ -149,7 +152,7 @@ nav.mobile-container {
         nav.mobile-container > div.nav-container > a {
             display: flex;
             align-items: center;
-            gap: 1em;
+            gap: 1.5em;
             padding: 1em 15% 1em 15%;
             border-bottom: 1px solid var(--white-medli);
             cursor: pointer;
@@ -161,7 +164,7 @@ nav.mobile-container {
             }
             /* text */
             nav.mobile-container > div.nav-container > a > h1 {
-                font-size: 1rem;
+                font-size: 1.3rem;
                 color: var(--grey-dark);
             }
         /* spaced link container */
@@ -173,6 +176,12 @@ nav.mobile-container {
         nav.mobile-container > div.nav-container > a:hover {
             background-color: var(--white-medli);
         }
+        /* active link */
+        nav.mobile-container > div.nav-container > a.active {
+            background: linear-gradient(120deg, rgb(129, 222, 213) 0%, rgba(112,242,162,1) 36%);
+            box-shadow: 0 0 1.5em var(--white-med);
+        }
+
 
 /* footer graphic container */
 div.container-graphic {
