@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}List Viewer{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/listview.css" />{% endblock %}
-{% block js %}<script src="../static/js/list.js" defer></script>{% endblock %}
+{% block js %}<script src="../static/js/listview.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -11,6 +11,9 @@
 <!-- main content -->
 {% block main %}
 
+    <script>
+        var listdata = {{ listdata|tojson }}
+    </script>
     <main class="container">
         <div class="container-list">
             <a href="/list">
@@ -21,17 +24,7 @@
                     <h1>Empty List</h1>
                 {% endif %}
             </a>
-
-            {% if listdata %}
-                {% for i in listdata %}
-                <h1>{{ i["category"] }}</h1>
-                <div class="container-item">
-                    <h2>{{ i["amount"] }}</h2>
-                    <h3>{{ i["item"] }}</h3>
-                    <h4>{{ i["note"] }}</h4>
-                </div>
-                {% endfor %}            
-            {% endif %}
+            <div id="listdata-get"></div>
         </div>
     </main>
 

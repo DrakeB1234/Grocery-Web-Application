@@ -348,7 +348,7 @@ def list_view(listTitle, listID):
     # check if any results
     if not listdata:
         listdata = None
-
+        
     return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path)
 
 @app.errorhandler(404)

@@ -12,7 +12,7 @@ div.container-graphic {
 div.container-list {
     display: flex;
     flex-direction: column;
-    width: clamp(10em, 94%, 50em);
+    width: clamp(10em, 98%, 50em);
     margin: 1em auto 1em auto;
     padding: 1em 0 2em 0;
     border-radius: 20px;
@@ -40,13 +40,44 @@ div.container-list {
             font-size: 1.4rem;
         }
     /* category */
-    div.container-list > h2 {
-        padding: 1em 0 0.5em 0;
+    div#listdata-get > h1 {
+        padding: 1em 0 0.5em 0.5em;
         font-size: 1.5rem;
-        color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
     }
     /* list item container */
-    div.container-list > div.container-item {
+    div#listdata-get > div.container-item {
         display: flex;
+        align-items: center;
+        font-size: 1.3rem;
+        border-bottom: 1px solid var(--white-medli);
     }
+        /* item amount */
+        div#listdata-get > div.container-item > h2 {
+            padding-left: 0.5em;
+            color: var(--main-dark);
+        }
+        /* item text */
+        div#listdata-get > div.container-item > h3 {
+            flex: 2;
+            padding-left: 0.5em;
+            color: var(--grey-dark);
+            overflow: hidden;
+            overflow-wrap: break-word;
+        }
+            /* item note */
+            div#listdata-get > h4 {
+                padding: 0.5em;
+                font-size: 1rem;
+                color: var(--main-dark);
+                border-bottom: 1px solid var(--white-medli);
+                overflow: hidden;
+                overflow-wrap: break-word;
+            }
+        /* item trashcan */
+        div#listdata-get > div.container-item > img {
+            height: 25px;
+            width: 25px;
+            padding: 0.5em;
+            cursor: pointer;
+        }
