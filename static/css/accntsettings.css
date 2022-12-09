@@ -62,30 +62,31 @@ main.container {
             color: var(--grey-dark);
         }
     /* button */
-    main.container > button.settings-item {
+    main.container > div.settings-item {
         display: flex;
         align-items: center;
         gap: 1.5em;
-        padding: 1.5em;
         border: 0;
+        padding-left: 1em;
         background-color: var(--white-light);
         color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
         cursor: pointer;
     }
         /* images */
-        main.container > button.settings-item > img {
+        main.container > div.settings-item > img {
             height: 30px;
             width: 30px;
         }
         /* text */
-        main.container > button.settings-item > h1 {
+        main.container > div.settings-item > h1 {
             font-size: 1.2rem;
         }
         /* back arrow (icon) */
-        main.container > button.settings-item > i {
+        main.container > div.settings-item > i {
             font-size: 1.2rem;
             margin: 0 1em 0 auto;
+            padding: 1.5em;
         }
 /* settings container */
 main.container div.settings-container-parent {

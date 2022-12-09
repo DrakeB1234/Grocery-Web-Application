@@ -20,7 +20,8 @@
             <img src="{{ user['avatar_path'] }}"></img>
             <h1>Username: {{ user["username"] }}</h1>
         </div>
-        <button id="set-btn" class="settings-item"><img src="../static/images/icons/icon-user.svg"><h1>Account</h1><i class="fa-solid fa-chevron-right"></i></button>
+        
+        <div class="settings-item"><img src="../static/images/icons/icon-user.svg"><h1>Account</h1><i id="set-btn" class="fa-solid fa-chevron-right"></i></div>
         <div class="settings-container-parent">
             <div class="settings-container-child">
                 <a href="/accntsettings">
@@ -40,7 +41,8 @@
                 </form>
             </div>
         </div>
-        <button id="set-btn" class="settings-item"><img src="../static/images/icons/icon-lock.svg"><h1>Privacy</h1><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="settings-item"><img src="../static/images/icons/icon-lock.svg"><h1>Privacy</h1><i id="set-btn" class="fa-solid fa-chevron-right"></i></div>
         <div class="settings-container-parent">
             <div class="settings-container-child">
                 <a href="/accntsettings">
