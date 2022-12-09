@@ -54,6 +54,7 @@ main.container {
             margin: 1em 0 1em 0;
             border-radius: 50%;
             border: 2px solid var(--grey-dark);
+            box-shadow: 0 0 1em var(--white-med);
         }
         /* h1 text */
         main.container > div.header > h1 {

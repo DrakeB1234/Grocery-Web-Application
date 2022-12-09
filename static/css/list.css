@@ -1,9 +1,14 @@
+/* body */
+body {
+    background-color: var(--white-medli);
+}
+
 /* header container */
 div.container-header {
     display: flex;
     justify-content: center;
     padding: 2em 0 3em 0;
-    background-color: var(--main-light);
+    background: linear-gradient(120deg, rgb(129, 222, 213) 0%, rgba(112,242,162,1) 36%);
 }
     /* header text */
     div.container-header > h1 {
@@ -11,104 +16,28 @@ div.container-header {
         color: var(--white-light);
         text-shadow: 3px 3px var(--grey-light);
     }
-/* delete container */
-div.container-delete {
-    display: flex;
-    flex-direction: column;
-    width: clamp(10em, 99%, 50em);
-    margin: 0 auto 0 auto;
-    overflow: hidden;
-}
-    /* list delete icon */
-    div.container-delete > i {
-        margin-right: 1em;
-        margin-top: 1em;
-        text-align: right;
-        font-size: 1.5rem;
-        color: var(--main-med);
-    }
-    /* delete form */
-    div.container-delete > div.deletelist {
-        display: none;
-        flex-direction: column;
-        width: clamp(10em, 99%, 50em);
-        margin: 1em auto 6em auto;
-        padding: 1em 0 2em 0;
-        border: 1px solid var(--grey-light);
-        border-radius: 20px;
-    }
-        /* header text */
-        div.container-delete > div.deletelist > h1{
-            font-size: 1.5rem;
-            padding: 0.5em;
-            color: var(--main-med);
-        }
-        /* list items */
-        div.container-delete > div.deletelist > a{
-            padding: 1em;
-            font-size: 1.3rem;
-            text-align: center;
-            color: var(--grey-dark);
-            border-bottom: 1px solid var(--white-med);
-        }
 /* list container */
-div.container-list {
+div.container-lists {
     display: flex;
     flex-direction: column;
-    width: clamp(10em, 99%, 50em);
+    width: clamp(10em, 98%, 50em);
     margin: 1em auto 1em auto;
     padding: 1em 0 2em 0;
-    border: 1px solid var(--grey-light);
     border-radius: 20px;
+    box-shadow: 0 0 1em var(--white-med);
+    background-color: var(--white-light);
 }
-    /* list contaner text */
-    div.container-list h1 {
-        font-size: 1.5rem;
-        padding: 0.5em;
-        color: var(--main-med);
-    }
-    /* list container links a tags */
-    div.container-list a {
-        padding: 1em;
-        font-size: 1.3rem;
-        text-align: center;
+    /* list */
+    div.container-lists > div.list {
+        display: flex;
+        font-size: 1.2rem;
+        background-color: var(--white-light);
         color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
-    }
-/* add container */
-div.add-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-    /* add icon */
-    div.add-container > i.fa-solid {
-        width: 100%;
-        padding: 0.5em;
-        text-align: center;
-        font-size: 2rem;
-        color: var(--main-med);
         cursor: pointer;
     }
-    /* form */
-    div.add-container > form {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        gap: 2em;
-    }
-        /* input text */
-        div.add-container > form > input[type="text"] {
-            width: 60%;
-            font-size: 1.3rem;
-            padding: 0.4em;
-        }
-        /* button */
-        div.add-container > form > button[type="submit"] {
-            font-size: 1.3rem;
-            padding: 0.5em 1em 0.5em 1em;
-            background: none;
-            border: 1px solid var(--white-med);
-            border-radius: 10px;
-            color: var(--main-med);
+        /* list item */
+        div.container-lists > div.list > a {
+            width: 100%;
+            padding: 2em 1em 2em 1em;
         }

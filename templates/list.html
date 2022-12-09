@@ -15,54 +15,13 @@
         <div class="container-header">
             <h1>Stored Lists</h1>
         </div>
-            <div class="container-delete">
-                <i id="delete-toggle" class="fa-solid fa-minus"></i>
-                <div id="delete-container" class="deletelist">
-                <h1>Delete Lists</h1>
-                    {% for i in list %}
-                    <a id="viewBtn" href="/list/{{ i['id'] }}/{{ i['title'] }}" >{{ i['title'] }}</a>
-                    {% endfor %}                
-                </div>
+        <div class="container-lists">
+            <div class="list">
+                <a>List one</a>
+                <img src="../static/images/icons/icon-trash.svg">
+                <img src="../static/images/icons/icon-edit.svg">
             </div>
-            <div class="container-list">
-            <h1>Your Lists</h1>
-            {% for i in list %}
-                <a id="viewBtn" href="/listview/{{ i['title'] }}" >{{ i['title'] }}</a>
-            {% endfor %}
-            <div class="add-container">
-                <i id="add-toggle" class="fa-solid fa-plus"></i>
-                <form id="add-form" method="POST" action="/list">
-                    <input name="listTitle" type="text" placeholder="Title" pattern="^[a-zA-Z ]*$" title="Only use letters and Spaces" autocomplete="off" autofocus />
-                    <button type="submit">Add List</button>
-                </form>
-            </div>
-            <!-- temp script for toggle -->
-            <script>
-                document.getElementById("add-toggle").addEventListener("click", (e) => {
-                    const form = document.getElementById("add-form");
-                    e = e.explicitOriginalTarget;
-                    if (form.style.display === "flex") {
-                        form.style.display = "none";
-                        e.classList = "fa-solid fa-plus";
-                        return
-                    }
-                    form.style.display = "flex";
-                    e.classList = "fa-solid fa-xmark";
-                    return
-                })
-                document.getElementById("delete-toggle").addEventListener("click", (e) => {
-                    const ele = document.getElementById("delete-container");
-                    e = e.explicitOriginalTarget;
-                    if (ele.style.display === "flex") {
-                        ele.style.display = "none";
-                        e.classList = "fa-solid fa-minus";
-                        return
-                    }
-                    ele.style.display = "flex";
-                    e.classList = "fa-solid fa-xmark";
-                    return
-                })
-            </script>
+        </div>
     </main>
 
 {% endblock %}

@@ -75,14 +75,16 @@ nav.desktop-container {
         }
 
 /* toggle button */
-nav.mobile-container > i#toggle-mobile-nav {
+nav.mobile-container > img#toggle-mobile-nav {
     position: fixed;
     top: 0;
     right: 0;
-    padding: 0.4em;
+    height: 30px;
+    width: 30px;
+    padding: 0.5em;
     font-size: 2rem;
     color: var(--white-light);
-    border-radius: 0 0 0 50%;
+    border-radius: 0 0 0 40%;
     background-color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
@@ -95,7 +97,7 @@ nav.mobile-container > i#toggle-mobile-nav {
         cursor: pointer;
     }
         /* hover exit button */
-        nav.mobile-container > div.nav-container i#toggle-mobile-nav:hover {
+        nav.mobile-container > div.nav-container img#toggle-mobile-nav:hover {
             background-color: rgba(0, 0, 0, 0.3);
         }
 /* mobile container */

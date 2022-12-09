@@ -1,0 +1,12 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-trash">
+<g id="icon">
+<path id="Rectangle 1" d="M6.18683 17.1762C6.08547 15.453 7.45554 14 9.18166 14H40.7713C42.5148 14 43.8911 15.4812 43.7632 17.22L41.7044 45.22C41.5892 46.7873 40.284 48 38.7125 48H10.8287C9.24029 48 7.92717 46.7619 7.83389 45.1762L6.18683 17.1762Z" fill="#433E3E"/>
+<path id="Rectangle 2" d="M6 8.82643C6 7.79202 6.78877 6.92829 7.81893 6.83464L17 6H25H33L42.1811 6.83464C43.2112 6.92829 44 7.79202 44 8.82643V10C44 11.1046 43.1046 12 42 12H8C6.89543 12 6 11.1046 6 10V8.82643Z" fill="#433E3E"/>
+<rect id="Rectangle 3" x="23" y="43" width="24" height="4" rx="2" transform="rotate(-90 23 43)" fill="white"/>
+<rect id="Rectangle 4" x="14.2097" y="43.0331" width="24" height="4" rx="2" transform="rotate(-91 14.2097 43.0331)" fill="white"/>
+<rect id="Rectangle 5" x="31.7909" y="42.9633" width="24" height="4" rx="2" transform="rotate(-89 31.7909 42.9633)" fill="white"/>
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M19 2C17.8954 2 17 2.89543 17 4V6H19C19 4.89543 19.8954 4 21 4H29C30.1046 4 31 4.89543 31 6H33V4C33 2.89543 32.1046 2 31 2H19Z" fill="#433E3E"/>
+</g>
+</g>
+</svg>
