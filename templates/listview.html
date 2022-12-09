@@ -12,9 +12,27 @@
 {% block main %}
 
     <main class="container">
-        {% for i in listdata %}
-        <h1>{{ i }}</h1>
-        {% endfor %}
+        <div class="container-list">
+            <a href="/list">
+                <i class="fa-solid fa-chevron-left"></i>
+                {% if listdata %}
+                    <h1>{{ listdata[0]["title"] }}</h1>
+                    {% else %}
+                    <h1>Empty List</h1>
+                {% endif %}
+            </a>
+
+            {% if listdata %}
+                {% for i in listdata %}
+                <h1>{{ i["category"] }}</h1>
+                <div class="container-item">
+                    <h2>{{ i["amount"] }}</h2>
+                    <h3>{{ i["item"] }}</h3>
+                    <h4>{{ i["note"] }}</h4>
+                </div>
+                {% endfor %}            
+            {% endif %}
+        </div>
     </main>
 
 {% endblock %}

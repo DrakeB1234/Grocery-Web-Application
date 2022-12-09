@@ -8,183 +8,45 @@ div.container-graphic {
     display: none;
 }
 
-/* header container */
-div.container-header {
-    display: flex;
-    justify-content: center;
-    padding: 2em 0 3em 0;
-    background-color: var(--main-light);
-}
-    /* header text */
-    div.container-header > h1 {
-        font-size: 2.5rem;
-        color: var(--white-light);
-        text-shadow: 3px 3px var(--grey-light);
-    }
-
-/* return button */
-main.container > a[href="/list"] {
-    display: flex;
-    margin: 1em auto 0 auto;
-    padding: 0.5em;
-    padding-left: 1em;
-    font-size: 1.5rem;
-}
-
-div#container-list {
+/* list container */
+div.container-list {
     display: flex;
     flex-direction: column;
-    width: clamp(10em, 99%, 50em);
-    margin: 1em auto 3em auto;
-    padding: 1em 0 3em 0;
-    border: 1px solid var(--grey-light);
+    width: clamp(10em, 94%, 50em);
+    margin: 1em auto 1em auto;
+    padding: 1em 0 2em 0;
     border-radius: 20px;
+    box-shadow: 0 0 1em var(--white-med);
     background-color: var(--white-light);
 }
-    /* list container */
-    div.list-item {
+    /* first container (back button) */
+    div.container-list > a[href="/list"] {
         display: flex;
-        flex-direction: column;
-    }
-        /* text in item */
-        div.list-item h1 {
-            padding: 0.8em;
-            font-size: 1.5rem;
-            color: var(--main-med);
-            border-top: 1px solid var(--grey-med);
-            border-bottom: 1px solid var(--grey-med);
-        }
-            /* text in first item */
-            div.list-item:first-child > h1 {
-                border-top: 0;
-            }
-        /* list item */
-        div.item {
-            display: flex;
-            align-items: center;
-            margin: 0 0.2em 0 0.2em;
-            background-color: var(--white-medli);
-            border-bottom: 1px solid var(--white-med);
-            font-size: 1.3rem;
-        }
-            /* amount */
-            div.item h2 {
-                padding: 0.5em;
-                color: var(--main-med);
-            }
-            /* item */
-            div.item h3 {
-                flex: 2;
-                padding: 0.8em;
-                overflow: hidden;
-                overflow-wrap: break-word;
-            }
-            /* trash */
-            div.item i.fa-trash-can {
-                padding: 0.8em;
-                color: var(--main-med);
-            }
-            /* note */
-            div.list-item h4 {
-                margin: 0 0.3em 0.5em 0.3em;
-                padding: 0.4em;
-                border-bottom: 1px solid var(--white-med);
-                background-color: var(--white-medli);
-                color: var(--main-med);
-                overflow: hidden;
-                overflow-wrap: break-word;
-            }
-    /* adder container */
-    div.container-adder {
-        display: flex;
-        justify-content: center;
-    }
-    div.container-adder > i {
-        position: fixed;
-        bottom: 0.5em;
-        padding: 0.5em;
-        z-index: 2;
-        font-size: 3rem;
-        color: var(--main-dark);
-        cursor: pointer;
-        rotate: 0;
-        transition: rotate 0.5s;
-    }
-        /* icon active */
-        div.container-adder > i.active {
-            rotate: 45deg;
-            color: var(--main-light);
-            transition: rotate 0.5s;
-        }
-    /* form container */
-    div.container-adder > div#container-add-form {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background-color: var(--grey-med);
-        overflow-y: scroll;
-        transition: height 0.5s;
-    }
-    /* form */
-    div#container-add-form > form#addForm {
-        display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 1em;
-        width: clamp(10em, 90%, 50em);
-        margin: 1em auto 1em auto;
+        justify-content: center;
+        padding: 1em;
+        color: var(--grey-dark);
     }
-        /* form h1 tags */
-        div#container-add-form > form#addForm > h1 {
-            text-align: center;
-            margin-bottom: 1em;
-            font-size: 2rem;
-            color: var(--white-light);
-            text-shadow: 2px 2px var(--grey-light);
+        /* header text */
+        div.container-list > a[href="/list"] > h1 {
+            position: relative;
+            z-index: 1;
+            left: -0.3em;
+            font-size: 1.6rem;
+            margin: 0 auto 0 auto;
         }
-        /* form h2 tags */
-        div#container-add-form > form#addForm > h2 {
-            align-self: start;
-            font-size: 1rem;
-            color: var(--white-light);
-        }
-        /* form select */
-        div#container-add-form > form#addForm > select {
-            width: 80%;
-            margin-bottom: 1em;
-            padding: 0.4em;
-            font-size: 1.2rem;
-            background-color: var(--white-med);
-            border-radius: 10px;
-            border: 0;
-        }
-        /* form input text */
-        div#container-add-form > form#addForm > input[type="text"] {
-            width: 90%;
-            padding: 0.5em;
+        /* back arrow icon */
+        div.container-list > a[href="/list"] > i {
             font-size: 1.4rem;
-            border-radius: 10px;
-            border: 0;
-            background-color: var(--white-med);
         }
-        /* form input number */
-        div#container-add-form > form#addForm > input[type="number"] {
-            width: 20%;
-            padding: 0.8em;
-            font-size: 1.2rem;
-            text-align: center;
-            border-radius: 10px;
-            border: 0;
-            background-color: var(--white-med);
-        }
-        /* form button submit */
-        div#container-add-form > form#addForm > button[type="submit"] {
-            width: 100%;
-            margin-top: 2em;
-            padding: 0.5em;
-            font-size: 1.5rem;
-            background: var(--main-light);
-            color: var(--grey-dark);
-            border: 0;
-            border-radius: 10px;
-        }
+    /* category */
+    div.container-list > h2 {
+        padding: 1em 0 0.5em 0;
+        font-size: 1.5rem;
+        color: var(--grey-dark);
+        border-bottom: 1px solid var(--white-med);
+    }
+    /* list item container */
+    div.container-list > div.container-item {
+        display: flex;
+    }

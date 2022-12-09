@@ -32,10 +32,10 @@
     {% endwith %}
     {% if session["user_id"] %}
         <nav class="mobile-container">
-            <img id="toggle-mobile-nav" src="../static/images/icons/icon-bars.svg"></i>
+            <img id="toggle-mobile-nav" src="/static/images/icons/icon-bars.svg"></i>
             <div id="mobile-nav-container" class="nav-container">
                 <a>
-                    <img src="{{ user['avatar_path'] }}">
+                    <img src="/{{ user['avatar_path'] }}">
                     <h1>Hello,<span>{{ user["username"] }}</span></h1>
                     <i id="toggle-mobile-nav" class="fa-solid fa-xmark"></i>
                 </a>

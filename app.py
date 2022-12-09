@@ -1,6 +1,5 @@
 import os
 from flask import Flask, redirect, request, render_template, flash, session
-from functools import wraps
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
@@ -92,6 +91,7 @@ def login():
 
 # logout
 @app.route("/logout", methods=["GET"])
+@login_required
 def logout():
     session["user_id"] = None
     flash("Logged Out", "Success")
@@ -211,7 +211,7 @@ def accntsettings():
         return render_template("accntsettings.html", user=user[0], url=request.path)
 
 # list page
-@app.route("/list", methods=["GET", "POST"])
+@app.route("/list", methods=["GET"])
 @login_required
 def list():
     # establish database connection
@@ -220,32 +220,10 @@ def list():
     user = session.get("user")
     id = session["user_id"]
 
-    if request.method == "POST":
-        # form for adding list
-        if "listTitle" in request.form:
-            title = request.form.get("listTitle")
-            if not title:
-                flash("Provide a Title", "User-Error")
-                return redirect("/list")
-            
-            if not re.match("^[A-Za-z ]*$",title):
-                flash("Only use letters and spaces", "User-Error")
-                return redirect("/list")
-            
-            db.execute(f'INSERT INTO listTitles (user_id, title) VALUES ({id}, "{title}");')
-            mysql.connection.commit()
-            flash(f"Added '{title}' to lists!", "Success")
-
-            return redirect("/list")
-
-        return redirect("/list")
-
-    # method is get, page requested by user
-    else:
-        # get list data
-        list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id} ORDER BY title')
-        list = db.fetchall()
-        return render_template("list.html", user=user[0], list=list, url=request.path)
+    # get list data
+    list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id} ORDER BY title')
+    list = db.fetchall()
+    return render_template("list.html", user=user[0], list=list, url=request.path)
 
 # list modifcation route
 @app.route("/listmod", methods=["GET", "POST"])
@@ -265,6 +243,11 @@ def list_mod():
 
         if not re.match("^[a-zA-Z0-9][a-zA-Z0-9 ]*$",titleName):
             flash("Only use numbers, letters, and spaces", "User-Error")
+            return redirect("/list")
+
+        # checking for valid amount of text
+        if len(titleName) < 3 or len(titleName) > 20:
+            flash("Use 3 or 20 characters", "User-Error")
             return redirect("/list")
 
         # Executing sql query
@@ -314,6 +297,11 @@ def list_mod():
             flash("Only use numbers, letters, and spaces", "User-Error")
             return redirect("/list")
 
+        # checking for valid amount of text
+        if len(titleName) < 3 or len(titleName) > 20:
+            flash("Use 3 or 20 characters", "User-Error")
+            return redirect("/list")
+
         # Executing sql query
         db.execute(f"UPDATE listTitles SET title = '{titleName}' WHERE id = {listID} AND user_id = {id}")
         mysql.connection.commit()
@@ -335,7 +323,6 @@ def list_view(listTitle, listID):
     user = session.get("user")
     id = session["user_id"]
 
-    flash(listID)
     if not listID:
         flash("Need to provide more Info", "User-Error")
         return(redirect("/list"))
@@ -360,7 +347,7 @@ def list_view(listTitle, listID):
 
     # check if any results
     if not listdata:
-        listdata = ["Empty"]
+        listdata = None
 
     return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path)
 
