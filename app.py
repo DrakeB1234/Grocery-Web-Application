@@ -255,6 +255,28 @@ def list_mod():
     db = mysql.connection.cursor()
     id = session["user_id"]
 
+    # if request is to add form
+    if "listAdd" in request.form:
+        titleName = request.form.get("listAdd")
+
+        if not titleName:
+            flash("Provide a Title", "User-Error")
+            return redirect("/list")
+
+        if not re.match("^[a-zA-Z0-9][a-zA-Z0-9 ]*$",titleName):
+            flash("Only use numbers, letters, and spaces", "User-Error")
+            return redirect("/list")
+
+        # Executing sql query
+        db.execute(f'''
+            INSERT INTO listTitles (user_id, title) 
+            VALUES ({id}, '{titleName}')
+            ''')
+        mysql.connection.commit()
+
+        flash("Added New List", "Success")
+        return redirect("/list")
+
     # setting input to var
     listID = request.form.get("listID")
 

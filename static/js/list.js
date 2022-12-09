@@ -18,3 +18,15 @@ document.querySelectorAll("#set-btn").forEach(e => {
         e.target.parentElement.style.backgroundColor = "var(--white-med)";
     });
 });
+
+// function for toggling add container
+document.getElementById("add-btn").addEventListener("click", e => {
+    const addContainer = document.getElementById("container-add")
+    if (addContainer.style.display === "flex"){
+        addContainer.style.display = "none";
+        e.target.style.rotate = "0deg";
+        return;
+    }
+    addContainer.style.display = "flex";
+    e.target.style.rotate = "-45deg";
+});
