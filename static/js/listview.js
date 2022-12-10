@@ -15,11 +15,17 @@
         // print each item in format
         // if there is a note, print h4 tag with it
         if (e["note"] != "") {
-            html += `<div class='container-item' style='border:0;'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3><img src="../static/images/icons/icon-trash.svg">`;
-            html += `</div><h4>^ Note: ${e["note"]}</h4>`;
+            html += `<div class='container-item' style='border:0;'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3>\
+            <form id="item-del" action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'delete')">
+            <button name="itemDel" value="${e["id"]}" type="submit"><img src="../static/images/icons/icon-trash.svg"></button>\
+            </form>`;
+            html += `</div><h4>Note: ${e["note"]}</h4>`;
         }
         else {
-            html += `<div class='container-item'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3><img src="../static/images/icons/icon-trash.svg">`;
+            html += `<div class='container-item' style='border:0;'><h2>${e["amount"]}</h2><h3>${e["item"]}</h3>\
+            <form id="item-del" action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'delete')">
+            <button name="itemDel" value="${e["id"]}" type="submit"><img src="../static/images/icons/icon-trash.svg"></button>\
+            </form>`;
             html += `</div>`;
         }
 

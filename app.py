@@ -226,7 +226,7 @@ def list():
     return render_template("list.html", user=user[0], list=list, url=request.path)
 
 # list modifcation route
-@app.route("/listmod", methods=["GET", "POST"])
+@app.route("/listmod", methods=["POST"])
 @login_required
 def list_mod():
     # establish database connection
@@ -313,7 +313,7 @@ def list_mod():
 
 
 # view list
-@app.route("/listview/<listTitle><listID>", methods=["GET"])
+@app.route("/listview/<listTitle> <listID>", methods=["GET"])
 @login_required
 def list_view(listTitle, listID):
     # establish database connection
@@ -348,8 +348,47 @@ def list_view(listTitle, listID):
     # check if any results
     if not listdata:
         listdata = None
-        
+
+    # save current path to return back to
+    session["list_path"] = request.path
     return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path)
+
+# view list
+@app.route("/listviewmod", methods=["POST"])
+@login_required
+def list_view_mod():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+
+    # item is requested to be removed 
+    if "itemDel" in request.form:
+        itemID = request.form.get("itemDel")
+
+        # validate input
+        if not itemID:
+            flash("Provide an ID", "User-Error")
+            return redirect(session["list_path"])
+
+        if not itemID.isnumeric():
+            flash("Only use Numbers", "User-Error")
+            return redirect(session["list_path"])
+
+        # Executing sql query
+        db.execute(f'''
+            DELETE ld 
+            FROM listData as ld
+            JOIN listTitles as lt ON ld.title_id = lt.id
+            WHERE ld.id = {itemID} AND 
+            lt.user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        # flash message of success
+        flash("Deleted Item", "Success")
+        return redirect(session["list_path"])
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):

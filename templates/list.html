@@ -23,7 +23,7 @@
             {% else %}
                 {% for i in list %}
                     <div class="list">
-                        <a href="/listview/{{ i['title'] }}{{ i['id'] }}">{{ i["title"] }}</a>
+                        <a href="/listview/{{ i['title'] }} {{ i['id'] }}">{{ i["title"] }}</a>
                         <img id="set-btn" src="../static/images/icons/icon-edit.svg">
                     </div>
                     <div class="sub-list">
