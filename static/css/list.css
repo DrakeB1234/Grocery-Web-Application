@@ -7,14 +7,15 @@ body {
 div.container-header {
     display: flex;
     justify-content: center;
-    padding: 4em 0 4em 0;
-    background: linear-gradient(120deg, rgb(129, 222, 213) 0%, rgba(112,242,162,1) 36%);
+    padding: 3em 0 2em 0;
 }
     /* header text */
     div.container-header > h1 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
         font-size: 2.5rem;
-        color: var(--white-light);
-        text-shadow: 3px 3px var(--grey-light);
+        color: var(--main-med);
+        text-shadow: 3px 3px 1em var(--white-med);
     }
 /* list container */
 div.container-lists {
@@ -32,6 +33,7 @@ div.container-lists {
         display: flex;
         align-items: center;
         font-size: 1.3rem;
+        font-weight: 700;
         background-color: var(--white-light);
         color: var(--grey-dark);
         border-bottom: 1px solid var(--white-med);
@@ -87,7 +89,8 @@ div.container-lists {
                 margin-top: 2em;
                 padding: 0.7em 3em 0.7em 3em;
                 border: 0;
-                font-size: 0.9rem;
+                font-size: 1rem;
+                font-weight: 700;
                 border-radius: 8px;
                 background-color: var(--main-med);
                 color: var(--white-light);
@@ -158,7 +161,8 @@ div#container-add {
             margin-top: 2em;
             padding: 0.7em 3em 0.7em 3em;
             border: 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 700;
             border-radius: 8px;
             background-color: var(--main-med);
             color: var(--white-light);

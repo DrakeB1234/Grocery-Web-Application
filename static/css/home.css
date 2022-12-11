@@ -13,10 +13,12 @@ body {
     }
         /* header text */
         main.container > div.container-header > h1{
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
             margin-bottom: 1em;
             font-size: 2rem;
             color: var(--white-light);
-            text-shadow: 3px 3px var(--grey-light);
+            text-shadow: 2px 4px var(--con-light);
         }
         /* svg */
         main.container > div.container-header > object {
@@ -36,68 +38,79 @@ body {
         /* header text */
         div.container-stats > h1 {
             padding-top: 1em;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
+            font-weight: 700;
             color: var(--grey-dark);
         }
         /* container data */
         div.container-stats div.container-data {
             display: flex;
             flex-direction: column;
-            padding: 1em;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0 0 1em var(--white-med);
             background-color: var(--white-light);
         }
             /* header text */
             div.container-stats div.container-data > h1 {
-                margin-bottom: 1em;
-                font-size: 1.2rem;
+                padding: 2em 0 1em 0;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: 700;
                 color: var(--grey-dark);
+                background-color: var(--white-med);
+                border-bottom: 1px solid var(--grey-light);
             }
+                /* first header */
+                div.container-stats div.container-data > h1:first-child {
+                    border-radius: 20px 20px 0 0;
+                }
             /* container data card */
             div.container-stats div.container-data div.container-data-card {
                 display: flex;
-                margin-bottom: 2em;
+                flex-direction: column;
+                gap: 2em;
+                align-items: center;
+                padding: 2em 0 2em 0;
                 border-bottom: 1px solid var(--white-med);
             }
-                /* each card */
-                div.container-stats div.container-data div.container-data-card > div {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 2em;
-                    align-items: center;
-                    padding: 2em 0 2em 0;
+                /* hover data card */
+                div.container-stats div.container-data div.container-data-card:hover {
+                    background-color: var(--white-medli);
                 }
-                    /* first card */
-                    div.container-stats div.container-data div.container-data-card > div:first-child {
-                        border-right: 1px solid var(--white-med);
-                    }
-                    /* card h1 text */
-                    div.container-stats div.container-data div.container-data-card > div > h1 {
-                        font-size: 1.2rem;
-                        color: var(--grey-light);
-                    }
-                        /* card h2 text */
-                        div.container-stats div.container-data div.container-data-card > div > h2 {
-                            font-size: 1.5rem;
-                            color: var(--grey-dark);
-                        }
-                    /* link card */
-                    div.container-stats div.container-data div.container-data-card > div > a {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        width: 100%;
-                        font-size: 1.2rem;
+                /* last data card */
+                div.container-stats div.container-data div.container-data-card:last-child {
+                    border-bottom: 0;
+                }
+                /* card h1 text */
+                div.container-stats div.container-data div.container-data-card > h1 {
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    color: var(--grey-light);
+                    overflow: hidden;
+                    overflow-wrap: break-word;
+                }
+                    /* card h2 text */
+                    div.container-stats div.container-data div.container-data-card > h2 {
+                        font-size: 1.5rem;
+                        font-weight: 700;
                         color: var(--grey-dark);
                     }
-                        /* icon */
-                        div.container-stats div.container-data div.container-data-card > div > a > img {
-                            height: 25px;
-                            width: 25px;
-                            margin-right: 0.6em;
-                        }
+                /* link card */
+                div.container-stats div.container-data div.container-data-card > a {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    font-size: 1.2rem;
+                    color: var(--grey-dark);
+                }
+                    /* icon */
+                    div.container-stats div.container-data div.container-data-card > a > img {
+                        height: 25px;
+                        width: 25px;
+                        margin-right: 0.6em;
+                    }
 /* media queries */
 
 /* mobile */
@@ -105,10 +118,18 @@ body {
     main.container > div.container-header object {
         width: 40%;
     }
+    /* header text */
+    main.container > div.container-header > h1{
+        font-size: 2.5rem;
+    }
 }
 /* desktop */
 @media only screen and (min-width:1200px) {
     main.container > div.container-header object {
         width: 30%;
+    }
+    /* header text */
+    main.container > div.container-header > h1{
+        font-size: 3rem;
     }
 }

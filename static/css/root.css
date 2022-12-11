@@ -5,6 +5,10 @@
     --main-dark: #4b7a42;
     --main-med: #5fab52;
     --main-light: #a1e294;
+    --main-bright: #70f057;
+
+    /* contrast scheme */
+    --con-light: #6ac0ef;
 
     /* grey */
     --grey-dark: #3d4861;

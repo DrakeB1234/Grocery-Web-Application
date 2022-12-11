@@ -33,6 +33,7 @@ main.container {
             z-index: 1;
             left: -0.3em;
             font-size: 1.6rem;
+            font-weight: 700;
             margin: 0 auto 0 auto;
         }
         /* back arrow icon */
@@ -59,6 +60,7 @@ main.container {
         /* h1 text */
         main.container > div.header > h1 {
             font-size: 1.2rem;
+            font-weight: 700;
             color: var(--grey-dark);
         }
     /* button */
@@ -123,6 +125,7 @@ main.container div.settings-container-parent {
                 z-index: 1;
                 left: -0.3em;
                 font-size: 1.6rem;
+                font-weight: 700;
                 margin: 0 auto 0 auto;
             }
             /* back arrow icon */
@@ -141,6 +144,7 @@ main.container div.settings-container-parent {
             /* header text */
             main.container div.settings-container-child > form > h1 {
                 font-size: 1.3rem;
+                font-weight: 700;
                 color: var(--grey-med);
             }
             /* text */
@@ -156,7 +160,8 @@ main.container div.settings-container-parent {
                 margin-top: 2em;
                 padding: 0.7em 3em 0.7em 3em;
                 border: 0;
-                font-size: 0.9rem;
+                font-size: 1rem;
+                font-weight: 700;
                 border-radius: 8px;
                 background-color: var(--main-med);
                 color: var(--white-light);

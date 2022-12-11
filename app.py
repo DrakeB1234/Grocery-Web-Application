@@ -221,7 +221,7 @@ def list():
     id = session["user_id"]
 
     # get list data
-    list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id} ORDER BY title')
+    list = db.execute(f'SELECT id, title FROM listTitles WHERE user_id = {id} ORDER BY title ASC')
     list = db.fetchall()
     return render_template("list.html", user=user[0], list=list, url=request.path)
 

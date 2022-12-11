@@ -56,13 +56,14 @@ nav.desktop-container {
     nav.desktop-container a {
         padding: 1em;
         font-size: 1.1rem;
+        font-weight: 700;
         color: var(--white-light);
     }
         /* first link */
         nav.desktop-container a:first-child {
             flex: 2;
             font-size: 1.5rem;
-            text-shadow: 3px 3px var(--grey-light);
+            font-weight: 900;
         }
         /* last link */
         nav.desktop-container a:last-child {
@@ -141,7 +142,8 @@ nav.mobile-container {
             }
                 /* span text */
                 nav.mobile-container > div.nav-container > a:first-child > h1 > span {
-                    font-size: 1.6rem;
+                    font-size: 1.8rem;
+                    font-weight: 700;
                     color: var(--white-light);
                     overflow: hidden;
                     overflow-wrap: break-word;

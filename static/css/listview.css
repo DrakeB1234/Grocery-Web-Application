@@ -25,6 +25,7 @@ div.container-list {
         justify-content: center;
         padding: 2em;
         font-size: 1.5rem;
+        font-weight: 700;
         color: var(--grey-dark);
         background-color: var(--white-medli);
     }
@@ -42,6 +43,7 @@ div.container-list {
             z-index: 1;
             left: -0.3em;
             font-size: 1.6rem;
+            font-weight: 700;
             margin: 0 auto 0 auto;
         }
         /* back arrow icon */
@@ -52,7 +54,9 @@ div.container-list {
     div#listdata-get > h1 {
         padding: 1em 0 0.5em 0.5em;
         font-size: 1.5rem;
+        font-weight: 700;
         border-bottom: 1px solid var(--grey-light);
+        color: var(--grey-med);
     }
     /* list item container */
     div#listdata-get > div.container-item {
@@ -63,13 +67,15 @@ div.container-list {
     }
         /* item amount */
         div#listdata-get > div.container-item > h2 {
-            padding-left: 0.5em;
-            color: var(--main-dark);
+            padding: 0.8em;
+            padding-right: 0;
+            font-weight: 700;
+            color: var(--main-med);
         }
         /* item text */
         div#listdata-get > div.container-item > h3 {
             flex: 2;
-            padding-left: 0.5em;
+            padding: 0.8em;
             color: var(--grey-dark);
             overflow: hidden;
             overflow-wrap: break-word;
@@ -78,7 +84,8 @@ div.container-list {
             div#listdata-get > h4 {
                 padding: 0.5em 0 0.5em 2em;
                 font-size: 1rem;
-                color: var(--main-dark);
+                font-weight: 700;
+                color: var(--main-med);
                 background-color: var(--white-medli);
                 overflow: hidden;
                 overflow-wrap: break-word;
@@ -89,9 +96,8 @@ div.container-list {
             border: 0;
         }
         div#listdata-get > div.container-item > form#item-del > button > img {
-                height: 30px;
-                width: 30px;
-                padding: 0.5em;
+                width: 25px;
+                padding: 0.8em;
                 cursor: pointer;
             }
 
@@ -142,6 +148,7 @@ div#container-add {
         /* header text */
         div#container-add > form > h1 {
             font-size: 1.8rem;
+            font-weight: 700;
             color: var(--grey-dark);
             margin: 1em 0 1em 0;
         }
@@ -149,6 +156,7 @@ div#container-add {
         div#container-add > form > select {
             padding: 0.8em 8em 0.8em 0.8em;
             font-size: 1rem;
+            font-weight: 700;
             border-radius: 8px;
             border: 1px solid var(--white-med);
             color: grey;
@@ -168,10 +176,12 @@ div#container-add {
         }
         /* number input */
         div#container-add > form > input[type="number"] {
-            width: 5em;
-            padding: 0.8em;
+            width: 4em;
+            padding: 0.5em;
             text-align: center;
-            font-size: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--grey-dark);
             border-radius: 8px;
             border: 1px solid var(--white-med);
             background-color: var(--white-medli);
@@ -181,7 +191,8 @@ div#container-add {
             margin-top: 2em;
             padding: 0.7em 3em 0.7em 3em;
             border: 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 700;
             border-radius: 8px;
             background-color: var(--main-med);
             color: var(--white-light);
