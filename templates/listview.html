@@ -19,12 +19,33 @@
             <a href="/list">
                 <i class="fa-solid fa-chevron-left"></i>
                 {% if listdata %}
-                    <h1>{{ listdata[0]["title"] }}</h1>
+                    <h1>{{ listTitle }}</h1>
                     {% else %}
-                    <h1>Empty List</h1>
+                        <h1>{{ listTitle }}</h1>
+                        </a>
+                        <h1 class="empty">Empty List</h1>
                 {% endif %}
             </a>
             <div id="listdata-get"></div>
+        </div>
+        <div class="container-add-btn">
+            <img id="add-btn" src="../static/images/icons/icon-plus.svg" >
+        </div>
+        <div id="container-add">
+            <form action="/listviewmod" method="post">
+                <h1>Add Item</h1>
+                <select name="itemAddCat" required>
+                    <option selected hidden value="">Select Category</option>
+                    {% for i in listcat %}
+                    <option value="{{ i['category'] }}">{{ i['category'] }}</h1>
+                    {% endfor %}
+                </select>
+                <input name="listTitle" value="{{ listTitle }}" hidden />
+                <input name="itemAddItem" type="text" placeholder="Item" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" required />
+                <input name="itemAddNote" type="text" placeholder="Note (Optional)" pattern="^[a-zA-Z0-9][a-zA-Z0-9 ]*$" title="Only use letters and spaces" autocomplete="off" />
+                <input name="itemAddAmnt" type="number" placeholder="Amount" autocomplete="off" value="1" required />
+                <button type="submit" >Add Item</button>
+            </form>
         </div>
     </main>
 

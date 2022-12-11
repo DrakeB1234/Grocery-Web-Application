@@ -342,16 +342,12 @@ def list_view(listTitle, listID):
     listdata = db.fetchall()
 
     # get all categories
-    listcat = db.execute(f'SELECT category FROM listCategories WHERE user_id = {id}')
+    listcat = db.execute(f'SELECT category FROM listCategories WHERE user_id = {id} ORDER BY category DESC;')
     listcat = db.fetchall()
-
-    # check if any results
-    if not listdata:
-        listdata = None
 
     # save current path to return back to
     session["list_path"] = request.path
-    return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path)
+    return render_template("listview.html", user=user[0], listdata=listdata, listcat=listcat, url=request.path, listTitle=listTitle)
 
 # view list
 @app.route("/listviewmod", methods=["POST"])
@@ -360,6 +356,66 @@ def list_view_mod():
     # establish database connection
     db = mysql.connection.cursor()
     id = session["user_id"]
+
+    # item is requested to be added 
+    if "itemAddItem" in request.form:
+        listTitle = request.form.get("listTitle")
+        itemCat = request.form.get("itemAddCat")
+        itemName = request.form.get("itemAddItem")
+        itemNote = request.form.get("itemAddNote")
+        itemAmnt = request.form.get("itemAddAmnt")
+
+        # validating input    
+        if not itemCat or not itemName or not itemAmnt or not listTitle:
+            flash("Missing Required Input", "User-Error")
+            return redirect(session["list_path"])
+
+        if not re.match("^[a-zA-Z0-9][a-zA-Z0-9 ]*$",listTitle):
+            flash("Only use numbers, letters, and spaces for title", "User-Error")
+            return redirect(session["list_path"])
+
+        if not re.match("^[a-zA-Z][a-zA-Z ]*$",itemCat):
+            flash("Only use letters and spaces for category", "User-Error")
+            return redirect(session["list_path"])
+
+        if not re.match("^[a-zA-Z][a-zA-Z ]*$",itemName):
+            flash("Only use letters and spaces for item", "User-Error")
+            return redirect(session["list_path"])
+
+        if not re.match("^[a-zA-Z0-9][a-zA-Z0-9 ]*$",itemNote) and itemNote != "":
+            flash("Only use numbers, letters, and spaces for notes", "User-Error")
+            return redirect(session["list_path"])
+
+        if not itemAmnt.isnumeric():
+            flash("Only use numbers for amount", "User-Error")
+            return redirect(session["list_path"])
+
+        # changing note to blank string if none type
+        if itemNote == None:
+            itemNote = ""
+
+        print(listTitle)
+
+        # Executing sql query
+        db.execute(f'''
+            INSERT INTO listData (title_id, category_id, item, note, amount) 
+            VALUES ((SELECT id
+                    FROM listTitles
+                    WHERE title = "{listTitle}" AND 
+                    user_id = {id}
+                    ),
+                (SELECT id
+                    FROM listCategories
+                    WHERE category = "{itemCat}" AND 
+                    user_id = {id}
+                    ),
+            "{itemName}", "{itemNote}", {itemAmnt})
+        ''')
+        mysql.connection.commit()
+
+        # flash message of success
+        flash("Added Item", "Success")
+        return redirect(session["list_path"])
 
     # item is requested to be removed 
     if "itemDel" in request.form:

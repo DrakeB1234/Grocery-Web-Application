@@ -12,13 +12,22 @@ div.container-graphic {
 div.container-list {
     display: flex;
     flex-direction: column;
-    width: clamp(10em, 98%, 50em);
+    width: clamp(10em, 100%, 50em);
     margin: 1em auto 1em auto;
     padding: 1em 0 2em 0;
     border-radius: 20px;
     box-shadow: 0 0 1em var(--white-med);
     background-color: var(--white-light);
 }
+    /* text for empty container */
+    div.container-list h1.empty {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+        font-size: 1.5rem;
+        color: var(--grey-dark);
+        background-color: var(--white-medli);
+    }
     /* first container (back button) */
     div.container-list > a[href="/list"] {
         display: flex;
@@ -50,7 +59,7 @@ div.container-list {
         display: flex;
         align-items: center;
         font-size: 1.3rem;
-        border-bottom: 1px solid var(--white-med);
+        background-color: var(--white-medli);
     }
         /* item amount */
         div#listdata-get > div.container-item > h2 {
@@ -67,10 +76,10 @@ div.container-list {
         }
             /* item note */
             div#listdata-get > h4 {
-                padding: 0.5em;
+                padding: 0.5em 0 0.5em 2em;
                 font-size: 1rem;
                 color: var(--main-dark);
-                border-bottom: 1px solid var(--white-med);
+                background-color: var(--white-medli);
                 overflow: hidden;
                 overflow-wrap: break-word;
             }
@@ -85,3 +94,96 @@ div.container-list {
                 padding: 0.5em;
                 cursor: pointer;
             }
+
+/* add container toggle */
+div.container-add-btn {
+    z-index: 9;    
+    position: fixed;
+    bottom: 3em;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+    /* add button */
+    div.container-add-btn > img#add-btn{   
+        height: 30px;
+        width: 30px;
+        padding: 1em;
+        background-color: var(--main-med);
+        border-radius: 50%;
+        cursor: pointer;
+        rotate: 0deg;
+        transition: rotate 0.2s ease-in-out;
+    }
+
+/* add container */
+div#container-add {
+    z-index: 8;  
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    background-color: var(--white-medli);
+}
+    /* form container */
+    div#container-add > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+        width: clamp(10em, 94%, 50em);
+        margin: 1em auto 1em auto;
+        padding: 1em;
+        border-radius: 20px;
+        box-shadow: 0 0 1em var(--white-med);
+        background-color: var(--white-light);
+        overflow-y: scroll;
+    }
+        /* header text */
+        div#container-add > form > h1 {
+            font-size: 1.8rem;
+            color: var(--grey-dark);
+            margin: 1em 0 1em 0;
+        }
+        /* select input */
+        div#container-add > form > select {
+            padding: 0.8em 8em 0.8em 0.8em;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--white-med);
+            color: grey;
+            background-color: var(--white-medli);
+        }
+            /* option input */
+            div#container-add > form > select > option {
+                font-size: 1.3rem;
+            }
+        /* text input */
+        div#container-add > form > input[type="text"], input[type="password"] {
+            padding: 0.8em 6em 0.8em 0.8em;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--white-med);
+            background-color: var(--white-medli);
+        }
+        /* number input */
+        div#container-add > form > input[type="number"] {
+            width: 5em;
+            padding: 0.8em;
+            text-align: center;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--white-med);
+            background-color: var(--white-medli);
+        }
+        /* submit button */
+        div#container-add > form > button[type="submit"] {
+            margin-top: 2em;
+            padding: 0.7em 3em 0.7em 3em;
+            border: 0;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            background-color: var(--main-med);
+            color: var(--white-light);
+            cursor: pointer;
+        }
