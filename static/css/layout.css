@@ -191,6 +191,21 @@ div.container-graphic {
     margin: 20% auto 2em auto;
 }
 
+/* loading container */
+div#container-loading {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+    /* svg loading animation */
+    div#container-loading > object {
+        height: 15em;
+    }
+
 /* media queries */
 
 /* mobile */

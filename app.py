@@ -275,11 +275,22 @@ def list_mod():
     # if request is to delete form
     if "listDel" in request.form:
 
-        # Executing sql query
+        # Executing sql query to delete list data with title id
+        db.execute(f'''
+            DELETE ld 
+            FROM listData as ld
+            JOIN listTitles as lt ON ld.title_id = lt.id
+            WHERE ld.title_id = {listID} AND 
+            lt.user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        # Executing sql query to delete list
         db.execute(f'DELETE FROM listTitles WHERE id = {listID} AND user_id = {id}')
         mysql.connection.commit()
+
         # flash message of success
-        flash("Deleted List", "Success")
+        flash("Deleted List and all items within", "Success")
         return redirect("/list")
 
     # if request is to delete form
@@ -336,9 +347,8 @@ def list_view(listTitle, listID):
         WHERE lt.user_id = {id} AND 
         lt.title = '{listTitle}' AND
         lt.id = {listID}
-        ORDER BY category DESC;
+        ORDER BY category DESC, item ASC;
     """)
-
     listdata = db.fetchall()
 
     # get all categories

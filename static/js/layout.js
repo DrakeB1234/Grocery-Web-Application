@@ -14,8 +14,16 @@ window.onload = () => {
 
 // callable function allows for user validation for actions
 const userConfirmAct = (e, msg) => {
+    // ensure input needs confirm
+    if (msg == "skip"){
+        // display loading container
+        document.getElementById("container-loading").style.display = 'flex';
+        return true;
+    }
     const res = confirm(`Are you sure you want to ${msg} this?`);
     if (res == true) {
+        // display loading container
+        document.getElementById("container-loading").style.display = 'flex';
         return true;
     }
     e.preventDefault()

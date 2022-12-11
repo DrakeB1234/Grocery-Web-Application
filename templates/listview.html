@@ -32,7 +32,7 @@
             <img id="add-btn" src="../static/images/icons/icon-plus.svg" >
         </div>
         <div id="container-add">
-            <form action="/listviewmod" method="post">
+            <form action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'skip')">
                 <h1>Add Item</h1>
                 <select name="itemAddCat" required>
                     <option selected hidden value="">Select Category</option>

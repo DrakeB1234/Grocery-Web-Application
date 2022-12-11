@@ -13,7 +13,7 @@ div.container-list {
     display: flex;
     flex-direction: column;
     width: clamp(10em, 100%, 50em);
-    margin: 1em auto 1em auto;
+    margin: 3em auto 1em auto;
     padding: 1em 0 2em 0;
     border-radius: 20px;
     box-shadow: 0 0 1em var(--white-med);

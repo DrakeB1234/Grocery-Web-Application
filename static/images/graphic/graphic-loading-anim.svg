@@ -1,0 +1,45 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+    #front1 {
+        animation: front1 2s infinite;
+    }
+
+    #front2 {
+        animation: front2 2s infinite;
+    }
+
+    #front3 {
+        animation: front3 2s infinite;
+    }
+
+    @keyframes front1 {
+        0% { fill: white; transform: translateY(0); }
+        25% { fill: #61ff5e; transform: translateY(-20%); }
+        50% { fill: white; transform: translateY(0); }
+    }
+    @keyframes front2 {
+        0% { fill: white; transform: translateY(0); }
+        50% { fill: #61ff5e; transform: translateY(-20%); }
+        75% { fill: white; transform: translateY(0); }
+    }
+    @keyframes front3 {
+        0% { fill: white; transform: translateY(0); }
+        75% { fill: #61ff5e; transform: translateY(-20%); }
+        100% { fill: white; transform: translateY(0); }
+    }
+</style>
+<g clip-path="url(#clip0_1_2)">
+<circle id="background" cx="50" cy="50" r="50" fill="#4B5256" fill-opacity="0.9"/>
+<circle id="front1" cx="32" cy="51" r="5" fill="white"/>
+<circle id="front2" cx="50" cy="51" r="5" fill="white"/>
+<circle id="front3" cx="68" cy="51" r="5" fill="white"/>
+<circle id="back1" cx="32" cy="51" r="5" fill="white" fill-opacity="0.1"/>
+<circle id="back2" cx="50" cy="51" r="5" fill="white" fill-opacity="0.1"/>
+<circle id="back3" cx="68" cy="51" r="5" fill="white" fill-opacity="0.1"/>
+</g>
+<defs>
+<clipPath id="clip0_1_2">
+<rect width="100" height="100" fill="white"/>
+</clipPath>
+</defs>
+</svg>
