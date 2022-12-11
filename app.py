@@ -413,8 +413,7 @@ def list_view_mod():
         ''')
         mysql.connection.commit()
 
-        # flash message of success
-        flash("Added Item", "Success")
+        # redirect for success (no flash messaging for better UX)
         return redirect(session["list_path"])
 
     # item is requested to be removed 

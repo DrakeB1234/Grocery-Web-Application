@@ -81,7 +81,7 @@ nav.mobile-container > img#toggle-mobile-nav {
     right: 0;
     height: 30px;
     width: 30px;
-    padding: 0.5em;
+    padding: 0.3em 0.2em 0.5em 0.4em;
     font-size: 2rem;
     color: var(--white-light);
     border-radius: 0 0 0 40%;
