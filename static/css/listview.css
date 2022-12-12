@@ -13,7 +13,7 @@ div.container-list {
     display: flex;
     flex-direction: column;
     width: clamp(10em, 100%, 50em);
-    margin: 3em auto 1em auto;
+    margin: 3em auto 8em auto;
     padding: 1em 0 2em 0;
     border-radius: 20px;
     box-shadow: 0 0 1em var(--white-med);
@@ -198,3 +198,71 @@ div#container-add {
             color: var(--white-light);
             cursor: pointer;
         }
+/* form container */
+form#itemEditForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--white-med);
+    background-color: var(--white-light);
+}
+    /* header text */
+    form#itemEditForm > h1 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--grey-dark);
+        margin: 0.5em 0 0.5em 0;
+    }
+    /* input container */
+    form#itemEditForm > div.container-input {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        width: 100%;
+        padding-top: 0.5em;
+        padding-bottom: 1em;
+        overflow: hidden;
+    }
+        /* text input */
+        form#itemEditForm input[type="text"], input[type="password"] {
+            padding: 0.8em;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--white-med);
+            background-color: var(--white-medli);
+        }
+        /* number input */
+        form#itemEditForm input[type="number"] {
+            width: 3em;
+            padding: 0.5em 0 0.5em 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--grey-dark);
+            border-radius: 8px;
+            border: 1px solid var(--white-med);
+            background-color: var(--white-medli);
+        }
+        /* submit button */
+        form#itemEditForm button[type="submit"], button[type="button"] {
+            margin-top: 2em;
+            padding: 0.5em 4em 0.5em 4em;
+            border: 0;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            background-color: var(--main-med);
+            color: var(--white-light);
+            cursor: pointer;
+        }
+            /* cancel button */
+            form#itemEditForm > div.container-input > button[type="button"] {
+                margin-right: 1em;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-medli);
+                color: var(--grey-med);
+            }

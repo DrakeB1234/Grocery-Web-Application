@@ -206,6 +206,7 @@ div#container-loading {
     /* svg loading animation */
     div#container-loading > object {
         height: 15em;
+        z-index: 99;
     }
 
 /* media queries */
