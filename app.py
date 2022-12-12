@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from functions import login_required, allowed_file, save_change_time
+from datetime import datetime
 
 from flask_mysqldb import MySQL
 
@@ -539,10 +540,38 @@ def list_view_mod():
 @app.route("/mealplanner", methods=["GET"])
 @login_required
 def mealplan():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
     # get user details
     user = session.get("user")
 
-    return render_template("mealplanner.html", user=user[0], url=request.path)
+    # getting users meal planner
+    db.execute(f'''
+    SELECT id, month, day, weekday, meal
+    FROM mealPlanner 
+    WHERE user_id = {id} 
+    ORDER BY day ASC
+    ''')
+    mealplan = db.fetchall()
+
+    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan)
+
+# mealplanner mod page
+@app.route("/mealplannermod", methods=["POST"])
+@login_required
+def mealplanmod():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+
+    # meal is requested to be edited 
+    if "mealEditItem" in request.form:
+        mealID = request.form.get("mealID")
+        meal = request.form.get("mealEditItem")
+
+
+    return redirect("/mealplanner")
 
 @app.errorhandler(404)
 def page_not_found(e):

@@ -123,7 +123,7 @@ nav.mobile-container {
             display: flex;
             align-items: center;
             justify-content: start;
-            gap: 1.5em;
+            gap: 1em;
             padding: 1em;
             background-color: var(--grey-med);
             cursor: default;

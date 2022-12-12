@@ -17,3 +17,144 @@ div.container-header {
         color: var(--main-med);
         text-shadow: 3px 3px 1em var(--white-med);
     }
+/* container list */
+div.container-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: clamp(10em, 100%, 50em);
+    margin: 0 auto 0 auto;
+    padding: 1em 0 1em 0;
+    background-color: var(--white-light);
+}
+    /* header container */
+    div.container-list > div.container-list-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1em 0 1em 0;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--grey-dark);
+        border-bottom: 1px solid var(--white-med);
+    }
+        /* header container (text) */
+        div.container-list > div.container-list-header > h1 {
+            margin-left: 0.5em;
+        }
+        /* header container (image) */
+        div.container-list > div.container-list-header > img {
+            width: 30px;
+            margin-right: 0.5em;
+        }
+    /* conatiner item */
+    div.container-list > div.container-item {
+        display: flex;
+        padding: 1em 0 1em 0;
+    }
+        /* first container (date) */
+        div.container-list > div.container-item > div:first-child{
+            text-align: center;
+            min-width: 3em;
+            padding: 1em;
+        }
+            /* h1 tag */
+            div.container-list > div.container-item > div:first-child > h1 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--grey-dark);
+            }
+            /* h2 tag */
+            div.container-list > div.container-item > div:first-child > h2 {
+                margin-top: 0.5em;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--grey-light);
+            }
+        /* second container (meal) */
+        div.container-list > div.container-item > div:last-child{
+            flex: 1;
+            margin-right: 0.5em;
+            overflow: hidden;
+        }
+            /* h1 tag */
+            div.container-list > div.container-item > div:last-child > h1 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                min-height: 4em;
+                padding: 1em;
+                border-radius: 15px;
+                background-color: var(--white-light);
+                border: 1px solid var(--white-med);
+                overflow: hidden;
+                overflow-wrap: break-word;
+            }
+                /* container coloring */
+                div.container-list > div.container-item:nth-child(3n) > div:last-child > h1 {
+                    background-color: #ffc9c9;
+                    color: var(--grey-dark);
+                }
+                    div.container-list > div.container-item:nth-child(3n + 1) > div:last-child > h1{
+                        background-color: #cdffc5;
+                        color: var(--grey-dark);
+                    }
+                    div.container-list > div.container-item:nth-child(3n + 2) > div:last-child > h1{
+                        background-color: #c9e8ff;
+                        color: var(--grey-dark);
+                    }
+                    div.container-list > div.container-item:nth-child(4n + 1) > div:last-child > h1{
+                        background-color: #ebc9ff;
+                        color: var(--grey-dark);
+                    }
+        /* form container */
+        div.container-item > form#mealEditForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1em;
+            width: clamp(10em, 84%, 28em);
+            margin: 0 auto 0 auto;
+            padding: 1em;
+            border-radius: 10px;
+            background-color: #ffc9c9;
+            overflow: hidden;
+        }
+            /* header */
+            div.container-item > form#mealEditForm > h1 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--grey-dark);
+            }
+            /* text input */
+            div.container-item > form#mealEditForm > input[type="text"] {
+                padding: 0.8em;
+                font-size: 1rem;
+                border-radius: 8px;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-light);
+            }
+            /* button container */
+            form#mealEditForm > div.container-input {
+                display: flex;
+                flex-direction: row;
+                gap: 1em;
+            }
+            /* submit button */
+            div.container-item > form#mealEditForm button[type="submit"], button[type="button"] {
+                margin-top: 2em;
+                padding: 0.5em 3em 0.5em 3em;
+                border: 0;
+                font-size: 1rem;
+                font-weight: 700;
+                border-radius: 8px;
+                background-color: var(--main-med);
+                color: var(--white-light);
+                cursor: pointer;
+            }
+            /* cancel button */
+            div.container-item > form#mealEditForm button[type="button"] {
+                margin-right: 1em;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-medli);
+                color: var(--grey-med);
+            }
