@@ -30,6 +30,10 @@ div.flash-container {
         color: var(--white-light);
         overflow-wrap: break-word;
     }
+        /* server error */
+        div.flash-container h1.Server-Error {
+            background-color: rgba(231, 100, 100, 0.9);
+        }
         /* user error */
         div.flash-container h1.User-Error {
             background-color: rgba(233, 158, 17, 0.9);

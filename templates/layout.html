@@ -54,10 +54,10 @@
                 {% else %}
                     <a href="/"><img src="../static/images/icons/icon-book.svg"><h1>Recipes</h1></a>
                 {% endif %}
-                {% if url == "/recipes" %}
-                    <a href="/" class="active"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
+                {% if url == "/mealplanner" %}
+                    <a href="/mealplanner" class="active"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
                 {% else %}
-                    <a href="/"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
+                    <a href="/mealplanner"><img src="../static/images/icons/icon-calendar.svg"><h1>Meal Planner</h1></a>
                 {% endif %}
                 {% if url == "/accntsettings" %}
                     <a href="/accntsettings" class="a-space active"><img src="../static/images/icons/icon-cog.svg"><h1>Settings</h1></a>
@@ -72,7 +72,7 @@
             <a href="/" class="active">Home</a>
             <a href="/list">List</a>
             <a href="">Recipes</a>
-            <a href="">Calendar</a>
+            <a href="/mealplanner">Calendar</a>
             <a href="/accntsettings">Settings</a>
             <a href="/logout">Logout</a>
         </nav>

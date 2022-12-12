@@ -535,9 +535,16 @@ def list_view_mod():
         flash("Deleted Item", "Success")
         return redirect(session["list_path"])
 
+# mealplanner page
+@app.route("/mealplanner", methods=["GET"])
+@login_required
+def mealplan():
+    # get user details
+    user = session.get("user")
 
+    return render_template("mealplanner.html", user=user[0], url=request.path)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    flash("Error Finding Page", "User-Error")
+    flash("Page not Found", "Server-Error")
     return redirect('/')
