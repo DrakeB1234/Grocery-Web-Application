@@ -1,6 +1,7 @@
 from flask import Flask, redirect, request, render_template, flash, session
 from functools import wraps
 from werkzeug.utils import secure_filename
+from datetime import datetime
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
@@ -20,3 +21,8 @@ def login_required(f):
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def save_change_time():
+    now = datetime.now()
+    session["grocery_time"] = (now.strftime("%I:%M %p"))
+    return

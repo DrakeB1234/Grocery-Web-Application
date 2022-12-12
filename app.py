@@ -3,7 +3,7 @@ from flask import Flask, redirect, request, render_template, flash, session
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
-from functions import login_required, allowed_file
+from functions import login_required, allowed_file, save_change_time
 
 from flask_mysqldb import MySQL
 
@@ -108,6 +108,8 @@ def home():
     id = session.get("user_id")
 
     # get user stats
+
+    # adding list count
     db.execute(f'''
     SELECT count(title) as listCount
     FROM listTitles 
@@ -116,6 +118,7 @@ def home():
     ''')
     grocery = db.fetchall()
 
+    # adding item count 
     db.execute(f'''
     SELECT count(item) as itemCount
     FROM listData as ld
@@ -124,7 +127,7 @@ def home():
     ''')
     grocery += db.fetchall()
 
-    return render_template("home.html", user=user[0], url=request.path, grocery=grocery)
+    return render_template("home.html", user=user[0], url=request.path, grocery=grocery, grocerytime=session.get("grocery_time"))
 
 # account settings page
 @app.route("/accntsettings", methods=["GET", "POST"])
@@ -277,6 +280,7 @@ def list_mod():
             ''')
         mysql.connection.commit()
 
+        # flash message of success
         flash("Added New List", "Success")
         return redirect("/list")
 
@@ -336,6 +340,7 @@ def list_mod():
         # Executing sql query
         db.execute(f"UPDATE listTitles SET title = '{titleName}' WHERE id = {listID} AND user_id = {id}")
         mysql.connection.commit()
+
         # flash message of success
         flash("Edited List", "Success")
         return redirect("/list")
@@ -430,8 +435,6 @@ def list_view_mod():
         if itemNote == None:
             itemNote = ""
 
-        print(listTitle)
-
         # Executing sql query
         db.execute(f'''
             INSERT INTO listData (title_id, category_id, item, note, amount) 
@@ -449,6 +452,8 @@ def list_view_mod():
         ''')
         mysql.connection.commit()
 
+        # save time of change
+        save_change_time() 
         # redirect for success (no flash messaging for better UX)
         return redirect(session["list_path"])
 
@@ -496,11 +501,11 @@ def list_view_mod():
         ''')
         mysql.connection.commit()
 
+        # save time of change
+        save_change_time() 
         # flash message of success
         flash("Edited Item", "Success")
         return redirect(session["list_path"])
-
-
 
     # item is requested to be removed 
     if "itemDel" in request.form:
@@ -525,6 +530,8 @@ def list_view_mod():
         ''')
         mysql.connection.commit()
 
+        # save time of change
+        save_change_time() 
         # flash message of success
         flash("Deleted Item", "Success")
         return redirect(session["list_path"])
