@@ -365,19 +365,19 @@ def list_view(listTitle, listID):
 
     # get all list items from selected list
     listdata = db.execute(f"""
-        SELECT ld.id, title, category, item, note, amount
+        SELECT ld.id, title, category, color as catColor, item, note, amount
         FROM listData as ld
         JOIN listTitles as lt ON ld.title_id = lt.id
         JOIN listCategories as lc ON ld.category_id = lc.id 
         WHERE lt.user_id = {id} AND 
         lt.title = '{listTitle}' AND
         lt.id = {listID}
-        ORDER BY category DESC, item ASC;
+        ORDER BY orderNum, category ASC, item ASC;
     """)
     listdata = db.fetchall()
 
     # get all categories
-    listcat = db.execute(f'SELECT category FROM listCategories WHERE user_id = {id} ORDER BY category DESC;')
+    db.execute(f'SELECT category FROM listCategories ORDER BY orderNum, category;')
     listcat = db.fetchall()
 
     # save current path to return back to
@@ -445,8 +445,7 @@ def list_view_mod():
                     ),
                 (SELECT id
                     FROM listCategories
-                    WHERE category = "{itemCat}" AND 
-                    user_id = {id}
+                    WHERE category = "{itemCat}"
                     ),
             "{itemName}", "{itemNote}", {itemAmnt})
         ''')

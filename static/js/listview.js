@@ -5,23 +5,24 @@
     let pastCat = "";
     listdata.forEach(e => {
         let curCat = e["category"];
+        let catColor = e["catColor"]
         // if cur cat is different than past
         if (curCat != pastCat) {
             html += `</div>`;
-            html += `<h1>${curCat}</h1>`;
+            html += `<h1 style="border-left: 5px solid ${catColor}">${curCat}</h1>`;
         }
 
         // print each item in format
         // if there is a note, print h4 tag with it
         if (e["note"] != "") {
-            html += `<div class='container-item'><h2>${e["amount"]}</h2><h3 ondblclick="listItemEdit(event, ${e["id"]})">${e["item"]}</h3>\
+            html += `<div class='container-item' style="border-left: 5px solid ${catColor}"><h2>${e["amount"]}</h2><h3 ondblclick="listItemEdit(event, ${e["id"]})">${e["item"]}</h3>\
             <form id="item-del" action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'delete')">
             <button name="itemDel" value="${e["id"]}" type="submit"><img src="../static/images/icons/icon-trash.svg"></button>\
             </form>`;
             html += `</div><h4>^ Note: ${e["note"]}</h4>`;
         }
         else {
-            html += `<div class='container-item'><h2>${e["amount"]}</h2><h3 ondblclick="listItemEdit(event, ${e["id"]})">${e["item"]}</h3>\
+            html += `<div class='container-item' style="border-left: 5px solid ${catColor}"><h2>${e["amount"]}</h2><h3 ondblclick="listItemEdit(event, ${e["id"]})">${e["item"]}</h3>\
             <form id="item-del" action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'delete')">
             <button name="itemDel" value="${e["id"]}" type="submit"><img src="../static/images/icons/icon-trash.svg"></button>\
             </form>`;
