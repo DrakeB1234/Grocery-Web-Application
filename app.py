@@ -101,10 +101,30 @@ def logout():
 @app.route("/")
 @login_required
 def home():
+    # establish database connection
+    db = mysql.connection.cursor()
     # get user details
     user = session.get("user")
+    id = session.get("user_id")
 
-    return render_template("home.html", user=user[0], url=request.path)
+    # get user stats
+    db.execute(f'''
+    SELECT count(title) as listCount
+    FROM listTitles 
+    WHERE user_id = {id} 
+    ORDER BY title ASC
+    ''')
+    grocery = db.fetchall()
+
+    db.execute(f'''
+    SELECT count(item) as itemCount
+    FROM listData as ld
+    JOIN listTitles as lt ON lt.id = ld.title_id
+    WHERE lt.user_id = {id} 
+    ''')
+    grocery += db.fetchall()
+
+    return render_template("home.html", user=user[0], url=request.path, grocery=grocery)
 
 # account settings page
 @app.route("/accntsettings", methods=["GET", "POST"])
@@ -400,6 +420,12 @@ def list_view_mod():
             flash("Only use numbers for amount", "User-Error")
             return redirect(session["list_path"])
 
+        # convert amnt to int
+        itemAmnt = int(itemAmnt)
+        if itemAmnt < 1 or itemAmnt > 99:
+            flash("Only use (0 - 99) for amount", "User-Error")
+            return redirect(session["list_path"])
+
         # changing note to blank string if none type
         if itemNote == None:
             itemNote = ""
@@ -425,6 +451,56 @@ def list_view_mod():
 
         # redirect for success (no flash messaging for better UX)
         return redirect(session["list_path"])
+
+    # item is requested to be edited 
+    if "itemEditItem" in request.form:
+        itemID = request.form.get("itemID")
+        amnt = request.form.get("itemEditAmnt")
+        item = request.form.get("itemEditItem")
+        note = request.form.get("itemEditNote")
+
+        # validating input    
+        if not itemID or not amnt or not item:
+            flash("Missing Required Input", "User-Error")
+            return redirect(session["list_path"])
+
+        if not re.match("^[a-zA-Z][a-zA-Z ]*$",item):
+            flash("Only use letters and spaces for item", "User-Error")
+            return redirect(session["list_path"])
+
+        if not re.match("^[a-zA-Z0-9][a-zA-Z0-9 ]*$",note) and note != "":
+            flash("Only use numbers, letters, and spaces for notes", "User-Error")
+            return redirect(session["list_path"])
+
+        if not amnt.isnumeric():
+            flash("Only use numbers for amount", "User-Error")
+            return redirect(session["list_path"])
+
+        # convert amnt to int
+        amnt = int(amnt)
+        if amnt < 1 or amnt > 99:
+            flash("Only use (0 - 99) for amount", "User-Error")
+            return redirect(session["list_path"])
+
+        if not itemID.isnumeric():
+            flash("Invalid use of number", "User-Error")
+            return redirect(session["list_path"])
+
+        # Executing sql query
+        db.execute(f'''
+            UPDATE listData as ld
+            JOIN listTitles as lt ON ld.title_id = lt.id
+            SET item = '{item}', note = '{note}', amount = {amnt}
+            WHERE ld.id = {itemID} AND 
+            user_id = {id};
+        ''')
+        mysql.connection.commit()
+
+        # flash message of success
+        flash("Edited Item", "Success")
+        return redirect(session["list_path"])
+
+
 
     # item is requested to be removed 
     if "itemDel" in request.form:

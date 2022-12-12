@@ -54,14 +54,13 @@ const listItemEdit = (e, itemID) => {
         // get form HTML to set div to it
         const formHTML = `
         <form id="itemEditForm" action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'edit')">
-            <input name="listID" value="${itemID}" hidden />
+            <input name="itemID" value="${itemID}" hidden />
             <h1>Edit ${curItem['item']}</h1>
             <div class="container-input">
-                <input value="${curItem['amount']}" name="itemEditAmnt" type="number" placeholder="Amount" autocomplete="off" value="1" required />
+                <input value="${curItem['amount']}" name="itemEditAmnt" type="number" placeholder="Amount" autocomplete="off" value="1" min="1" max="99" required />
                 <input value="${curItem['item']}" name="itemEditItem" type="text" placeholder="Item" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" required />
             </div>
             <input value="${curItem['note']}" name="itemEditNote" type="text" placeholder="Note (Optional)" pattern="^[a-zA-Z0-9][a-zA-Z0-9 ]*$" title="Only use letters and spaces" autocomplete="off" />
-
             <div class="container-input">
                 <button type="button" onclick="listItemEdit(event, 'cancel')">Cancel</button>
                 <button type="submit" >Edit</button>

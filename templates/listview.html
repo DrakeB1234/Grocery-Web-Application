@@ -43,7 +43,7 @@
                 <input name="listTitle" value="{{ listTitle }}" hidden />
                 <input name="itemAddItem" type="text" placeholder="Item" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" required />
                 <input name="itemAddNote" type="text" placeholder="Note (Optional)" pattern="^[a-zA-Z0-9][a-zA-Z0-9 ]*$" title="Only use letters and spaces" autocomplete="off" />
-                <input name="itemAddAmnt" type="number" placeholder="Amount" autocomplete="off" value="1" required />
+                <input name="itemAddAmnt" type="number" placeholder="Amount" autocomplete="off" value="1" min="1" max="99" required />
                 <button type="submit" >Add Item</button>
             </form>
         </div>
