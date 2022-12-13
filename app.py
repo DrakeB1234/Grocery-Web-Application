@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from functions import login_required, allowed_file, save_change_time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask_mysqldb import MySQL
 
@@ -550,17 +550,26 @@ def mealplan():
 
     # getting users meal planner
     db.execute(f'''
-    SELECT id, month, day, weekday, meal
+    SELECT id, date, DAY(date) as day, MONTH(date) as month, weekday, meal
     FROM mealPlanner 
     WHERE user_id = {id} 
-    ORDER BY day ASC
+    ORDER BY date ASC
     ''')
     mealplan = db.fetchall()
+
+    if mealplan == ():
+        # nothing in planner, call adder function
+        add_meal_planner()
+        flash("added meal planner", "Success")
+        return redirect("/")
+
+    # get current month
+    month = mealplan[0]["date"].strftime("%B")
 
     # check meal planner function
     meal_planner_check()
 
-    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan)
+    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month)
 
 # mealplanner mod page
 @app.route("/mealplannermod", methods=["POST"])
@@ -607,6 +616,11 @@ def page_not_found(e):
     flash("Page not Found", "Server-Error")
     return redirect('/')
 
+@app.errorhandler(500)
+def internal_error(e):
+    flash("Internal Error, Contact Admin", "Server-Error")
+    return redirect('/')
+
 
 # extra functions
 def meal_planner_check():
@@ -616,32 +630,60 @@ def meal_planner_check():
 
     # get current date
     now = datetime.now()
-    curDay = now.strftime("%d").upper()
+    curDay = now.strftime("%d")
 
     # get value of last day in planner
     db.execute(f'''
-        SELECT day
+        SELECT date
         FROM mealPlanner
         WHERE user_id = {id}
-        ORDER BY day DESC
+        ORDER BY date DESC
         LIMIT 1;
     ''')
     curMeals = db.fetchall()
-    curMeals = curMeals[0]["day"]
-    # convert current day to int
+    print(curMeals)
+
+    if curMeals == ():
+        # nothing in planner, call adder function
+        add_meal_planner()
+        flash("added meal planner", "Success")
+        return redirect("/")
+
+    # convert current day to int and get current day
     curDay = int(curDay)
+    curMeals = int(curMeals[0]["date"].strftime("%d"))
 
     # if current day is next after the last set in planner
-    if (curMeals + 1) == curDay:
+    if curDay >= (curMeals + 1):
         # Executing sql query
         db.execute(f'''
-            UPDATE mealPlanner
-            SET meal = 'Unset', day = day + 7
+	        UPDATE mealPlanner 
+            SET date = DATE_ADD(date, INTERVAL 7 DAY)
             WHERE user_id = {id}
         ''')
         mysql.connection.commit()
 
         # flash message
         flash("Reset Meal Planner", "Success")
-        
+
     return
+
+def add_meal_planner():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+
+    # get current date
+    now = datetime(2022, 12, 10)
+
+    for i in range(7):
+        now = now + timedelta(days=1)
+        weekday = now.strftime("%a").upper()
+        # Executing sql query
+        db.execute(f'''
+            INSERT INTO mealPlanner (user_id, date, weekday, meal)
+            VALUES ({id}, '{now}', '{weekday}', "Unset")
+        ''')
+        mysql.connection.commit()
+    return
+
