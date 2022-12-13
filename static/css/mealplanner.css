@@ -42,11 +42,6 @@ div.container-list {
         div.container-list > div.container-list-header > h1 {
             margin-left: 0.5em;
         }
-        /* header container (image) */
-        div.container-list > div.container-list-header > img {
-            width: 30px;
-            margin-right: 0.5em;
-        }
     /* conatiner item */
     div.container-list > div.container-item {
         display: flex;

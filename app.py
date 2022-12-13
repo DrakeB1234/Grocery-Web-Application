@@ -36,6 +36,8 @@ def user_info(id):
     db.execute(f'SELECT * FROM users WHERE user_id = {id}')
     session["user"] = db.fetchall()
     session["user_id"] = id
+    # check meal planner function
+    meal_planner_check()
 
 
 """
@@ -555,6 +557,9 @@ def mealplan():
     ''')
     mealplan = db.fetchall()
 
+    # check meal planner function
+    meal_planner_check()
+
     return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan)
 
 # mealplanner mod page
@@ -570,6 +575,30 @@ def mealplanmod():
         mealID = request.form.get("mealID")
         meal = request.form.get("mealEditItem")
 
+        if not mealID or not meal:
+            flash("Fill All Required Inputs", "User-Error")
+            return redirect("/mealplanner")
+
+        if not re.match("^[a-zA-Z][a-zA-Z ]*$", meal):
+            flash("Only use letters and spaces for meal", "User-Error")
+            return redirect("/mealplanner")
+
+        if not mealID.isnumeric():
+            flash("Only use numbers", "User-Error")
+            return redirect("/mealplanner")
+        
+        # Executing sql query
+        db.execute(f'''
+            UPDATE mealPlanner
+            SET meal = '{meal}'
+            WHERE id = {mealID} AND 
+            user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        # flash message of success
+        flash("Edited Meal", "Success")
+        return redirect("/mealplanner")
 
     return redirect("/mealplanner")
 
@@ -577,3 +606,42 @@ def mealplanmod():
 def page_not_found(e):
     flash("Page not Found", "Server-Error")
     return redirect('/')
+
+
+# extra functions
+def meal_planner_check():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+
+    # get current date
+    now = datetime.now()
+    curDay = now.strftime("%d").upper()
+
+    # get value of last day in planner
+    db.execute(f'''
+        SELECT day
+        FROM mealPlanner
+        WHERE user_id = {id}
+        ORDER BY day DESC
+        LIMIT 1;
+    ''')
+    curMeals = db.fetchall()
+    curMeals = curMeals[0]["day"]
+    # convert current day to int
+    curDay = int(curDay)
+
+    # if current day is next after the last set in planner
+    if (curMeals + 1) == curDay:
+        # Executing sql query
+        db.execute(f'''
+            UPDATE mealPlanner
+            SET meal = 'Unset', day = day + 7
+            WHERE user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        # flash message
+        flash("Reset Meal Planner", "Success")
+        
+    return

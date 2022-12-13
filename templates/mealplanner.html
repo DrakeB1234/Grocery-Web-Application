@@ -19,17 +19,16 @@
             <div class="container-list-header">
                 {% if mealplan != () %}
                     <h1>{{ mealplan[0]["month"] }}</h1>
-                    <img src="../static/images/icons/icon-edit.svg">
                 {% endif %}
             </div>
             {% for i in mealplan %}
             <div class="container-item">
                 <div>
-                    <h1>{{ i["weekday"]}}</h1>
+                    <h1>{{ i["weekday"] }}</h1>
                     <h2>{{ i["day"] }}</h2>
                 </div>
                 <div>
-                    <h1 ondblclick="mealEdit(event, 1)">{{ i["meal"] }}</h1>
+                    <h1 ondblclick="mealEdit(event, '{{ i["id"] }}')">{{ i["meal"] }}</h1>
                 </div>
             </div>
             {% endfor %}
