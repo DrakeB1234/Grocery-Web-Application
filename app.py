@@ -39,8 +39,6 @@ def user_info(id):
     # if user is admin
     if (id == 1):
         return redirect("/admin")
-    # otherwise, continue
-    flash("not admin", "success")
     return
     
 
@@ -52,7 +50,7 @@ def user_info(id):
 """
 
 # admin page
-@app.route("/admin", methods=["POST", "GET"])
+@app.route("/admin", methods=["GET"])
 @admin_access
 def admin():
     # establish database connection
@@ -61,9 +59,39 @@ def admin():
     user = session.get("user")
     id = session.get("user_id")
 
-    flash("Hello, Admin!", "Success")
     return render_template("admin.html", user=user[0])
 
+# admin page mods
+@app.route("/adminmod", methods=["POST"])
+@admin_access
+def admin_mod():
+    # establish database connection
+    db = mysql.connection.cursor()
+
+    # form posted is for adding user
+    if "userNameAdd" in request.form:
+        inputName = request.form.get("userNameAdd")
+        inputPass = request.form.get("userPassAdd")
+
+        # input validation
+        if not inputName or not inputPass:
+            flash("Need name and password", "User-Error")
+            return redirect("/admin")
+
+        if not inputName.isalnum():
+            flash("Use Only Letters and Numbers for Name", "User-Error")
+
+        if not re.match("^[A-Za-z0-9$%#@!]*$",inputPass):
+            flash("Only use Letters, Numbers and ($, %, #, @, !) for Password", "User-Error")
+            return redirect("/admin")
+
+        # insert new user into users table
+        db.execute(f"INSERT INTO users (username, hash) VALUES ('{inputName}', '{generate_password_hash(inputPass)}');")
+        mysql.connection.commit()
+
+        flash("Added User", "Success")
+        return redirect("/admin")
+    
 # login page
 @app.route("/login", methods=["POST", "GET"])
 def login():
@@ -630,7 +658,12 @@ def mealplanmod():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    flash("Page not Found", "Server-Error")
+    flash("Page Not Found", "Server-Error")
+    return redirect('/')
+
+@app.errorhandler(405)
+def page_not_found(e):
+    flash("Method Not Allowed", "Server-Error")
     return redirect('/')
 
 @app.errorhandler(500)

@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}ADMIN{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/admin.css" />{% endblock %}
-{% block js %}{% endblock %}
+{% block js %}<script src="../static/js/admin.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -13,5 +13,22 @@
 
     <main class="container">
         <h1>ADMIN</h1>
+        <div class="container-controls-parent">
+            <h1 onclick="toggleContainer(event)">ADD USER</h1>
+            <div class="container-controls-child">
+                <form action="/adminmod" method="post">
+                    <input name="userNameAdd" type="text" placeholder="Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus required />
+                    <input name="userPassAdd" type="password" placeholder="Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus required />
+                    <button type="submit" autofocus>ADD</button>
+                </form>
+            </div>
+            <h1 onclick="toggleContainer(event)">VIEW USERS</h1>
+            <div class="container-controls-child">
+                <form action="/adminmod" method="post">
+                    <input name="userNameAdd" type="text" placeholder="Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus required />
+                    <input name="userPassAdd" type="password" placeholder="Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus required />
+                    <button type="submit" autofocus>ADD</button>
+                </form>
+            </div>
     </main>
 {% endblock %}

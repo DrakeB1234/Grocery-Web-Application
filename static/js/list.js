@@ -1,4 +1,4 @@
-// function for toggling mobile nav bar
+// function for toggling list nav
 document.querySelectorAll("#set-btn").forEach(e => {
     e.addEventListener("click", (e) => {
         // if next element in DOM is hidden
