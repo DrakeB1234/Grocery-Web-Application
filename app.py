@@ -3,7 +3,7 @@ from flask import Flask, redirect, request, render_template, flash, session
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
-from functions import login_required, admin_access, allowed_file
+from functions import login_required, admin_access, allowed_file, save_change_time
 from datetime import datetime, timedelta
 
 from flask_mysqldb import MySQL
@@ -91,6 +91,53 @@ def admin_mod():
 
         flash("Added User", "Success")
         return redirect("/admin")
+
+    if "userNameChange" in request.form:
+        findName = request.form.get("userNameSelect")
+        inputName = request.form.get("userNameChange")
+        inputPass = request.form.get("userPassChange")
+
+        # find user
+        db.execute('SELECT * FROM users')
+        rows = db.fetchall()
+        # Check to see if name and hashed password match
+        for i in rows:
+            if i["username"] == findName:
+                # if match, continue code
+                flash("Found User", "Success")
+                findID = (i["user_id"])
+
+                # input validation
+                if not inputName and not inputPass:
+                    flash("No Changes Made")
+                    return redirect("/admin")
+
+                if not inputName.isalnum() and inputName != "":
+                    flash("Use Only Letters and Numbers For Name", "User-Error")
+                    return redirect("/admin")
+
+                if not re.match("^[A-Za-z0-9$%#@!]*$",inputPass) and inputPass != "":
+                    flash("Only use Letters, Numbers and ($, %, #, @, !) For Password", "User-Error")
+                    return redirect("/admin")
+
+                # changes name if not empty
+                if inputName != "":
+                    # update username
+                    db.execute(f"UPDATE users SET username = '{inputName}' WHERE user_id = {findID};")
+                    mysql.connection.commit()
+
+                # changes password if not empty
+                if inputPass != "":
+                    # update password
+                    db.execute(f"UPDATE users SET hash = '{generate_password_hash(inputPass)}' WHERE user_id = {findID};")
+                    mysql.connection.commit()
+
+                flash("Updated User", "Success")
+                return redirect("/admin")
+            
+        # if username cant be found, skip
+        flash(f"Could not find user '{findName}'", "User-Error")
+        return redirect("/admin")
     
 # login page
 @app.route("/login", methods=["POST", "GET"])
@@ -107,15 +154,19 @@ def login():
         if not inputName:
             flash("Missing Username", "User-Error")
             return redirect("/login")
+
         if not inputPass:
             flash("Missing Password", "User-Error")
             return redirect("/login")
+
         if not inputName.isalnum():
             flash("Use Only Letters and Numbers", "User-Error")
             return redirect("/login")
+
         if not inputName.isalnum():
             flash("Use Only Letters and Numbers", "User-Error")
             return redirect("/login")
+
         if not re.match("^[A-Za-z0-9$%#@!]*$",inputPass):
             flash("Only use Letters, Numbers and ($, %, #, @, !)", "User-Error")
             return redirect("/login")
@@ -610,9 +661,6 @@ def mealplan():
 
     # get current month
     month = mealplan[0]["date"].strftime("%B")
-
-    # check meal planner function
-    meal_planner_check()
 
     return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month)
 

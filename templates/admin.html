@@ -16,18 +16,19 @@
         <div class="container-controls-parent">
             <h1 onclick="toggleContainer(event)">ADD USER</h1>
             <div class="container-controls-child">
-                <form action="/adminmod" method="post">
+                <form action="/adminmod" method="post" onsubmit="userConfirmAct(event, 'add')">
                     <input name="userNameAdd" type="text" placeholder="Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus required />
                     <input name="userPassAdd" type="password" placeholder="Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus required />
                     <button type="submit" autofocus>ADD</button>
                 </form>
             </div>
-            <h1 onclick="toggleContainer(event)">VIEW USERS</h1>
+            <h1 onclick="toggleContainer(event)">CHANGE USERS</h1>
             <div class="container-controls-child">
-                <form action="/adminmod" method="post">
-                    <input name="userNameAdd" type="text" placeholder="Username" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus required />
-                    <input name="userPassAdd" type="password" placeholder="Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus required />
-                    <button type="submit" autofocus>ADD</button>
+                <form action="/adminmod" method="post" onsubmit="userConfirmAct(event, 'change')">
+                    <input name="userNameSelect" type="text" placeholder="User" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus required />
+                    <input name="userNameChange" type="text" placeholder="Change Name" pattern="^[a-zA-Z0-9]*$" title="Only use letters and numbers" autocomplete="off" autofocus />
+                    <input name="userPassChange" type="password" placeholder="Change Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off" autofocus />
+                    <button type="submit" autofocus>CHANGE</button>
                 </form>
             </div>
     </main>
