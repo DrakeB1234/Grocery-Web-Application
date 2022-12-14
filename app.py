@@ -100,7 +100,7 @@ def admin_mod():
         # find user
         db.execute('SELECT * FROM users')
         rows = db.fetchall()
-        # Check to see if name and hashed password match
+        # Try and find users ID by inputed name
         for i in rows:
             if i["username"] == findName:
                 # if match, continue code
@@ -122,6 +122,13 @@ def admin_mod():
 
                 # changes name if not empty
                 if inputName != "":
+                    # Ensure inputed name to be changed is unique
+                    for i in rows:
+                        if i["username"] == inputName:
+                            # if match, continue code
+                            flash("Provide A Unique Username", "User-Error")
+                            findID = (i["user_id"])
+                            return redirect("/admin")
                     # update username
                     db.execute(f"UPDATE users SET username = '{inputName}' WHERE user_id = {findID};")
                     mysql.connection.commit()
