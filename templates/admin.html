@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+<!-- head content -->
+{% block title %}ADMIN{% endblock %}
+{% block css %}<link rel="stylesheet" href="../static/css/admin.css" />{% endblock %}
+{% block js %}{% endblock %}
+
+<!-- add username to nav -->
+{% block username %}{{ user["username"] }}{% endblock %}
+
+<!-- main content -->
+{% block main %}
+
+    <main class="container">
+        <h1>ADMIN</h1>
+    </main>
+{% endblock %}
