@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from functions import login_required, admin_access, allowed_file, save_change_time
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 from flask_mysqldb import MySQL
 
@@ -705,9 +705,55 @@ def mealplanmod():
         start = request.form.get("mealStartDate")
         weekAmnt = request.form.get("mealWeekAmnt")
 
-        flash(start)
-        flash(weekAmnt)
+        # input validation
+        if not start or not weekAmnt:
+            flash("Fill All Required Inputs", "User-Error")
+            return redirect("/mealplanner")
         
+        try:
+            weekAmnt = int(weekAmnt)
+        except:
+            flash("Week needs to be a number", "User-Error")
+            return redirect("/mealplanner")
+
+        if not weekAmnt == 7 and not weekAmnt == 14:
+            flash("Week needs to be between 7 and 14 days", "User-Error")
+            return redirect("/mealplanner")
+
+        # clearing db
+        db.execute(f'''
+                UPDATE mealPlanner 
+                SET date = NULL, weekday = NULL, meal = "Unset"
+                WHERE user_id = {id};
+        ''')
+        mysql.connection.commit()
+
+        # setting 14 entries under new user in planner for later setting
+        now = datetime.strptime(start, '%Y-%m-%d').date()
+        # getting id of first mealplanner by user
+        db.execute(f'SELECT id FROM mealPlanner WHERE user_id = {id} LIMIT 1;')
+        planID = db.fetchall()
+        planID = planID[0]["id"]
+
+        for i in range(weekAmnt):
+            # get weekday
+            weekday = now.strftime("%a").upper()
+            
+            # updating db
+            db.execute(f'''
+                    UPDATE mealPlanner 
+                    SET date = '{now}', weekday = '{weekday}'
+                    WHERE user_id = {id} AND
+                    id = {planID};
+            ''')
+            mysql.connection.commit()
+
+            # increment day and id
+            now = now + timedelta(days = 1)
+            planID += 1
+        
+        # flash message of success
+        flash("Added New Week to Planner", "Success")
         return redirect("/mealplanner")
 
     # meal is requested to be edited 
