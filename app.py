@@ -161,10 +161,31 @@ def admin_mod():
                 flash("Updated User", "Success")
                 return redirect("/admin")
             
-        # if username cant be found, skip
+        # If username cant be found, skip
         flash(f"Could not find user '{findName}'", "User-Error")
         return redirect("/admin")
-    
+
+    if "userNameDelete" in request.form:
+        inputName = request.form.get("userNameDelete")
+
+        # Try and find users ID by inputed name
+        for i in rows:
+            if i["username"] == inputName:
+                # If match, continue code
+                flash("Found User", "Success")
+                inputName = (i["user_id"])
+
+                # delete account
+                db.execute(f"DELETE users WHERE username = {inputName};")
+                mysql.connection.commit()
+
+                flash("Deleted User '{inputName}'", "Success")
+                return redirect("/admin")
+
+            # Otherwise, user not found
+            flash(f"Could Not Find User '{inputName}'", "User-Error")
+            return redirect("/admin")
+
 # login page
 @app.route("/login", methods=["POST", "GET"])
 def login():

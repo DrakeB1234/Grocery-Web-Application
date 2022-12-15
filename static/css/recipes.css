@@ -54,14 +54,43 @@ div.container-search {
                 width: 25px;
                 cursor: pointer;
             }
+/* recipe nav container */
+div.container-recipe-nav {
+    display: flex;
+    gap: 2em;
+    width: clamp(10em, 96%, 80em);
+    margin: 0 auto 0 auto;
+    padding: 3em 0 2em 0;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+    /* hide scrollbar link */
+    div.container-recipe-nav::-webkit-scrollbar {
+        display: none;
+    }
+    /* each link */
+    div.container-recipe-nav > a {
+        white-space: nowrap;
+        padding: 1em;
+        font-weight: 700;
+        color: var(--grey-med);
+        border-radius: 10px;
+        border: 1px solid var(--white-med);
+        box-shadow: 0 0 1em var(--white-med);
+        background-color: var(--white-light);
+    }
+        /* hover link */
+        div.container-recipe-nav > a:hover {
+            background-color: var(--white-med);
+        }
 /* recipe container */
 div.container-recipes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(22em, 1fr));
     place-items: center;
     gap: 4em 0;
-    width: clamp(10em, 100%, 70em);
-    margin: 3em auto 8em auto;
+    width: clamp(10em, 100%, 80em);
+    margin: 0 auto 0 auto;
     padding: 4em 0 4em 0;
     border-radius: 20px;
     box-shadow: 0 0 1em var(--white-med);
@@ -69,6 +98,7 @@ div.container-recipes {
 }
     /* recipe card */
     div.container-recipes > div.card-recipe {
+        position: relative;
         border: 1px solid var(--white-med);
         border-radius: 10px;
         box-shadow: 0 0 1em var(--white-med);
@@ -78,6 +108,22 @@ div.container-recipes {
         div.container-recipes > div.card-recipe:hover {
             background-color: var(--white-med);
         }
+        /* heart icon */
+        div.container-recipes > div.card-recipe > i.fa-heart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.4em;
+            font-size: 2rem;
+            border-radius: 50%;
+            color: var(--grey-dark);
+            background-color: var(--main-light);
+        }
+            /* heart icon hover */
+            div.container-recipes > div.card-recipe > i.fa-heart:hover {
+                background-color: var(--main-med);
+                color: var(--white-light);
+            }
         /* image */
         div.container-recipes > div.card-recipe > img {
             width: 20em;
@@ -99,3 +145,10 @@ div.container-recipes {
             font-weight: 700;
             color: var(--grey-dark);
         }
+
+/* mobile */
+@media only screen and (min-width:750px) {
+    div.container-recipe-nav {
+        justify-content: center;
+    }
+}
