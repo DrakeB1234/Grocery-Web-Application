@@ -29,7 +29,7 @@
     }
 </style>
 <g clip-path="url(#clip0_1_2)">
-<circle id="background" cx="50" cy="50" r="50" fill="#4B5256" fill-opacity="0.9"/>
+<circle id="background" cx="50" cy="50" r="50" fill="#4B5256" fill-opacity="0.8"/>
 <circle id="front1" cx="32" cy="51" r="5" fill="white"/>
 <circle id="front2" cx="50" cy="51" r="5" fill="white"/>
 <circle id="front3" cx="68" cy="51" r="5" fill="white"/>

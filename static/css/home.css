@@ -38,7 +38,7 @@ body {
         }
         /* each link */
         div.container-home-link > a {
-            padding: 0.5em 3em 0.5em 3em;
+            padding: 0.5em 2em 0.5em 2em;
             border-radius: 20px;
             box-shadow: 0 0 1em var(--white-med);
             background-color: var(--white-light);

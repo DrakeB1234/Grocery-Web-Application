@@ -43,6 +43,8 @@ def user_info(id):
 """
     ~~~TODO~~~
     disable cache
+    more safety nets for database executions
+    make more efficient database executions
 
 """
 
@@ -243,7 +245,7 @@ def home():
 
     # adding item count 
     db.execute(f'''
-    SELECT count(item) as itemCount
+    SELECT count(item) as itemCount, count(title) as listCount
     FROM listData as ld
     JOIN listTitles as lt ON lt.id = ld.title_id
     WHERE lt.user_id = {id} 
@@ -817,6 +819,15 @@ def mealplanmod():
         return redirect("/mealplanner")
 
     return redirect("/mealplanner")
+
+# mealplanner page
+@app.route("/recipes", methods=["GET"])
+@login_required
+def recipes():
+    # get user details
+    user = session.get("user")
+
+    return render_template("recipes.html", user=user[0], url=request.path)
 
 @app.errorhandler(404)
 def page_not_found(e):
