@@ -19,7 +19,7 @@
             <form id="item-del" action="/listviewmod" method="post" onsubmit="userConfirmAct(event, 'delete')">
             <button name="itemDel" value="${e["id"]}" type="submit"><img src="../static/images/icons/icon-trash.svg"></button>\
             </form>`;
-            html += `</div><h4>^ Note: ${e["note"]}</h4>`;
+            html += `</div><h4 style="border-left: 5px solid ${catColor}">^ Note: ${e["note"]}</h4>`;
         }
         else {
             html += `<div class='container-item' style="border-left: 5px solid ${catColor}"><h2>${e["amount"]}</h2><h3 ondblclick="listItemEdit(event, ${e["id"]})">${e["item"]}</h3>\

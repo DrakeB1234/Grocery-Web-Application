@@ -23,7 +23,9 @@ form#container-dateadd {
     flex-direction: column;
     align-items: center;
     gap: 1em;
+    margin-bottom: 1em;
     padding: 1em;
+    border-bottom: 1px solid var(--white-med);
 }
     /* form header text */
     form#container-dateadd > h1 {
@@ -118,6 +120,10 @@ div.container-list {
         display: flex;
         padding: 1em 0 1em 0;
     }
+        /* every 7 containers (one week) */
+        div.container-list > div.container-item:nth-child(7n + 2) {
+            border-bottom: 1px solid var(--grey-med);
+        }
         /* first container (date) */
         div.container-list > div.container-item > div:first-child{
             text-align: center;

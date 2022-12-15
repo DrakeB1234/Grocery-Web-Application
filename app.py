@@ -36,9 +36,6 @@ def user_info(id):
     db.execute(f'SELECT * FROM users WHERE user_id = {id}')
     session["user"] = db.fetchall()
     session["user_id"] = id
-    # if user is admin
-    if (id == 1):
-        return redirect("/admin")
     return
     
 
@@ -253,7 +250,26 @@ def home():
     ''')
     grocery += db.fetchall()
 
-    return render_template("home.html", user=user[0], url=request.path, grocery=grocery, grocerytime=session.get("grocery_time"))
+    # getting users current meal plan (based on current date)
+    now = date.today()
+    db.execute(f'''
+    SELECT meal
+    FROM mealPlanner 
+    WHERE user_id = {id} AND
+    date = '{now}'
+    ''')
+    curMeal = db.fetchall()
+
+    # if no meal is found
+    if curMeal == ():
+        curMeal = "Nothing Planned!"
+    else:
+        curMeal = curMeal[0]["meal"]
+
+    # setting tuple
+    curMeal = ({"month" : now.strftime("%B"), "day" : now.strftime("%d"), "meal" : curMeal})
+
+    return render_template("home.html", user=user[0], url=request.path, grocery=grocery, grocerytime=session.get("grocery_time"), curMeal=curMeal)
 
 # account settings page
 @app.route("/accntsettings", methods=["GET", "POST"])
@@ -289,6 +305,8 @@ def accntsettings():
             # if file is successful, change file path in user
             db.execute(f"UPDATE users SET avatar_path = '{pathVar}' WHERE user_id = {id}")
             mysql.connection.commit()
+            # get new user info to get new avatar path
+            user_info(id)
             # flash message then redirect
             flash("Avatar Uploaded", "Success")
             return redirect("/accntsettings")
@@ -301,8 +319,13 @@ def accntsettings():
             if not inputName:
                 flash("Missing Username", "User-Error")
                 return redirect("/accntsettings")
+
             if not inputName.isalnum():
                 flash("Use Only Letters and Numbers", "User-Error")
+                return redirect("/accntsettings")
+                
+            if  len(inputName) < 3 or len(inputName) > 20:
+                flash("Only use between 3 and 20 characters", "User-Error")
                 return redirect("/accntsettings")
 
             # Ensure input username is unique
@@ -680,17 +703,24 @@ def mealplan():
     ''')
     mealplan = db.fetchall()
 
+    print(mealplan[0])
+
     if mealplan == ():
         flash("Error Loading Meal Planner, Contact Admin", "Server-Error")
         return redirect("/")
 
-    # get current month
+    # get current month and year
     try: 
-        month = mealplan[0]["date"].strftime("%B")
+        month = mealplan[7]["date"].strftime("%B")
     except:
         month = "unset"
 
-    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month)
+    try: 
+        year = mealplan[7]["date"].strftime("%Y")
+    except:
+        year = "unset"
+
+    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month, year=year)
 
 # mealplanner mod page
 @app.route("/mealplannermod", methods=["POST"])
