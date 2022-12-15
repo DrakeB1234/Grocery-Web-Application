@@ -17,6 +17,71 @@ div.container-header {
         color: var(--main-med);
         text-shadow: 3px 3px 1em var(--white-med);
     }
+/* container date add */
+form#container-dateadd {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+}
+    /* form header text */
+    form#container-dateadd > h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--grey-dark);
+    }
+    /* form sub-header text */
+    form#container-dateadd > h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--grey-med);
+    }
+    /* form date input */
+    form#container-dateadd > input[type="date"] {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--grey-light);
+        padding: 0.5em;
+        background-color: var(--white-light);
+        border-radius: 10px;
+        border: 1px solid var(--white-med);
+    }
+    /* form select input */
+    form#container-dateadd > select {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--grey-light);
+        padding: 0.5em;
+        background-color: var(--white-light);
+        border-radius: 10px;
+        border: 1px solid var(--white-med);
+    }
+    /* button container */
+    form#container-dateadd > div.container-input {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+    }
+        /* submit button */
+        form#container-dateadd > div.container-input button[type="submit"], button[type="button"] {
+            margin-top: 2em;
+            padding: 0.5em 3em 0.5em 3em;
+            border: 0;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            background-color: var(--main-med);
+            color: var(--white-light);
+            cursor: pointer;
+        }
+        /* cancel button */
+        form#container-dateadd > div.container-input button[type="button"] {
+            margin-right: 1em;
+            border: 1px solid var(--white-med);
+            background-color: var(--white-medli);
+            color: var(--grey-med);
+        }
 /* container list */
 div.container-list {
     display: flex;
@@ -32,7 +97,6 @@ div.container-list {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1em 0 1em 0;
         font-size: 1.4rem;
         font-weight: 700;
         color: var(--grey-dark);
@@ -41,6 +105,13 @@ div.container-list {
         /* header container (text) */
         div.container-list > div.container-list-header > h1 {
             margin-left: 0.5em;
+        }
+        /* header container (text) */
+        div.container-list > div.container-list-header > img {
+            width: 30px;
+            padding: 1em;
+            padding-left: 35%;
+            cursor: pointer;
         }
     /* conatiner item */
     div.container-list > div.container-item {

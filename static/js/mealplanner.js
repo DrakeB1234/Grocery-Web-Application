@@ -31,3 +31,13 @@ const mealEdit = (e, mealID) => {
     // if another ele is dbl clicked, stop operation until other is cancelled
     return
 }
+
+// function for handling meal add
+const mealAdd = () => {
+    const formCon = document.getElementById("container-dateadd");
+    if (formCon.style.display === "flex"){
+        formCon.style.display = "none";
+        return;
+    }
+    formCon.style.display = "flex";
+}

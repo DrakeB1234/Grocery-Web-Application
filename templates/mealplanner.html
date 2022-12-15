@@ -17,11 +17,25 @@
         </div>
         <div class="container-list">
             <div class="container-list-header">
-                {% if mealplan != () %}
-                    <h1>{{ month }}</h1>
-                {% endif %}
+                <h1>{{ month }}</h1>
+                <img onclick="mealAdd()" src="../static/images/icons/icon-edit.svg">
             </div>
+            <form action="/mealplannermod" method="post" id="container-dateadd" onsubmit="userConfirmAct(event, 'add')">
+                <h1>Start New Week</h1>
+                <h2>Starting Day</h2>
+                <input name="mealStartDate" type="date" placeholder="Start Date" required />
+                <select name="mealWeekAmnt" required>
+                    <option selected hidden value="">Select Weeks</option>
+                    <option value="7">1 Week</option>
+                    <option value="14">2 Weeks</option>
+                </select>
+                <div class="container-input">
+                    <button type="button" onclick="mealAdd()">Cancel</button>
+                    <button type="submit">Add</button>
+                </div>
+            </form>
             {% for i in mealplan %}
+            {% if i["date"] != None %}
             <div class="container-item">
                 <div>
                     <h1>{{ i["weekday"] }}</h1>
@@ -31,6 +45,7 @@
                     <h1 ondblclick="mealEdit(event, '{{ i["id"] }}')">{{ i["meal"] }}</h1>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </main>

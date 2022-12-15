@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from functions import login_required, admin_access, allowed_file, save_change_time
-from datetime import datetime, timedelta
+from datetime import date, timedelta
 
 from flask_mysqldb import MySQL
 
@@ -67,6 +67,9 @@ def admin():
 def admin_mod():
     # establish database connection
     db = mysql.connection.cursor()
+    # get all user data
+    db.execute('SELECT * FROM users')
+    rows = db.fetchall()
 
     # form posted is for adding user
     if "userNameAdd" in request.form:
@@ -85,9 +88,28 @@ def admin_mod():
             flash("Only use Letters, Numbers and ($, %, #, @, !) for Password", "User-Error")
             return redirect("/admin")
 
+        # Enuser username is not taken
+        for i in rows:
+            if (i["username"] == inputName):
+                flash("Username Taken", "User-Error")
+                return redirect("/admin")
+
         # insert new user into users table
         db.execute(f"INSERT INTO users (username, hash) VALUES ('{inputName}', '{generate_password_hash(inputPass)}');")
         mysql.connection.commit()
+
+        # insert data into mealplanner for new user
+        # get id of new user
+        db.execute(f"SELECT user_id FROM users WHERE username = '{inputName}';")
+        newID = db.fetchall()
+        
+        # setting 14 entries under new user in planner for later setting
+        for i in range(14):
+            # get weekday
+            db.execute(f'''INSERT INTO mealPlanner (user_id) 
+                    VALUES ({newID[0]["user_id"]});
+            ''')
+            mysql.connection.commit()
 
         flash("Added User", "Success")
         return redirect("/admin")
@@ -98,8 +120,6 @@ def admin_mod():
         inputPass = request.form.get("userPassChange")
 
         # find user
-        db.execute('SELECT * FROM users')
-        rows = db.fetchall()
         # Try and find users ID by inputed name
         for i in rows:
             if i["username"] == findName:
@@ -126,7 +146,7 @@ def admin_mod():
                     for i in rows:
                         if i["username"] == inputName:
                             # if match, continue code
-                            flash("Provide A Unique Username", "User-Error")
+                            flash("Username Taken", "User-Error")
                             findID = (i["user_id"])
                             return redirect("/admin")
                     # update username
@@ -653,7 +673,7 @@ def mealplan():
 
     # getting users meal planner
     db.execute(f'''
-    SELECT id, date, DAY(date) as day, MONTH(date) as month, weekday, meal
+    SELECT id, date, DAY(date) as day, weekday, meal
     FROM mealPlanner 
     WHERE user_id = {id} 
     ORDER BY date ASC
@@ -661,13 +681,14 @@ def mealplan():
     mealplan = db.fetchall()
 
     if mealplan == ():
-        # nothing in planner, call adder function
-        add_meal_planner()
-        flash("added meal planner", "Success")
+        flash("Error Loading Meal Planner, Contact Admin", "Server-Error")
         return redirect("/")
 
     # get current month
-    month = mealplan[0]["date"].strftime("%B")
+    try: 
+        month = mealplan[0]["date"].strftime("%B")
+    except:
+        month = "unset"
 
     return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month)
 
@@ -678,6 +699,16 @@ def mealplanmod():
     # establish database connection
     db = mysql.connection.cursor()
     id = session["user_id"]
+
+    # new planner is being requested
+    if "mealStartDate" in request.form:
+        start = request.form.get("mealStartDate")
+        weekAmnt = request.form.get("mealWeekAmnt")
+
+        flash(start)
+        flash(weekAmnt)
+        
+        return redirect("/mealplanner")
 
     # meal is requested to be edited 
     if "mealEditItem" in request.form:
