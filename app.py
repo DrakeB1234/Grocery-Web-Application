@@ -841,14 +841,42 @@ def mealplanmod():
 
     return redirect("/mealplanner")
 
-# mealplanner page
+# recipes home page
 @app.route("/recipes", methods=["GET"])
 @login_required
 def recipes():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
     # get user details
     user = session.get("user")
 
-    return render_template("recipes.html", user=user[0], url=request.path)
+    # getting randomized recipes
+    db.execute(f'''
+    SELECT *
+    FROM recipes 
+    ''')
+    recipelist = db.fetchall()
+
+    return render_template("recipes.html", user=user[0], url=request.path, recipelist=recipelist)
+
+# recipes view page
+@app.route("/recipesview", methods=["GET"])
+@login_required
+def recipes_view():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+    # get user details
+    user = session.get("user")
+
+    recipeName = request.args["recipe"]
+    recipeID = request.args["id"]
+
+    flash(recipeName)
+    flash(recipeID)
+
+    return render_template("recipesview.html", user=user[0], url=request.path)
 
 @app.errorhandler(404)
 def page_not_found(e):

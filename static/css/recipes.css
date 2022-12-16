@@ -85,10 +85,11 @@ div.container-recipe-nav {
         }
 /* recipe container */
 div.container-recipes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(22em, 1fr));
-    place-items: center;
-    gap: 4em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
     width: clamp(10em, 100%, 80em);
     margin: 0 auto 0 auto;
     padding: 4em 0 4em 0;
@@ -97,7 +98,9 @@ div.container-recipes {
     background-color: var(--white-light);
 }
     /* recipe card */
-    div.container-recipes > div.card-recipe {
+    div.container-recipes > a.card-recipe {
+        width: clamp(10em, 100%, 20em);
+        margin: 0 1em 0 1em;
         position: relative;
         border: 1px solid var(--white-med);
         border-radius: 10px;
@@ -105,11 +108,11 @@ div.container-recipes {
         cursor: pointer;
     }
         /* recipe card hover */
-        div.container-recipes > div.card-recipe:hover {
+        div.container-recipes > a.card-recipe:hover {
             background-color: var(--white-med);
         }
         /* heart icon */
-        div.container-recipes > div.card-recipe > i.fa-heart {
+        div.container-recipes > a.card-recipe > i.fa-heart {
             position: absolute;
             top: 10px;
             right: 10px;
@@ -120,31 +123,50 @@ div.container-recipes {
             background-color: var(--main-light);
         }
             /* heart icon hover */
-            div.container-recipes > div.card-recipe > i.fa-heart:hover {
+            div.container-recipes > a.card-recipe > i.fa-heart:hover {
                 background-color: var(--main-med);
                 color: var(--white-light);
             }
         /* image */
-        div.container-recipes > div.card-recipe > img {
-            width: 20em;
+        div.container-recipes > a.card-recipe > img {
+            height: clamp(10em, 100%, 20em);
+            width: clamp(10em, 100%, 20em);
             border-radius: 10px 10px 0 0;
         }
-        /* subheader (h1) */
-        div.container-recipes > div.card-recipe > h1 {
+        /* category (h1) */
+        div.container-recipes > a.card-recipe > h1 {
             padding: 0.5em;
             padding-bottom: 0;
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--grey-light);
+            overflow-wrap: break-word;
         }
-        /* subheader (h2) */
-        div.container-recipes > div.card-recipe > h2 {
+        /* recipe (h2) */
+        div.container-recipes > a.card-recipe > h2 {
             padding: 0.5em;
             padding-bottom: 1em;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--grey-dark);
+            overflow-wrap: break-word;
         }
+        /* description (h3) */
+        div.container-recipes > a.card-recipe > h3 {
+            display: none;
+            height: 0;
+            padding: 0.5em;
+            padding-bottom: 1em;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--grey-med);
+            overflow-wrap: break-word;
+        }
+            /* hover description */
+            div.container-recipes > a.card-recipe:hover > h3 {
+                display: block;
+                height: 100%;
+            }
 
 /* mobile */
 @media only screen and (min-width:750px) {

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+<!-- head content -->
+{% block title %}Recipe View{% endblock %}
+{% block css %}<link rel="stylesheet" href="../static/css/recipes.css" />{% endblock %}
+{% block js %}<script src="../static/js/.js"></script>{% endblock %}
+
+<!-- add username to nav -->
+{% block username %}{{ user["username"] }}{% endblock %}
+
+<!-- main content -->
+{% block main %}
+
+    <main class="container" style="overflow: hidden;">
+        <div class="container-header">
+            <h1>Recipes View</h1>
+        </div>
+    </main>
+
+{% endblock %}
