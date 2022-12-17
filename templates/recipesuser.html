@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+<!-- head content -->
+{% block title %}Recipe Edit{% endblock %}
+{% block css %}<link rel="stylesheet" href="../static/css/recipesuser.css" />{% endblock %}
+{% block js %}<script src="../static/js/.js"></script>{% endblock %}
+
+<!-- add username to nav -->
+{% block username %}{{ user["username"] }}{% endblock %}
+
+<!-- main content -->
+{% block main %}
+
+    <main class="container" style="overflow: hidden;">
+        <div class="container-recipes">
+            {% for i in recipelist %}
+                <a href="recipesview?recipe={{ i['recipe_name'] }}&id={{ i['recipe_id'] }}" class="card-recipe">
+                    <div id="heart-btn" class="btn-style">
+                        <img src="/static/images/icons/icon-heart.svg">
+                    </div>
+                    <img src="{{ i['image_path'] }}">
+                    <h1>{{ i["category"]}}</h1>
+                    <h2>{{ i["recipe_name"] }}</h2>
+                    <h3>{{ i["description"] }}</h3>
+                </a>
+            {% endfor %}
+        </div>
+    </main>
+
+{% endblock %}

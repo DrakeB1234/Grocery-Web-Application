@@ -84,6 +84,10 @@ main.container > div.container-recipe {
         overflow: scroll;
     }
         /* recipe container buttons */
+        div.container-recipe > div.container-btns::-webkit-scrollbar {
+            display: none;
+        }
+        /* recipe container buttons */
         div.container-recipe > div.container-btns > div.btn-style {
             display: flex;
             justify-content: space-around;

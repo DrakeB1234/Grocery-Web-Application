@@ -19,7 +19,11 @@
             </a>
             <h1>{{ recipe["recipe_name"] }}</h1>
             <h2>{{ recipe["course"] }} / {{ recipe["category"] }}</h2>
-            <h4>Created By: {{ recipe["username"] }}</h4>
+            {% if recipe['user_id'] == user["user_id"] %}
+                <h4>Created By: You!</h4>
+            {% else %}
+                <h4>Created By: {{ recipe["username"] }}</h4>
+            {% endif %}
             <h3>{{ recipe["description"] }}</h3>
             <div class="container-btns">
                 <div class="btn-style">
@@ -36,11 +40,7 @@
                 {% endif %}
                 <!-- if logged in user matches the id of created recipe, allow edit -->
                 {% if recipe['user_id'] == user["user_id"] %}
-                <div class="btn-style">
-                    <a href="/recipesedit?recipe={{ recipe['recipe_name'] }}&id={{ recipe['recipe_id'] }}">
-                        <img src="/static/images/icons/icon-edit.svg">
-                    </a>
-                </div>                
+              
                 {% endif %}
             </div>
             <img src="{{ recipe['image_path'] }}">
