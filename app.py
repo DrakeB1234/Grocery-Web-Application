@@ -847,7 +847,6 @@ def mealplanmod():
 def recipes():
     # establish database connection
     db = mysql.connection.cursor()
-    id = session["user_id"]
     # get user details
     user = session.get("user")
 
@@ -865,6 +864,7 @@ def recipes():
 def recipes_view():
     # establish database connection
     db = mysql.connection.cursor()
+    id = session["user_id"]
 
     # try getting an user id
     try:
@@ -948,7 +948,98 @@ def recipes_edit():
     ''')
     ingredients = db.fetchall()
 
+    # save current path to return back to
     return render_template("recipesedit.html", user=user[0], url=request.path, recipe=recipelist[0], instructions=instructions, ingredients=ingredients)
+
+# mealplanner mod page
+@app.route("/recipesmod", methods=["POST"])
+@login_required
+def recipes_mod():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+    recipeID = request.form.get("recipeID")
+    recipeName = request.form.get("recipeName")
+    returnURL = f"/recipesedit?recipe={recipeName}&id={recipeID}"
+
+    # new planner is being requested
+    if "recipeEditTitle" in request.form:
+        title = request.form.get("recipeEditTitle")
+        course = request.form.get("recipeEditCourse")
+        category = request.form.get("recipeEditCategory")
+        description = request.form.get("recipeEditDescription")
+
+        # input validation
+        if not recipeID.isnumeric():
+            flash("Only use Numbers", "User-Error")
+            return redirect(returnURL)
+        
+        # if each input is valid, then run query
+        if title != "":
+            if not re.match("^[a-zA-Z][a-zA-Z ]*$", title):
+                flash("Only use Letters for Title", "User-Error")
+                return redirect(returnURL)
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET recipe_name = '{title}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                # have to change URL to match changed recipe name
+                returnURL = f"/recipesedit?recipe={title}&id={recipeID}"
+                flash("Changed Title", "Success")
+
+        if course != "":
+            if not re.match("^[a-zA-Z][a-zA-Z ]*$", course):
+                flash("Only use Letters for Course", "User-Error")
+                return redirect(returnURL)
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET course = '{course}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Course", "Success")
+
+        if category != "":
+            if not re.match("^[a-zA-Z][a-zA-Z ]*$", category):
+                flash("Only use Letters for Category", "User-Error")
+                return redirect(returnURL)
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET category = '{category}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Category", "Success")
+
+        if description != "":
+            if not re.match("^[a-zA-Z0-9][a-zA-Z0-9!?.,` ]*$", description):
+                flash("Only use Letters for Description", "User-Error")
+                return redirect(returnURL)
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET description = '{description}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id} AND
+                    description != '{description}'
+                ''')
+                mysql.connection.commit()
+                flash("Changed Description", "Success")
+
+
+    return redirect(returnURL)
 
 @app.errorhandler(404)
 def page_not_found(e):

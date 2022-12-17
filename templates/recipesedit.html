@@ -2,7 +2,7 @@
 
 <!-- head content -->
 {% block title %}Recipe Edit{% endblock %}
-{% block css %}<link rel="stylesheet" href="../static/css/recipesview.css" />{% endblock %}
+{% block css %}<link rel="stylesheet" href="../static/css/recipesedit.css" />{% endblock %}
 {% block js %}<script src="../static/js/.js"></script>{% endblock %}
 
 <!-- add username to nav -->
@@ -17,10 +17,19 @@
                 <i class="fa-solid fa-angle-left"></i>
                 <h1>Return</h1>
             </a>
-            <h1>{{ recipe["recipe_name"] }}</h1>
-            <h2>{{ recipe["course"] }} / {{ recipe["category"] }}</h2>
-            <h4>Created By: {{ recipe["username"] }}</h4>
-            <h3>{{ recipe["description"] }}</h3>
+            <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event, 'edit')">
+                <input name="recipeID" value="{{ recipe['recipe_id'] }}" hidden>
+                <input name="recipeName" value="{{ recipe['recipe_name'] }}" hidden>
+                <h1>Recipe Name:</h1>
+                <input name="recipeEditTitle" type="text" placeholder="{{ recipe['recipe_name'] }}" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters">
+                <h1>Course:</h1>
+                <input name="recipeEditCourse" type="text" placeholder="{{ recipe['course'] }}" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters">
+                <h1>Category:</h1>
+                <input name="recipeEditCategory" type="text" placeholder="{{ recipe['category'] }}" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters">
+                <h1>Description:</h1>
+                <textarea name="recipeEditDescription" id="recipe_description" type="text" pattern="^[a-zA-Z0-9][a-zA-Z0-9!?.,` ]*$" title="Don't use Non-Puncuation">{{ recipe['description'] }}</textarea>
+                <button type="submit">Save Changes</button>
+            </form>
             <img src="{{ recipe['image_path'] }}">
             <div class="container-list">
                 <h1>Ingredients</h1>
