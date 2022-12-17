@@ -99,7 +99,7 @@ div.container-recipes {
 }
     /* recipe card */
     div.container-recipes > a.card-recipe {
-        width: clamp(10em, 100%, 20em);
+        width: clamp(10em, 100%, 22em);
         margin: 0 1em 0 1em;
         position: relative;
         border: 1px solid var(--white-med);
@@ -111,26 +111,29 @@ div.container-recipes {
         div.container-recipes > a.card-recipe:hover {
             background-color: var(--white-med);
         }
-        /* heart icon */
-        div.container-recipes > a.card-recipe > i.fa-heart {
+        /* heart btn container */
+        div.container-recipes > a.card-recipe > div.btn-style#heart-btn {
             position: absolute;
+            display: flex;
             top: 10px;
             right: 10px;
-            padding: 0.4em;
-            font-size: 2rem;
+            padding: 0.8em 0.6em 0.6em 0.6em;
             border-radius: 50%;
-            color: var(--grey-dark);
             background-color: var(--main-light);
         }
+            /* heart image */
+            div.container-recipes > a.card-recipe > div.btn-style#heart-btn > img {
+                height: 30px;
+                width: 30px;
+            }
             /* heart icon hover */
-            div.container-recipes > a.card-recipe > i.fa-heart:hover {
+            div.container-recipes > a.card-recipe > div.btn-style#heart-btn:hover {
                 background-color: var(--main-med);
-                color: var(--white-light);
             }
         /* image */
         div.container-recipes > a.card-recipe > img {
-            height: clamp(10em, 100%, 20em);
-            width: clamp(10em, 100%, 20em);
+            height: clamp(10em, 100%, 22em);
+            width: clamp(10em, 100%, 22em);
             border-radius: 10px 10px 0 0;
         }
         /* category (h1) */

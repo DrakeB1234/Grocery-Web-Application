@@ -29,20 +29,22 @@
         <div class="container-recipes">
             {% for i in recipelist %}
                 <a href="recipesview?recipe={{ i['recipe_name'] }}&id={{ i['recipe_id'] }}" class="card-recipe">
-                    <i class="fa-regular fa-heart"></i>
+                    <div id="heart-btn" class="btn-style">
+                        <img src="/static/images/icons/icon-heart.svg">
+                    </div>
                     <img src="{{ i['image_path'] }}">
                     <h1>{{ i["category"]}}</h1>
                     <h2>{{ i["recipe_name"] }}</h2>
                     <h3>{{ i["description"] }}</h3>
                 </a>
             {% endfor %}
-            <!-- <div class="card-recipe">
+            <!-- <a class="card-recipe">
                 <i class="fa-regular fa-heart"></i>
                 <img src="/static/images/recipes/graphic-recipe.svg">
-                <h1>Healthy</h1>
+                <h1>Greek</h1>
                 <h2>Corndog</h2>
-                <h3></h3>
-            </div> -->
+                <h3>Yummy</h3>
+            </a> -->
         </div>
     </main>
 

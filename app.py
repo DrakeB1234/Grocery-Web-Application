@@ -862,8 +862,56 @@ def recipes():
 
 # recipes view page
 @app.route("/recipesview", methods=["GET"])
-@login_required
 def recipes_view():
+    # establish database connection
+    db = mysql.connection.cursor()
+
+    # try getting an user id
+    try:
+        id = session["user_id"]
+    # if fails, guest is viewing recipe
+    except:
+        id = 0
+        user = ({"user_id" : 0, "username" : "Guest"},)
+    else:
+        # get user details
+        user = session.get("user")
+
+    recipeName = request.args["recipe"]
+    recipeID = request.args["id"]
+
+    # getting specified recipe
+    db.execute(f'''
+    SELECT recipes.*, username
+    FROM recipes
+    JOIN users ON users.user_id = recipes.user_id
+    WHERE recipe_id = {recipeID} AND
+    recipe_name = '{recipeName}';
+    ''')
+    recipelist = db.fetchall()
+
+    # getting instructions based off of recipe ID
+    db.execute(f'''
+    SELECT instructions_name
+    FROM instructions
+    WHERE recipe_id = {recipeID}
+    ''')
+    instructions = db.fetchall()
+
+    # getting ingredients based off of recipe ID
+    db.execute(f'''
+    SELECT ingredient_name, ingredient_measure
+    FROM ingredients
+    WHERE recipe_id = {recipeID}
+    ''')
+    ingredients = db.fetchall()
+
+    return render_template("recipesview.html", user=user[0], url=request.path, recipe=recipelist[0], instructions=instructions, ingredients=ingredients)
+
+# recipes edit page
+@app.route("/recipesedit", methods=["GET"])
+@login_required
+def recipes_edit():
     # establish database connection
     db = mysql.connection.cursor()
     id = session["user_id"]
@@ -873,10 +921,34 @@ def recipes_view():
     recipeName = request.args["recipe"]
     recipeID = request.args["id"]
 
-    flash(recipeName)
-    flash(recipeID)
+    # getting specified recipe
+    db.execute(f'''
+    SELECT recipes.*, username
+    FROM recipes
+    JOIN users ON users.user_id = recipes.user_id
+    WHERE recipe_id = {recipeID} AND
+    recipe_name = '{recipeName}' AND
+    recipes.user_id = {id};
+    ''')
+    recipelist = db.fetchall()
 
-    return render_template("recipesview.html", user=user[0], url=request.path)
+    # getting instructions based off of recipe ID
+    db.execute(f'''
+    SELECT instructions_name
+    FROM instructions
+    WHERE recipe_id = {recipeID}
+    ''')
+    instructions = db.fetchall()
+
+    # getting ingredients based off of recipe ID
+    db.execute(f'''
+    SELECT ingredient_name, ingredient_measure
+    FROM ingredients
+    WHERE recipe_id = {recipeID}
+    ''')
+    ingredients = db.fetchall()
+
+    return render_template("recipesedit.html", user=user[0], url=request.path, recipe=recipelist[0], instructions=instructions, ingredients=ingredients)
 
 @app.errorhandler(404)
 def page_not_found(e):

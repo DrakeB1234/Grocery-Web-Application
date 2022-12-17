@@ -3,11 +3,6 @@ body {
     background-color: var(--white-medli);
 }
 
-/* hide footer graphic container */
-div.container-graphic {
-    display: none;
-}
-
 /* list container */
 div.container-list {
     display: flex;
@@ -266,3 +261,7 @@ form#itemEditForm {
                 background-color: var(--white-medli);
                 color: var(--grey-med);
             }
+/* hide footer graphic container */
+div.container-graphic {
+    display: none;
+}

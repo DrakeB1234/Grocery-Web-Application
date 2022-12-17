@@ -1,0 +1,164 @@
+/* body */
+body {
+    background-color: var(--white-medli);
+}
+
+/* main container */
+main.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    min-height: 100vh;
+    width: clamp(10em, 100%, 80em);
+    margin: 0 auto 0 auto;
+    background-color: var(--white-light);
+}
+/* recipe container */
+main.container > div.container-recipe {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    min-height: 100vh;
+    width: clamp(10em, 100%, 50em);
+    margin: 0 auto 0 auto;
+    border: 1px solid var(--grey-light);
+    overflow: hidden;
+}
+    /* first link (back to recipes) */
+    main.container > div.container-recipe > a:first-child {
+        display: flex;
+        align-items: center;
+        padding: 1em;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--grey-light);
+    }
+        /* first link back icon */
+        main.container > div.container-recipe > a:first-child > i {
+            font-size: 1.5rem;
+            padding-right: 1em;
+        }
+    /* name of recipe (h1) */
+    div.container-recipe > h1 {
+        margin-top: 0.5em;
+        margin-left: 0.2em;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--grey-dark);
+        overflow-wrap: break-word;
+    }
+    /* categories / course (h2) */
+    div.container-recipe > h2 {
+        margin-top: 0.5em;
+        margin-left: 0.6em;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--grey-light);
+        overflow-wrap: break-word;
+    }
+    /* creator (h4) */
+    div.container-recipe > h4 {
+        margin-top: 0.5em;
+        margin-left: 0.7em;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--white-dark);
+        overflow-wrap: break-word;
+    }
+    /* description (h3) */
+    div.container-recipe > h3 {
+        margin-top: 1em;
+        padding: 1em;
+        padding-bottom: 2em;
+        font-size: 1.2rem;
+        font-weight: 400;
+        background-color: var(--white-medli);
+        overflow-wrap: break-word;
+    }
+    /* recipe container buttons */
+    div.container-recipe > div.container-btns {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        margin: 2em 0 1em 0;
+        overflow: scroll;
+    }
+        /* recipe container buttons */
+        div.container-recipe > div.container-btns > div.btn-style {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-width: 3em;
+            padding: 0.5em 1em 0.5em 1em;
+            border-radius: 10px;
+            background-color: var(--white-medli);
+            cursor: pointer;
+        }
+            /* recipe container buttons hover */
+            div.container-recipe > div.container-btns > div.btn-style:hover {
+                background-color: var(--white-med);
+            }
+            /* image */
+            div.container-recipe > div.container-btns > div.btn-style > img {
+                height: 20px;
+                width: 20px;
+            }
+                /* a tag image */
+                div.container-recipe > div.container-btns > div.btn-style > a > img {
+                    height: 20px;
+                    width: 20px;
+                }
+            /* text */
+            div.container-recipe > div.container-btns > div.btn-style > h1 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--grey-dark);
+            }
+            /* links */
+            div.container-recipe > div.container-btns > div.btn-style > a {
+                font-size: 1rem;
+                font-weight: 400;
+                color: var(--grey-dark);
+            }
+    /* recipe image */
+    div.container-recipe > img {
+        height: clamp(10em, 100%, 40em);
+        width: clamp(10em, 100%, 40em);
+        margin: 0 auto 0 auto;
+    }
+/* conatiner list (ingredients and instructions) */
+div.container-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+    /* last container */
+    div.container-list:last-child {
+        margin-bottom: 4em;
+    }
+    /* header text */
+    div.container-list > h1 {
+        margin-left: 0.5em;
+        margin-bottom: 1em;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--grey-dark);
+    }
+    /* item text */
+    div.container-list > h2 {
+        margin-left: 1em;
+        font-size: 1.5rem;
+    }
+
+
+/* hide footer graphic container */
+div.container-graphic {
+    margin-top: 1em;
+}
+
+/* mobile */
+@media only screen and (min-width:750px) {
+    div.container-recipe-nav {
+        justify-content: center;
+    }
+}

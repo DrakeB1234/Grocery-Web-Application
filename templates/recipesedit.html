@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 <!-- head content -->
-{% block title %}{{ recipe["recipe_name"] }} | Grocery Central{% endblock %}
+{% block title %}Recipe Edit{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/recipesview.css" />{% endblock %}
 {% block js %}<script src="../static/js/.js"></script>{% endblock %}
 
@@ -15,34 +15,12 @@
         <div class="container-recipe">
             <a href="/recipes">
                 <i class="fa-solid fa-angle-left"></i>
-                <h1>Recipes</h1>
+                <h1>Return</h1>
             </a>
             <h1>{{ recipe["recipe_name"] }}</h1>
             <h2>{{ recipe["course"] }} / {{ recipe["category"] }}</h2>
             <h4>Created By: {{ recipe["username"] }}</h4>
             <h3>{{ recipe["description"] }}</h3>
-            <div class="container-btns">
-                <div class="btn-style">
-                    <img src="/static/images/icons/icon-heart.svg">
-                    <h1>{{ recipe["saved_amount"] }}</h1>
-                </div>
-                <div class="btn-style">
-                    <img src="/static/images/icons/icon-share.svg">
-                </div>
-                {% if recipe['outer_link'] %}
-                <div class="btn-style">
-                    <a href="{{ recipe['outer_link'] }}" target="_blank"><h1>Reference Link</h1></a>
-                </div>                
-                {% endif %}
-                <!-- if logged in user matches the id of created recipe, allow edit -->
-                {% if recipe['user_id'] == user["user_id"] %}
-                <div class="btn-style">
-                    <a href="/recipesedit?recipe={{ recipe['recipe_name'] }}&id={{ recipe['recipe_id'] }}">
-                        <img src="/static/images/icons/icon-edit.svg">
-                    </a>
-                </div>                
-                {% endif %}
-            </div>
             <img src="{{ recipe['image_path'] }}">
             <div class="container-list">
                 <h1>Ingredients</h1>
