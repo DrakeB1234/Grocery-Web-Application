@@ -13,17 +13,24 @@
 
     <main class="container" style="overflow: hidden;">
         <div class="container-recipes">
-            {% for i in recipelist %}
-                <a href="recipesview?recipe={{ i['recipe_name'] }}&id={{ i['recipe_id'] }}" class="card-recipe">
-                    <div id="heart-btn" class="btn-style">
-                        <img src="/static/images/icons/icon-heart.svg">
-                    </div>
+            <a href="/recipes">
+                <i class="fa-solid fa-angle-left"></i>
+                <h1>Return</h1>
+            </a>
+            <h1>My Recipes</h1>
+            {% if recipe %}
+                {% for i in recipe %}
+                <div class="recipe-card">
                     <img src="{{ i['image_path'] }}">
-                    <h1>{{ i["category"]}}</h1>
-                    <h2>{{ i["recipe_name"] }}</h2>
-                    <h3>{{ i["description"] }}</h3>
-                </a>
-            {% endfor %}
+                    <div class="card-col">
+                        <h1>{{ i["category"]}}</h1>
+                        <h2>{{ i["recipe_name"] }}</h2>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <h1 style="color: var(--grey-med)">No Recipes Found! Create Some!</h1>
+            {% endif %}
         </div>
     </main>
 

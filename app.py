@@ -307,6 +307,7 @@ def accntsettings():
     if request.method == "POST":
         # information posted is for changing avatar pic
         if 'avatarFile' in request.files:
+            app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
             file = request.files['avatarFile']
             username = user[0]["username"]
 
@@ -864,7 +865,6 @@ def recipes():
 def recipes_view():
     # establish database connection
     db = mysql.connection.cursor()
-    id = session["user_id"]
 
     # try getting an user id
     try:
@@ -920,15 +920,143 @@ def recipes_user():
 
     # getting users recipes
     db.execute(f'''
-    SELECT recipes.*, username
-    FROM recipes
-    JOIN users ON users.user_id = recipes.user_id
-    WHERE user_id = {id};
+        SELECT recipes.*, username
+        FROM recipes
+        JOIN users ON users.user_id = recipes.user_id
+        WHERE recipes.user_id = {id};
     ''')
     recipelist = db.fetchall()
 
-    return render_template("recipesuser.html", user=user[0], url=request.path, recipe=recipelist[0])
+    return render_template("recipesuser.html", user=user[0], url=request.path, recipe=recipelist)
 
+
+# recipes view page
+@app.route("/recipesmod", methods=["POST"])
+@login_required
+def recipes_mod():
+    # establish database connection
+    db = mysql.connection.cursor()
+    # get user details
+    id = session.get("user_id")
+
+    # if request is to add recipe
+    if "recipeAddTitle" in request.form:
+        title = request.form.get("recipeAddTitle")
+        outerlink = request.form.get('recipeOuterLink')
+        course = request.form.get('recipeAddCourse')
+        category = request.form.get('recipeAddCategory')
+        description = request.form.get('recipeAddDescription')
+        file = request.files['avatarFile']
+        ingredients = request.form.getlist("recipeIngredients")
+        measure = request.form.getlist("recipeMeasure")
+        instructions = request.form.getlist("recipeInstructions")
+        
+        # input validation
+        if not title or not course or not category or not description or not ingredients[0] or not measure[0] or not instructions[0]:
+            flash("Missing Required Input", "User-Error")
+            return redirect("/recipes")
+
+        if not re.match("^[a-zA-Z][a-zA-Z ]*$", title) or not re.match("^[a-zA-Z][a-zA-Z ]*$", category):
+            flash("Only use letters and spaces for title and category", "User-Error")
+            return redirect("/recipes")
+
+        if outerlink != "":
+            if not re.match("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})", outerlink):
+                flash("Invalid Format For Reference Link", "User-Error")
+                return redirect("/recipes")
+
+        if course not in ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"]:
+            flash("Only use 'Breakfast', 'Lunch', 'Dinner', 'Snack', or 'Dessert' for course", "User-Error")
+            return redirect("/recipes")
+
+        if not re.match("^[a-zA-Z0-9][a-zA-Z0-9!?.,' ]*$", description):
+            flash("Only use letters, numbers, spaces, and ! ? . , ' for description", "User-Error")
+            return redirect("/recipes")
+
+        # check for empty items in ingredients and non-valid input, if there is /error
+        for i in ingredients:
+            if not i or not re.match("^[a-zA-Z][a-zA-Z ]*$", i):
+                flash("Only use letters and spaces for ingredients", "User-Error")
+                return redirect("/recipes")
+
+        # check for empty items in measure and non-valid input, if there is /error
+        for i in measure:
+            if not i or not re.match("^[a-zA-Z0-9][a-zA-Z0-9/\- ]*$", i):
+                flash("Only use letters, numbers, spaces, and - / for amounts", "User-Error")
+                return redirect("/recipes")
+
+        # check for empty items in measure and non-valid input, if there is /error
+        for i in instructions:
+            if not i or not re.match("^[a-zA-Z0-9][a-zA-Z0-9!\-,./()' ]*$", i):
+                flash("Only use letters, numbers, spaces, and ! . , ' / - ( ) for instructions", "User-Error")
+                return redirect("/recipes")
+        
+        # Executing sql query
+        db.execute(f'''
+            INSERT INTO recipes 
+            (user_id, course, category, recipe_name, description, image_path, outer_link, saved_amount)
+            VALUES ({id}, "{course}", "{category}", "{title}", "{description}", "/static/images/recipes/graphic-recipe.svg", "{outerlink}", 0)   
+        ''')
+        mysql.connection.commit()
+
+        print(f'''
+            INSERT INTO recipes 
+            (user_id, course, category, recipe_name, description, image_path, outer_link, saved_amount)
+            VALUES ({id}, "{course}", "{category}", "{title}", "{description}", "/static/images/recipes/graphic-recipe.svg", "{outerlink}", 0)   
+        ''')
+
+        # get last recipe id (one just inserted)
+        db.execute('SELECT recipe_id FROM recipes ORDER BY recipe_id DESC LIMIT 1;')
+        recipeID = db.fetchall()
+
+        # if user selects image
+        if file.filename != '':
+            app.config['UPLOAD_FOLDER'] = 'static/images/recipes'
+            # format naming of filename
+            file.filename = f"recipeCoverImage{recipeID[0]['recipe_id']}.jpg"
+            
+            # allowed file checks for allowed extensions
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            pathVar = app.config['UPLOAD_FOLDER'] + "/" + file.filename
+            # updating recipe with image var
+            db.execute(f'UPDATE recipes SET image_path = "/{pathVar}" WHERE recipe_id = {recipeID[0]["recipe_id"]}')
+            mysql.connection.commit()
+
+        # Executing sql query
+        for i in range(len(ingredients)):
+            db.execute(f'''
+                INSERT INTO ingredients 
+                (recipe_id, ingredient_name, ingredient_measure)
+                VALUES ({recipeID[0]["recipe_id"]}, "{ingredients[i]}", "{measure[i]}")
+            ''')
+            mysql.connection.commit()
+
+            print(f'''
+                INSERT INTO ingredients 
+                (recipe_id, ingredient_name, ingredient_measure)
+                VALUES ({recipeID[0]["recipe_id"]}, "{ingredients[i]}", "{measure[i]}")
+            ''')
+
+        # Executing sql query
+        for i in range(len(instructions)):
+            db.execute(f'''
+                INSERT INTO instructions 
+                (recipe_id, instructions_name)
+                VALUES ({recipeID[0]["recipe_id"]}, "{instructions[i]}")
+            ''')
+            mysql.connection.commit()
+
+            print(f'''
+                INSERT INTO instructions 
+                (recipe_id, instructions_name)
+                VALUES ({recipeID[0]["recipe_id"]}, "{instructions[i]}")
+            ''')
+
+        return redirect("/recipes")
+    return redirect("/recipes")
 
 @app.errorhandler(404)
 def page_not_found(e):

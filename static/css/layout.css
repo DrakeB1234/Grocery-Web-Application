@@ -92,6 +92,7 @@ nav.mobile-container > img#toggle-mobile-nav {
     border-radius: 0 0 0 40%;
     background-color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    z-index: 10;
 }
     /* exit button */
     nav.mobile-container > div.nav-container i#toggle-mobile-nav {

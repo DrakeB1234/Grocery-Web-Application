@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}Recipes{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/recipes.css" />{% endblock %}
-{% block js %}<script src="../static/js/.js"></script>{% endblock %}
+{% block js %}<script src="../static/js/recipes.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -23,15 +23,17 @@
         </div>
         <div class="container-recipe-nav">
             <a href="/recipesuser">My Recipes</a>
-            <a href="/recipes">Create Recipe</a>
+            <a id="toggleAddContainer">Create Recipe</a>
             <a href="/recipes">Saved Recipes</a>
         </div>
         <div class="container-recipes">
             {% for i in recipelist %}
                 <a href="recipesview?recipe={{ i['recipe_name'] }}&id={{ i['recipe_id'] }}" class="card-recipe">
+                    {% if i["user_id"] != user["user_id"] %}
                     <div id="heart-btn" class="btn-style">
                         <img src="/static/images/icons/icon-heart.svg">
                     </div>
+                    {% endif %}
                     <img src="{{ i['image_path'] }}">
                     <h1>{{ i["category"]}}</h1>
                     <h2>{{ i["recipe_name"] }}</h2>
@@ -45,7 +47,62 @@
                 <h2>Corndog</h2>
                 <h3>Yummy</h3>
             </a> -->
+            </div>
         </div>
     </main>
+    <div id="recipe-adder">
+        <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event, 'add')" enctype="multipart/form-data">
+            <div id="toggleAddContainer">
+                <i class="fa-solid fa-chevron-left"></i>
+                <h2>Return</h2>
+            </div>
+            <h1>Create Recipe</h1>
+            <input name="recipeAddTitle" type="text" placeholder="Title" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" required />
+            <input name="recipeOuterLink" type="url" placeholder="Reference Link (optional)" autocomplete="off" />
+            <select name="recipeAddCourse" required>
+                <option selected hidden value="">Choose Course</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+                <option value="Dessert">Dessert</option>
+            </select>
+            <input name="recipeAddCategory" type="text" placeholder="Category" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" autocomplete="off" required />
+            <textarea name="recipeAddDescription" placeholder="Description" pattern="^[a-zA-Z0-9][a-zA-Z0-9!?.,' ]*$" title="Only use letters, numbers, spaces, and ! ? . , - '" autocomplete="off" required></textarea>
+            <h3>^ Note: Only use ( ! ? . , ' ) will NOT autocheck</h3>
+
+            <h2>Recipe Cover Image</h2>
+            <label for="file" class="btn">Select Image</label>
+            <input id="file" name="avatarFile" style="visibility:hidden;" type="file">
+            <h3></h3>
+
+            <h2 style="align-self: flex-start;">Ingredients</h2>
+            <div class="input-list">
+                <div class="container-input">
+                    <h1>Ingredient 1:</h1>
+                    <input name="recipeIngredients" type="text" placeholder="Ingredient" autocomplete="off" pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" required/>
+                    <input name="recipeMeasure" type="text" placeholder="Amount" autocomplete="off" pattern="^[a-zA-Z0-9][a-zA-Z0-9\/\- ]*$" title="Only use letters, numbers, spaces, and / -" required/>
+                    <hr>
+                </div>
+            </div>
+            <div class="inputBtnContainer">
+                <h1 onclick="removeInput(event, 'ingredient')">Remove</h1>
+                <h2 onclick="addInput(event, 'ingredient')">Add</h2>
+            </div>
+            <h2 style="align-self: flex-start;">Instructions</h2>
+            <div class="input-list">
+                <div class="container-input">
+                    <h1>Step 1:</h1>
+                    <input name="recipeInstructions" type="text" placeholder="Instruction" autocomplete="off" pattern="^[a-zA-Z0-9][a-zA-Z0-9!\-,./()' ]*$" title="Only use letters, numbers, spaces, and ! . , ' /- ( )" required/>
+                    <hr>
+                </div>
+            </div>
+            <div class="inputBtnContainer">
+                <h1 onclick="removeInput(event, 'instruction')">Remove</h1>
+                <h2 onclick="addInput(event, 'instruction')">Add</h2>
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
 
 {% endblock %}

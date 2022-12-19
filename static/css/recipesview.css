@@ -135,6 +135,8 @@ div.container-list {
     display: flex;
     flex-direction: column;
     margin-top: 2em;
+    padding: 2em 0 0 0;
+    background-color: var(--white-medli);
 }
     /* last container */
     div.container-list:last-child {
@@ -144,15 +146,25 @@ div.container-list {
     div.container-list > h1 {
         margin-left: 0.5em;
         margin-bottom: 1em;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--grey-dark);
     }
     /* item text */
     div.container-list > h2 {
-        margin-left: 1em;
-        font-size: 1.5rem;
+        padding: 1em;
+        font-size: 1.2rem;
+        border-bottom: 1px solid var(--white-med);
     }
+        /* instructions */
+        div.container-list > h2#step {
+            margin-bottom: 0.5em;
+            padding-left: 1em;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--grey-dark);
+            border-bottom: 0;
+        }
 
 
 /* hide footer graphic container */

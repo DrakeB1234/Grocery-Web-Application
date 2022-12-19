@@ -170,6 +170,160 @@ div.container-recipes {
                 display: block;
                 height: 100%;
             }
+/* div recipe adder container */
+div#recipe-adder {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    inset: 0;
+    background-color: var(--white-medli);
+}
+    /* toggle button */
+    div#toggleAddContainer {
+        display: flex;
+        padding: 1em;
+        gap: 1em;
+        width: 100%;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--grey-med);
+        cursor: pointer;
+    }
+    /* adder form */
+    div#recipe-adder > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+        width: clamp(10em, 100%, 50em);
+        padding: 2em;
+        padding-top: 0;
+        background-color: var(--white-light);
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    /* header text */
+    div#recipe-adder > form > h1 {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--grey-dark);
+    }
+        /* subheader text */
+        div#recipe-adder > form > h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--grey-med);
+        }
+    /* text/url input */
+    div#recipe-adder > form input[type="text"], div#recipe-adder > form input[type="url"] {
+        width: 100%;
+        padding: 0.8em 0 0.8em 0.8em;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--white-med);
+        background-color: var(--white-medli);
+    }
+    /* select input */
+    div#recipe-adder > form select {
+        width: 100%;
+        padding: 0.8em;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 8px;
+        border: 1px solid var(--white-med);
+        color: var(--grey-med);
+        background-color: var(--white-medli);
+    }
+        /* select input */
+        div#recipe-adder > form select > option {
+            font-size: 1.5rem;
+        }
+    /* textarea input */
+    div#recipe-adder > form textarea {
+        min-height: 4em;
+        width: 100%;
+        padding: 0.8em;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--white-med);
+        background-color: var(--white-medli);
+        resize: none;
+    }
+        /* note */
+        div#recipe-adder > form > h3 {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 2em;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--grey-dark);
+            border-bottom: 1px solid var(--white-med);
+        }
+    /* file label input */
+    div#recipe-adder > form label {
+        padding: 0.8em;
+        border-radius: 8px;
+        border: 1px solid var(--white-med);
+        background-color: var(--white-medli);
+    }
+    /* container input list */
+    div#recipe-adder > form > div.input-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        width: 100%;
+        margin-top: 1em;
+    }
+        /* input buttons */
+        div#recipe-adder > form > div.inputBtnContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1em;
+            margin-bottom: 2em;
+        }
+            /* remove button (h1) */
+            div#recipe-adder > form > div.inputBtnContainer > h1, div#recipe-adder > form > div.inputBtnContainer > h2 {
+                padding: 0.5em 1em 0.5em 1em;
+                border-radius: 10px;
+                border: 1px solid var(--white-med);
+                background-color: var(--white-medli);
+                color: var(--grey-dark);
+                cursor: pointer;
+            }
+            /* add button (h2) */
+            div#recipe-adder > form > div.inputBtnContainer > h2 {
+                background-color: var(--main-light);
+            }
+        /* input container */
+        div#recipe-adder > form > div.input-list > div.container-input {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+            /* header text */
+            div#recipe-adder > form > div.input-list > div.container-input > h1 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--grey-med);
+            }
+            /* hr line */
+            div#recipe-adder > form > div.input-list > div.container-input > hr {
+                width: 100%;
+                color: var(--white-medli);
+            }
+        /* button */
+        div#recipe-adder > form > button[type="submit"]{
+            width: 100%;
+            margin-top: 2em;
+            padding: 0.5em 0 0.5em 0;
+            border: 0;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            background-color: var(--main-med);
+            color: var(--white-light);
+            cursor: pointer;
+        }
 
 /* mobile */
 @media only screen and (min-width:750px) {

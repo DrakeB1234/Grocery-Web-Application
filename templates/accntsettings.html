@@ -51,8 +51,8 @@
                 </a>
                 <form action="/accntsettings" method="post" enctype="multipart/form-data" onsubmit="userConfirmAct(event, 'change')">
                     <h1>Change Password</h1>
-                    <input name="userPass" type="password" placeholder="New Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
-                    <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="^[a-zA-Z0-9$%#@!]*$" title="Only use letters, numbers and ($, %, #, @, !)" autocomplete="off"  />
+                    <input name="userPass" type="password" placeholder="New Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" autocomplete="off"  />
+                    <input name="userPassConfirm" type="password" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" autocomplete="off"  />
                     <button type="submit">Submit</button>
                 </form> 
             </div>

@@ -159,7 +159,7 @@ div#container-add {
         }
             /* option input */
             div#container-add > form > select > option {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
         /* text input */
         div#container-add > form > input[type="text"], input[type="password"] {
