@@ -34,21 +34,70 @@ main.container > div.container-recipes {
         }
         /* header text */
         main.container > div.container-recipes > h1 {
-            padding: 1em;
+            padding: 1em 0 3em 0;
             text-align: center;
             font-size: 1.5rem;
             font-weight: 900;
             color: var(--grey-dark);
         }
     /* card conatiner */
-    main.container > div.container-recipes > div.recipe-card {
+    div.container-recipes > div.recipe-card {
         display: flex;
         flex-direction: row;
+        border-bottom: 1px solid var(--white-med);
     }
-       /* image */
-       main.container > div.container-recipes > div.recipe-card > img {
-            width: 30%;
+        /* card conatiner hover */
+        div.container-recipes > div.recipe-card:hover {
+            background-color: var(--white-medli);
         }
+       /* image */
+       div.container-recipes > div.recipe-card > img {
+            height: 40%;
+            width: 40%;
+        }
+        /* card conatiner text */
+        div.container-recipes > div.recipe-card > div.card-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            width: 100%;
+            padding: 1em;
+            overflow: hidden;
+        }
+            /* h1 */
+            div.container-recipes > div.recipe-card > div.card-col > h1 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--grey-light);
+                overflow-wrap: break-word;
+            }
+            /* h2 */
+            div.container-recipes > div.recipe-card > div.card-col > h2 {
+                display: flex;
+                align-items: center;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--grey-dark);
+                overflow-wrap: break-word;
+            }
+            /* card container btns */
+            div.container-recipes > div.recipe-card > div.card-col > div.card-btns {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                margin-top: auto;
+            }
+                /* image */
+                div.container-recipes > div.recipe-card > div.card-col > div.card-btns > img {
+                    width: 25px;
+                    padding: 0.5em;
+                    cursor: pointer;
+                }
+                /* h2 */
+                div.container-recipes > div.recipe-card > div.card-col > div.card-btns > h2 {
+                    flex: 2;
+                }
 
 /* hide footer graphic container */
 div.container-graphic {
@@ -62,6 +111,7 @@ div.container-graphic {
     }
     /* image */
     main.container > div.container-recipes > div.recipe-card > img {
+        height: 20%;
         width: 20%;
     }
 }

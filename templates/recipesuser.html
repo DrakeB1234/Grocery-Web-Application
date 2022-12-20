@@ -3,7 +3,7 @@
 <!-- head content -->
 {% block title %}Recipe Edit{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/recipesuser.css" />{% endblock %}
-{% block js %}<script src="../static/js/.js"></script>{% endblock %}
+{% block js %}<script src="../static/js/recipesuser.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -20,11 +20,16 @@
             <h1>My Recipes</h1>
             {% if recipe %}
                 {% for i in recipe %}
-                <div class="recipe-card">
+                <div class="recipe-card" value="{{ i['recipe_id'] }}">
                     <img src="{{ i['image_path'] }}">
                     <div class="card-col">
                         <h1>{{ i["category"]}}</h1>
                         <h2>{{ i["recipe_name"] }}</h2>
+                        <div class="card-btns">
+                            <img src="/static/images/icons/icon-heart.svg">
+                            <h2>{{ i["saved_amount"] }}</h2>
+                            <img src="/static/images/icons/icon-edit.svg">
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -33,5 +38,8 @@
             {% endif %}
         </div>
     </main>
+    <script>
+        var data = {{ recipe | tojson }};
+    </script>
 
 {% endblock %}
