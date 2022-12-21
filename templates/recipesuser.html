@@ -28,7 +28,7 @@
                         <div class="card-btns">
                             <img src="/static/images/icons/icon-heart.svg">
                             <h2>{{ i["saved_amount"] }}</h2>
-                            <img src="/static/images/icons/icon-edit.svg">
+                            <img onclick="editRecipe('{{ i['recipe_id'] }}')" src="/static/images/icons/icon-edit.svg">
                         </div>
                     </div>
                 </div>
@@ -38,8 +38,7 @@
             {% endif %}
         </div>
     </main>
-    <script>
-        var data = {{ recipe | tojson }};
-    </script>
+    <div id="container-edit"></div>
+    <script>var data = {{ recipe | tojson }}; var instructions = {{ instructions | tojson }}; </script>
 
 {% endblock %}

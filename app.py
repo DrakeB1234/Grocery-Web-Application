@@ -927,7 +927,16 @@ def recipes_user():
     ''')
     recipelist = db.fetchall()
 
-    return render_template("recipesuser.html", user=user[0], url=request.path, recipe=recipelist)
+        # getting instructions based off of recipe ID
+    db.execute(f'''
+    SELECT instructions_name, recipes.recipe_id
+    FROM instructions
+    JOIN recipes ON instructions.recipe_id = recipes.recipe_id
+    WHERE recipes.user_id = {id};
+    ''')
+    instructions = db.fetchall()
+
+    return render_template("recipesuser.html", user=user[0], url=request.path, recipe=recipelist, instructions=instructions)
 
 
 # recipes view page
@@ -1056,7 +1065,108 @@ def recipes_mod():
             ''')
 
         return redirect("/recipes")
-    return redirect("/recipes")
+    # if request is to edit recipe
+    if "recipeEditTitle" in request.form:
+        recipeID = request.form.get("recipeEditID")
+        title = request.form.get("recipeEditTitle")
+        outerlink = request.form.get('recipeEditLink')
+        course = request.form.get('recipeEditCourse')
+        category = request.form.get('recipeEditCategory')
+        description = request.form.get('recipeEditDescription')
+        file = request.files['avatarFile']
+
+        # check for valid ID
+        if not recipeID or not re.match("^[0-9]*$", recipeID):
+            flash("Invalid input used", "User-Error")
+            return redirect("/recipesuser")
+
+        # checking if any edits were submitted
+        if title:
+            if not re.match("^[a-zA-Z][a-zA-Z ]*$", title):
+                flash("Only use letters and spaces for Title", "User-Error")
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET recipe_name = '{title}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Recipe Name", "Success")
+
+        if outerlink:
+            if not re.match("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})", outerlink):
+                flash("Invalid URL", "User-Error")
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET outer_link = '{outerlink}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Link", "Success")
+
+        if course:
+            if course not in ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"]:
+                flash("Only use 'Breakfast', 'Lunch', 'Dinner', 'Snack', or 'Dessert' for course", "User-Error")
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET course = '{course}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Course", "Success")
+
+        if category:
+            if not re.match("^[a-zA-Z][a-zA-Z ]*$", category):
+                flash("Only use letters and spaces for Category", "User-Error")
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET category = '{category}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Category", "Success")
+
+        if description:
+            if not re.match("^[a-zA-Z0-9][a-zA-Z0-9!?.,' ]*$", description):
+                flash("Only use letters, numbers, spaces, and ! ? . , ' for Description", "User-Error")
+            else:
+                # Executing sql query
+                db.execute(f'''
+                    UPDATE recipes
+                    SET description = '{description}'
+                    WHERE recipe_id = {recipeID} AND 
+                    user_id = {id}
+                ''')
+                mysql.connection.commit()
+                flash("Changed Description", "Success")
+
+        # if user selects image
+        if file.filename != '':
+            app.config['UPLOAD_FOLDER'] = 'static/images/recipes'
+            # format naming of filename
+            file.filename = f"recipeCoverImage{recipeID}.jpg"
+            
+            # allowed file checks for allowed extensions
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            mysql.connection.commit()
+            flash("Changed Image", "Success")
+
+        return redirect("/recipesuser")
+    return redirect("/recipesuser")
 
 @app.errorhandler(404)
 def page_not_found(e):

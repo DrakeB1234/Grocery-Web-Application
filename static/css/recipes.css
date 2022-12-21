@@ -78,6 +78,7 @@ div.container-recipe-nav {
         border: 1px solid var(--white-med);
         box-shadow: 0 0 1em var(--white-med);
         background-color: var(--white-light);
+        cursor: pointer;
     }
         /* hover link */
         div.container-recipe-nav > a:hover {
