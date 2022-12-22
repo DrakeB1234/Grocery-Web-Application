@@ -28,14 +28,16 @@
             <div class="container-btns">
                 <!-- checks if guest user -->
                 {% if saved == True %}
-                    <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event,'unsave')" style="background-color: var(--main-light)">
+                    <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event, 'unsave')" style="background-color: var(--main-light);">
+                        <input name="recipeUnsave" value="{{ recipe['recipe_id'] }}" hidden >
                         <input type="image" src="/static/images/icons/icon-heart.svg" style="filter: invert(100%) contrast(200%);">
-                        <h1>{{ recipe["saved_amount"] }}</h1>
+                        <h1>{{ recipe["saved_amount"]}}</h1>
                     </form>
                 {% else %}
-                    <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event,'save')">
-                        <input type="image" src="/static/images/icons/icon-heart.svg">
-                        <h1>{{ recipe["saved_amount"] }}</h1>
+                    <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event, 'save')">
+                        <input name="recipeSave" value="{{ recipe['recipe_id'] }}" hidden >
+                        <input type="image" src="/static/images/icons/icon-heart.svg" >
+                        <h1>{{ recipe["saved_amount"]}}</h1>
                     </form>
                 {% endif %}
                 <div class="btn-style">

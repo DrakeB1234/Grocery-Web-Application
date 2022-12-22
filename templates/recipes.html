@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 <!-- head content -->
-{% block title %}Recipes{% endblock %}
+{% block title %}Recipes | Grocery Central{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/recipes.css" />{% endblock %}
 {% block js %}<script src="../static/js/recipes.js" defer></script>{% endblock %}
 
@@ -24,7 +24,7 @@
         <div class="container-recipe-nav">
             <a href="/recipesuser">My Recipes</a>
             <a id="toggleAddContainer">Create Recipe</a>
-            <a href="/recipes">Saved Recipes</a>
+            <a href="/recipesaved">Saved Recipes</a>
         </div>
         <div class="container-recipes">
             {% for i in recipelist %}

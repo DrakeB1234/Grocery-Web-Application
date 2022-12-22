@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 <!-- head content -->
-{% block title %}List Database{% endblock %}
+{% block title %}Meal Planner | Grocery Central{% endblock %}
 {% block css %}<link rel="stylesheet" href="../static/css/mealplanner.css" />{% endblock %}
-{% block js %}<script src="../static/js/mealplanner.js"></script>{% endblock %}
+{% block js %}<script src="../static/js/mealplanner.js" defer></script>{% endblock %}
 
 <!-- add username to nav -->
 {% block username %}{{ user["username"] }}{% endblock %}
@@ -53,5 +53,4 @@
             {% endfor %}
         </div>
     </main>
-
 {% endblock %}

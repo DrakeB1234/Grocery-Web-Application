@@ -728,8 +728,6 @@ def mealplan():
     ''')
     mealplan = db.fetchall()
 
-    print(mealplan[0])
-
     if mealplan == ():
         flash("Error Loading Meal Planner, Contact Admin", "Server-Error")
         return redirect("/")
@@ -745,7 +743,24 @@ def mealplan():
     except:
         year = "unset"
 
-    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month, year=year)
+    # getting users saved recipes
+    db.execute(f'''
+    SELECT sr.*, r.recipe_name
+    FROM saverecipes as sr
+    JOIN recipes as r ON r.recipe_id = sr.recipe_id
+    WHERE sr.user_id = {id}
+    ''')
+    saved = db.fetchall()
+
+    # getting users created recipes
+    db.execute(f'''
+    SELECT *
+    FROM recipes
+    WHERE user_id = {id}
+    ''')
+    myrecipes = db.fetchall()
+
+    return render_template("mealplanner.html", user=user[0], url=request.path, mealplan=mealplan, month=month, year=year, saved=saved, myrecipes=myrecipes)
 
 # mealplanner mod page
 @app.route("/mealplannermod", methods=["POST"])
@@ -922,8 +937,6 @@ def recipes_view():
     ''')
     ingredients = db.fetchall()
 
-    print(id)
-    print(user)
     # getting saved recipes if user is signed in
     if id != None:
         db.execute(f'''
@@ -1106,12 +1119,6 @@ def recipes_mod():
         ''')
         mysql.connection.commit()
 
-        print(f'''
-            INSERT INTO recipes 
-            (user_id, course, category, recipe_name, description, image_path, outer_link, saved_amount)
-            VALUES ({id}, "{course}", "{category}", "{title}", "{description}", "/static/images/recipes/graphic-recipe.svg", "{outerlink}", 0)   
-        ''')
-
         # get last recipe id (one just inserted)
         db.execute('SELECT recipe_id FROM recipes ORDER BY recipe_id DESC LIMIT 1;')
         recipeID = db.fetchall()
@@ -1141,12 +1148,6 @@ def recipes_mod():
             ''')
             mysql.connection.commit()
 
-            print(f'''
-                INSERT INTO ingredients 
-                (recipe_id, ingredient_name, ingredient_measure)
-                VALUES ({recipeID[0]["recipe_id"]}, "{ingredients[i]}", "{measure[i]}")
-            ''')
-
         # Executing sql query
         for i in range(len(instructions)):
             db.execute(f'''
@@ -1155,12 +1156,6 @@ def recipes_mod():
                 VALUES ({recipeID[0]["recipe_id"]}, "{instructions[i]}")
             ''')
             mysql.connection.commit()
-
-            print(f'''
-                INSERT INTO instructions 
-                (recipe_id, instructions_name)
-                VALUES ({recipeID[0]["recipe_id"]}, "{instructions[i]}")
-            ''')
 
         return redirect("/recipes")
 
@@ -1201,6 +1196,7 @@ def recipes_mod():
 
         flash("Deleted Recipe", "Success")
         return redirect("/recipes")
+
     # if request is to edit recipe
     if "recipeEditTitle" in request.form:
         recipeID = request.form.get("recipeEditID")
@@ -1333,6 +1329,31 @@ def recipes_mod():
 
         return redirect("/recipesuser")
     return redirect("/recipesuser")
+
+# recipes user page
+@app.route("/recipesaved", methods=["GET", "POST"])
+@login_required
+def recipes_saved():
+    # establish database connection
+    db = mysql.connection.cursor()
+    id = session["user_id"]
+
+    if request.method == "POST":
+        return redirect("/recipesaved") 
+    else:
+        # get user details
+        user = session.get("user")
+
+        # getting users saved recipes
+        db.execute(f'''
+            SELECT recipes.*
+            FROM recipes
+            JOIN saverecipes ON saverecipes.recipe_id = recipes.recipe_id
+            WHERE recipes.recipe_id = saverecipes.recipe_id;
+        ''')
+        recipelist = db.fetchall()
+
+        return render_template("recipesaved.html", user=user[0], recipe=recipelist)
 
 @app.errorhandler(404)
 def page_not_found(e):
