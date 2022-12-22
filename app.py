@@ -293,7 +293,41 @@ def home():
     # setting tuple
     curMeal = ({"month" : now.strftime("%B"), "day" : now.strftime("%d"), "meal" : curMeal})
 
-    return render_template("home.html", user=user[0], url=request.path, grocery=grocery, grocerytime=session.get("grocery_time"), curMeal=curMeal)
+    recipe = []
+    # select recipes stats 
+    db.execute(f'''
+    SELECT count(recipe_name) as count
+    FROM recipes
+    WHERE user_id = {id} 
+    ''')
+    fetch = db.fetchall()
+    recipe.append(fetch[0]["count"])
+
+    # select saved recipes stats 
+    db.execute(f'''
+    SELECT count(recipe_id) as count
+    FROM saverecipes
+    WHERE user_id = {id} 
+    ''')
+    fetch = db.fetchall()
+    recipe.append(fetch[0]["count"])
+
+    # select saved recipes stats 
+    db.execute(f'''
+    SELECT saved_amount
+    FROM recipes
+    WHERE user_id = {id} 
+    ''')
+    fetch = db.fetchall()
+
+    # adds total amount of saves between all recipes
+    total = 0
+    for i in fetch:
+        total += i["saved_amount"]
+
+    recipe.append(total)
+
+    return render_template("home.html", user=user[0], url=request.path, grocery=grocery, grocerytime=session.get("grocery_time"), curMeal=curMeal, recipe=recipe)
 
 # account settings page
 @app.route("/accntsettings", methods=["GET", "POST"])
@@ -868,13 +902,31 @@ def recipes():
     user = session.get("user")
     id = session.get("user_id")
 
-    # getting randomized recipes
-    db.execute(f'''
-    SELECT *
-    FROM recipes 
-    ORDER BY RAND()
-    ''')
-    recipelist = db.fetchall()
+    # if user is searching for recipe
+    if request.args.get("search"):
+        type = request.args.get("searchType")
+        
+        if not type or type not in ["recipe_name", "category", "course"]:
+            flash("Must provide proper input", "User-Error")
+            return redirect('/recipes')
+
+        # getting randomized recipes
+        db.execute(f'''
+        SELECT *
+        FROM recipes 
+        WHERE {type} LIKE '%{request.args.get("search")}%'
+        ORDER BY RAND()
+        ''')
+        recipelist = db.fetchall()
+    else:
+        # getting randomized recipes
+        db.execute(f'''
+        SELECT *
+        FROM recipes 
+        ORDER BY RAND()
+        LIMIT 12
+        ''')
+        recipelist = db.fetchall()
 
     # getting saved recipes
     db.execute(f'''
@@ -899,7 +951,10 @@ def recipes_view():
     db = mysql.connection.cursor()
 
     # try getting an user id
-    id = session["user_id"]
+    try: 
+        id = session["user_id"]
+    except:
+        id = None
 
     # if no id is set (user not signed in)
     if(id == None):
@@ -954,9 +1009,12 @@ def recipes_view():
             saved = False
     else:
         saved = False
+
+    url = f"http://192.168.0.199:5000/recipesview?recipe={recipeName}&id={recipeID}"
+    print(url)
     
 
-    return render_template("recipesview.html", user=user[0], url=request.path, recipe=recipelist[0], instructions=instructions, ingredients=ingredients, saved=saved)
+    return render_template("recipesview.html", user=user[0], url=url, recipe=recipelist[0], instructions=instructions, ingredients=ingredients, saved=saved)
 
 # recipes user page
 @app.route("/recipesuser", methods=["GET"])
@@ -1101,7 +1159,7 @@ def recipes_mod():
 
         # check for empty items in measure and non-valid input, if there is /error
         for i in measure:
-            if not i or not re.match("^[a-zA-Z0-9][a-zA-Z0-9/\- ]*$", i):
+            if not i or not re.match("^[a-zA-Z0-9][a-zA-Z0-9\/\- ]*$", i):
                 flash("Only use letters, numbers, spaces, and - / for amounts", "User-Error")
                 return redirect("/recipes")
 
@@ -1349,9 +1407,12 @@ def recipes_saved():
             SELECT recipes.*
             FROM recipes
             JOIN saverecipes ON saverecipes.recipe_id = recipes.recipe_id
-            WHERE recipes.recipe_id = saverecipes.recipe_id;
+            WHERE recipes.recipe_id = saverecipes.recipe_id AND
+            saverecipes.user_id = {id};
         ''')
         recipelist = db.fetchall()
+
+        print(recipelist)
 
         return render_template("recipesaved.html", user=user[0], recipe=recipelist)
 

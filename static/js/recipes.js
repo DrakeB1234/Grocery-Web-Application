@@ -39,7 +39,7 @@ const addInput = (e, type) => {
         pattern="^[a-zA-Z][a-zA-Z ]*$" title="Only use letters and spaces" required>
         <input name="recipeMeasure"
         type="text" placeholder="Amount" autocomplete="off"
-        pattern="^[a-zA-Z0-9][a-zA-Z0-9/\- ]*$" title="Only use letters, numbers, spaces, and - /" required>
+        pattern="^[a-zA-Z0-9][a-zA-Z0-9\\/\\- ]*$" title="Only use letters, numbers, spaces, and - /" required>
         <hr>
         `;
 
@@ -65,5 +65,4 @@ const removeInput = (e, type) => {
     ingreIndex--;
     return
     }
-
 }

@@ -15,12 +15,16 @@
         <div class="container-header">
             <h1>Recipes</h1>
         </div>
-        <div class="container-search">
-            <form id="search-form">
-                <input type="text" placeholder="Search Recipes">
-                <button type="submit"><img type="submit" src="/static/images/icons/icon-search.svg"></button>
-            </form>
-        </div>
+        <form id="search-form" action="/recipes" method="get">
+            <select name="searchType" required>
+                <option value="recipe_name" hidden selected>Filter</option>
+                <option value="recipe_name" >Name</option>
+                <option value="category" >Category</option>
+                <option value="course" >Course</option>
+            </select>
+            <input name="search" type="text" placeholder="Search Recipes">
+            <input type="image" src="/static/images/icons/icon-search.svg">
+        </form>
         <div class="container-recipe-nav">
             <a href="/recipesuser">My Recipes</a>
             <a id="toggleAddContainer">Create Recipe</a>
