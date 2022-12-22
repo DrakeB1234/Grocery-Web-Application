@@ -113,7 +113,7 @@ div.container-recipes {
             background-color: var(--white-med);
         }
         /* heart btn container */
-        div.container-recipes > a.card-recipe > div.btn-style#heart-btn {
+        div.container-recipes > a.card-recipe > form {
             position: absolute;
             display: flex;
             top: 10px;
@@ -123,7 +123,7 @@ div.container-recipes {
             background-color: var(--main-light);
         }
             /* heart image */
-            div.container-recipes > a.card-recipe > div.btn-style#heart-btn > img {
+            div.container-recipes > a.card-recipe > form > input[type="image"] {
                 height: 30px;
                 width: 30px;
             }

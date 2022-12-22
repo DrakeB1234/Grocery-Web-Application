@@ -26,10 +26,18 @@
             {% endif %}
             <h3>{{ recipe["description"] }}</h3>
             <div class="container-btns">
-                <div class="btn-style">
-                    <img src="/static/images/icons/icon-heart.svg">
-                    <h1>{{ recipe["saved_amount"] }}</h1>
-                </div>
+                <!-- checks if guest user -->
+                {% if saved == True %}
+                    <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event,'unsave')" style="background-color: var(--main-light)">
+                        <input type="image" src="/static/images/icons/icon-heart.svg" style="filter: invert(100%) contrast(200%);">
+                        <h1>{{ recipe["saved_amount"] }}</h1>
+                    </form>
+                {% else %}
+                    <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event,'save')">
+                        <input type="image" src="/static/images/icons/icon-heart.svg">
+                        <h1>{{ recipe["saved_amount"] }}</h1>
+                    </form>
+                {% endif %}
                 <div class="btn-style">
                     <img src="/static/images/icons/icon-share.svg">
                 </div>

@@ -87,6 +87,22 @@ main.container > div.container-recipe {
         div.container-recipe > div.container-btns::-webkit-scrollbar {
             display: none;
         }
+        /* recipe container heart button (form) */
+        div.container-recipe > div.container-btns > form {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-width: 3em;
+            padding: 0.5em 1em 0.5em 1em;
+            border-radius: 10px;
+            background-color: var(--white-medli);
+            cursor: pointer;
+        }
+            /* image */
+            div.container-recipe > div.container-btns > form > input[type="image"] {
+                height: 20px;
+                width: 20px;
+            }
         /* recipe container buttons */
         div.container-recipe > div.container-btns > div.btn-style {
             display: flex;

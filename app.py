@@ -240,6 +240,7 @@ def login():
 @login_required
 def logout():
     session["user_id"] = None
+    session["user"] = None
     flash("Logged Out", "Success")
     return redirect("/")
 
@@ -850,15 +851,31 @@ def recipes():
     db = mysql.connection.cursor()
     # get user details
     user = session.get("user")
+    id = session.get("user_id")
 
     # getting randomized recipes
     db.execute(f'''
     SELECT *
     FROM recipes 
+    ORDER BY RAND()
     ''')
     recipelist = db.fetchall()
 
-    return render_template("recipes.html", user=user[0], url=request.path, recipelist=recipelist)
+    # getting saved recipes
+    db.execute(f'''
+    SELECT recipe_id
+    FROM saverecipes 
+    WHERE user_id = {id}
+    ''')
+    savelist = db.fetchall()
+    
+    # converting array to just id numbers
+    temp = []
+    for i in savelist:
+        temp.append(i['recipe_id'])
+    savelist = temp
+
+    return render_template("recipes.html", user=user[0], url=request.path, recipelist=recipelist, savelist=savelist)
 
 # recipes view page
 @app.route("/recipesview", methods=["GET"])
@@ -867,14 +884,13 @@ def recipes_view():
     db = mysql.connection.cursor()
 
     # try getting an user id
-    try:
-        id = session["user_id"]
-    # if fails, guest is viewing recipe
-    except:
+    id = session["user_id"]
+
+    # if no id is set (user not signed in)
+    if(id == None):
         id = 0
         user = ({"user_id" : 0, "username" : "Guest"},)
     else:
-        # get user details
         user = session.get("user")
 
     recipeName = request.args["recipe"]
@@ -906,7 +922,28 @@ def recipes_view():
     ''')
     ingredients = db.fetchall()
 
-    return render_template("recipesview.html", user=user[0], url=request.path, recipe=recipelist[0], instructions=instructions, ingredients=ingredients)
+    print(id)
+    print(user)
+    # getting saved recipes if user is signed in
+    if id != None:
+        db.execute(f'''
+        SELECT recipe_id
+        FROM saverecipes 
+        WHERE user_id = {id} AND
+        recipe_id = {recipeID}
+        ''')
+        saved = db.fetchall()
+
+        # checking if recipe was saved
+        if saved != ():
+            saved = True
+        else:
+            saved = False
+    else:
+        saved = False
+    
+
+    return render_template("recipesview.html", user=user[0], url=request.path, recipe=recipelist[0], instructions=instructions, ingredients=ingredients, saved=saved)
 
 # recipes user page
 @app.route("/recipesuser", methods=["GET"])
@@ -927,16 +964,25 @@ def recipes_user():
     ''')
     recipelist = db.fetchall()
 
-        # getting instructions based off of recipe ID
+    # getting instructions based off of recipe ID
     db.execute(f'''
-    SELECT instructions_name, recipes.recipe_id
+    SELECT instructions.*, recipes.recipe_id
     FROM instructions
     JOIN recipes ON instructions.recipe_id = recipes.recipe_id
     WHERE recipes.user_id = {id};
     ''')
     instructions = db.fetchall()
 
-    return render_template("recipesuser.html", user=user[0], url=request.path, recipe=recipelist, instructions=instructions)
+    # getting instructions based off of recipe ID
+    db.execute(f'''
+    SELECT ingredients.*, recipes.recipe_id
+    FROM ingredients
+    JOIN recipes ON ingredients.recipe_id = recipes.recipe_id
+    WHERE recipes.user_id = {id};
+    ''')
+    ingredients = db.fetchall()
+
+    return render_template("recipesuser.html", user=user[0], url=request.path, recipe=recipelist, instructions=instructions, ingredients=ingredients)
 
 
 # recipes view page
@@ -947,6 +993,58 @@ def recipes_mod():
     db = mysql.connection.cursor()
     # get user details
     id = session.get("user_id")
+
+    # if request is to save recipe
+    if "recipeSave" in request.form:
+        recipeID = request.form.get('recipeSave')
+        if not recipeID or not recipeID.isnumeric():
+            flash("Invalid input", "User-Error")
+            return redirect("/recipes")
+
+        # Executing sql query
+        db.execute(f'''
+            INSERT INTO saverecipes (user_id, recipe_id)
+            VALUES ({id}, {recipeID})
+        ''')
+        mysql.connection.commit()
+
+        # adding saved amount
+        db.execute(f'''
+            UPDATE recipes
+            SET saved_amount = saved_amount + 1
+            WHERE recipe_id = {recipeID}
+        ''')
+        mysql.connection.commit()
+
+        flash("Saved Recipe", "Success")
+        return redirect("/recipes")
+    
+    # if request is to unsave recipe
+    if "recipeUnsave" in request.form:
+        recipeID = request.form.get('recipeUnsave')
+        if not recipeID or not recipeID.isnumeric():
+            flash("Invalid input", "User-Error")
+            return redirect("/recipes")
+
+        # Executing sql query
+        db.execute(f'''
+            DELETE 
+            FROM saverecipes
+            WHERE recipe_id = {recipeID} AND
+            user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        # adding saved amount
+        db.execute(f'''
+            UPDATE recipes
+            SET saved_amount = saved_amount - 1
+            WHERE recipe_id = {recipeID}
+        ''')
+        mysql.connection.commit()
+
+        flash("Unsaved Recipe", "Success")
+        return redirect("/recipes")
 
     # if request is to add recipe
     if "recipeAddTitle" in request.form:
@@ -1065,6 +1163,44 @@ def recipes_mod():
             ''')
 
         return redirect("/recipes")
+
+    # if request is to edit recipe
+    if "recipeDelete" in request.form:
+        recipeID = request.form.get("recipeDelete")
+
+        if not recipeID or not recipeID.isnumeric():
+            flash("Invalid input", "User-Error")
+            return redirect("/recipes")
+        
+        # Executing sql query
+        db.execute(f'''
+            DELETE inst
+            FROM instructions as inst
+            JOIN recipes as r ON inst.recipe_id = r.recipe_id
+            WHERE inst.recipe_id = {recipeID} AND 
+            r.user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        db.execute(f'''
+            DELETE ingre
+            FROM ingredients as ingre
+            JOIN recipes as r ON ingre.recipe_id = r.recipe_id
+            WHERE ingre.recipe_id = {recipeID} AND 
+            r.user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        db.execute(f'''
+            DELETE
+            FROM recipes
+            WHERE recipe_id = {recipeID} AND 
+            user_id = {id}
+        ''')
+        mysql.connection.commit()
+
+        flash("Deleted Recipe", "Success")
+        return redirect("/recipes")
     # if request is to edit recipe
     if "recipeEditTitle" in request.form:
         recipeID = request.form.get("recipeEditID")
@@ -1074,6 +1210,8 @@ def recipes_mod():
         category = request.form.get('recipeEditCategory')
         description = request.form.get('recipeEditDescription')
         file = request.files['avatarFile']
+        ingredients = request.form.getlist('recipeIngredients')
+        instructions = request.form.getlist('recipeInstructions')
 
         # check for valid ID
         if not recipeID or not re.match("^[0-9]*$", recipeID):
@@ -1164,6 +1302,34 @@ def recipes_mod():
 
             mysql.connection.commit()
             flash("Changed Image", "Success")
+
+        # if there is one value that is not '' then run code
+        if not all(i == '' for i in ingredients):
+            # get all ids for instructions if input is provided
+            ingredientsID = request.form.getlist('recipeIngredientsID')
+            for idx, x in enumerate(ingredients):
+                if x != '':
+                    print(x)
+                    print(ingredientsID[idx])
+            flash('Changed Ingredients', 'Success')
+
+        # if there is one value that is not '' then run code
+        if not all(i == '' for i in instructions):
+            # get all ids for instructions if input is provided
+            instructionsID = request.form.getlist('recipeInstructionsID')
+            for idx, x in enumerate(instructions):
+                if x != '' and re.match("^[a-zA-Z0-9][a-zA-Z0-9!\-,./()' ]*$", x) and instructionsID[idx].isnumeric():
+                    # Executing sql query
+                    db.execute(f'''
+                        UPDATE instructions
+                        JOIN recipes ON instructions.recipe_id = recipes.recipe_id
+                        SET instructions_name = '{x}'
+                        WHERE recipes.recipe_id = {recipeID} AND 
+                        instructions_id = {instructionsID[idx]} AND
+                        user_id = {id}
+                    ''')
+                    mysql.connection.commit()
+            flash('Changed Instructions', 'Success')
 
         return redirect("/recipesuser")
     return redirect("/recipesuser")

@@ -30,9 +30,17 @@
             {% for i in recipelist %}
                 <a href="recipesview?recipe={{ i['recipe_name'] }}&id={{ i['recipe_id'] }}" class="card-recipe">
                     {% if i["user_id"] != user["user_id"] %}
-                    <div id="heart-btn" class="btn-style">
-                        <img src="/static/images/icons/icon-heart.svg">
-                    </div>
+                        {% if i["recipe_id"] not in savelist %}
+                            <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event, 'save')">
+                                <input name="recipeSave" value="{{ i['recipe_id'] }}" hidden >
+                                <input type="image" src="/static/images/icons/icon-heart.svg" >
+                            </form>
+                        {% else %}
+                            <form action="/recipesmod" method="post" onsubmit="userConfirmAct(event, 'unsave')" >
+                                <input name="recipeUnsave" value="{{ i['recipe_id'] }}" hidden >
+                                <input type="image" src="/static/images/icons/icon-heart.svg" style="filter: invert(100%) contrast(200%);">
+                            </form>
+                        {% endif %}
                     {% endif %}
                     <img src="{{ i['image_path'] }}">
                     <h1>{{ i["category"]}}</h1>

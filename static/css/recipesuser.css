@@ -34,17 +34,26 @@ main.container > div.container-recipes {
         }
         /* header text */
         main.container > div.container-recipes > h1 {
-            padding: 1em 0 3em 0;
+            padding: 1em 0 1em 0;
             text-align: center;
             font-size: 1.5rem;
             font-weight: 900;
             color: var(--grey-dark);
         }
+            /* subheader text */
+            main.container > div.container-recipes > h2 {
+                padding-bottom: 3em;
+                text-align: center;
+                font-size: 1rem;
+                font-weight: 700;
+                color: var(--grey-dark);
+            }
     /* card conatiner */
     div.container-recipes > div.recipe-card {
         display: flex;
         flex-direction: row;
         border-bottom: 1px solid var(--white-med);
+        cursor: pointer;
     }
         /* card conatiner hover */
         div.container-recipes > div.recipe-card:hover {
@@ -62,6 +71,7 @@ main.container > div.container-recipes {
             gap: 1em;
             width: 100%;
             padding: 1em;
+            padding-bottom: 0;
             overflow: hidden;
         }
             /* h1 */
@@ -90,10 +100,16 @@ main.container > div.container-recipes {
                 width: 100%;
                 margin-top: auto;
             }
-                /* image */
+                /* heart image */
                 div.container-recipes > div.recipe-card > div.card-col > div.card-btns > img {
                     width: 25px;
-                    padding: 0.5em;
+                    padding: 0.8em;
+                    cursor: pointer;
+                }
+                /* trash image */
+                div.container-recipes > div.recipe-card > div.card-col > div.card-btns > form > input[type="image"] {
+                    width: 30px;
+                    padding: 0.8em;
                     cursor: pointer;
                 }
                 /* h2 */
@@ -206,27 +222,6 @@ main.container > div.container-recipes {
         width: 100%;
         margin-top: 1em;
     }
-        /* input buttons */
-        div#container-edit > form > div.inputBtnContainer {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 1em;
-            margin-bottom: 2em;
-        }
-            /* remove button (h1) */
-            div#container-edit > form > div.inputBtnContainer > h1, div#container-edit > form > div.inputBtnContainer > h2 {
-                padding: 0.5em 1em 0.5em 1em;
-                border-radius: 10px;
-                border: 1px solid var(--white-med);
-                background-color: var(--white-medli);
-                color: var(--grey-dark);
-                cursor: pointer;
-            }
-            /* add button (h2) */
-            div#container-edit > form > div.inputBtnContainer > h2 {
-                background-color: var(--main-light);
-            }
         /* input container */
         div#container-edit > form > div.input-list > div.container-input {
             display: flex;
@@ -239,22 +234,16 @@ main.container > div.container-recipes {
                 font-weight: 700;
                 color: var(--grey-med);
             }
+                /* header text */
+                div#container-edit > form > h2 {
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                    color: var(--grey-dark);
+                }
             /* hr line */
             div#container-edit > form > div.input-list > div.container-input > hr {
                 width: 100%;
                 color: var(--white-medli);
-            }
-    /* button */
-    div#container-edit > form > button[type="submit"]{
-        width: 100%;
-        margin-top: 2em;
-        padding: 0.5em 0 0.5em 0;
-        border: 0;
-        border-radius: 8px;
-        font-size: 1.3rem;
-        background-color: var(--main-med);
-        color: var(--white-light);
-        cursor: pointer;
             }
     /* button */
     div#container-edit > form > button[type="submit"]{
