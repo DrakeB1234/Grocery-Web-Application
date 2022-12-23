@@ -1430,3 +1430,6 @@ def page_not_found(e):
 def internal_error(e):
     flash("Internal Error, Contact Admin", "Server-Error")
     return redirect('/')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8080)

@@ -26,7 +26,7 @@ def admin_access(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if session.get("user_id") is not 1:
+        if session.get("user_id") != 1:
             flash("Page not Found", "Server-Error")
             return redirect("/")
         return f(*args, **kwargs)
