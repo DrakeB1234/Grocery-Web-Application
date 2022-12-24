@@ -1355,7 +1355,7 @@ def recipes_mod():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             
-            pathVar = UPLOAD_FOLDER + "/" + file.filename
+            pathVar = app.config['UPLOAD_FOLDER'] + "/" + file.filename
             # if file is successful, change file path in recipe
             db.execute(f"UPDATE recipes SET image_path = '{pathVar}' WHERE user_id = {id} AND recipe_id = {recipeID}")
 
