@@ -1,0 +1,28 @@
+{
+  "name": "grocery-web-application",
+  "version": "1.0.0",
+  "description": "Grocery web app with express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "start:dev": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrakeB1234/Grocery-Web-Application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrakeB1234/Grocery-Web-Application/issues"
+  },
+  "homepage": "https://github.com/DrakeB1234/Grocery-Web-Application#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
