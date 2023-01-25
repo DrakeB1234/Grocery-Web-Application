@@ -2,14 +2,9 @@ const express = require('express');
 const groceriesRoute = require('./routes/groceries')
 const marketsRoute = require('./routes/markets')
 const renderRoute = require('./routes/render')
-var path = require('path');
 
 const app = express();
 const PORT = 3001;
-
-// view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
 
 // middleware
 app.use(express.json());
