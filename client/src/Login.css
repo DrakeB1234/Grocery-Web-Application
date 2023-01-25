@@ -1,0 +1,49 @@
+/* login container */
+div.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* login form */
+form.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    width: clamp(1em, 80%, 30em);
+    padding: 1em;
+    overflow: hidden;
+}
+
+    /* inputs */
+    form.login-form > input[type="text"] {
+        width: 90%;
+        padding: 0.8em;
+        font-size: 1rem;
+        border: 1px solid var(--grey-li);
+    }
+
+    /* labels */
+    form.login-form > label {
+        font-size: 0.9rem;
+        color: var(--grey-med);
+        align-self: flex-start;
+    }
+
+    /* form flex */
+    form.login-form > div.form-flex {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1em;
+        width: 100%;
+        padding: 1em;
+        overflow: hidden;
+    }
+
+    /*   h2 text */
+    form.login-form > div.form-flex > h2 {
+        font-size: 1rem;
+        color: var(--grey-med);
+    }
