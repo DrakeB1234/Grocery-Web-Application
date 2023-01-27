@@ -1,5 +1,5 @@
 const express = require('express');
-const userRoute = require('./routes/user')
+const userRoute = require('./routes/user');
 
 const app = express();
 const PORT = 5000;
@@ -13,6 +13,6 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api/user', userRoute);
+app.use('/api/users', userRoute);
 
-app.listen(PORT, () => console.log(`Running Express on Port ${PORT}`));
+app.listen(PORT, () => console.log(`Running Server on Port ${PORT}`));
