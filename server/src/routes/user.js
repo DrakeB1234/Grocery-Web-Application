@@ -1,8 +1,10 @@
 const { Router } = require('express');
+
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 const db = require('../db');
-const vinput = require('../helpersVInput');
-const nmailer = require('../nodeMailer');
+const vinput = require('../utils/helpersVInput');
+const nmailer = require('../utils/nodeMailer');
 
 const router = Router();
 
@@ -10,9 +12,6 @@ const router = Router();
 router.get('/data', async (req, res) => {
     try {
         const query = await db.promise().execute('SELECT * FROM nodeusers;');
-
-        // send email for verfiying account
-        nmailer.sendVerifyEmail("drakebuentello2@gmail.com", "This is a test", "Thats pretty much it bruh");
 
         res.status(200).send(query[0]);
 
@@ -55,10 +54,24 @@ router.post('/register', async (req, res) => {
         // hashing password
         const password =  await bcrypt.hash(req.body.password, 10);
 
+        // get JWT token based on set hour expiry time
+        const ts = new Date();
+        ts.setHours(ts.getHours() + Number(process.env.EMAIL_AUTH_EXPIRY_HOUR));
+
+        const token = jwt.sign(email, `${ts}`);
+
         // add user to database
         db.promise().execute(`\
             INSERT INTO nodeusers (email, username, password, active)\
             VALUES (?, ?, ?, false);`, [email, username, password]);
+
+        // add authenication data to database
+        db.promise().execute(`\
+            INSERT INTO userauth (email, token, timestamp)\
+            VALUES (?, ?, ?);`, [email, token, ts]);
+
+        // ensure user added in db, then send email for verfiying account
+        nmailer.sendEmail(email, "Please verify your account", `Visit the Link Below\n\n${process.env.BASE_URL}/api/users/verify?t=${token}`);
 
         res.status(201).send(`User Added, Awaiting Verification`);
 
