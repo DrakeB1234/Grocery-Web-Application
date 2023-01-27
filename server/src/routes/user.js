@@ -2,18 +2,15 @@ const { Router } = require('express');
 const bcrypt = require('bcrypt');
 const db = require('../db');
 const vinput = require('../helpersVInput');
+const nmailer = require('../nodeMailer');
 
 const router = Router();
-
-// send email for account registration verification
-sendRegisteredEmail = () => {
-
-};
 
 // get users
 router.get('/data', async (req, res) => {
     try {
         const query = await db.promise().execute('SELECT * FROM nodeusers;');
+        nmailer.sendEmail('hellp from function');
         res.status(200).send(query[0]);
 
     } catch(err) {
