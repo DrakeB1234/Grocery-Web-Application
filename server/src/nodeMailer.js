@@ -4,18 +4,18 @@ module.exports = {
     sendVerifyEmail: async function(email, subject, text) {
         try {
             const transporter = nodeMailer.createTransport({
-                host: process.env.HOST,
-                service: process.env.SERVICE,
-                post: Number(process.env.EMAIL_PORT),
-                secure: Boolean(process.env.SECURE),
+                host: process.env.NMHOST,
+                service: process.env.NMSERVICE,
+                port: Number(process.env.NMEMAIL_PORT),
+                secure: Boolean(process.env.NMSECURE),
                 auth: {
-                    user: process.env.USER,
-                    pass: process.env.PASS
+                    user: process.env.NMUSER,
+                    pass: process.env.NMPASS
                 }
             });
 
             await transporter.sendMail({
-                from: process.env.USER,
+                from: process.env.NMUSER,
                 to: email,
                 subject: subject,
                 text: text
@@ -23,7 +23,7 @@ module.exports = {
             console.log('Email sent successfully');
             return;
         } catch (err) {
-            console.log('Failed to send email');
+            console.log(`${err.name}: ${err.message}`);
             return `${err.name}: ${err.message}`;
         }
     },

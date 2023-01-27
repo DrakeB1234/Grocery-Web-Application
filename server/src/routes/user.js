@@ -10,7 +10,10 @@ const router = Router();
 router.get('/data', async (req, res) => {
     try {
         const query = await db.promise().execute('SELECT * FROM nodeusers;');
-        nmailer.sendEmail('hellp from function');
+
+        // send email for verfiying account
+        nmailer.sendVerifyEmail("drakebuentello2@gmail.com", "This is a test", "Thats pretty much it bruh");
+
         res.status(200).send(query[0]);
 
     } catch(err) {
