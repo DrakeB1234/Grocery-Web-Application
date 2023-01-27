@@ -1,0 +1,16 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" alt=''>
+<style>
+    .bars {
+        display: none;
+    }
+</style>
+<g id="icon-eye">
+<path id="Ellipse 1" d="M48 25C46 33 34.3888 39 25 39C15.6112 39 4 33 2 25C4 17 15.6112 11 25 11C34.3888 11 46 17 48 25Z" fill="#433E3E"/>
+<circle id="Ellipse 2" cx="25" cy="25" r="11" fill="white"/>
+<circle id="Ellipse 3" cx="25" cy="25" r="7" fill="#433E3E"/>
+<g id="bars">
+<rect id="Rectangle 1" x="41.3676" y="5" width="6" height="52" transform="rotate(45 41.3676 5)" fill="white"/>
+<rect id="Rectangle 2" x="41.3676" y="5" width="3" height="52" transform="rotate(45 41.3676 5)" fill="#433E3E"/>
+</g>
+</g>
+</svg>

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
@@ -12,9 +13,10 @@ code {
     monospace;
 }
 
-/* global */
 /* color scheme */
 :root {
+  --green-li: #82da7e;
+
   --blue-dar: #3166a6;
   --blue-med: #4f85c6;
   --blue-li: #72a3df;
@@ -27,20 +29,40 @@ code {
   --white-li: #ffffff;
 }
 
+/* global */
+
 /* links */
 a {
   color: inherit;
   font-size: inherit;
   text-decoration: none;
 }
+  /* button links */
+  a.embedded-link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
 /* buttons */
 .submit-btn {
   font-size: 1.2rem;
-  width: clamp(1em, 85%, 40em);
-  padding: 0.8em;
+  width: clamp(1em, 100%, 20em);
+  padding: 0.6em;
   color: var(--white-li);
   background-color: var(--blue-med);
+  border: 1px solid var(--grey-li);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.redirect-btn {
+  font-size: 1.2rem;
+  text-align: center;
+  width: clamp(1em, 100%, 20em);
+  padding: 0.6em;
+  color: var(--white-li);
+  background-color: var(--green-li);
   border: 1px solid var(--grey-li);
   border-radius: 10px;
   cursor: pointer;

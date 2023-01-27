@@ -6,6 +6,13 @@ div.login-container {
     overflow: hidden;
 }
 
+/* text */
+div.login-container > h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--blue-dar);
+}
+
 /* login form */
 form.login-form {
     display: flex;
@@ -13,7 +20,8 @@ form.login-form {
     align-items: center;
     gap: 1em;
     width: clamp(1em, 80%, 30em);
-    padding: 1em;
+    padding: 1em 1em 3em 1em;
+    border: 1px solid var(--grey-med);
     overflow: hidden;
 }
 
@@ -42,8 +50,24 @@ form.login-form {
         overflow: hidden;
     }
 
-    /*   h2 text */
-    form.login-form > div.form-flex > h2 {
+    /* h1 text */
+    form.login-form > h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--blue-med);
+    }
+
+    /* h2 text */
+    form.login-form h2 {
+        display: flex;
+        width: 100%;
         font-size: 1rem;
         color: var(--grey-med);
     }
+        /* hr text */
+        form.login-form h2 > hr {
+            width: 100%;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            color: var(--white-li);
+        }

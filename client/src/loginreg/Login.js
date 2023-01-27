@@ -8,18 +8,24 @@ function Login() {
       <h1>Grocery Central</h1>
       <form className="login-form" method='POST' action="/api/user/login">
         <h1>Sign in</h1>
-        <label htmlFor='email'>Email or Username</label>
-        <input name='email' type='text' />
-        <label htmlFor='email'>Password</label>
+        <label htmlFor='login'>Username or Email</label>
+        <input name='login' type='text' />
+
+        <label htmlFor='password'>Password</label>
         <input name='password' type='text' />
+
         <div className='form-flex'>
-          <input name='password' type='checkbox' />
+          <input name='remember' type='checkbox' />
           <h2>Remember Me</h2>
         </div>
         <button type='submit' className="submit-btn">Continue</button>
+        <h2><hr></hr>or<hr></hr></h2>
+        <a href='/signup' className='embedded-link'>
+          <button type='button' href='/signup' className="redirect-btn">Create Account</button>
+        </a>
       </form>
     </div>
   )
 }
 
-export default Login
+export default Login;
