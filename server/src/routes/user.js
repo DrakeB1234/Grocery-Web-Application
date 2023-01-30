@@ -17,7 +17,7 @@ router.get('/data', async (req, res) => {
 
     } catch(err) {
         console.log(`${err.name}: ${err.message}`);
-        res.status(500).send(`${err.name}: ${err.message}`);
+        res.status(500).send(`Internal Server Error`);
     }
 });
 
@@ -61,13 +61,13 @@ router.post('/register', async (req, res) => {
         const token = jwt.sign(email, `${ts}`);
 
         // add user to database
-        db.promise().execute(`\
-            INSERT INTO nodeusers (email, username, password, active)\
+        db.promise().execute(`
+            INSERT INTO nodeusers (email, username, password, active)
             VALUES (?, ?, ?, false);`, [email, username, password]);
 
         // add authenication data to database
-        db.promise().execute(`\
-            INSERT INTO userauth (email, token, timestamp)\
+        db.promise().execute(`
+            INSERT INTO userauth (email, token, timestamp)
             VALUES (?, ?, ?);`, [email, token, ts]);
 
         // ensure user added in db, then send email for verfiying account
@@ -77,8 +77,100 @@ router.post('/register', async (req, res) => {
 
     } catch(err) {
         console.log(`${err.name}: ${err.message}`);
-        res.status(500).send(`${err.name}: ${err.message}`);
+        res.status(500).send(`Internal Server Error`);
     };
+});
+
+// verify user email
+router.get('/verify', async (req, res) => {
+    try {
+        // get token form get parameters, then lookup token in database
+        const token = req.query.t;
+
+        let query = await db.promise().execute(`SELECT * 
+        FROM userauth
+        WHERE token = ?;`, [token]);
+        query = query[0]
+
+        if (query.length == []){
+            return res.status(404).send("Token not found");
+        }
+
+        // verify token is not expired
+        const datetime = new Date();
+
+        if (datetime > query[0].timestamp){
+            return res.status(404).send("Token expired");
+        }
+
+        // update usertable to active if not expired
+        db.promise().execute(`UPDATE nodeusers
+        SET active = 1
+        WHERE email = ?;`, [query[0].email]);
+
+        // delete userauth entry
+        db.promise().execute(`DELETE FROM userauth
+        WHERE email = ?;`, [query[0].email]);
+
+        res.status(200).send("Account verified");
+
+    } catch (err) {
+        console.log(`${err.name}: ${err.message}`);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// resend verify to user email
+router.post('/reverify', async (req, res) => {
+    try {
+        // get token form get parameters, then lookup token in database
+        const email = req.body.email;
+
+        // get and validate form data
+        if(!vinput.checkEmail(email)){
+            return res.status(400).send('Invalid format');
+        }
+
+        // get data from sent email
+        let query = await db.promise().execute(`SELECT *
+        FROM userauth
+        WHERE email = ?;`, [email]);
+        query = query[0];
+
+        // catches if account is not in auth table (already verified or account not made)
+        if (query.length == []){
+            return res.status(404).send("Account not found");
+        }
+
+        // ensure that at least 10 minutes has passed since last token
+        const timedate = new Date();
+        const tokentime = new Date(query[0].timestamp);
+        tokentime.setMinutes(tokentime.getMinutes() - 50);
+ 
+        if (timedate < tokentime){
+            return res.status(400).send("Wait at least 10 minutes before sending another email");
+        }
+
+        // regenerate token
+        timedate.setHours(timedate.getHours() + Number(process.env.EMAIL_AUTH_EXPIRY_HOUR));
+
+        const token = jwt.sign(email, `${timedate}`);
+
+        // add new authenication data to database
+        db.promise().execute(`
+            UPDATE userauth
+            SET token = ?, timestamp = ?
+            WHERE email = ?;`, [token, timedate, email]);
+
+        // ensure user auth data was updated in db, then send email for verfiying account
+        nmailer.sendEmail(email, "Please verify your account", `Visit the Link Below\n\n${process.env.BASE_URL}/api/users/verify?t=${token}`);
+
+        res.status(200).send("Email Sent");
+
+    } catch (err) {
+        console.log(`${err.name}: ${err.message}`);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 // handle login
@@ -107,7 +199,7 @@ router.post('/login', async (req, res) => {
 
     } catch(err) {
         console.log(`${err.name}: ${err.message}`);
-        res.status(500).send(`${err.name}: ${err.message}`);
+        res.status(500).send(`Internal Server Error`);
     };
 });
 
